@@ -1,11 +1,13 @@
-
+import { CharacterForm } from "./CharacterForm"
 // import { useEffect, useState } from "react"
 // import { useNavigate } from "react-router-dom"
 
 // import { getLocations, postNewEmployee, postNewUser } from "../APIManager"
 
 export const Character = () => {
-    return <><h1>HERE IS WHERE YOU WILL FILL OUT AND ADD/EDIT CHARACTERS</h1></>
+    return <><h1>HERE IS WHERE YOU WILL FILL OUT AND ADD/EDIT CHARACTERS</h1>
+    <CharacterForm />
+    </>
 }
 
 
