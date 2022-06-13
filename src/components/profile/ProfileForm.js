@@ -7,18 +7,24 @@ import { updateProfile } from "../APIManager"
 //onSubmit={whatdoonsubmit} on form--login   onChange={updateUser} on input   
 
 export const UpdateUser = () => {
-    const [user, setUser] = useState({
-        email: "",
-        id: 0,
-        userName: ""
-    })
-
-
+    const [feedback, setFeedback] = useState("")
     const localRosterUser = localStorage.getItem("roster_user")
     const rosterUserObject = JSON.parse(localRosterUser)
     const localUser = {...rosterUserObject}
 
-    setUser(localUser)
+    const [user, setUser] = useState({
+        email: localUser.email,
+        id: localUser.id,
+        username: localUser.userName
+    })
+
+    useEffect(() => {
+        if (feedback !== "") {
+            // Clear feedback to make entire element disappear after 3 seconds
+            setTimeout(() => setFeedback(""), 3000);
+        }
+    }, [feedback])
+   
 
     const emailUpdate = (evt) => {
         const copy = { ...user }
@@ -35,6 +41,10 @@ export const UpdateUser = () => {
 
 
         updateProfile(user, user.id)
+        .then(() => {
+            setFeedback("Email successfully updated")
+        }
+        )
 
 
     }
@@ -48,6 +58,9 @@ export const UpdateUser = () => {
 
 
     return <>
+    <div className={`${feedback.includes("Error") ? "error" : "feedback"} ${feedback === "" ? "invisible" : "visible"}`}>
+    {feedback}
+</div>
         <main style={{ textAlign: "center" }}>
             <form className="form--login" >
 
@@ -63,7 +76,7 @@ export const UpdateUser = () => {
                 </fieldset>
 
                 <fieldset>
-                    <button type="submit" onClick={<></>}> Update </button>
+                    <button type="submit" onClick={handleSaveButtonClick}> Update </button>
                 </fieldset>
             </form>
         </main> </>
