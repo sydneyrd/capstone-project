@@ -4,7 +4,7 @@ import { RoleFilter } from "./FilterChoices/RoleFilter"
 import { WeaponFilter } from "./FilterChoices/WeaponFilter"
 import { ServerFilter } from "./FilterChoices/ServerFilter"
 
-export const FilterContainer = ({ setFilterButton, roleSearch, setPrimarySearch, setSecondarySearch, setServerSearch, setRoleSearch, setFactionSearch,
+export const FilterContainer = ({ setFilterButton, roleSearch, serverSearch, setPrimarySearch, setSecondarySearch, setServerSearch, setRoleSearch, setFactionSearch,
     filterButton, setSortedArr, setSearchTerms = { setSearchTerms }, searchTerms = { searchTerms }, characters, weapons, roles, factions, servers }) => {
 
     const handleFacSelect = (e) => {
@@ -33,6 +33,7 @@ const handleSearchButton = (e) => {
     const searchArr =
     characters
     .filter(x => x.roleId ==(x.roleId === roleSearch))
+    .filter(y => y.serverId == (y.serverId === serverSearch))
     setSortedArr(searchArr)
     
 
