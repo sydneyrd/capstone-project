@@ -15,6 +15,12 @@ export const Roster = () => {
     const [sortedArr, setSortedArr] = useState([])
     const [searchTerms, setSearchTerms] = useState("")
     const [filterButton, setFilterButton] = useState(false)
+    const [factionSearch, setFactionSearch] = useState(0)
+    const [roleSearch, setRoleSearch] = useState(0)
+    const [serverSearch, setServerSearch ] = useState(0)
+    const [primarySearch, setPrimarySearch] = useState(0)
+    const [secondarySearch, setSecondarySearch] = useState(0)
+    
  useEffect(
         () => {
             getAllCharacters(setCharacters)
@@ -60,7 +66,8 @@ export const Roster = () => {
    
 
     return <><h1>THIS IS WHERE YOU WILL BUILD THE ROSTER  saved rosters link, and build roster link?</h1>
-        <FilterContainer filterButton={filterButton} setFilterButton={setFilterButton} searchTerms={searchTerms} setSearchTerms={setSearchTerms} 
+        <FilterContainer setFactionSearch={setFactionSearch} filterButton={filterButton} setFilterButton={setFilterButton} searchTerms={searchTerms} setSearchTerms={setSearchTerms} 
+        setRoleSearch={setRoleSearch} setPrimarySearch={setPrimarySearch} setServerSearch={setServerSearch} setSecondarySearch={setSecondarySearch}
             setSortedArr={setSortedArr} characters={characters} servers={servers} weapons={weapons} factions={factions} roles={roles} />
 
         <ListContainer characters={sortedArr} servers={servers} weapons={weapons} factions={factions} roles={roles} />
