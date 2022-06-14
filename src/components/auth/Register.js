@@ -7,8 +7,7 @@ import { getUserByEmail, postNewUser } from "../APIManager"
 export const Register = (props) => {
     const [user, setUser] = useState({
         email: "",
-        userName: "",
-        savedRosters: []
+        userName: ""
     })
     let navigate = useNavigate()
 

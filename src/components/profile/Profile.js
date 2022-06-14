@@ -10,8 +10,8 @@ export const Profile = () => {
 
     the ability to delete your profile?  maybe idk who cares</article>
 
-
+ <UpdateUser />
     </>
     
 }  //
-    <UpdateUser />
+   
