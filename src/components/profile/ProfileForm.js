@@ -10,7 +10,7 @@ export const UpdateUser = () => {
     const [feedback, setFeedback] = useState("")
     const localRosterUser = localStorage.getItem("roster_user")
     const rosterUserObject = JSON.parse(localRosterUser)
-    const localUser = {...rosterUserObject}
+    const localUser = { ...rosterUserObject }
 
     const [user, setUser] = useState({
         email: localUser.email,
@@ -24,7 +24,7 @@ export const UpdateUser = () => {
             setTimeout(() => setFeedback(""), 3000);
         }
     }, [feedback])
-   
+
 
     const emailUpdate = (evt) => {
         const copy = { ...user }
@@ -41,26 +41,17 @@ export const UpdateUser = () => {
 
 
         updateProfile(user, user.id)
-        .then(() => {
-            setFeedback("Email successfully updated")
-        }
-        )
+            .then(() => {
+                setFeedback("Email successfully updated")
+            }
+            )
 
 
     }
-
-
-
-
-
-
-
-
-
     return <>
-    <div className={`${feedback.includes("Error") ? "error" : "feedback"} ${feedback === "" ? "invisible" : "visible"}`}>
-    {feedback}
-</div>
+        <div className={`${feedback.includes("Error") ? "error" : "feedback"} ${feedback === "" ? "invisible" : "visible"}`}>
+            {feedback}
+        </div>
         <main style={{ textAlign: "center" }}>
             <form className="form--login" >
 
