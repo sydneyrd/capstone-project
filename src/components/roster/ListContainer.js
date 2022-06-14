@@ -20,7 +20,7 @@ export const ListContainer = ({ characters, servers, weapons, factions, roles })
     }//removes the pop up and identifier when mouse leaves
     
     return <> <>
-        <article>
+        <article className="list__container">
             <ul className="character__list">{characters.map((character) =>
                 <CharacterList key={`${character.id}`} servers={servers} weapons={weapons} factions={factions}
                     roles={roles} showText={showText} character={character}
@@ -29,7 +29,7 @@ export const ListContainer = ({ characters, servers, weapons, factions, roles })
             )}
             </ul></article></>
 
-        <article> 
+        <article className="details__element"> 
             {showText && charId > 0 ?
                 <><DetailButton charId={charId} showText={showText} servers={servers} weapons={weapons} factions={factions} roles={roles} characters={characters} /> </>
                 : <></>}

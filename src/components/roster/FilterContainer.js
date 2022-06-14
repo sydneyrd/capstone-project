@@ -7,28 +7,27 @@ import { ServerFilter } from "./FilterChoices/ServerFilter"
 export const FilterContainer = ({ roleSearch, factionSearch, primarySearch, secondarySearch, serverSearch, setPrimarySearch, setSecondarySearch, setServerSearch, setRoleSearch, setFactionSearch,
     setSortedArr, setSearchTerms = { setSearchTerms }, searchTerms = { searchTerms }, characters, weapons, roles, factions, servers }) => {
 
-    const handleFacSelect = (e) => {
+const handleFacSelect = (e) => {
         e.preventDefault()
         setFactionSearch(parseInt(e.target.value))
-    }
-    const handleRoleSelect = (e) => {
+    }//each of these sets the value of the selected search parameter and we use that in the search button filter process to find matches
+const handleRoleSelect = (e) => {
         e.preventDefault(e)
         setRoleSearch(parseInt(e.target.value))
     }
-    const handleServerSelect = (e) => {
+const handleServerSelect = (e) => {
         e.preventDefault(e)
         setServerSearch(parseInt(e.target.value))
     }
-    const handlePrimarySelect = (e) => {
+const handlePrimarySelect = (e) => {
         e.preventDefault(e)
         setPrimarySearch(parseInt(e.target.value))
     }
-    const handleSecondarySelect = (e) => {
+ const handleSecondarySelect = (e) => {
         e.preventDefault(e)
         setSecondarySearch(parseInt(e.target.value))
     }
-
-    const handleSearchButton = (e) => {
+ const handleSearchButton = (e) => {
         e.preventDefault(e)
         const searchArr =
             characters
