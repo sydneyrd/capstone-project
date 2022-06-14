@@ -21,6 +21,10 @@ export const Roster = () => {
     const [primarySearch, setPrimarySearch] = useState(0)
     const [secondarySearch, setSecondarySearch] = useState(0)
     
+
+  
+
+
  useEffect(
         () => {
             getAllCharacters(setCharacters)
@@ -61,6 +65,7 @@ export const Roster = () => {
         },
         [characters]
     )
+    
 
 
 
