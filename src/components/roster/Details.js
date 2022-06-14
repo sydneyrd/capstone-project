@@ -4,14 +4,15 @@ import { findServer } from "./Roster.js"
 
 import { useState } from "react"
 
-export const DetailButton = ({ resetChar, character, servers, roles, weapons, factions, showText }) => {
+export const DetailButton = ({ charId, servers, roles, weapons, factions, showText, characters }) => {
+    let rightCharacter = characters.find(({id}) => id === charId)
 
 
-    let rightServer = servers.find(({ id }) => id === character.serverId)
-    let rightPrimary = weapons.find(({ id }) => id === character.primaryweapon)
-    let rightSecondary = weapons.find(({ id }) => id === character.secondaryweapon)
-    let rightFaction = factions.find(({ id }) => id === character.factionId)
-    let rightRole = roles.find(({ id }) => id === character.roleId)
+    let rightServer = servers.find(({ id }) => id === rightCharacter.serverId)
+    let rightPrimary = weapons.find(({ id }) => id === rightCharacter.primaryweapon)
+    let rightSecondary = weapons.find(({ id }) => id === rightCharacter.secondaryweapon)
+    let rightFaction = factions.find(({ id }) => id === rightCharacter.factionId)
+    let rightRole = roles.find(({ id }) => id === rightCharacter.roleId)
 
 
     return (<>
@@ -19,11 +20,11 @@ export const DetailButton = ({ resetChar, character, servers, roles, weapons, fa
 
 
             {showText &&
-                <section className="message" key={character.id}>
+                <section className="message" key={rightCharacter.id}>
                     <article
-                    onMouseLeave={resetChar}
+                    
                         className="details">
-                        <h3>{character.character}</h3>
+                        <h3>{rightCharacter.character}</h3>
                         <>{rightRole.name}
                             <br></br>
                             Primary Weapon: {rightPrimary.name}
