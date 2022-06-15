@@ -1,13 +1,33 @@
-import "./rostergrid.css" 
+import "./rostergrid.css"
 import React from "react";
+import { getRosterCharacter } from "../APIManager";
+import { useEffect } from "react";
+import { RosterDiv } from "./RosterDiv";
 //get all the people in the roster render them in the list
-export const RosterGrid = () => {
+// 
+//     const rosterHTML = (r) => {
+//  let y = 0
+//  y > 50 ? alert("You hit 50 my fren") : 
+//  <>
+//  <div className={"div" + y + 1}>{r.character}</div></>
+//   }
 
- return (
-<>
-    <div className="parent" >
-    <div className="div1"> hello</div>
-<div className="div2"> 1</div>
+//  
+
+//     roster.map(r => {rosterHTML(r)})
+// })
+
+
+
+//<>  the countvariable needs to trigger on the add button then render the correct div  
+export const RosterGrid = ({ newRosterPicks }) => {
+ return  <>
+{newRosterPicks.map((c) => <RosterDiv key={c.id} c={c} />)}
+</>
+}
+
+/* <div className="div1"></div>
+<div className="div2"> {</div>
 <div className="div3"> 1</div>
 <div className="div4"> 1</div>
 <div className="div5"> 1</div>
@@ -56,9 +76,9 @@ export const RosterGrid = () => {
 <div className="div48"> 1</div>
 <div className="div49"> 1</div>
 <div className="div50"> 1</div>
-</div> </> )
+</>
 
-}
+} */
 
 
 //  const drop = e => {

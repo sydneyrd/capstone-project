@@ -4,10 +4,11 @@ import { RoleFilter } from "./FilterChoices/RoleFilter"
 import { WeaponFilter } from "./FilterChoices/WeaponFilter"
 import { ServerFilter } from "./FilterChoices/ServerFilter"
 import { ResetButton } from "./ResetButton"
+import { useEffect } from "react"
 
 export const FilterContainer = ({ roleSearch, factionSearch, primarySearch, secondarySearch, serverSearch, setPrimarySearch, setSecondarySearch, setServerSearch, setRoleSearch, setFactionSearch,
     setSortedArr, setSearchTerms = { setSearchTerms }, searchTerms = { searchTerms }, characters, weapons, roles, factions, servers }) => {
-
+     
 const handleFacSelect = (e) => {
         e.preventDefault()
         setFactionSearch(parseInt(e.target.value))
@@ -76,7 +77,9 @@ const handlePrimarySelect = (e) => {
                     {weapons.map((weapon) => <WeaponFilter key={`${weapon.id}`} weapon={weapon} />)}</select>
                 <SearchFilter setSearchTerms={setSearchTerms} />
                 <button onClick={(e) => { handleSearchButton(e) }} >Search</button>
-                <ResetButton setFactionSearch={setFactionSearch} setRoleSearch={setRoleSearch} setServerSearch={setServerSearch} setSecondarySearch={setSecondarySearch} setPrimarySearch={setPrimarySearch}/>
+                <ResetButton handleSearchButton={handleSearchButton} setFactionSearch={setFactionSearch} setRoleSearch={setRoleSearch} setServerSearch={setServerSearch}
+                setSecondarySearch={setSecondarySearch} 
+                setPrimarySearch={setPrimarySearch}/>
             </fieldset></form>
     </>
 }

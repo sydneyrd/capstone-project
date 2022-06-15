@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { DetailButton } from './Details';
 import { AddButton } from './AddButton';
 
-export const CharacterList = ({ startRoster, setStartRoster, charId, setCharId, character, servers, weapons, factions, roles, showText, handleMouseEnter, handleMouseLeave }) => {
+export const CharacterList = ({  setNewRosterPick, charId, setCharId, character, servers, weapons, factions, roles, showText, handleMouseEnter, handleMouseLeave }) => {
   
 
   return (
@@ -14,7 +14,7 @@ export const CharacterList = ({ startRoster, setStartRoster, charId, setCharId, 
       onMouseLeave={handleMouseLeave} >
       {character.character}
       < button className="detail__button" id={character.id} onMouseOver={setCharId} >Details</button >
-      <AddButton startRoster={startRoster} id={character.id} setStartRoster={setStartRoster} charId={charId} />
+      <AddButton setNewRosterPick={setNewRosterPick}  character={character}  id={character.id}  charId={charId} />
  </div>
   )
 }

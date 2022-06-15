@@ -66,6 +66,11 @@ export const getAllCharacters = (setCharacters) => {
         setCharacters(charactersArr)
     })
 }
+export const getRosterCharacter = (rosterNum) => {
+    return fetch(`http://localhost:8088/rosterchoices?&rosterId=${rosterNum}`)
+    .then(res => res.json())
+    //no set function included in this don't forget .then
+}
 
 export const saveNewCharacter = (newCharacterToAPI) => {
     return fetch(`http://localhost:8088/characters`, {

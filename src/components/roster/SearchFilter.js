@@ -1,4 +1,5 @@
 export const SearchFilter = ({ setSearchTerms }) => {
+    
     return <> <div><input type="text" onChange={
         (changeEvent) => {
             setSearchTerms(changeEvent.target.value)
