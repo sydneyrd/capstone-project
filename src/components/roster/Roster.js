@@ -20,6 +20,7 @@ export const Roster = () => {
     const [serverSearch, setServerSearch] = useState(0)
     const [primarySearch, setPrimarySearch] = useState(0)
     const [secondarySearch, setSecondarySearch] = useState(0)
+    
 
     useEffect(
         () => {
@@ -41,7 +42,6 @@ export const Roster = () => {
     )
     useEffect(
         () => {
-
             const searchedChar = characters.filter(character => {
                 return character.character.toLowerCase().startsWith(searchTerms.toLowerCase())  //make both lowercase so you can always find a match regardless of case
             })
@@ -62,11 +62,11 @@ export const Roster = () => {
             setRoleSearch={setRoleSearch} setPrimarySearch={setPrimarySearch} setServerSearch={setServerSearch} setSecondarySearch={setSecondarySearch}
             roleSearch={roleSearch} serverSearch={serverSearch} factionSearch={factionSearch} primarySearch={primarySearch} secondarySearch={secondarySearch}
             setSortedArr={setSortedArr} characters={characters} servers={servers} weapons={weapons} factions={factions} roles={roles} />
-<body className="body">
-        <ListContainer characters={sortedArr} servers={servers} weapons={weapons} factions={factions} roles={roles} />
+        <body className="body">
+            <ListContainer  characters={sortedArr} servers={servers} weapons={weapons} factions={factions} roles={roles} />
 
-        <RosterGrid />
-  </body>  </>
+            <RosterGrid />
+        </body>  </>
 }
 
 

@@ -1,15 +1,12 @@
 import "./rostergrid.css" 
+import React from "react";
 
 export const RosterGrid = () => {
- const drop = () => {
-    
- }
- 
- 
+
  return (
 <>
-    <div className="parent">
-<div className="div1"> hello</div>
+    <div className="parent" >
+    <div className="div1"> hello</div>
 <div className="div2"> 1</div>
 <div className="div3"> 1</div>
 <div className="div4"> 1</div>
@@ -62,3 +59,15 @@ export const RosterGrid = () => {
 </div> </> )
 
 }
+
+
+//  const drop = e => {
+//     e.preventDefault();
+//     const card_id = e.dataTransfer.getData("character__card");
+// const card = document.getElementById(card_id);
+// card.style.display = 'block';
+// e.target.innerText(card_id)
+//  }
+//  const dragOver = e => {
+//     e.preventDefault();
+//  } for drag and dropping

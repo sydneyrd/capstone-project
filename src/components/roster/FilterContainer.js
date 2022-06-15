@@ -3,6 +3,7 @@ import { FactionFilter } from "./FilterChoices/FactionFilter"
 import { RoleFilter } from "./FilterChoices/RoleFilter"
 import { WeaponFilter } from "./FilterChoices/WeaponFilter"
 import { ServerFilter } from "./FilterChoices/ServerFilter"
+import { ResetButton } from "./ResetButton"
 
 export const FilterContainer = ({ roleSearch, factionSearch, primarySearch, secondarySearch, serverSearch, setPrimarySearch, setSecondarySearch, setServerSearch, setRoleSearch, setFactionSearch,
     setSortedArr, setSearchTerms = { setSearchTerms }, searchTerms = { searchTerms }, characters, weapons, roles, factions, servers }) => {
@@ -75,6 +76,7 @@ const handlePrimarySelect = (e) => {
                     {weapons.map((weapon) => <WeaponFilter key={`${weapon.id}`} weapon={weapon} />)}</select>
                 <SearchFilter setSearchTerms={setSearchTerms} />
                 <button onClick={(e) => { handleSearchButton(e) }} >Search</button>
+                <ResetButton setSortedArr={setSortedArr} characters={characters}/>
             </fieldset></form>
     </>
 }

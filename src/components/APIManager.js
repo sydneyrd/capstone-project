@@ -77,3 +77,25 @@ export const saveNewCharacter = (newCharacterToAPI) => {
     })
     .then(res => res.json())
 }
+
+export const newRosterChoice = (newRosterChoiceObj) => {
+    return fetch(`http://localhost:8088/rosterchoices`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newRosterChoiceObj)
+    })
+    .then(res => res.json())
+}
+
+export const newRoster = (newRosterObj) => {
+    return fetch(`http://localhost:8088/rosters`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newRosterObj)
+    })
+    .then(res => res.json())
+}

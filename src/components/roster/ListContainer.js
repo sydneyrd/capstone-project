@@ -2,9 +2,10 @@ import { CharacterList } from "./CharacterList"
 import { DetailButton } from "./Details"
 import { useState, useEffect } from "react"
 
-export const ListContainer = ({ characters, servers, weapons, factions, roles }) => {
+export const ListContainer = ({ draggable, characters, servers, weapons, factions, roles }) => {
     const [showText, setShowText] = useState(false)
     const [charId, setId] = useState(0)
+    const [startRoster, setStartRoster] = useState(0) //we are capturing the new roster id when we first click add to roster and saving it to start roster  //pass those props ^
     
     const setCharId = e => {
         setId(parseInt(e.target.id))
@@ -18,14 +19,16 @@ export const ListContainer = ({ characters, servers, weapons, factions, roles })
         setShowText(false)
         setId(0)
     }//removes the pop up and identifier when mouse leaves
-    
+  
     return <> <>
         <article className="list__container">
             <ul className="character__list">{characters.map((character) =>
                 <CharacterList key={`${character.id}`} servers={servers} weapons={weapons} factions={factions}
                     roles={roles} showText={showText} character={character}
                     handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave}
-                    setCharId={setCharId} />
+                    setCharId={setCharId} charId={charId}
+                    setStartRoster={setStartRoster} startRoster={startRoster}
+                   /> 
             )}
             </ul></article></>
 
@@ -37,3 +40,13 @@ export const ListContainer = ({ characters, servers, weapons, factions, roles })
 //only display the detail button if the charId has been set to something other than 0 and showText is true
 }
 
+//   const dragStart = e => {
+//         const target = e.target;
+//         e.dataTransfer.setData("character__card", target.id)
+//         setTimeout(() => {
+//             target.style.display = "none";
+//         }, 0);
+//     }
+//     const dragOver = e => {
+//         e.stopPropagation();
+//     } for the drag and drop stuff
