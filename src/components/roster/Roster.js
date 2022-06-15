@@ -1,5 +1,4 @@
 import { getAllCharacters, getAllRoles, getAllFactions, getAllWeapons, getAllServers } from "../APIManager"
-import { CharacterList } from "./CharacterList"
 import { useEffect, useState } from "react"
 import { RosterGrid } from "./RosterGrid"
 import { ListContainer } from "./ListContainer"
@@ -20,8 +19,6 @@ export const Roster = () => {
     const [serverSearch, setServerSearch] = useState(0)
     const [primarySearch, setPrimarySearch] = useState(0)
     const [secondarySearch, setSecondarySearch] = useState(0)
-    const [startRoster, setStartRoster] = useState(false) 
-
     useEffect(
         () => {
             getAllCharacters(setCharacters)
@@ -51,21 +48,20 @@ export const Roster = () => {
     ) //find what you put into the search bar and set that as sorted
     useEffect(
         () => {
-            let rosterNumber = startRoster
+            
             let alphaCharacters = characters.sort((a, b) => a.character.localeCompare(b.character))
             setSortedArr(alphaCharacters)
-            setStartRoster(rosterNumber)
+            
         },
         [characters]
     ) //sort them alphabetically honestly it's just to put the characters into a sorted array because that's where i want them for future sorting
-
-    return <><h1>THIS IS WHERE YOU WILL BUILD THE ROSTER  saved rosters link, and build roster link?</h1>
+return <><h1>THIS IS WHERE YOU WILL BUILD THE ROSTER  saved rosters link, and build roster link?</h1>
         <FilterContainer setFactionSearch={setFactionSearch} filterButton={filterButton} setFilterButton={setFilterButton} searchTerms={searchTerms} setSearchTerms={setSearchTerms}
             setRoleSearch={setRoleSearch} setPrimarySearch={setPrimarySearch} setServerSearch={setServerSearch} setSecondarySearch={setSecondarySearch}
             roleSearch={roleSearch} serverSearch={serverSearch} factionSearch={factionSearch} primarySearch={primarySearch} secondarySearch={secondarySearch}
             setSortedArr={setSortedArr} characters={characters} servers={servers} weapons={weapons} factions={factions} roles={roles} />
         <body className="body">
-            <ListContainer  setStartRoster={setStartRoster} startRoster={startRoster} characters={sortedArr} servers={servers} weapons={weapons} factions={factions} roles={roles} />
+            <ListContainer  characters={sortedArr} servers={servers} weapons={weapons} factions={factions} roles={roles} />
 
             <RosterGrid />
         </body>  </>

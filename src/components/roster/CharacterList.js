@@ -6,7 +6,7 @@ export const CharacterList = ({ startRoster, setStartRoster, charId, setCharId, 
   
 
   return (
-    <li className="character__card"
+    <div className="character__card"
     
 
 
@@ -15,7 +15,7 @@ export const CharacterList = ({ startRoster, setStartRoster, charId, setCharId, 
       {character.character}
       < button className="detail__button" id={character.id} onMouseOver={setCharId} >Details</button >
       <AddButton startRoster={startRoster} id={character.id} setStartRoster={setStartRoster} charId={charId} />
- </li>
+ </div>
   )
 }
 

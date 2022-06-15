@@ -1,6 +1,6 @@
 import "./rostergrid.css" 
 import React from "react";
-
+//get all the people in the roster render them in the list
 export const RosterGrid = () => {
 
  return (

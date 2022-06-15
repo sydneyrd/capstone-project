@@ -21,15 +21,15 @@ export const ListContainer = ({ draggable, setStartRoster, startRoster, characte
     }//removes the pop up and identifier when mouse leaves
   
     return <> <>
-        <article className="list__container">
-            <ul className="character__list">{characters.map((character) =>
+        
+            <section className="character__list">{characters.map((character) =>
                 <CharacterList key={`${character.id}`} servers={servers} weapons={weapons} factions={factions}
                     roles={roles} showText={showText} character={character}
                     handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave}
                     setCharId={setCharId} charId={charId}
                     setStartRoster={setStartRoster} startRoster={startRoster}
                    /> )}
-            </ul></article></>
+            </section></>
 <article className="details__element"> 
             {showText && charId > 0 ?
                 <><DetailButton charId={charId} showText={showText} servers={servers} weapons={weapons} factions={factions} roles={roles} characters={characters} /> </>
