@@ -6,31 +6,34 @@ export const AddButton = ({ id, setStartRoster, startRoster }) => {
   
     const localUser = localStorage.getItem("roster_user")
     const rosterUser = JSON.parse(localUser)
-   
-    const handleStartClick = () => {
+   const handleStartClick = () => {
         let newR = {
             userId: rosterUser.id
-        }
+        }  //posts successfully as a new roster
 newRoster(newR).then((newRosterObj) => {
             let roster = { ...newRosterObj }
-            setStartRoster(parseFloat(roster.id))
-            let nrc = {
+localStorage.setItem('roster_id', parseFloat(roster.id))
+
+         let nrc = {
                 rosterId: parseFloat(roster.id),
                 characterId: id
             }
             newRosterChoice(nrc)
         })
+        alert("Saving New Roster...")
     }
     const handleAddClick = () => {
  //weneed to post a new roster only once, not every time we add another player, maybe we need a button to build roster, could display the grid if true and also post the new roster when clicked
+let rosterID = localStorage.getItem("roster_id")
+let rosterIDNUMBER = JSON.parse(rosterID)
 let nrc = {
-            rosterId: startRoster,
+            rosterId: rosterIDNUMBER,
             characterId: id
         }
         newRosterChoice(nrc)
     }
     return <>
-        {startRoster ? <button onClick={() => handleAddClick()} >Add to Roster</button> :
+       {  localStorage.getItem('roster_id') ? <button onClick={() => handleAddClick()} >Add to Roster</button> :
             <button onClick={() => handleStartClick()} >Add to Roster</button>}
     </>
 }

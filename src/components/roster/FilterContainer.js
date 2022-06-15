@@ -76,7 +76,7 @@ const handlePrimarySelect = (e) => {
                     {weapons.map((weapon) => <WeaponFilter key={`${weapon.id}`} weapon={weapon} />)}</select>
                 <SearchFilter setSearchTerms={setSearchTerms} />
                 <button onClick={(e) => { handleSearchButton(e) }} >Search</button>
-                <ResetButton setSortedArr={setSortedArr} characters={characters}/>
+                <ResetButton setFactionSearch={setFactionSearch} setRoleSearch={setRoleSearch} setServerSearch={setServerSearch} setSecondarySearch={setSecondarySearch} setPrimarySearch={setPrimarySearch}/>
             </fieldset></form>
     </>
 }
