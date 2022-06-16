@@ -104,3 +104,10 @@ export const newRoster = (newRosterObj) => {
     })
     .then(res => res.json())
 }
+
+export const deleteRosterChoice = (rosterChoice) => {
+      fetch(`http://localhost:8088/rosterchoices?&characterId=${rosterChoice}`, {
+        method: "DELETE",
+    })
+}
+

@@ -20,9 +20,9 @@ import { RosterDiv } from "./RosterDiv";
 
 
 //<>  the countvariable needs to trigger on the add button then render the correct div  
-export const RosterGrid = ({ newRosterPicks }) => {
+export const RosterGrid = ({ newRosterPicks, setNewRosterPick }) => {
  return  <>
-{newRosterPicks.map((c) => <RosterDiv key={c.id} c={c} />)}
+{newRosterPicks.map((c) => <RosterDiv newRosterPicks={newRosterPicks} setNewRosterPick={setNewRosterPick} key={c.id} c={c} />)}
 </>
 }
 

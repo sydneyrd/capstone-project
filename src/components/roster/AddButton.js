@@ -7,8 +7,12 @@ export const AddButton = ({ character, id, setNewRosterPick}) => {
   const localUser = localStorage.getItem("roster_user")
     const rosterUser = JSON.parse(localUser)
     const addUserToEnd = (c) => {
-        setNewRosterPick(state => [...state, c])
+        setNewRosterPick(state => [...state, c])//only adding one object to an array usestate
     }
+
+    // const doubleAlert = () => {
+    //     if newRoster.includes(characterId) to prevent doubles?
+    // }
    const handleStartClick = () => {
     
         let newR = {
@@ -23,7 +27,7 @@ localStorage.setItem('roster_id', parseFloat(roster.id))
                 characterId: id
                  
             }
-            newRosterChoice(nrc)
+           // newRosterChoice(nrc)
             addUserToEnd(character)
         })
         
@@ -37,7 +41,7 @@ let nrc = {
             characterId: id
         }
         addUserToEnd(character)
-        newRosterChoice(nrc)
+       // newRosterChoice(nrc)
     }
     return <>
        {  localStorage.getItem('roster_id') ? <button onClick={() => handleAddClick()} >Add to Roster</button> :
