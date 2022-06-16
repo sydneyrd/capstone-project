@@ -2,7 +2,7 @@ import { CharacterList } from "./CharacterList"
 import { DetailButton } from "./Details"
 import { useState, useEffect } from "react"
 
-export const ListContainer = ({ setNewRosterPick, characters, servers, weapons, factions, roles }) => {
+export const ListContainer = ({ setNewRosterPick, newRosterPicks, characters, servers, weapons, factions, roles }) => {
     const [showText, setShowText] = useState(false)
     const [charId, setId] = useState(0)
     //we are capturing the new roster id when we first click add to roster and saving it to start roster  //pass those props ^
@@ -27,7 +27,7 @@ export const ListContainer = ({ setNewRosterPick, characters, servers, weapons, 
                     roles={roles} showText={showText} character={character}
                     handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave}
                     setCharId={setCharId} charId={charId}
-                     setNewRosterPick={setNewRosterPick}
+                     setNewRosterPick={setNewRosterPick} newRosterPicks={newRosterPicks}
                    /> )}
             </section></>
 <article className="details__element"> 

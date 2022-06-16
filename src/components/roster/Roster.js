@@ -58,38 +58,46 @@ export const Roster = () => {
             setSortedArr(alphaCharacters)
         },
         [characters]//sort them alphabetically honestly it's just to put the characters into a sorted array because that's where i want them for future sorting
-)
+    )
     let rosterID = localStorage.getItem("roster_id")
     let rosterIDNUMBER = JSON.parse(rosterID)
 
-    const handleSave = (click, newRoster) => {
+    const handleSave = (click, newRosterPicks) => {
         click.preventDefault()
-        
-        const createRosterChoices = (c) => {
-           c =  {
-                rosterId: rosterIDNUMBER,
-                characterId: c.id }
-            
-            return c
-            
-        }
-    
 
-        const rosterToPost = newRoster.map((c) => { createRosterChoices(c, rosterIDNUMBER) }) 
+        const createRosterChoices = (cArr) => {
+           
+            let rosterChoiceArr = []
+            for (const c of cArr) {
+                let right = c.id
+                 let nC = {
+                rosterId: rosterIDNUMBER,
+                characterId: 0
+            }
+              if (  nC.characterId != right) {
+                nC.characterId = right
+                rosterChoiceArr.push(nC) 
+              } else {}
+
+            } return rosterChoiceArr
+        }
+
+
+        const rosterToPost = createRosterChoices(newRosterPicks)
         Promise.all(rosterToPost.map((r) => { newRosterChoice(r) })).then((result) => {//maybe my finest achievment thus far?   promise waits for all the promises to come back in an iterable before resolving
             console.log(result)
         })
     }
 
-return <><h1>THIS IS WHERE YOU WILL BUILD THE ROSTER  saved rosters link, and build roster link?</h1>
-    <FilterContainer setFactionSearch={setFactionSearch} filterButton={filterButton} setFilterButton={setFilterButton} searchTerms={searchTerms} setSearchTerms={setSearchTerms}
-        setRoleSearch={setRoleSearch} setPrimarySearch={setPrimarySearch} setServerSearch={setServerSearch} setSecondarySearch={setSecondarySearch}
-        roleSearch={roleSearch} serverSearch={serverSearch} factionSearch={factionSearch} primarySearch={primarySearch} secondarySearch={secondarySearch}
-        setSortedArr={setSortedArr} characters={characters} servers={servers} weapons={weapons} factions={factions} roles={roles} />
-    <section className="body">
-        <ListContainer setNewRosterPick={setNewRosterPick} characters={sortedArr} servers={servers} weapons={weapons} factions={factions} roles={roles} />
-        <button onClick={(click) => {handleSave(click, newRosterPicks)}}>Save Roster</button>
-        <div className="parent" >
-            <RosterGrid newRosterPicks={newRosterPicks} setNewRosterPick={setNewRosterPick} characters={characters} /></div>
-    </section> </>
+    return <><h1>THIS IS WHERE YOU WILL BUILD THE ROSTER  saved rosters link, and build roster link?</h1>
+        <FilterContainer setFactionSearch={setFactionSearch} filterButton={filterButton} setFilterButton={setFilterButton} searchTerms={searchTerms} setSearchTerms={setSearchTerms}
+            setRoleSearch={setRoleSearch} setPrimarySearch={setPrimarySearch} setServerSearch={setServerSearch} setSecondarySearch={setSecondarySearch}
+            roleSearch={roleSearch} serverSearch={serverSearch} factionSearch={factionSearch} primarySearch={primarySearch} secondarySearch={secondarySearch}
+            setSortedArr={setSortedArr} characters={characters} servers={servers} weapons={weapons} factions={factions} roles={roles} />
+        <section className="body">
+            <ListContainer setNewRosterPick={setNewRosterPick} newRosterPicks={newRosterPicks} characters={sortedArr} servers={servers} weapons={weapons} factions={factions} roles={roles} />
+            <button onClick={(click) => { handleSave(click, newRosterPicks) }}>Save Roster</button>
+            <div className="parent" >
+                <RosterGrid newRosterPicks={newRosterPicks} setNewRosterPick={setNewRosterPick} characters={characters} /></div>
+        </section> </>
 }
