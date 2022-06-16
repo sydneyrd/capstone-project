@@ -5,8 +5,14 @@ import { ServerSelect } from "./ServerSelect"
 import { WeaponSelect } from "./WeaponSelect"
 import { getAllFactions, getAllRoles, getAllWeapons, getAllServers, saveNewCharacter } from "../APIManager"
 
-export const CharacterForm = () => {
-    const [feedback, setFeedback] = useState("")
+
+//iterate this form and make the default values the character values in the database.  
+// leave this form blank to create new characters and display other characters below
+
+
+
+
+export const CharacterForm = ({roles, weapons, servers, factions, feedback, setFeedback}) => {
     const [newCharacter, updateNewCharacter] = useState({
         userId: 0,
         name: "",
@@ -16,50 +22,22 @@ export const CharacterForm = () => {
         serverId: 0,
         factionId: 0
     })
-    const [factions, setFactions] = useState([])
-    const [weapons, setWeapons] = useState([])
-    const [servers, setServers] = useState([])
-    const [roles, setRoles] = useState([])
 
-    useEffect(
-        () => {
-            getAllRoles(setRoles)
+     const localRosterUser = localStorage.getItem("roster_user")  
+     const RosterUserObject = JSON.parse(localRosterUser)
 
-                .then(() => {
-                    getAllFactions(setFactions)
-                })
-                .then(() => {
-                    getAllWeapons(setWeapons)
-                })
-                .then(() => {
-                    getAllServers(setServers)
-                })
-        },
-        [] // When this array is empty, you are observing initial component state
-    )
-    useEffect(() => {
-        if (feedback !== "") {
-            // Clear feedback to make entire element disappear after 3 seconds
-            setTimeout(() => setFeedback(""), 3000);
-        }
-    }, [feedback])
-
-    // const localRosterUser = localStorage.getItem("roster_user")  to assign userID to charactrs, i need the login part
-    // const RosterUserObject = JSON.parse(localRosterUser)
-
-
-
-    const handleSaveButtonClick = (event) => {
+const handleSaveButtonClick = (event) => {
         event.preventDefault()
 
         // TODO: Create the object to be saved to the API
         let newCharacterToAPI = {
-            name: newCharacter.name,
+            character: newCharacter.character,
             roleId: newCharacter.roleId,
             primaryId: newCharacter.primaryId,
             secondaryId: newCharacter.secondaryId,
             serverId: newCharacter.serverId,
-            factionId: newCharacter.factionId
+            factionId: newCharacter.factionId,
+            userId: RosterUserObject.id
         }
 
         // TODO: Perform the fetch() to POST the object to the API
@@ -86,10 +64,10 @@ export const CharacterForm = () => {
                         type="text"
                         className="form-control"
                         placeholder="probably something dumb"
-                        value={newCharacter.name} /**onChange{update character state}**/ onChange={
+                        value={newCharacter.character} /**onChange{update character state}**/ onChange={
                             (event) => {
                                 const copy = { ...newCharacter }
-                                copy.name = event.target.value
+                                copy.character = event.target.value
                                 updateNewCharacter(copy)
                             }
                         } />
@@ -107,7 +85,7 @@ export const CharacterForm = () => {
                         {roles.map((role) => <RoleSelect key={`${role.id}`} role={role} />)}
                     </select>
 
-                    <label hmtlFor="weapon__select">Primary Weapon:</label>
+                    <label hmtlfor="weapon__select">Primary Weapon:</label>
                     <select onChange={
                         (event) => {
                             const copy = { ...newCharacter }

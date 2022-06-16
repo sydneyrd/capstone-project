@@ -7,6 +7,10 @@ export const getUserbyId = (id) => {
     return fetch(`http://localhost:8088/users/${id}`)
     .then(res => res.json())
 }
+export const getUserCharacters = (user) => {
+return fetch(`http://localhost:8088/characters?&userId=${user.id}`)
+.then(res => res.json())
+}
 
 export const postNewUser = (user) => {
     return fetch("http://localhost:8088/users", {
@@ -109,5 +113,16 @@ export const deleteRosterChoice = (rosterChoice) => {
       fetch(`http://localhost:8088/rosterchoices?&characterId=${rosterChoice}`, {
         method: "DELETE",
     })
+}
+
+export const putCharacter = (updatedCharacter) => {
+    return fetch(`http://localhost:8088/characters/${updatedCharacter.id}`, {
+       method: "PUT",
+       headers: {
+           "Content-Type": "application/json"
+       },
+       body: JSON.stringify(updatedCharacter)
+   })
+   .then(response => response.json())
 }
 

@@ -4,7 +4,6 @@ import { RosterGrid } from "./RosterGrid"
 import { ListContainer } from "./ListContainer"
 import "./roster.css"
 import { FilterContainer } from "./FilterContainer"
-import { Prompt } from 'react-router-dom'
 import { newRosterChoice } from "../APIManager"
 
 
@@ -59,36 +58,29 @@ export const Roster = () => {
         },
         [characters]//sort them alphabetically honestly it's just to put the characters into a sorted array because that's where i want them for future sorting
     )
-    let rosterID = localStorage.getItem("roster_id")
+    let rosterID = localStorage.getItem("roster_id") //need this for the new array for the api
     let rosterIDNUMBER = JSON.parse(rosterID)
-
-    const handleSave = (click, newRosterPicks) => {
+const handleSave = (click, newRosterPicks) => { //onclickingSave
         click.preventDefault()
-
         const createRosterChoices = (cArr) => {
-           
             let rosterChoiceArr = []
-            for (const c of cArr) {
+            for (const c of cArr) {  //there might be an easier way idk, this works.   iterating the array of players in roster and uses takes their character id to create a new object
                 let right = c.id
-                 let nC = {
-                rosterId: rosterIDNUMBER,
-                characterId: 0
-            }
-              if (  nC.characterId != right) {
-                nC.characterId = right
-                rosterChoiceArr.push(nC) 
-              } else {}
-
+                let nC = {
+                    rosterId: rosterIDNUMBER,
+                    characterId: 0
+                }
+                if (nC.characterId != right) {
+                    nC.characterId = right
+                    rosterChoiceArr.push(nC)
+                } else { }
             } return rosterChoiceArr
         }
-
-
-        const rosterToPost = createRosterChoices(newRosterPicks)
+        const rosterToPost = createRosterChoices(newRosterPicks) //calls ^ 
         Promise.all(rosterToPost.map((r) => { newRosterChoice(r) })).then((result) => {//maybe my finest achievment thus far?   promise waits for all the promises to come back in an iterable before resolving
             console.log(result)
         })
     }
-
     return <><h1>THIS IS WHERE YOU WILL BUILD THE ROSTER  saved rosters link, and build roster link?</h1>
         <FilterContainer setFactionSearch={setFactionSearch} filterButton={filterButton} setFilterButton={setFilterButton} searchTerms={searchTerms} setSearchTerms={setSearchTerms}
             setRoleSearch={setRoleSearch} setPrimarySearch={setPrimarySearch} setServerSearch={setServerSearch} setSecondarySearch={setSecondarySearch}
