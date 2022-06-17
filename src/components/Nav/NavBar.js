@@ -11,7 +11,7 @@ export const NavBar = () => {
                 <Link className="navbar__link" to="/profile">Profile</Link>
             </li>
             <li className="navbar__item active"><Link className="navbar__link" to="/characters">Characters</Link></li>
-            <li className="navbar__item active"><Link className="navbar__link" to="/roster">Build a Roster</Link></li>
+            <li className="navbar__item active"><Link className="navbar__link"  to="/roster">Build a Roster</Link></li>
             <li className="navbar__item active"><Link className="navbar__link" to="/resources">Resources</Link></li>
             {
                 localStorage.getItem("roster_user")

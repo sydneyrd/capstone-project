@@ -23,6 +23,8 @@ export const Roster = () => {
     const [primarySearch, setPrimarySearch] = useState(0)
     const [secondarySearch, setSecondarySearch] = useState(0)
     const [newRosterPicks, setNewRosterPick] = useState([])
+    const [editRosterCharacters, setEditCharacters] = useState([])
+    
     
      
 
@@ -41,6 +43,9 @@ export const Roster = () => {
                         })
                         .then(() => {
                             getAllServers(setServers)
+                        })
+                        .then(() => {
+                            getCurrentRoster(setEditCharacters)
                         })
                         
                 })
@@ -67,6 +72,7 @@ export const Roster = () => {
     let rosterIDNUMBER = JSON.parse(rosterID)
 const handleSave = (click, newRosterPicks) => { //onclickingSave
         click.preventDefault()
+            localStorage.removeItem("roster_id")
         const createRosterChoices = (cArr) => {
             let rosterChoiceArr = []
             for (const c of cArr) {  //there might be an easier way idk, this works.   iterating the array of players in roster and uses takes their character id to create a new object
@@ -85,6 +91,7 @@ const handleSave = (click, newRosterPicks) => { //onclickingSave
         Promise.all(rosterToPost.map((r) => { newRosterChoice(r) })).then((result) => {//maybe my finest achievment thus far?   promise waits for all the promises to come back in an iterable before resolving
             console.log(result)
         })
+        
     }
     return <><h1>THIS IS WHERE YOU WILL BUILD THE ROSTER  saved rosters link, and build roster link?</h1>
         <FilterContainer setFactionSearch={setFactionSearch} filterButton={filterButton} setFilterButton={setFilterButton} searchTerms={searchTerms} setSearchTerms={setSearchTerms}
@@ -95,6 +102,6 @@ const handleSave = (click, newRosterPicks) => { //onclickingSave
             <ListContainer setNewRosterPick={setNewRosterPick} newRosterPicks={newRosterPicks} characters={sortedArr} servers={servers} weapons={weapons} factions={factions} roles={roles} />
             <button onClick={(click) => { handleSave(click, newRosterPicks) }}>Save Roster</button>
             <div className="parent" >
-                <RosterGrid newRosterPicks={newRosterPicks} setNewRosterPick={setNewRosterPick} characters={characters} /></div>
+                <RosterGrid editRosterCharacters={editRosterCharacters} setEditCharacters={setEditCharacters} newRosterPicks={newRosterPicks} setNewRosterPick={setNewRosterPick} characters={characters} /></div>
         </section> </>
 }
