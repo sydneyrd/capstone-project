@@ -68,7 +68,7 @@ export const Character = () => {
 
 
 // export const EmployeeForm = () => {
-//     const navigate = useNavigate()
+//     const navigate = useNavigate()characters={characters}
 
 
 //     const [locationsArray, setLocations] = useState([])

@@ -6,7 +6,7 @@ import { getAllCharacters } from "../APIManager"
 export const ManageCharacters = ({ weapons, userCharacters, updateUserCharacters, factions, roles, servers, feedback, setFeedback }) => {
     const localRosterUser = localStorage.getItem("roster_user")
     const RosterUserObject = JSON.parse(localRosterUser)
-   const [characters, setCharacters] = useState([])
+//    const [characters, setCharacters] = useState([])
  // When this array is empty, you are observing initial component state
  
    
@@ -17,11 +17,11 @@ export const ManageCharacters = ({ weapons, userCharacters, updateUserCharacters
 return <>
 
 
-<div>{userCharacters.map((ownedCharacter) => <EditCharacter key={`${ownedCharacter.id}`} 
+<div>{userCharacters.map((ownedCharacter) => <EditCharacter  ownedCharacter={ownedCharacter} key={ownedCharacter.id} 
     updateUserCharacters={updateUserCharacters}
-    feedback={feedback} ownedCharacter={ownedCharacter} characters={characters} RosterUserObject={RosterUserObject} setFeedback={setFeedback} weapons={weapons} factions={factions} roles={roles} servers={servers} />)}</div>
+    feedback={feedback}  RosterUserObject={RosterUserObject} setFeedback={setFeedback} weapons={weapons} factions={factions} roles={roles} servers={servers} />)}</div>
             
 </>
 }
 
-//  updateCharacter={updateCharacter}updatedCharacter={updatedCharacter}
+//  updateCharacter={updateCharacter}updatedCharacter={updatedCharacter}characters={characters}

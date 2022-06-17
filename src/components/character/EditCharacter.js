@@ -10,39 +10,67 @@ import { putCharacter } from "../APIManager"
 //need the arrays of all the options, weapons etc
 //updateCharacter handleUpdateClick handleDeleteClick
 export const EditCharacter = ({ ownedCharacter, roles, characters, RosterUserObject, weapons, factions, servers, feedback, setFeedback }) => {
-    const [updatedCharacter, updateCharacter] = useState({
-        "id": ownedCharacter.id,
-        "userId": ownedCharacter.userId,
-        "character": ownedCharacter.character,
-        "roleId": ownedCharacter.roleId,
-        "primaryweapon": ownedCharacter.primaryweapon,
-        "secondaryweapon": ownedCharacter.secondaryweapon,
-        "serverId": ownedCharacter.serverId,
-        "factionId": ownedCharacter.factionId
+
+   
+   
+     
+    let [updatedCharacter, updateCharacter] = useState({
+        id: ownedCharacter.id,
+        userId: ownedCharacter.userId,
+        character: ownedCharacter.character,
+        roleId: ownedCharacter.roleId,
+        primaryweapon: ownedCharacter.primaryweapon,
+        secondaryweapon: ownedCharacter.secondaryweapon,
+        serverId: ownedCharacter.serverId,
+        factionId: ownedCharacter.factionId
     })
-
-    
-    
-
 
   
 
+    
+
+    // let rightServer = servers.find(({ id }) => id === rightCharacter.serverId)
+    // let rightPrimary = weapons.find(({ id }) => id === rightCharacter.primaryweapon)
+    // let rightSecondary = weapons.find(({ id }) => id === rightCharacter.secondaryweapon) //this one was applying the right values idk
+    // let rightFaction = factions.find(({ id }) => id === rightCharacter.factionId)
+    // let rightRole = roles.find(({ id }) => id === rightCharacter.roleId)
+  
+
    
-    const rightRole = roles.find((r) => r.id === ownedCharacter.roleId)
-    const primeWeapon = weapons.find((w) => w.id === ownedCharacter.primaryweapon)
-    const secondWeapon = weapons.find((ws) => ws.id === ownedCharacter.secondaryweapon)
-    const rightServer = servers.find((s) => s.id === ownedCharacter.serverId)
-    const rightFaction = factions.find((f) => f.id === ownedCharacter.factionId)
 
+    let rightServer = servers.find(({ id }) => id === ownedCharacter?.serverId)
+    let rightPrimary = weapons.find(({ id }) => id === ownedCharacter?.primaryweapon)
+    let rightSecondary = weapons.find(({ id }) => id === ownedCharacter?.secondaryweapon)
+    let rightFaction = parseInt(factions.find(({ id }) => id === ownedCharacter?.factionId))
+    let rightRole = parseInt(roles.find(({ id }) => id === ownedCharacter.roleId))
+  
 
-    const handleUpdateClick = (updatedCharacter, click) => {//userId
+   
+
+    const handleUpdateClick = (UC, click) => {//userId
         click.preventDefault()
+const letcToAPI =   {  id: UC.id,
+userId: parseInt(UC.userId),
+character: UC.character,
+roleId: parseInt(UC.roleId),
+primaryweapon: parseInt(UC.primaryweapon),
+secondaryweapon: parseInt(UC.secondaryweapon),
+serverId: parseInt(UC.serverId),
+factionId: parseInt(UC.factionId)}
 
-        putCharacter(updatedCharacter) //push request
+
+
+
+
+
+
+        putCharacter(letcToAPI) //push request
         setFeedback("Character Updated")
         //reload area to display updated character info?
 
     }
+
+  
     return (
         <> <div className={`${feedback.includes("Error") ? "error" : "feedback"} ${feedback === "" ? "invisible" : "visible"}`}>
             {feedback}
@@ -52,8 +80,7 @@ export const EditCharacter = ({ ownedCharacter, roles, characters, RosterUserObj
                 <fieldset>
                     <label hmtlFor="charactername">{ownedCharacter.character}</label>
                     <input
-                        required autoFocus
-                        type="text"
+                        
                         className="form-control"
                         placeholder="change name"
                         value={ownedCharacter.character} /**onChange{update character state}**/ onChange={
@@ -63,28 +90,28 @@ export const EditCharacter = ({ ownedCharacter, roles, characters, RosterUserObj
                                 updateCharacter(copy)
                             }
                         } />
-                    <label></label>
-                    <select onChange={
+                    <label>{`${rightRole?.name}`}</label>
+                    <select  onChange={
                         (event) => {
                             const copy = { ...updatedCharacter }
                             copy.roleId = event.target.value
                             updateCharacter(copy)
                         }
                     } className="role__select">
-                        <option value={0}>select a role</option>
-                        {roles.map((role) => <RoleSelect key={`${role.id}`} role={role} />)}
+                        <option  value={0}>select a role</option>
+                        {roles.map((role) => <RoleSelect key={role.id} role={role} />)}
                     </select>
 
                     <label hmtlFor="weapon__select">{<></>}</label>
                     <select onChange={
                         (event) => {
                             const copy = { ...updatedCharacter }
-                            copy.primaryId = event.target.value
+                            copy.primaryweapon = event.target.value
                             updateCharacter(copy)
                         }
                     } className="character__select">
                         <option value={0}>select a weapon</option>
-                        {weapons.map((weapon) => <WeaponSelect key={`${weapon.id}`} weapon={weapon} />)}
+                        {weapons.map((weapon) => <WeaponSelect key={weapon.id} weapon={weapon} />)}
                     </select>
                     <label htmlFor="second__weapon">{<></>}</label>
                     <select onChange={
@@ -95,7 +122,7 @@ export const EditCharacter = ({ ownedCharacter, roles, characters, RosterUserObj
                         }
                     } className="character__second">
                         <option value={0}>select a weapon</option>
-                        {weapons.map((weapon) => <WeaponSelect key={`${weapon.id}`} weapon={weapon} />)}
+                        {weapons.map((weapon) => <WeaponSelect key={weapon.id} weapon={weapon} />)}
 
                     </select>
                     <label htmlFor="servers">
@@ -108,7 +135,7 @@ export const EditCharacter = ({ ownedCharacter, roles, characters, RosterUserObj
                         }
                     } htmlfor="server">
                         <option value={0}>select a server</option>
-                        {servers.map((server) => <ServerSelect key={`${server.id}`} server={server} />)}
+                        {servers.map((server) => <ServerSelect key={server.id} server={server} />)}
                     </select>
                     <label htmlFor="factions">{<></>}</label>
 
@@ -120,7 +147,7 @@ export const EditCharacter = ({ ownedCharacter, roles, characters, RosterUserObj
                         }
                     } className="character__select">
                         <option value={0}>select a faction</option>
-                        {factions.map((faction) => <FactionSelect key={`${faction.id}`} faction={faction} />)}
+                        {factions.map((faction) => <FactionSelect key={faction.id} faction={faction} />)}
                     </select>
                     <button onClick={click => handleUpdateClick(updatedCharacter, click)}>Save</button>
                 </fieldset>

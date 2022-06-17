@@ -53,8 +53,8 @@ export const Roster = () => {
     ) //find what you put into the search bar and set that as sorted
     useEffect(
         () => {
-            let alphaCharacters = characters.sort((a, b) => a.character.localeCompare(b.character))
-            setSortedArr(alphaCharacters)
+            //  let alphaCharacters = characters.sort((a, b) => a.character.localeCompare(b.character))
+            setSortedArr(characters) ///this alphabet sort stopped working????  it's supposed to be alphaCharacters passed into it???? why is everything not working anymore -_-
         },
         [characters]//sort them alphabetically honestly it's just to put the characters into a sorted array because that's where i want them for future sorting
     )

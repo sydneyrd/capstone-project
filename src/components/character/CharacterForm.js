@@ -15,7 +15,7 @@ import { getAllFactions, getAllRoles, getAllWeapons, getAllServers, saveNewChara
 export const CharacterForm = ({roles, weapons, servers, factions, feedback, setFeedback}) => {
     const [newCharacter, updateNewCharacter] = useState({
         userId: 0,
-        name: "",
+        character: "",
         roleId: 0,
         primaryId: 0,
         secondaryId: 0,
@@ -32,13 +32,15 @@ const handleSaveButtonClick = (event) => {
         // TODO: Create the object to be saved to the API
         let newCharacterToAPI = {
             character: newCharacter.character,
-            roleId: newCharacter.roleId,
-            primaryId: newCharacter.primaryId,
-            secondaryId: newCharacter.secondaryId,
-            serverId: newCharacter.serverId,
-            factionId: newCharacter.factionId,
+            roleId: parseInt(newCharacter.roleId),
+            primaryId: parseInt(newCharacter.primaryId),
+            secondaryId: parseInt(newCharacter.secondaryId),
+            serverId: parseInt(newCharacter.serverId),
+            factionId: parseInt(newCharacter.factionId),
             userId: RosterUserObject.id
         }
+
+        
 
         // TODO: Perform the fetch() to POST the object to the API
         saveNewCharacter(newCharacterToAPI)

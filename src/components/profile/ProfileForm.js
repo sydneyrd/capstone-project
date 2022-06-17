@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { updateProfile } from "../APIManager"
+import { SavedRosters } from "./SavedRosters"
 
 
 
@@ -70,6 +71,7 @@ export const UpdateUser = () => {
                     <button type="submit" onClick={handleSaveButtonClick}> Update </button>
                 </fieldset>
             </form>
+            <SavedRosters />
         </main> </>
 
 }

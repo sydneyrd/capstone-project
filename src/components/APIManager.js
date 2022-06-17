@@ -10,6 +10,7 @@ export const getUserbyId = (id) => {
 export const getUserCharacters = (user) => {
 return fetch(`http://localhost:8088/characters?&userId=${user.id}`)
 .then(res => res.json())
+
 }
 
 export const postNewUser = (user) => {
@@ -115,13 +116,13 @@ export const deleteRosterChoice = (rosterChoice) => {
     })
 }
 
-export const putCharacter = (updatedCharacter) => {
-    return fetch(`http://localhost:8088/characters/${updatedCharacter.id}`, {
+export const putCharacter = (uCharacter) => {
+   return fetch(`http://localhost:8088/characters/${uCharacter?.id}`, {
        method: "PUT",
        headers: {
            "Content-Type": "application/json"
        },
-       body: JSON.stringify(updatedCharacter)
+       body: JSON.stringify(uCharacter)
    })
    .then(response => response.json())
 }
