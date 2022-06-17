@@ -21,8 +21,7 @@ export const ListContainer = ({ setNewRosterPick, newRosterPicks, characters, se
     }//removes the pop up and identifier when mouse leaves
   
     return <> <>
-        
-            <section className="character__list">{characters.map((character) =>
+         <section className="character__list">{characters.map((character) =>
                 <CharacterList key={`characters--${character.id}`} servers={servers} weapons={weapons} factions={factions}
                     roles={roles} showText={showText} character={character}
                     handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave}

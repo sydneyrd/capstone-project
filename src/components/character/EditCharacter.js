@@ -3,17 +3,13 @@ import { FactionSelect } from "./FactionSelect"
 import { RoleSelect } from "./Role"
 import { ServerSelect } from "./ServerSelect"
 import { WeaponSelect } from "./WeaponSelect"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { deleteCharacter, putCharacter } from "../APIManager"
 
 //create a push and delete call to be used a GET request for only the users characters to be displayed, need to iterate v that form for all of them
 //need the arrays of all the options, weapons etc
 //updateCharacter handleUpdateClick handleDeleteClick
 export const EditCharacter = ({ ownedCharacter, roles, characters, RosterUserObject, weapons, factions, servers, feedback, setFeedback }) => {
-
-
-
-
     let [updatedCharacter, updateCharacter] = useState({
         id: ownedCharacter.id,
         userId: ownedCharacter.userId,
@@ -30,9 +26,6 @@ export const EditCharacter = ({ ownedCharacter, roles, characters, RosterUserObj
     let rightFaction = factions.find(({ id }) => id === ownedCharacter.factionId)
     let rightRole = roles.find(({ id }) => id === ownedCharacter.roleId)
 
-
-
-
     const handleUpdateClick = (UC, click) => {//userId
         click.preventDefault()
         const letcToAPI = {
@@ -46,17 +39,10 @@ export const EditCharacter = ({ ownedCharacter, roles, characters, RosterUserObj
             factionId: parseInt(UC.factionId)
         }
 
-
-
-
-
-
-
         putCharacter(letcToAPI) //push request
         setFeedback("Character Updated")
         //reload area to display updated character info?
-
-    }
+ }
 
     const handleDeleteClick = (deleteCharacterId, click) => {
         click.preventDefault(

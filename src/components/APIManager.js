@@ -138,6 +138,14 @@ export const deleteCharacter = (deleteCharacterId) => {
     )
 }
 
+export const deleteRoster = (rosterId) => {
+    return fetch(`http://localhost:8088/rosters/${rosterId}`, {
+        method: "DELETE",
+
+    }
+    )
+}
+
 export const putCharacter = (uCharacter) => {
     return fetch(`http://localhost:8088/characters/${uCharacter?.id}`, {
         method: "PUT",
