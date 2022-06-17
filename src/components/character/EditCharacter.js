@@ -83,7 +83,7 @@ export const EditCharacter = ({ ownedCharacter, roles, characters, RosterUserObj
                         {roles.map((role) => <RoleSelect key={role.id} role={role} />)}
                     </select>
 
-                    <label >{}</label>
+                    <label >{rightPrimary?.name}</label>
                     <select onChange={
                         (event) => {
                             const copy = { ...updatedCharacter }
@@ -94,7 +94,7 @@ export const EditCharacter = ({ ownedCharacter, roles, characters, RosterUserObj
                         <option value={0}>select a weapon</option>
                         {weapons.map((weapon) => <WeaponSelect key={weapon.id} weapon={weapon} />)}
                     </select>
-                    <label htmlFor="second__weapon">{}</label>
+                    <label htmlFor="second__weapon">{rightSecondary?.name}</label>
                     <select onChange={
                         (event) => {
                             const copy = { ...updatedCharacter }
