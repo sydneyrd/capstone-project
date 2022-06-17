@@ -60,7 +60,7 @@ const handleSaveButtonClick = (event) => {
                 <h2 className="characterForm__title">Add Character</h2>
                 <fieldset>
 
-                    <label hmtlFor="charactername">Character Name:</label>
+                    <label htmlFor="charactername">Character Name:</label>
                     <input
                         required autoFocus
                         type="text"
@@ -84,7 +84,7 @@ const handleSaveButtonClick = (event) => {
                         }
                     } className="role__select">
                         <option value={0}>select a role</option>
-                        {roles.map((role) => <RoleSelect key={`${role.id}`} role={role} />)}
+                        {roles.map((role) => <RoleSelect key={`role--${role.id}`} role={role} />)}
                     </select>
 
                     <label hmtlfor="weapon__select">Primary Weapon:</label>
@@ -96,7 +96,7 @@ const handleSaveButtonClick = (event) => {
                         }
                     } className="character__select">
                         <option value={0}>select a weapon</option>
-                        {weapons.map((weapon) => <WeaponSelect key={`${weapon.id}`} weapon={weapon} />)}
+                        {weapons.map((weapon) => <WeaponSelect key={`weaponprime--${weapon.id}`} weapon={weapon} />)}
                     </select>
                     <label htmlFor="second__weapon">Secondary weapon:</label>
                     <select onChange={
@@ -107,7 +107,7 @@ const handleSaveButtonClick = (event) => {
                         }
                     } className="character__second">
                         <option value={0}>select a weapon</option>
-                        {weapons.map((weapon) => <WeaponSelect key={`${weapon.id}`} weapon={weapon} />)}
+                        {weapons.map((weapon) => <WeaponSelect key={`weapon--${weapon.id}`} weapon={weapon} />)}
 
                     </select>
                     <label htmlFor="servers">
@@ -120,7 +120,7 @@ const handleSaveButtonClick = (event) => {
                         }
                     } htmlFor="server">
                         <option value={0}>select a server</option>
-                        {servers.map((server) => <ServerSelect key={`${server.id}`} server={server} />)}
+                        {servers.map((server) => <ServerSelect key={`server--${server.id}`} server={server} />)}
                     </select>
                     <label htmlFor="factions">Faction:</label>
 
@@ -132,7 +132,7 @@ const handleSaveButtonClick = (event) => {
                         }
                     } className="character__select">
                         <option value={0}>select a faction</option>
-                        {factions.map((faction) => <FactionSelect key={`${faction.id}`} faction={faction} />)}
+                        {factions.map((faction) => <FactionSelect key={`faction--${faction.id}`} faction={faction} />)}
                     </select>
                     <button onClick={click => handleSaveButtonClick(click)}>Save</button>
                 </fieldset>

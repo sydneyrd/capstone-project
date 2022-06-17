@@ -71,7 +71,7 @@ export const EditCharacter = ({ ownedCharacter, roles, characters, RosterUserObj
                                 updateCharacter(copy)
                             }
                         } />
-                    <label>{rightRole.name}</label>
+                    <label>{rightRole?.name}</label>
                     <select onChange={
                         (event) => {
                             const copy = { ...updatedCharacter }
@@ -114,7 +114,7 @@ export const EditCharacter = ({ ownedCharacter, roles, characters, RosterUserObj
                             copy.serverId = event.target.value
                             updateCharacter(copy)
                         }
-                    } htmlfor="server">
+                    } htmlFor="server">
                         <option value={0}>select a server</option>
                         {servers.map((server) => <ServerSelect key={server.id} server={server} />)}
                     </select>
