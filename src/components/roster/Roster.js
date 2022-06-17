@@ -24,12 +24,7 @@ export const Roster = () => {
     const [secondarySearch, setSecondarySearch] = useState(0)
     const [newRosterPicks, setNewRosterPick] = useState([])
     
-const autofillRoster = () => {
-   if   (localStorage.getItem('roster_id')) {
-   return localStorage.getItem("roster_id") 
-
-       }
-     }
+     
 
 
 
@@ -47,9 +42,7 @@ const autofillRoster = () => {
                         .then(() => {
                             getAllServers(setServers)
                         })
-                        .then(() => {
-                            getCurrentRoster(parseInt(autofillRoster))
-                        })
+                        
                 })
         },
         [] //init get all stuff
