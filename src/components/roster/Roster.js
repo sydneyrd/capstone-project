@@ -4,7 +4,7 @@ import { RosterGrid } from "./RosterGrid"
 import { ListContainer } from "./ListContainer"
 import "./roster.css"
 import { FilterContainer } from "./FilterContainer"
-import { newRosterChoice } from "../APIManager"
+import { newRosterChoice,  } from "../APIManager"
 import { useNavigate } from "react-router-dom"
 
 export const Roster = () => {
@@ -50,8 +50,8 @@ export const Roster = () => {
             })
             setSortedArr(searchedChar)
         },
-        [searchTerms]
-    ) //find what you put into the search bar and set that as sorted
+        [searchTerms]//find what you put into the search bar and set that as sorted
+    ) 
     useEffect(
         () => {
             //  let alphaCharacters = characters.sort((a, b) => a.character.localeCompare(b.character))

@@ -50,31 +50,31 @@ const handlePrimarySelect = (e) => {
                     (e) => {
                         handleRoleSelect(e)
                     }}> <option value="0">roles</option>
-                    {roles.map((role) => <RoleFilter key={`${role.id}`} role={role} />)}</select>
+                    {roles.map((role) => <RoleFilter key={`div--role${role.id}`} role={role} />)}</select>
                 <label htmlFor="faction__filter">Factions</label>
                 <select onChange={
                     (e) => {
                         handleFacSelect(e)
                     }}><option value="0">factions</option>
-                    {factions.map((faction) => <FactionFilter key={`${faction.id}`} faction={faction} />)}</select>
+                    {factions.map((faction) => <FactionFilter key={`div--faction${faction.id}`} faction={faction} />)}</select>
                 <label htmlFor="server__filter">Servers</label>
                 <select onChange={
                     (e) => {
                         handleServerSelect(e)
                     }}><option value="0">Servers</option>
-                    {servers.map((server) => <ServerFilter key={`${server.id}`} server={server} />)}</select>
+                    {servers.map((server) => <ServerFilter key={`div--server${server.id}`} server={server} />)}</select>
                 <label htmlFor="primary__filter">Primary Weapon:</label>
                 <select onChange={
                     (e) => {
                         handlePrimarySelect(e)
                     }}><option value="0">Primary Weapon</option>
-                    {weapons.map((weapon) => <WeaponFilter key={`${weapon.id}`} weapon={weapon} />)}</select>
+                    {weapons.map((weapon) => <WeaponFilter key={`div--weapon${weapon.id}`} weapon={weapon} />)}</select>
                 <label>Secondary Weapon:</label>
                 <select onChange={
                     (e) => {
                         handleSecondarySelect(e)
                     }}><option value="0">Secondary Weapon</option>
-                    {weapons.map((weapon) => <WeaponFilter key={`${weapon.id}`} weapon={weapon} />)}</select>
+                    {weapons.map((weapon) => <WeaponFilter key={`div--weapontwo${weapon.id}`} weapon={weapon} />)}</select>
                 <SearchFilter setSearchTerms={setSearchTerms} />
                 <button onClick={(e) => { handleSearchButton(e) }} >Search</button>
                 <ResetButton handleSearchButton={handleSearchButton} setFactionSearch={setFactionSearch} setRoleSearch={setRoleSearch} setServerSearch={setServerSearch}

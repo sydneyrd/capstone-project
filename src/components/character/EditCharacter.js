@@ -4,7 +4,7 @@ import { RoleSelect } from "./Role"
 import { ServerSelect } from "./ServerSelect"
 import { WeaponSelect } from "./WeaponSelect"
 import { useState } from "react"
-import { putCharacter } from "../APIManager"
+import { deleteCharacter, putCharacter } from "../APIManager"
 
 //create a push and delete call to be used a GET request for only the users characters to be displayed, need to iterate v that form for all of them
 //need the arrays of all the options, weapons etc
@@ -56,6 +56,12 @@ export const EditCharacter = ({ ownedCharacter, roles, characters, RosterUserObj
         setFeedback("Character Updated")
         //reload area to display updated character info?
 
+    }
+
+    const handleDeleteClick = (deleteCharacterId, click) => {
+        click.preventDefault(
+            deleteCharacter(deleteCharacterId)
+        )
     }
 
 
@@ -139,6 +145,7 @@ export const EditCharacter = ({ ownedCharacter, roles, characters, RosterUserObj
                         {factions.map((faction) => <FactionSelect key={faction.id} faction={faction} />)}
                     </select>
                     <button onClick={click => handleUpdateClick(updatedCharacter, click)}>Save</button>
+                    <button onClick={click => handleDeleteClick(updatedCharacter.id, click)}>Delete</button>
                 </fieldset>
             </form>
         </>)

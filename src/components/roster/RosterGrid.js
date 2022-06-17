@@ -21,13 +21,6 @@ export const RosterGrid = ({ newRosterPicks, rosterIDNUMBER, characters, setNewR
         []
     )
 
-    // useEffect(
-    //     () => {
-
-    //     },
-    //     [editRosterCharacters]
-    // )
-
 
 
     return <>{editRosterCharacters.map((c) => <RosterDivForEdit rosterIDNUMBER={rosterIDNUMBER} setEditCharacters={setEditCharacters} characters={characters} newRosterPicks={editRosterCharacters}

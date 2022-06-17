@@ -23,7 +23,7 @@ export const ListContainer = ({ setNewRosterPick, newRosterPicks, characters, se
     return <> <>
         
             <section className="character__list">{characters.map((character) =>
-                <CharacterList key={`${character.id}`} servers={servers} weapons={weapons} factions={factions}
+                <CharacterList key={`characters--${character.id}`} servers={servers} weapons={weapons} factions={factions}
                     roles={roles} showText={showText} character={character}
                     handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave}
                     setCharId={setCharId} charId={charId}
