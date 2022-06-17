@@ -20,7 +20,7 @@ export const getUserRosters = (user) => {
     }
 
 export const getCurrentRoster = (rosterId) => {
-    return fetch(`http://localhost:8088/rosterchoices?&rosterId=${rosterId.id}`)
+    return fetch(`http://localhost:8088/rosterchoices?&rosterId=${rosterId}`)
     .then(res => res.json())
     
 }

@@ -23,13 +23,8 @@ export const Roster = () => {
     const [primarySearch, setPrimarySearch] = useState(0)
     const [secondarySearch, setSecondarySearch] = useState(0)
     const [newRosterPicks, setNewRosterPick] = useState([])
-    const [editRosterCharacters, setEditCharacters] = useState([])
     
     
-     
-
-
-
     useEffect(
         () => {
             getAllCharacters(setCharacters)
@@ -43,9 +38,6 @@ export const Roster = () => {
                         })
                         .then(() => {
                             getAllServers(setServers)
-                        })
-                        .then(() => {
-                            getCurrentRoster(setEditCharacters)
                         })
                         
                 })
@@ -102,6 +94,6 @@ const handleSave = (click, newRosterPicks) => { //onclickingSave
             <ListContainer setNewRosterPick={setNewRosterPick} newRosterPicks={newRosterPicks} characters={sortedArr} servers={servers} weapons={weapons} factions={factions} roles={roles} />
             <button onClick={(click) => { handleSave(click, newRosterPicks) }}>Save Roster</button>
             <div className="parent" >
-                <RosterGrid editRosterCharacters={editRosterCharacters} setEditCharacters={setEditCharacters} newRosterPicks={newRosterPicks} setNewRosterPick={setNewRosterPick} characters={characters} /></div>
+                <RosterGrid  rosterIDNUMBER={rosterIDNUMBER} characters={characters}  newRosterPicks={newRosterPicks} setNewRosterPick={setNewRosterPick} characters={characters} /></div>
         </section> </>
 }
