@@ -13,6 +13,21 @@ return fetch(`http://localhost:8088/characters?&userId=${user.id}`)
 
 }
 
+export const getUserRosters = (user) => {
+    return fetch(`http://localhost:8088/rosters?&userId=${user.id}`)
+    .then(res => res.json())
+    
+    }
+
+export const getCurrentRoster = (rosterId) => {
+    return fetch(`http://localhost:8088/rosterchoices?&rosterId=${rosterId}`)
+    .then(res => res.json())
+    
+}
+
+
+
+
 export const postNewUser = (user) => {
     return fetch("http://localhost:8088/users", {
         method: "POST",

@@ -1,4 +1,4 @@
-import { getAllCharacters, getAllRoles, getAllFactions, getAllWeapons, getAllServers, newRoster } from "../APIManager"
+import { getAllCharacters, getAllRoles, getAllFactions, getCurrentRoster, getAllWeapons, getAllServers, newRoster } from "../APIManager"
 import { useEffect, useState } from "react"
 import { RosterGrid } from "./RosterGrid"
 import { ListContainer } from "./ListContainer"
@@ -23,6 +23,15 @@ export const Roster = () => {
     const [primarySearch, setPrimarySearch] = useState(0)
     const [secondarySearch, setSecondarySearch] = useState(0)
     const [newRosterPicks, setNewRosterPick] = useState([])
+    
+const autofillRoster = () => {
+   if   (localStorage.getItem('roster_id')) {
+   return localStorage.getItem("roster_id") 
+
+       }
+     }
+
+
 
     useEffect(
         () => {
@@ -37,6 +46,9 @@ export const Roster = () => {
                         })
                         .then(() => {
                             getAllServers(setServers)
+                        })
+                        .then(() => {
+                            getCurrentRoster(parseInt(autofillRoster))
                         })
                 })
         },
