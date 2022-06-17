@@ -30,7 +30,7 @@ export const RosterGrid = ({ newRosterPicks, rosterIDNUMBER, characters, setNewR
 
 
 
-    return <>{editRosterCharacters.map((c) => <RosterDivForEdit rosterIDNUMBER={rosterIDNUMBER} characters={characters} newRosterPicks={editRosterCharacters}
+    return <>{editRosterCharacters.map((c) => <RosterDivForEdit rosterIDNUMBER={rosterIDNUMBER} setEditCharacters={setEditCharacters} characters={characters} newRosterPicks={editRosterCharacters}
         setNewRosterPick={setNewRosterPick} key={c.id} c={c} />)}
         {newRosterPicks.map((c) => <RosterDiv newRosterPicks={newRosterPicks} setNewRosterPick={setNewRosterPick} key={c.id} c={c} />)}
 

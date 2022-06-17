@@ -5,8 +5,7 @@ import { ListContainer } from "./ListContainer"
 import "./roster.css"
 import { FilterContainer } from "./FilterContainer"
 import { newRosterChoice } from "../APIManager"
-
-
+import { useNavigate } from "react-router-dom"
 
 export const Roster = () => {
     const [characters, setCharacters] = useState([])
@@ -24,7 +23,7 @@ export const Roster = () => {
     const [secondarySearch, setSecondarySearch] = useState(0)
     const [newRosterPicks, setNewRosterPick] = useState([])
     
-    
+    let navigate = useNavigate()
     useEffect(
         () => {
             getAllCharacters(setCharacters)
@@ -83,7 +82,8 @@ const handleSave = (click, newRosterPicks) => { //onclickingSave
         Promise.all(rosterToPost.map((r) => { newRosterChoice(r) })).then((result) => {//maybe my finest achievment thus far?   promise waits for all the promises to come back in an iterable before resolving
             console.log(result)
         })
-        
+        navigate("/home")
+
     }
     return <><h1>THIS IS WHERE YOU WILL BUILD THE ROSTER  saved rosters link, and build roster link?</h1>
         <FilterContainer setFactionSearch={setFactionSearch} filterButton={filterButton} setFilterButton={setFilterButton} searchTerms={searchTerms} setSearchTerms={setSearchTerms}
