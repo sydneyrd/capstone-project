@@ -107,7 +107,7 @@ export const EditCharacter = ({ ownedCharacter, roles, characters, RosterUserObj
 
                     </select>
                     <label htmlFor="servers">
-                        {rightServer.name}</label>
+                        {rightServer?.name}</label>
                     <select onChange={
                         (event) => {
                             const copy = { ...updatedCharacter }

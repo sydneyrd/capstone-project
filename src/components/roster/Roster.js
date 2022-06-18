@@ -92,8 +92,9 @@ const handleSave = (click, newRosterPicks) => { //onclickingSave
             setSortedArr={setSortedArr} characters={characters} servers={servers} weapons={weapons} factions={factions} roles={roles} />
         <section className="body">
             <ListContainer setNewRosterPick={setNewRosterPick} newRosterPicks={newRosterPicks} characters={sortedArr} servers={servers} weapons={weapons} factions={factions} roles={roles} />
-            <button onClick={(click) => { handleSave(click, newRosterPicks) }}>Save Roster</button>
+           
             <div className="parent" >
-                <RosterGrid  rosterIDNUMBER={rosterIDNUMBER} characters={characters}  newRosterPicks={newRosterPicks} setNewRosterPick={setNewRosterPick} characters={characters} /></div>
-        </section> </>
+                <RosterGrid  rosterIDNUMBER={rosterIDNUMBER} characters={characters}  newRosterPicks={newRosterPicks} setNewRosterPick={setNewRosterPick} /></div>
+     
+       </section>  <div className="save__div"> <button className="save__button" onClick={(click) => { handleSave(click, newRosterPicks) }}>Save Roster</button>  </div></>
 }

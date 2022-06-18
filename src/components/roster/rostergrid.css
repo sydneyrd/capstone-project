@@ -1,7 +1,7 @@
 .parent {
     display: flex;
     align-content: space-between;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     width: 70%;
     grid-template-columns: repeat(5, 1fr);

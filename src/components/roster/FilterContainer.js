@@ -5,6 +5,7 @@ import { WeaponFilter } from "./FilterChoices/WeaponFilter"
 import { ServerFilter } from "./FilterChoices/ServerFilter"
 import { ResetButton } from "./ResetButton"
 import { useEffect } from "react"
+import "./filters.css"
 
 export const FilterContainer = ({ roleSearch, factionSearch, primarySearch, secondarySearch, serverSearch, setPrimarySearch, setSecondarySearch, setServerSearch, setRoleSearch, setFactionSearch,
     setSortedArr, setSearchTerms = { setSearchTerms }, searchTerms = { searchTerms }, characters, weapons, roles, factions, servers }) => {
