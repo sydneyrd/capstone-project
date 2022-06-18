@@ -4,6 +4,7 @@
     flex-direction: column;
     flex-wrap: wrap;
     width: 70%;
+    max-height: 70%;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(10, 1fr);
     grid-column-gap: 0px;
@@ -14,6 +15,8 @@ box-shadow: 2px 4px 23px 4px #000000;
 border: 5px hidden transparent;
 border-radius: 6px 12px 6px 6px;
 background-color: #272624
+
+
   }
 .roster__choices {
     display: flex;

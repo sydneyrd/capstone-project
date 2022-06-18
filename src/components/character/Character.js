@@ -43,6 +43,9 @@ export const Character = () => {
         [] // When this array is empty, you are observing initial component state
     )
   
+
+
+    
     useEffect(() => {
         if (feedback !== "") {
             // Clear feedback to make entire element disappear after 3 seconds

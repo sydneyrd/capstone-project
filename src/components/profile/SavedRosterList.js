@@ -12,13 +12,14 @@ export const SavedRosterList = ({roster}) => {
   }
 
   const handleDeleteClick = (click, roster) => {
-  
+  alert("successfully deleted")
     click.preventDefault()
     deleteRoster(roster.id)
   }
         
 
-  return <><div>< Link className="navbar__link" onClick={handleClick} to="/roster">{roster.id}</Link><div><button onClick={click => handleDeleteClick(click, roster)}>Delete Roster</button></div></div></>
+  return <><div>< Link className="roster__link" onClick={handleClick} to="/roster">Roster #{roster.id}</Link><div>
+    <button className="delete__button" onClick={click => handleDeleteClick(click, roster)}>Delete Roster</button></div></div></>
     
 }
 

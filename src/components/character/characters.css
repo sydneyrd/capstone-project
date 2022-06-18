@@ -1,0 +1,70 @@
+.character__list {
+    height: 30em;
+    width: 10em;
+    overflow: hidden;
+    overflow-y: hidden;  
+        padding: 0.5em;
+        
+/* i changed the overflow-y to hidden in case that makes this not scroll anymore later */
+
+
+
+}
+
+.body {
+    display: flex;
+    flex-direction: row;
+}
+
+.character__details {
+    opacity: 0.0;
+    -webkit-transition: all 500ms ease-in-out;
+    -moz-transition: all 500ms ease-in-out;
+    -ms-transition: all 500ms ease-in-out;
+    -o-transition: all 500ms ease-in-out;
+    transition: all 500ms ease-in-out;
+}
+
+
+.save__button {
+   font-family: 'Libre Franklin', sans-serif;
+   display: inline-block;
+   outline: 0;
+   text-align: center;
+   cursor: pointer;
+   height: 34px;
+   padding: 0 13px;
+   color: #fff;
+   vertical-align: top;
+   border-radius: 3px;
+   border: 1px solid transparent;
+   transition: all .3s ease;
+   background: #570B08;
+   border-color: #570B08;
+   font-weight: 600;
+   text-transform: uppercase;
+   line-height: 16px;
+   font-size: 11px;
+}
+
+
+.details {
+    position: center, right;
+
+}
+
+.update__button {
+   display: flex;
+    position: bottom;
+    align-self: right;
+    align-content: right;
+    justify-content: flex-end;
+    justify-self: flex-end;
+    margin: space-between;
+}
+
+
+.details__element {
+    width: 10%;
+    height: fit-content;
+}

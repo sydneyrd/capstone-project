@@ -12,7 +12,7 @@ export const UpdateUser = () => {
     const localRosterUser = localStorage.getItem("roster_user")
     const rosterUserObject = JSON.parse(localRosterUser)
     const localUser = { ...rosterUserObject }
-  
+
     const [user, setUser] = useState({
         email: localUser.email,
         id: localUser.id,
@@ -26,7 +26,6 @@ export const UpdateUser = () => {
         }
     }, [feedback])
 
-
     const emailUpdate = (evt) => {
         const copy = { ...user }
         copy.email = evt.target.value
@@ -34,20 +33,11 @@ export const UpdateUser = () => {
     }
     const handleSaveButtonClick = (evt) => {
         evt.preventDefault()
-
-        /*
-            TODO: Perform the PUT fetch() call here to update the profile.
-            Navigate user to home page when done.
-        */
-
-
         updateProfile(user, user.id)
             .then(() => {
                 setFeedback("Email successfully updated")
             }
             )
-
-
     }
     return <>
         <div className={`${feedback.includes("Error") ? "error" : "feedback"} ${feedback === "" ? "invisible" : "visible"}`}>
@@ -68,10 +58,10 @@ export const UpdateUser = () => {
                 </fieldset>
 
                 <fieldset>
-                    <button type="submit" onClick={handleSaveButtonClick}> Update </button>
+                    <button className="email__button" type="submit" onClick={handleSaveButtonClick}> Update </button>
                 </fieldset>
             </form>
-            <SavedRosters localUser={localUser}/>
+            <SavedRosters localUser={localUser} />
         </main> </>
 
 }

@@ -1,62 +1,87 @@
- .character__list {height:100%; width:30%;overflow:hidden; overflow-y:scroll}
+ .character__list {
+     height: 30em;
+     width: 10em;
+     overflow: hidden;
+     overflow-y: hidden;  
+         padding: 0.5em;
+         
+/* i changed the overflow-y to hidden in case that makes this not scroll anymore later */
 
-.body {
-  display: flex;
-  flex-direction: row;
-}
 
-.character__details {
-    opacity: 0.0;
-    -webkit-transition: all 500ms ease-in-out;
-    -moz-transition: all 500ms ease-in-out;
-    -ms-transition: all 500ms ease-in-out;
-    -o-transition: all 500ms ease-in-out;
-    transition: all 500ms ease-in-out;
-}
-.detail__button {
-    align-items: flex-end;
-    width:fit-content;
-    height:20px;
-    background-color:green;
-    margin-bottom:15px;
-}
 
-.save__button {
-    align-items: flex-end;
-    width:20em;
-    height:20px;
-    background-color:rgb(128, 0, 0);
-    margin-bottom:15px;
-  
-    display: inline-block; 
-    flex-direction: row;
-    justify-content: flex-end;
-    align-self: right;
-}
+ }
 
-.save__div {
-    flex-direction: row;
-    justify-content: flex-end;
-    align-self: right;
-}
+ .body {
+     display: flex;
+     flex-direction: row;
+ }
 
-.character__details:hover > .character__details {
-    opacity: 1.0;
-}
+ .character__details {
+     opacity: 0.0;
+     -webkit-transition: all 500ms ease-in-out;
+     -moz-transition: all 500ms ease-in-out;
+     -ms-transition: all 500ms ease-in-out;
+     -o-transition: all 500ms ease-in-out;
+     transition: all 500ms ease-in-out;
+ }
 
-.details {
-    position: center, right;
 
-}
-.add__button{
-    position: bottom;
-}
+ .save__button {
+    font-family: 'Libre Franklin', sans-serif;
+    display: inline-block;
+    outline: 0;
+    text-align: center;
+    cursor: pointer;
+    height: 34px;
+    padding: 0 13px;
+    color: #fff;
+    vertical-align: top;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    transition: all .3s ease;
+    background: #570B08;
+    border-color: #570B08;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 16px;
+    font-size: 11px;
+ }
 
-.list__container {
-    width: 30%;
-    height: 100vh;
-}
-.details__element {
-    width: 10%;
-    height: fit-content;
-}
+ .save__div {
+     flex-direction: row;
+     justify-content: flex-end;
+     align-self: right;
+ }
+
+ .character__details:hover>.character__details {
+     opacity: 1.0;
+ }
+
+
+
+
+ .details {
+     position: center, right;
+
+ }
+
+ .add__button {
+    display: flex;
+     position: bottom;
+     align-self: right;
+     align-content: right;
+     justify-content: flex-end;
+     justify-self: flex-end;
+     margin: space-between;
+ }
+
+ .list__container {
+     width: 30%;
+     height: 100vh;
+     background-color: none;
+ }
+
+ .details__element {
+     width: 10%;
+     height: fit-content;
+ }

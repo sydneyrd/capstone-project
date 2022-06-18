@@ -15,7 +15,7 @@ export const ListContainer = ({ setNewRosterPick, newRosterPicks, characters, se
         setShowText(true)
     } //show pop up element when mouse
     const handleMouseLeave = e => {
-        e.target.style.background = "maroon"
+        e.target.style.background = "#232220"
         setShowText(false)
         setId(0)
     }//removes the pop up and identifier when mouse leaves
