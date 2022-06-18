@@ -8,7 +8,7 @@
     grid-template-rows: repeat(10, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
-    border: 2px dotted rgb(107, 21, 4);
+    border: 1px rgb(107, 21, 4);
     -webkit-box-shadow: 2px 4px 23px 4px #000000; 
 box-shadow: 2px 4px 23px 4px #000000;
 border: 5px hidden transparent;
@@ -25,13 +25,10 @@ background-color: #272624
     justify-content: center;
 }
 
-.roster__remove  :hover {
-        background: #e4461b;
-        border-color: #e4461b;
-    }
+
   .roster__remove  {
    
-    
+    font-family: 'Libre Franklin', sans-serif;
     display: inline-block;
     outline: 0;
     text-align: center;
