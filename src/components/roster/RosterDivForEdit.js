@@ -14,7 +14,7 @@ let rightName = characters?.find(({id}) => id === c?.characterId)
        deleteRosterChoice(c.id)
     }
 return <>
- <div className="roster__choices">{`${rightName?.character}`}<button onClick={click => handleRemove(c, click)}>Remove</button></div>
+ <div className="roster__choices">{`${rightName?.character}`}<button className="roster__remove" onClick={click => handleRemove(c, click)}>Remove</button></div>
 </>}
 
 

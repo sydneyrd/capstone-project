@@ -13,7 +13,7 @@ export const RosterDiv = ({c, setNewRosterPick, newRosterPicks}) => {
        deleteRosterChoice(c.id))
     }
 return <>
- <div className="roster__choices">{c?.character}<button onClick={click => handleRemove(c, click)}>Remove</button></div>
+ <div className="roster__choices">{c?.character}<button className="roster__remove" onClick={click => handleRemove(c, click)}>Remove</button></div>
 </>
 
 }

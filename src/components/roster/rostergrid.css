@@ -8,13 +8,47 @@
     grid-template-rows: repeat(10, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
-    background-color: aquamarine;
     border: 2px dotted rgb(107, 21, 4);
-    }
+    -webkit-box-shadow: 2px 4px 23px 4px #000000; 
+box-shadow: 2px 4px 23px 4px #000000;
+border: 5px hidden transparent;
+border-radius: 6px 12px 6px 6px;
+background-color: #272624
+  }
 .roster__choices {
+    display: flex;
    max-block-size: 6em; width: 5em;
     height: 3em;
     padding: 2em;
     text-size-adjust: 2;
     flex-wrap: wrap;
+    justify-content: center;
+}
+
+.roster__remove  :hover {
+        background: #e4461b;
+        border-color: #e4461b;
+    }
+  .roster__remove  {
+   
+    
+    display: inline-block;
+    outline: 0;
+    text-align: center;
+    cursor: pointer;
+    height: 34px;
+    padding: 0 13px;
+    color: #fff;
+    vertical-align: top;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    transition: all .3s ease;
+    background: #570B08;
+    border-color: #570B08;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 16px;
+    font-size: 11px;
+   
+    
 }
