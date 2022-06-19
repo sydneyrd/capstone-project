@@ -84,7 +84,7 @@ const handleSave = (click, newRosterPicks) => { //onclickingSave
         Promise.all(rosterToPost.map((r) => { newRosterChoice(r) })).then((result) => {//maybe my finest achievment thus far?   promise waits for all the promises to come back in an iterable before resolving
             console.log(result)
         })
-        navigate("/home")
+        alert("Roster successfully saved")
         
 
     }
@@ -93,8 +93,6 @@ e.preventDefault()
     localStorage.removeItem("roster_id")
     setNewRosterPick([])
     setEditCharacters([])
-
-
    }
  
     return <><h1>Build an Army</h1>

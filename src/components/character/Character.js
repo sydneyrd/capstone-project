@@ -59,7 +59,7 @@ useEffect(()=>{
             setTimeout(() => setFeedback(""), 3000);
         }
     }, [feedback])
- return <><h1>HERE IS WHERE YOU WILL FILL OUT AND ADD/EDIT CHARACTERS</h1>
+ return <>
     <CharacterForm factions={factions} setFactions={setFactions} weapons={weapons} setWeapons={setWeapons} servers={servers} roles={roles} feedback={feedback} setFeedback={setFeedback}/>
      <h2 className="characterForm__title">Edit Characters</h2>
   <section className="edit_characters">
