@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { updateProfile } from "../APIManager"
+import { SavedRosters } from "./SavedRosters"
 
 
 
@@ -11,7 +12,7 @@ export const UpdateUser = () => {
     const localRosterUser = localStorage.getItem("roster_user")
     const rosterUserObject = JSON.parse(localRosterUser)
     const localUser = { ...rosterUserObject }
-
+  
     const [user, setUser] = useState({
         email: localUser.email,
         id: localUser.id,
@@ -70,6 +71,7 @@ export const UpdateUser = () => {
                     <button type="submit" onClick={handleSaveButtonClick}> Update </button>
                 </fieldset>
             </form>
+            <SavedRosters localUser={localUser}/>
         </main> </>
 
 }

@@ -5,6 +5,7 @@ import { Profile } from "../profile/Profile"
 import { Home } from "../Home/HomePage"
 import { Character } from "../character/Character"
 import { Roster } from "../roster/Roster"
+import { useState } from "react"
 export const ApplicationViews = () => {
 
 

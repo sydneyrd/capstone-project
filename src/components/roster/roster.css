@@ -1,6 +1,9 @@
- .character__list {height:100%; width:18%;overflow:hidden; overflow-y:scroll}
+ .character__list {height:100%; width:30%;overflow:hidden; overflow-y:scroll}
 
-
+.body {
+  display: flex;
+  flex-direction: row;
+}
 
 .character__details {
     opacity: 0.0;
@@ -11,7 +14,8 @@
     transition: all 500ms ease-in-out;
 }
 .detail__button {
-    width:80px;
+    align-items: flex-end;
+    width:fit-content;
     height:20px;
     background-color:green;
     margin-bottom:15px;
@@ -28,3 +32,11 @@
     position: bottom;
 }
 
+.list__container {
+    width: 30%;
+    height: 100vh;
+}
+.details__element {
+    width: 10%;
+    height: fit-content;
+}
