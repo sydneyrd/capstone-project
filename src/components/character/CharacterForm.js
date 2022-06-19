@@ -34,8 +34,8 @@ const handleSaveButtonClick = (event) => {
         let newCharacterToAPI = {
             character: newCharacter.character,
             roleId: parseInt(newCharacter.roleId),
-            primaryId: parseInt(newCharacter.primaryId),
-            secondaryId: parseInt(newCharacter.secondaryId),
+            primaryweapon: parseInt(newCharacter.primaryId),
+            secondaryweapon: parseInt(newCharacter.secondaryId),
             serverId: parseInt(newCharacter.serverId),
             factionId: parseInt(newCharacter.factionId),
             userId: RosterUserObject.id
