@@ -24,6 +24,32 @@ export const Roster = () => {
     const [newRosterPicks, setNewRosterPick] = useState([])
     const [editRosterCharacters, setEditCharacters] = useState([])
     let navigate = useNavigate()
+    const [showText, setShowText] = useState(false)
+    const [charId, setId] = useState(0)
+    //we are capturing the new roster id when we first click add to roster and saving it to start roster  //pass those props ^
+    
+    const setCharId = e => {
+        setId(parseInt(e.target.id))
+    } //sets identifier to get correct detail info
+    const handleMouseEnter = e => {
+        e.target.style.background = "grey"
+        setShowText(true)
+    } //show pop up element when mouse
+    const handleMouseLeave = e => {
+        e.target.style.background = "#232220"
+        setShowText(false)
+        setId(0)
+    }//removes the pop up and identifier when mouse leaves
+
+
+
+
+
+
+
+
+
+
     useEffect(
         () => {
             getAllCharacters(setCharacters)
@@ -101,10 +127,11 @@ e.preventDefault()
             roleSearch={roleSearch} serverSearch={serverSearch} factionSearch={factionSearch} primarySearch={primarySearch} secondarySearch={secondarySearch}
             setSortedArr={setSortedArr} characters={characters} servers={servers} weapons={weapons} factions={factions} roles={roles} />
         <section className="body">
-            <ListContainer setNewRosterPick={setNewRosterPick} newRosterPicks={newRosterPicks} characters={sortedArr} servers={servers} weapons={weapons} factions={factions} roles={roles} />
+            <ListContainer showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} setNewRosterPick={setNewRosterPick} newRosterPicks={newRosterPicks} characters={sortedArr} servers={servers} weapons={weapons} factions={factions} roles={roles} />
            
             <div className="parent" >
-                <RosterGrid setEditCharacters={setEditCharacters} editRosterCharacters={editRosterCharacters} rosterIDNUMBER={rosterIDNUMBER} characters={characters}  newRosterPicks={newRosterPicks} setNewRosterPick={setNewRosterPick} /></div>
+                <RosterGrid showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} 
+                setEditCharacters={setEditCharacters} editRosterCharacters={editRosterCharacters} rosterIDNUMBER={rosterIDNUMBER} characters={characters}  newRosterPicks={newRosterPicks} setNewRosterPick={setNewRosterPick} /></div>
      
        </section>  <div className="save__div"> <button className="save__button" onClick={(click) => { handleSave(click, newRosterPicks) }}>Save Roster</button> 
        <button onClick={(e) => handleNewRoster(e) 
