@@ -27,7 +27,8 @@ export const RosterGrid = ({showText, setShowText, charId, setNewRosterPick, set
     return <>{editRosterCharacters.map((c) => <RosterDivForEdit showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} 
     handleMouseLeave={handleMouseLeave} rosterIDNUMBER={rosterIDNUMBER} setEditCharacters={setEditCharacters} characters={characters} newRosterPicks={editRosterCharacters}
         setNewRosterPick={setNewRosterPick} key={c.id} c={c} />)}
-        {newRosterPicks.map((c) => <RosterDiv newRosterPicks={newRosterPicks} setNewRosterPick={setNewRosterPick} key={c.id} c={c} />)}
+        {newRosterPicks.map((c) => <RosterDiv showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} 
+    handleMouseLeave={handleMouseLeave} newRosterPicks={newRosterPicks} setNewRosterPick={setNewRosterPick} key={c.id} c={c} />)}
 
     </>
 }

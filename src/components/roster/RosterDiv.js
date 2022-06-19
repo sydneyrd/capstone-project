@@ -3,7 +3,7 @@ import { deleteRosterChoice } from "../APIManager"
 
 
     
-export const RosterDiv = ({c, setNewRosterPick, newRosterPicks}) => {
+export const RosterDiv = ({c, setNewRosterPick, newRosterPicks, showText, setShowText, charId, setCharId, handleMouseEnter, handleMouseLeave,}) => {
     
     const handleRemove = (c, event) => {
       event.preventDefault() 
@@ -13,7 +13,8 @@ export const RosterDiv = ({c, setNewRosterPick, newRosterPicks}) => {
       // i have removed this functionality for now, but watch for breakage
     }
 return <>
- <div className="roster__choices">{c?.character}<button className="roster__remove" onClick={click => handleRemove(c, click)}>Remove</button></div>
+ <div id={c?.id} onMouseOver={setCharId} onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}className="roster__choices">{c?.character}<button className="roster__remove" onClick={click => handleRemove(c, click)}>Remove</button></div>
 </>
 
 }
