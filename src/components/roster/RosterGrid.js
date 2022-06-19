@@ -7,8 +7,8 @@ import { getAllCharacters, getCurrentRoster } from "../APIManager";
 import { RosterDivForEdit } from "./RosterDivForEdit";
 //get all the people in the roster render them in the list
 
-export const RosterGrid = ({ newRosterPicks, rosterIDNUMBER, characters, setNewRosterPick }) => {
-    const [editRosterCharacters, setEditCharacters] = useState([])
+export const RosterGrid = ({ setEditCharacters, editRosterCharacters, newRosterPicks, rosterIDNUMBER, characters, setNewRosterPick }) => {
+    // const [editRosterCharacters, setEditCharacters] = useState([])
     useEffect(
         () => {
             getCurrentRoster(rosterIDNUMBER)
