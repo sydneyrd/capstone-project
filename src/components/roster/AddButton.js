@@ -1,8 +1,10 @@
 import { newRoster, newRosterChoice } from "../APIManager"
 
+//if id of character matches an id in the new roster picks already don't allow the add
+//id for character id, newRosterPicks for the array of picks
 
 
-export const AddButton = ({ character, id, setNewRosterPick }) => {
+export const AddButton = ({ character, id, setNewRosterPick, newRosterPicks }) => {
     // const [rosterCount, setRostercount ] = useState(0)
     const localUser = localStorage.getItem("roster_user")
     const rosterUser = JSON.parse(localUser)
@@ -20,7 +22,6 @@ export const AddButton = ({ character, id, setNewRosterPick }) => {
         newRoster(newR).then((newRosterObj) => {
             let roster = { ...newRosterObj }
             localStorage.setItem('roster_id', parseFloat(roster.id))
-           
             addUserToEnd(character)
         })
 
@@ -33,6 +34,8 @@ export const AddButton = ({ character, id, setNewRosterPick }) => {
             rosterId: rosterIDNUMBER,
             characterId: id
         }
+        newRosterPicks.find((playerId) => playerId.id === id) ?  //just added this ternary statement, it worked okay without it, keep an eye on it.  just cheking for doubles
+        alert("already added") :
         addUserToEnd(character)
         
     }

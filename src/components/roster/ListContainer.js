@@ -37,13 +37,3 @@ export const ListContainer = ({ setNewRosterPick, newRosterPicks, characters, se
 //only display the detail button if the charId has been set to something other than 0 and showText is true
 }
 
-//   const dragStart = e => {
-//         const target = e.target;
-//         e.dataTransfer.setData("character__card", target.id)
-//         setTimeout(() => {
-//             target.style.display = "none";
-//         }, 0);
-//     }
-//     const dragOver = e => {
-//         e.stopPropagation();
-//     } for the drag and drop stuff
