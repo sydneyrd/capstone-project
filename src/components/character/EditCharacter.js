@@ -55,7 +55,7 @@ export const EditCharacter = ({ ownedCharacter, roles, characters, RosterUserObj
         <> 
             <form className="character_form">
                  <fieldset className="edit__form">
-                    <label htmlFor="character__name">{ownedCharacter?.character}</label>
+                  <h4 className="editcharacter__name">{ownedCharacter?.character}</h4>
                     <input
                         
                         type="text"

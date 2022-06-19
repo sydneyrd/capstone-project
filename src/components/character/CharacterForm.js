@@ -49,7 +49,7 @@ export const CharacterForm = ({ roles, weapons, servers, factions, feedback, set
             <div className={`${feedback.includes("Error") ? "error" : "feedback"} ${feedback === "" ? "invisible" : "visible"}`}>
                 {feedback}
             </div>
-            <form className="character_form">
+            <form className="addcharacter_form">
                 <h2 className="characterForm__title">Add Character</h2>
                 <fieldset className="add__form">
 

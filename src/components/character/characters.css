@@ -14,6 +14,7 @@
 .body {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 }
 
 .character__details {
@@ -24,12 +25,21 @@
     -o-transition: all 500ms ease-in-out;
     transition: all 500ms ease-in-out;
 }
+.addcharacter__form {
+    display: flex;
+    align-content: center;
+   justify-items: center;
+    align-self: center;
+    justify-content: center;
+    justify-self: center;
 
+}
 .add__form {
     display: flex;
-    flex-wrap: wrap;
+    
     flex-direction: column;
-    justify-items: space-between;
+   
+    justify-content: center;
     width: 320px;
     padding: 20px;
     border: 1px solid #c9c9c9;
@@ -47,38 +57,45 @@ select{
 }
 .edit_characters {
     display: flex;
-   flex-direction: column;
-    width: 20%;
+   flex-flow: row wrap;
+    width: 70%;
     justify-content: space-between;
+    align-items: flex-end;
    
 }
 .edit__section{
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: row wrap;
     align-items: center; 
     
 }
-.edit_section {
-    display: flex;
-    flex-flow: row;
-
+.add_form {
+    justify-items: center;
+    align-items: center;
+}
+.editcharacter__name {
+    margin: 2px 2px 2px 2px;
 }
 .edit__form {
     
     flex-direction: column; /*yes don't touch*/
     justify-items: space-between;
     width: 320px;
-    padding: 20px;
+    padding: 10px;
     border: 1px solid #c9c9c9;
     border-radius: 7px;
     font-family: 'Libre Franklin', sans-serif;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
-    grid-template-columns: 32% 32% 32%
+    grid-template-columns: 32% 32% 32%;
+    margin: 25px 25px 25px 25px;
 }
-.select {
+select {
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 18px;
+}
+.option {
     font-family: 'Libre Franklin', sans-serif;
 }
-
 button.save__button {
     font-family: 'Libre Franklin', sans-serif;
     display: inline-block;
@@ -98,6 +115,7 @@ button.save__button {
     text-transform: uppercase;
     line-height: 16px;
     font-size: 11px;
+    margin: 20px;
 }
 
 button.delete__button {
@@ -119,6 +137,7 @@ button.delete__button {
     text-transform: uppercase;
     line-height: 16px;
     font-size: 11px;
+    margin: 10px 5px 5px 5px;
 }
 
 .details {
@@ -145,6 +164,7 @@ button.delete__button {
     text-transform: uppercase;
     line-height: 16px;
     font-size: 11px;
+    margin: 20px 5px 5px 5px;
 }
 
 
