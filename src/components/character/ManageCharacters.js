@@ -8,9 +8,9 @@ export const ManageCharacters = ({ weapons, userCharacters, updateUserCharacters
 
  //mapping and creating character cards for owned characters  
 return <>
-<div className="edit__section">{userCharacters.map((ownedCharacter) => <EditCharacter  ownedCharacter={ownedCharacter} key={ownedCharacter?.id} 
+<>{userCharacters.map((ownedCharacter) => <EditCharacter  ownedCharacter={ownedCharacter} key={ownedCharacter?.id} 
     updateUserCharacters={updateUserCharacters}
-    feedback={feedback}  RosterUserObject={RosterUserObject} setFeedback={setFeedback} weapons={weapons} factions={factions} roles={roles} servers={servers} />)}</div>
+    feedback={feedback}  RosterUserObject={RosterUserObject} setFeedback={setFeedback} weapons={weapons} factions={factions} roles={roles} servers={servers} />)}</>
             </>
 }
 

@@ -47,25 +47,25 @@ select{
 }
 .edit_characters {
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
+   flex-direction: column;
     width: 20%;
     justify-content: space-between;
-    grid-template-columns: 1fr auto
+   
 }
 .edit__section{
     display: flex;
-    align-items: center; /*this made them go center for a second but disappeared when I flex wrapped*/
+    flex-flow: column wrap;
+    align-items: center; 
     
-   
 }
 .edit_section {
     display: flex;
+    flex-flow: row;
 
 }
 .edit__form {
-    flex-wrap: wrap;
-    flex-direction: column;
+    
+    flex-direction: column; /*yes don't touch*/
     justify-items: space-between;
     width: 320px;
     padding: 20px;

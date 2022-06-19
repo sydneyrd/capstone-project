@@ -11,9 +11,7 @@ import "./characters.css"
 // leave this form blank to create new characters and display other characters below
 
 
-
-
-export const CharacterForm = ({roles, weapons, servers, factions, feedback, setFeedback}) => {
+export const CharacterForm = ({ roles, weapons, servers, factions, feedback, setFeedback }) => {
     const [newCharacter, updateNewCharacter] = useState({
         userId: 0,
         character: "",
@@ -24,10 +22,10 @@ export const CharacterForm = ({roles, weapons, servers, factions, feedback, setF
         factionId: 0
     })
 
-     const localRosterUser = localStorage.getItem("roster_user")  
-     const RosterUserObject = JSON.parse(localRosterUser)
+    const localRosterUser = localStorage.getItem("roster_user")
+    const RosterUserObject = JSON.parse(localRosterUser)
 
-const handleSaveButtonClick = (event) => {
+    const handleSaveButtonClick = (event) => {
         event.preventDefault()
 
         // TODO: Create the object to be saved to the API
@@ -40,16 +38,10 @@ const handleSaveButtonClick = (event) => {
             factionId: parseInt(newCharacter.factionId),
             userId: RosterUserObject.id
         }
-
-        
-
-        // TODO: Perform the fetch() to POST the object to the API
         saveNewCharacter(newCharacterToAPI)
             .then(() => {
                 setFeedback("Character successfully added")
-            }
-            )
-
+            })
     }
 
     return (

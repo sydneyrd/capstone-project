@@ -52,9 +52,7 @@ export const EditCharacter = ({ ownedCharacter, roles, characters, RosterUserObj
 
 
     return (
-        <> <div className={`${feedback.includes("Error") ? "error" : "feedback"} ${feedback === "" ? "invisible" : "visible"}`}>
-            {feedback}
-        </div>
+        <> 
             <form className="character_form">
                  <fieldset className="edit__form">
                     <label htmlFor="character__name">{ownedCharacter?.character}</label>
