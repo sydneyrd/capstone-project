@@ -52,8 +52,7 @@ export const CharacterForm = ({ roles, weapons, servers, factions, feedback, set
             <form className="addcharacter_form">
                 <h2 className="characterForm__title">Add Character</h2>
                 <fieldset className="add__form">
-
-                    <label htmlFor="charactername">Character Name:</label>
+                    <label className="addcharacter__name" htmlFor="charactername">Character Name:</label>
                     <input
                         required autoFocus
                         type="text"

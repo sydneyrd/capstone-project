@@ -67,6 +67,12 @@
     line-height: 16px;
     font-size: 11px;
  }
+ .save__button:hover {
+    background-color: lightgreen;
+ }
+ .new__button:hover {
+    background-color: darkgreen;
+ }
 
  .save__div {
      flex-direction: row;
