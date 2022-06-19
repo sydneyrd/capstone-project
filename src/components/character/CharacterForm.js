@@ -4,6 +4,7 @@ import { RoleSelect } from "./Role"
 import { ServerSelect } from "./ServerSelect"
 import { WeaponSelect } from "./WeaponSelect"
 import { getAllFactions, getAllRoles, getAllWeapons, getAllServers, saveNewCharacter } from "../APIManager"
+import "./characters.css"
 
 
 //iterate this form and make the default values the character values in the database.  
@@ -58,7 +59,7 @@ const handleSaveButtonClick = (event) => {
             </div>
             <form className="character_form">
                 <h2 className="characterForm__title">Add Character</h2>
-                <fieldset>
+                <fieldset className="add__form">
 
                     <label htmlFor="charactername">Character Name:</label>
                     <input
@@ -134,7 +135,7 @@ const handleSaveButtonClick = (event) => {
                         <option value={0}>select a faction</option>
                         {factions.map((faction) => <FactionSelect key={`faction--${faction.id}`} faction={faction} />)}
                     </select>
-                    <button onClick={click => handleSaveButtonClick(click)}>Save</button>
+                    <button className="save__button" onClick={click => handleSaveButtonClick(click)}>Save</button>
                 </fieldset>
             </form>
 

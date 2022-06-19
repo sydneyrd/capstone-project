@@ -17,7 +17,7 @@ export const ManageCharacters = ({ weapons, userCharacters, updateUserCharacters
 return <>
 
 
-<div>{userCharacters.map((ownedCharacter) => <EditCharacter  ownedCharacter={ownedCharacter} key={ownedCharacter.id} 
+<div className="edit__section">{userCharacters.map((ownedCharacter) => <EditCharacter  ownedCharacter={ownedCharacter} key={ownedCharacter.id} 
     updateUserCharacters={updateUserCharacters}
     feedback={feedback}  RosterUserObject={RosterUserObject} setFeedback={setFeedback} weapons={weapons} factions={factions} roles={roles} servers={servers} />)}</div>
             

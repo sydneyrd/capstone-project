@@ -9,7 +9,6 @@ let rightName = characters?.find(({id}) => id === c?.characterId)
     const handleRemove = (c, event) => {
       event.preventDefault() 
        let updatedRoster = newRosterPicks.filter((v) => v.id != c.id)
-       
        setEditCharacters(updatedRoster)
        deleteRosterChoice(c.id)
     }

@@ -2,10 +2,10 @@
     height: 30em;
     width: 10em;
     overflow: hidden;
-    overflow-y: hidden;  
-        padding: 0.5em;
-        
-/* i changed the overflow-y to hidden in case that makes this not scroll anymore later */
+    overflow-y: hidden;
+    padding: 0.5em;
+
+    /* i changed the overflow-y to hidden in case that makes this not scroll anymore later */
 
 
 
@@ -25,28 +25,90 @@
     transition: all 500ms ease-in-out;
 }
 
+.add__form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-items: space-between;
+    width: 320px;
+    padding: 20px;
+    border: 1px solid #c9c9c9;
+    border-radius: 7px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+    padding: 0.25em;
 
-.save__button {
-   font-family: 'Libre Franklin', sans-serif;
-   display: inline-block;
-   outline: 0;
-   text-align: center;
-   cursor: pointer;
-   height: 34px;
-   padding: 0 13px;
-   color: #fff;
-   vertical-align: top;
-   border-radius: 3px;
-   border: 1px solid transparent;
-   transition: all .3s ease;
-   background: #570B08;
-   border-color: #570B08;
-   font-weight: 600;
-   text-transform: uppercase;
-   line-height: 16px;
-   font-size: 11px;
 }
 
+.edit_characters {
+    display: grid;
+    flex-direction: row;
+    width: 20%;
+    justify-content: space-between;
+    grid-template-columns: 1fr auto
+}
+.edit__section{
+    display: flex;
+    align-items: center; /*this made them go center for a second but disappeared when I flex wrapped*/
+    
+   
+}
+.edit__form {
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-items: space-between;
+    width: 320px;
+    padding: 20px;
+    border: 1px solid #c9c9c9;
+    border-radius: 7px;
+    font-family: 'Libre Franklin', sans-serif;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+    grid-template-columns: 32% 32% 32%
+}
+.select {
+    font-family: 'Libre Franklin', sans-serif;
+}
+
+button.save__button {
+    font-family: 'Libre Franklin', sans-serif;
+    display: inline-block;
+    outline: 0;
+    text-align: center;
+    cursor: pointer;
+    height: 34px;
+    padding: 0 13px;
+    color: #fff;
+    vertical-align: top;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    transition: all .3s ease;
+    background: green;
+    border-color: green;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 16px;
+    font-size: 11px;
+}
+
+button.delete__button {
+    font-family: 'Libre Franklin', sans-serif;
+    display: inline-block;
+    outline: 0;
+    text-align: center;
+    cursor: pointer;
+    height: 34px;
+    padding: 0 13px;
+    color: #fff;
+    vertical-align: top;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    transition: all .3s ease;
+    background: #570B08;
+    border-color: #570B08;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 16px;
+    font-size: 11px;
+}
 
 .details {
     position: center, right;
@@ -54,13 +116,24 @@
 }
 
 .update__button {
-   display: flex;
-    position: bottom;
-    align-self: right;
-    align-content: right;
-    justify-content: flex-end;
-    justify-self: flex-end;
-    margin: space-between;
+    font-family: 'Libre Franklin', sans-serif;
+    display: inline-block;
+    outline: 0;
+    text-align: center;
+    cursor: pointer;
+    height: 34px;
+    padding: 0 13px;
+    color: #fff;
+    vertical-align: top;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    transition: all .3s ease;
+    background: green;
+    border-color: green;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 16px;
+    font-size: 11px;
 }
 
 
