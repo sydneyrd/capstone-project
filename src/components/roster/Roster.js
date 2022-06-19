@@ -59,6 +59,8 @@ export const Roster = () => {
         },
         [characters]//sort them alphabetically honestly it's just to put the characters into a sorted array because that's where i want them for future sorting
     )
+
+    
     let rosterID = localStorage.getItem("roster_id") //need this for the new array for the api
     let rosterIDNUMBER = JSON.parse(rosterID)
 const handleSave = (click, newRosterPicks) => { //onclickingSave
@@ -83,8 +85,17 @@ const handleSave = (click, newRosterPicks) => { //onclickingSave
             console.log(result)
         })
         navigate("/home")
+        
 
     }
+   const handleNewRoster = (e) => {
+e.preventDefault()
+    localStorage.removeItem("roster_id")
+    setNewRosterPick([])
+
+
+   }
+ 
     return <><h1>Build an Army</h1>
         <FilterContainer setFactionSearch={setFactionSearch} filterButton={filterButton} setFilterButton={setFilterButton} searchTerms={searchTerms} setSearchTerms={setSearchTerms}
             setRoleSearch={setRoleSearch} setPrimarySearch={setPrimarySearch} setServerSearch={setServerSearch} setSecondarySearch={setSecondarySearch}
@@ -96,5 +107,8 @@ const handleSave = (click, newRosterPicks) => { //onclickingSave
             <div className="parent" >
                 <RosterGrid  rosterIDNUMBER={rosterIDNUMBER} characters={characters}  newRosterPicks={newRosterPicks} setNewRosterPick={setNewRosterPick} /></div>
      
-       </section>  <div className="save__div"> <button className="save__button" onClick={(click) => { handleSave(click, newRosterPicks) }}>Save Roster</button>  </div></>
+       </section>  <div className="save__div"> <button className="save__button" onClick={(click) => { handleSave(click, newRosterPicks) }}>Save Roster</button> 
+       <button onClick={(e) => handleNewRoster(e) 
+    }  className="new__button">New Roster</button> </div></>
 }
+ 
