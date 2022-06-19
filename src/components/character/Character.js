@@ -42,6 +42,17 @@ export const Character = () => {
         },
         [] // When this array is empty, you are observing initial component state
     )
+    const [rerender, setRerender] = useState(false);
+
+useEffect(()=>{
+
+    getUserCharacters(RosterUserObject)
+             //i just put this here to get it to re render the page when I make changes 6/19/this could break things so watch out
+    .then((charArr) => 
+        updateUserCharacters(charArr)) 
+}, [userCharacters]);
+
+
    useEffect(() => {
         if (feedback !== "") {
             // Clear feedback to make entire element disappear after 3 seconds

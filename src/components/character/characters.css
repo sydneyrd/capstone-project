@@ -38,9 +38,16 @@
     padding: 0.25em;
 
 }
-
+label{
+    font-style: bold;
+    
+}
+select{
+    font-family: 'Libre Franklin', sans-serif;
+}
 .edit_characters {
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     width: 20%;
     justify-content: space-between;
@@ -51,6 +58,10 @@
     align-items: center; /*this made them go center for a second but disappeared when I flex wrapped*/
     
    
+}
+.edit_section {
+    display: flex;
+
 }
 .edit__form {
     flex-wrap: wrap;

@@ -41,36 +41,35 @@ const handlePrimarySelect = (e) => {
                 .filter(m => m.secondaryweapon == (secondarySearch == '' ? m.secondaryweapon : secondarySearch))
         setSortedArr(searchArr)
     }
-
+//removed the labels, because it looks better, but left the jsx for them if i change my mind or it messes something else up smh
     return <>
         <form className="character_form">
-            <h2 className="characterForm__title">filter time</h2>
             <fieldset>
-                <label htmlFor="role__filter">Roles</label>
+                <label htmlFor="role__filter"></label>
                 <select onChange={
                     (e) => {
                         handleRoleSelect(e)
                     }}> <option value="0">roles</option>
                     {roles.map((role) => <RoleFilter key={`div--role${role.id}`} role={role} />)}</select>
-                <label htmlFor="faction__filter">Factions</label>
+                <label htmlFor="faction__filter"></label>
                 <select onChange={
                     (e) => {
                         handleFacSelect(e)
                     }}><option value="0">factions</option>
                     {factions.map((faction) => <FactionFilter key={`div--faction${faction.id}`} faction={faction} />)}</select>
-                <label htmlFor="server__filter">Servers</label>
+                <label htmlFor="server__filter"></label>
                 <select onChange={
                     (e) => {
                         handleServerSelect(e)
                     }}><option value="0">Servers</option>
                     {servers.map((server) => <ServerFilter key={`div--server${server.id}`} server={server} />)}</select>
-                <label htmlFor="primary__filter">Primary Weapon:</label>
+                <label htmlFor="primary__filter"></label>
                 <select onChange={
                     (e) => {
                         handlePrimarySelect(e)
                     }}><option value="0">Primary Weapon</option>
                     {weapons.map((weapon) => <WeaponFilter key={`div--weapon${weapon.id}`} weapon={weapon} />)}</select>
-                <label>Secondary Weapon:</label>
+                <label htmlFor="secondary"></label>
                 <select onChange={
                     (e) => {
                         handleSecondarySelect(e)

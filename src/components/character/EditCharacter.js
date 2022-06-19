@@ -42,7 +42,6 @@ export const EditCharacter = ({ ownedCharacter, roles, characters, RosterUserObj
 
         putCharacter(letcToAPI) //push request
         setFeedback("Character Updated")
-        //reload area to display updated character info?
  }
 
     const handleDeleteClick = (deleteCharacterId, click) => {
@@ -58,7 +57,7 @@ export const EditCharacter = ({ ownedCharacter, roles, characters, RosterUserObj
         </div>
             <form className="character_form">
                  <fieldset className="edit__form">
-                    <label >{ownedCharacter.character}</label>
+                    <label htmlFor="character__name">{ownedCharacter?.character}</label>
                     <input
                         
                         type="text"
@@ -71,7 +70,7 @@ export const EditCharacter = ({ ownedCharacter, roles, characters, RosterUserObj
                                 updateCharacter(copy)
                             }
                         } />
-                    <label>{rightRole?.name}</label>
+                    <label htmlFor="role__name">{rightRole?.name}</label>
                     <select onChange={
                         (event) => {
                             const copy = { ...updatedCharacter }
@@ -80,10 +79,10 @@ export const EditCharacter = ({ ownedCharacter, roles, characters, RosterUserObj
                         }
                     } className="role__select">
                         <option value={0}>select a role</option>
-                        {roles.map((role) => <RoleSelect key={role.id} role={role} />)}
+                        {roles.map((role) => <RoleSelect key={`role--${role?.id}`} role={role} />)}
                     </select>
 
-                    <label>{rightPrimary?.name}</label>
+                    <label htmlFor="primary__name">{rightPrimary?.name}</label>
                     <select onChange={
                         (event) => {
                             const copy = { ...updatedCharacter }
@@ -92,7 +91,7 @@ export const EditCharacter = ({ ownedCharacter, roles, characters, RosterUserObj
                         }
                     } className="character__select">
                         <option value={0}>select a weapon</option>
-                        {weapons.map((weapon) => <WeaponSelect key={weapon.id} weapon={weapon} />)}
+                        {weapons.map((weapon) => <WeaponSelect key={`weapon--${weapon?.id}`} weapon={weapon} />)}
                     </select>
                     <label htmlFor="second__weapon">{rightSecondary?.name}</label>
                     <select onChange={
@@ -103,7 +102,7 @@ export const EditCharacter = ({ ownedCharacter, roles, characters, RosterUserObj
                         }
                     } className="character__second">
                         <option value={0}>select a weapon</option>
-                        {weapons.map((weapon) => <WeaponSelect key={weapon.id} weapon={weapon} />)}
+                        {weapons.map((weapon) => <WeaponSelect key={`{weaponsecond--${weapon?.id}`} weapon={weapon} />)}
 
                     </select>
                     <label htmlFor="servers">
@@ -116,7 +115,7 @@ export const EditCharacter = ({ ownedCharacter, roles, characters, RosterUserObj
                         }
                     } htmlFor="server">
                         <option value={0}>select a server</option>
-                        {servers.map((server) => <ServerSelect key={server.id} server={server} />)}
+                        {servers.map((server) => <ServerSelect key={`server--${server?.id}`} server={server} />)}
                     </select>
                     <label htmlFor="factions">{rightFaction?.name}</label>
 
@@ -128,7 +127,7 @@ export const EditCharacter = ({ ownedCharacter, roles, characters, RosterUserObj
                         }
                     } className="character__select">
                         <option value={0}>select a faction</option>
-                        {factions.map((faction) => <FactionSelect key={faction.id} faction={faction} />)}
+                        {factions.map((faction) => <FactionSelect key={`faction--${faction?.id}`} faction={faction} />)}
                     </select>
                     <button className="update__button" onClick={click => handleUpdateClick(updatedCharacter, click)}>Update</button>
                     <button className="delete__button" onClick={click => handleDeleteClick(updatedCharacter.id, click)}>Delete</button>

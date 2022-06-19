@@ -3,7 +3,10 @@
 }
 
 
-
+.main{
+    display: flex;
+    flex-direction: column;
+}
 
 
 .form--login > fieldset > input[type="email"] {

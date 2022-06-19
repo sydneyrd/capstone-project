@@ -54,8 +54,8 @@ export const Roster = () => {
     ) 
     useEffect(
         () => {
-            //  let alphaCharacters = characters.sort((a, b) => a.character.localeCompare(b.character))
-            setSortedArr(characters) ///this alphabet sort stopped working????  it's supposed to be alphaCharacters passed into it???? why is everything not working anymore -_-
+              let alphaCharacters = characters.sort((a, b) => a.character.localeCompare(b.character))
+            setSortedArr(characters) ///this alphabet sort stopped working????  it's supposed to be alphaCharacters passed into it???? why is everything not working anymore -_- it works now but could break watchout
         },
         [characters]//sort them alphabetically honestly it's just to put the characters into a sorted array because that's where i want them for future sorting
     )
@@ -85,7 +85,7 @@ const handleSave = (click, newRosterPicks) => { //onclickingSave
         navigate("/home")
 
     }
-    return <><h1>THIS IS WHERE YOU WILL BUILD THE ROSTER  saved rosters link, and build roster link?</h1>
+    return <><h1>Build an Army</h1>
         <FilterContainer setFactionSearch={setFactionSearch} filterButton={filterButton} setFilterButton={setFilterButton} searchTerms={searchTerms} setSearchTerms={setSearchTerms}
             setRoleSearch={setRoleSearch} setPrimarySearch={setPrimarySearch} setServerSearch={setServerSearch} setSecondarySearch={setSecondarySearch}
             roleSearch={roleSearch} serverSearch={serverSearch} factionSearch={factionSearch} primarySearch={primarySearch} secondarySearch={secondarySearch}

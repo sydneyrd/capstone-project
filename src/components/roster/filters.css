@@ -69,6 +69,7 @@ body {
 fieldset {
   display: flex;
   align-items: row;
+  padding: 1em;
 }
 
 label {
