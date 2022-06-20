@@ -4,12 +4,14 @@
     overflow: hidden;
     overflow-y: hidden;
     padding: 0.5em;
-
-    /* i changed the overflow-y to hidden in case that makes this not scroll anymore later */
-
-
-
+ /* i changed the overflow-y to hidden in case that makes this not scroll anymore later */
 }
+
+input[type=text] {
+  
+    border-radius: 3px;
+  }
+  
 
 h4 {
     font-size: 1em;

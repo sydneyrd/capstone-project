@@ -20,11 +20,10 @@ position: sticky;
 
 .roster__choices {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 1.65em;
     text-size-adjust: 2;
     flex-wrap: wrap;
-    justify-content: space-around;
     max-width: 3em;
   max-height: 1em;
   align-content: center;
@@ -41,7 +40,7 @@ position: sticky;
     text-align: center;
     cursor: pointer;
     height: 25px;
-    margin: 30px 10px 5px 10;
+    
     color: #fff;
     vertical-align:bottom;
     border-radius: 3px;
@@ -53,7 +52,7 @@ position: sticky;
     text-transform: uppercase;
     line-height: 16px;
     font-size: 11px;
-    align-items: bottom;
-   
-    
-}
+    }
+    .message__popup1 {
+      background-color: red;
+    }

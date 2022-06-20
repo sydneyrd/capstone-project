@@ -41,10 +41,11 @@ export const CharacterForm = ({ updateUserCharacters, getUserCharacters, roles, 
         saveNewCharacter(newCharacterToAPI)
             .then(() => {
                 getUserCharacters(RosterUserObject)})
+                
 
             .then((charArr) => {
                 updateUserCharacters(charArr)}
-            ) //another then before set feedback maybe?
+           )//another then before set feedback maybe?
 //it doesn't like this and won't rerender due to uncaught promise here^  fix it 
 
         setFeedback("Character successfully added")

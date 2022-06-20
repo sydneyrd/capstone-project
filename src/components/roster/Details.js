@@ -1,6 +1,6 @@
 import "./roster.css"
 
-export const DetailButton = ({ charId, servers, roles, weapons, factions, showText, characters  }) => {
+export const DetailButton = ({ charId, servers, roles, weapons, factions, showText, characters }) => {
     let rightCharacter = characters.find(({ id }) => id === charId)
     let rightServer = servers.find(({ id }) => id === rightCharacter?.serverId)
     let rightPrimary = weapons.find(({ id }) => id === rightCharacter?.primaryweapon)
@@ -10,18 +10,18 @@ export const DetailButton = ({ charId, servers, roles, weapons, factions, showTe
     //find all the right details.   charId picked my mouseover and charId usestate, showtext is a boolean for displaying only
 
     return (<>
-        <div className="details--popup">
+        <div className={`message__popup${rightFaction?.id}`}>
             {showText &&
-                <section className="message" key={rightCharacter?.id}>
+                <section className="details--popup" key={rightCharacter?.id}>
                     <article className="details">
                         <h3>{rightCharacter?.character}</h3>
                         <>{rightRole?.name}
                             <br></br>
-                             {rightPrimary?.name}
+                            {rightPrimary?.name}
                             <br></br>
-                             {rightSecondary?.name}
+                            {rightSecondary?.name}
                             <br></br>
-                           {rightServer?.name}
+                            {rightServer?.name}
                             <br></br>
                             {rightFaction?.name}
                         </>

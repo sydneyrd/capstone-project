@@ -41,15 +41,6 @@ export const Roster = () => {
         setId(0)
     }//removes the pop up and identifier when mouse leaves
 
-
-
-
-
-
-
-
-
-
     useEffect(
         () => {
             getAllCharacters(setCharacters)
@@ -81,12 +72,10 @@ export const Roster = () => {
     useEffect(
         () => {
               let alphaCharacters = characters.sort((a, b) => a.character.localeCompare(b.character))
-            setSortedArr(characters) ///this alphabet sort stopped working????  it's supposed to be alphaCharacters passed into it???? why is everything not working anymore -_- it works now but could break watchout
-        },
+            setSortedArr(alphaCharacters) ///this alphabet sort stopped working????  it's supposed to be alphaCharacters passed into it???? why is everything not working anymore -_- it works now but could break watchout
+        },  //setSorted ^ had only characters in there instead of alpha but it was still alphabetized?   and it wasn't running an infinite loop.  i have no idea why this worked before or now tbh
         [characters]//sort them alphabetically honestly it's just to put the characters into a sorted array because that's where i want them for future sorting
     )
-
-    
     let rosterID = localStorage.getItem("roster_id") //need this for the new array for the api
     let rosterIDNUMBER = JSON.parse(rosterID)
 const handleSave = (click, newRosterPicks) => { //onclickingSave

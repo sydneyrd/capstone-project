@@ -5,29 +5,13 @@
   width: 50%;
 }
 
-.form__field {
-  font-family: inherit;
-  width: 100%;
-  border: 0;
-  border-bottom: 2px solid #9b9b9b;
-  outline: 0;
-  font-size: 1.3rem;
-  color: #fff;
-  padding: 0.5em;
-  background: transparent;
-  transition: border-color 0.2s;
-  border-radius: 3px;
-}
+
 
 .input__text::placeholder {
   color: #B3B8BC;
 }
 
-.form__field:placeholder-shown~.form__label {
-  font-size: 1.3rem;
-  cursor: text;
-  top: 20px;
-}
+
 .search__button:hover{
   background: lightgreen;
 }
@@ -54,27 +38,6 @@
   margin: 1.5em;
  
 }
-.roster__remove{
-  font-family: 'Libre Franklin', sans-serif;
-  display: inline-block;
-  outline: 0;
-  text-align: center;
-  cursor: pointer;
-  height: 34px;
-  padding: 0 13px;
-  color: #fff;
-  vertical-align: top;
-  border-radius: 3px;
-  border: 1px solid transparent;
-  transition: all .3s ease;
-  background: #570B08;
-  border-color: #570B08;
-  font-weight: 600;
-  text-transform: uppercase;
-  line-height: 16px;
-  font-size: 11px;
-  flex-direction: flex-end;
- }
 
  .roster__remove:hover{
   background: darkred;
@@ -103,7 +66,9 @@
   border-radius: 3px;
  }
 
- .reset__button:hover{
+
+ /*this is affecting the reset button having a hard time targeting it*/
+  button:hover{
   background: darkred;
  }
 
@@ -111,6 +76,7 @@ input[type=text] {
   margin: 0.15em;
   padding: 1em;
   border-radius: 3px;
+ 
 }
 
 
@@ -136,21 +102,18 @@ body {
 fieldset {
   display: flex;
   align-items: row;
-  padding: 0.5em;
-}
-
-label {
-  font-weight: bold;
-  color: #9b9b9b;
-  display: block;
-  top: 0;
-  transition: 0.2s;
+  padding: 0.25em;
+  justify-content: center;
+  align-content: center;
+  align-items: bottom;
+  
 }
 
 select {
   margin: 0.15em;
   padding: 0.15em;
   border-radius: 3px;color: #9b9b9b;
+  max-height: 3em;
 }
 
 
@@ -161,4 +124,12 @@ select {
   justify-content: space-around;
 }
 
+option {
+  font-weight: normal;
+  display: block;
+  white-space: nowrap;
+  min-height: 1.4em;
+  padding: 2px 2px 1px;
+  background-color:transparent;
+}
 

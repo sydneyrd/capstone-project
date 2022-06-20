@@ -27,18 +27,9 @@ useEffect(
 )
 
 //just put this useEffect here to try and rerender when deleting, it might break something watch it sundaymorning
-useEffect(
-  () => {
-    getUserRosters(localUser)
-      .then((URost) => {
-        setUserRosters(URost)
-      })
-  },
-  [userRosters] 
-)
 
 
-  return <><div className="savedroster--container">{userRosters.map((roster) => <SavedRosterList  key={roster.id} roster={roster} />)}</div></>
+  return <><div className="savedroster--container">{userRosters.map((roster) => <SavedRosterList localUser={localUser} getUsesrRosters={getUserRosters} setUserRosters={setUserRosters} key={roster.id} roster={roster} />)}</div></>
 }
 
 

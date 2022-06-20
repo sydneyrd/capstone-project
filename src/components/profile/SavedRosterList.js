@@ -6,6 +6,7 @@ import { deleteRoster } from "../APIManager"
 export const SavedRosterList = ({roster}) => {
 
   const handleClick = () => {
+    click.preventDefault()
 
     localStorage.setItem("roster_id", roster.id)
     getCurrentRoster(roster)
@@ -18,7 +19,7 @@ export const SavedRosterList = ({roster}) => {
   }
         
 
-  return <><div className="saved--rosters">< Link className="roster__link" onClick={handleClick} to="/roster">Roster #{roster.id}</Link>
+  return <><div className="saved--rosters">< Link className="roster__link" onClick={click => handleClick(click)} to="/roster">Roster #{roster.id}</Link>
     <button className="delete__button" onClick={click => handleDeleteClick(click, roster)}>Delete Roster</button></div></>
     
 }
