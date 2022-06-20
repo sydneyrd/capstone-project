@@ -34,7 +34,7 @@ useEffect(
         setUserRosters(URost)
       })
   },
-  [userRosters] 
+  [] 
 )
 
 
