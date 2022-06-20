@@ -3,7 +3,7 @@ import { FactionSelect } from "./FactionSelect"
 import { RoleSelect } from "./Role"
 import { ServerSelect } from "./ServerSelect"
 import { WeaponSelect } from "./WeaponSelect"
-import { getAllFactions, getAllRoles, getAllWeapons, getAllServers, getUserCharacters, saveNewCharacter } from "../APIManager"
+import {  saveNewCharacter } from "../APIManager"
 import "./characters.css"
 
 
@@ -39,12 +39,12 @@ export const CharacterForm = ({ updateUserCharacters, getUserCharacters, roles, 
             userId: RosterUserObject.id
         }
         saveNewCharacter(newCharacterToAPI)
-            .then(() =>
-                getUserCharacters(RosterUserObject))
+            .then(() => {
+                getUserCharacters(RosterUserObject)})
 
-            .then((charArr) => 
-                updateUserCharacters(charArr)
-            )
+            .then((charArr) => {
+                updateUserCharacters(charArr)}
+            ) //another then before set feedback maybe?
 //it doesn't like this and won't rerender due to uncaught promise here^  fix it 
 
         setFeedback("Character successfully added")

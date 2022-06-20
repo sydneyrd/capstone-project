@@ -3,6 +3,7 @@
     flex-wrap: nowrap;
     justify-content: left;
     align-items: left;
+    position:sticky;
 }
 
 .navbar__item {

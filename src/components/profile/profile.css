@@ -3,14 +3,18 @@
 }
 
 
-.main{
+.profile--page{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 
 .form--login > fieldset > input[type="email"] {
-    width: 25em;
+    width: 15em;
+}
+fieldset {
+    margin: 2px;
 }
 
 .label--login {
@@ -28,14 +32,18 @@
     text-align: center;
 }
 
-.form--login {
-    background-position-x: right;
+.form--update {
+    display: flex;
+    flex-direction: column;
+    background-position-x: left;
     z-index: 1;
-    min-height: 25rem;
-    min-width: 45rem;
-    background-color: hsla(0,0%,100%,0.40);
+    min-height: 20rem;
+    min-width: 20rem;
+    background-color: transparent;
     background-blend-mode: overlay;
     background-repeat: no-repeat;
+    margin:4em;
+    align-self: left;
 }
 
 .button--close {
@@ -61,8 +69,19 @@
     text-transform: uppercase;
     line-height: 16px;
     font-size: 11px;
+    
+}
+.saved--rosters {
+    display: flex;
+    flex-direction: row;
 }
 
+.savedroster--container{
+    display: flex;
+    flex-direction: column; 
+    padding: 2em;
+    justify-items: space-evenly;
+}
 .delete__button {
     font-family: 'Libre Franklin', sans-serif;
     display: inline-block;
@@ -82,4 +101,5 @@
     text-transform: uppercase;
     line-height: 16px;
     font-size: 11px;
+    
 }

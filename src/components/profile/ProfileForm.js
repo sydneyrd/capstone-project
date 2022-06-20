@@ -43,14 +43,14 @@ export const UpdateUser = () => {
         <div className={`${feedback.includes("Error") ? "error" : "feedback"} ${feedback === "" ? "invisible" : "visible"}`}>
             {feedback}
         </div>
-        <main style={{ textAlign: "center" }}>
-            <form className="form--login" >
+        <main className="profile--page" style={{ textAlign: "center" }}>
+            <form className="form--update" >
 
                 <h1 className="h3 mb-3 font-weight-normal">Update Email</h1>
 
 
                 <fieldset>
-                    <label htmlFor="email"> Update email address </label>
+                    <label htmlFor="email"></label>
                     <input onChange={(evt) => emailUpdate(evt)}
                         type="email" id="email" className="form-control"
                         value={user.email}
@@ -61,6 +61,7 @@ export const UpdateUser = () => {
                     <button className="email__button" type="submit" onClick={handleSaveButtonClick}> Update </button>
                 </fieldset>
             </form>
+            
             <SavedRosters localUser={localUser} />
         </main> </>
 

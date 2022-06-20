@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import { getUserRosters } from "../APIManager"
 import { SavedRosterList } from "./SavedRosterList"
 export const SavedRosters = ({ localUser }) => {
-  const navigate = Navigate
+ 
   //if statement no saved rosters no display
   //    const onClickFunc = (e) => {
   //     e.preventDefault()
@@ -38,7 +38,7 @@ useEffect(
 )
 
 
-  return <>{userRosters.map((roster) => <SavedRosterList  key={roster.id} roster={roster} />)} </>
+  return <><div className="savedroster--container">{userRosters.map((roster) => <SavedRosterList  key={roster.id} roster={roster} />)}</div></>
 }
 
 

@@ -4,7 +4,6 @@ import { RoleFilter } from "./FilterChoices/RoleFilter"
 import { WeaponFilter } from "./FilterChoices/WeaponFilter"
 import { ServerFilter } from "./FilterChoices/ServerFilter"
 import { ResetButton } from "./ResetButton"
-import { useEffect } from "react"
 import "./filters.css"
 
 export const FilterContainer = ({ roleSearch, factionSearch, primarySearch, secondarySearch, serverSearch, setPrimarySearch, setSecondarySearch, setServerSearch, setRoleSearch, setFactionSearch,
@@ -34,11 +33,11 @@ const handlePrimarySelect = (e) => {
         e.preventDefault(e)
         const searchArr =
             characters
-                .filter(x => x.roleId == (roleSearch == '' ? x.roleId : roleSearch))
-                .filter(y => y.serverId == (serverSearch == '' ? y.serverId : serverSearch))
-                .filter(l => l.factionId == (factionSearch == '' ? l.factionId : factionSearch))
-                .filter(k => k.primaryweapon == (primarySearch == '' ? k.primaryweapon : primarySearch))
-                .filter(m => m.secondaryweapon == (secondarySearch == '' ? m.secondaryweapon : secondarySearch))
+                .filter(x => x.roleId === (roleSearch == '' ? x.roleId : roleSearch))
+                .filter(y => y.serverId === (serverSearch == '' ? y.serverId : serverSearch))
+                .filter(l => l.factionId === (factionSearch == '' ? l.factionId : factionSearch))
+                .filter(k => k.primaryweapon === (primarySearch == '' ? k.primaryweapon : primarySearch))
+                .filter(m => m.secondaryweapon === (secondarySearch == '' ? m.secondaryweapon : secondarySearch))
         setSortedArr(searchArr)
     }
 //removed the labels, because it looks better, but left the jsx for them if i change my mind or it messes something else up smh
@@ -74,12 +73,12 @@ const handlePrimarySelect = (e) => {
                     (e) => {
                         handleSecondarySelect(e)
                     }}><option value="0">Secondary Weapon</option>
-                    {weapons.map((weapon) => <WeaponFilter key={`div--weapontwo${weapon.id}`} weapon={weapon} />)}</select>
+                    {weapons.map((weapon) => <WeaponFilter key={`div--weapontwo${weapon.id}`} weapon={weapon} />)}</select><div className="filter__buttons">
                 <SearchFilter setSearchTerms={setSearchTerms} />
-                <button onClick={(e) => { handleSearchButton(e) }} >Search</button>
-                <ResetButton handleSearchButton={handleSearchButton} setFactionSearch={setFactionSearch} setRoleSearch={setRoleSearch} setServerSearch={setServerSearch}
+                <button onClick={(e) => { handleSearchButton(e) }} className="search__button">Search</button>
+                <ResetButton className="reset__button" handleSearchButton={handleSearchButton} setFactionSearch={setFactionSearch} setRoleSearch={setRoleSearch} setServerSearch={setServerSearch}
                 setSecondarySearch={setSecondarySearch} 
-                setPrimarySearch={setPrimarySearch}/>
+                setPrimarySearch={setPrimarySearch} /></div>
             </fieldset></form>
     </>
 }

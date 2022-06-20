@@ -13,9 +13,10 @@
   outline: 0;
   font-size: 1.3rem;
   color: #fff;
-  padding: 1em;
+  padding: 0.5em;
   background: transparent;
   transition: border-color 0.2s;
+  border-radius: 3px;
 }
 
 .input__text::placeholder {
@@ -27,26 +28,92 @@
   cursor: text;
   top: 20px;
 }
-
-
-
-form {
-  padding-bottom: 6px;
-  font-weight: 700;
-  border-width: 3px;
-  border-image: linear-gradient(to right, #11998e, #38ef7d);
-  border-image-slice: 1;
+.search__button:hover{
+  background: lightgreen;
 }
 
-form:focus~label {
-  position: absolute;
-  top: 0;
-  display: block;
-  transition: 0.2s;
-  font-size: 1rem;
-  color: #11998e;
-  font-weight: 700;
+.search__button{
+  font-family: 'Libre Franklin', sans-serif;
+  display: inline-block;
+  outline: 0;
+  text-align: center;
+  cursor: pointer;
+  height: 34px;
+  padding: 0 13px;
+  color: #fff;
+  vertical-align: top;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  transition: all .3s ease;
+  background: #07621a;
+  border-color: #095d25;
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 16px;
+  font-size: 11px;
+  margin: 1.5em;
+ 
 }
+.roster__remove{
+  font-family: 'Libre Franklin', sans-serif;
+  display: inline-block;
+  outline: 0;
+  text-align: center;
+  cursor: pointer;
+  height: 34px;
+  padding: 0 13px;
+  color: #fff;
+  vertical-align: top;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  transition: all .3s ease;
+  background: #570B08;
+  border-color: #570B08;
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 16px;
+  font-size: 11px;
+  flex-direction: flex-end;
+ }
+
+ .roster__remove:hover{
+  background: darkred;
+ }
+
+ .reset__button {
+  font-family: 'Libre Franklin', sans-serif;
+  display: inline-block;
+  outline: 0;
+  text-align: center;
+  cursor: pointer;
+  height: 34px;
+  padding: 0 13px;
+  color: #fff;
+  vertical-align: top;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  transition: all .3s ease;
+  background: #570B08;
+  border-color: #570B08;
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 16px;
+  font-size: 11px;
+  flex-direction: flex-end;
+  border-radius: 3px;
+ }
+
+ .reset__button:hover{
+  background: darkred;
+ }
+
+input[type=text] {
+  margin: 0.15em;
+  padding: 1em;
+  border-radius: 3px;
+}
+
+
 
 /* reset input */
 form:required,
@@ -69,14 +136,29 @@ body {
 fieldset {
   display: flex;
   align-items: row;
-  padding: 1em;
+  padding: 0.5em;
 }
 
 label {
-  font-size: 1rem;
   font-weight: bold;
   color: #9b9b9b;
   display: block;
   top: 0;
   transition: 0.2s;
 }
+
+select {
+  margin: 0.15em;
+  padding: 0.15em;
+  border-radius: 3px;color: #9b9b9b;
+}
+
+
+.filter__buttons {
+  margin: 1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+
