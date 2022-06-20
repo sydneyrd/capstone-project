@@ -3,7 +3,7 @@ import { FactionSelect } from "./FactionSelect"
 import { RoleSelect } from "./Role"
 import { ServerSelect } from "./ServerSelect"
 import { WeaponSelect } from "./WeaponSelect"
-import { getAllFactions, getAllRoles, getAllWeapons, getAllServers, saveNewCharacter } from "../APIManager"
+import { getAllFactions, getAllRoles, getAllWeapons, getAllServers, getUserCharacters, saveNewCharacter } from "../APIManager"
 import "./characters.css"
 
 
@@ -11,7 +11,7 @@ import "./characters.css"
 // leave this form blank to create new characters and display other characters below
 
 
-export const CharacterForm = ({ roles, weapons, servers, factions, feedback, setFeedback }) => {
+export const CharacterForm = ({ updateUserCharacters, getUserCharacters, roles, weapons, servers, factions, feedback, setFeedback }) => {
     const [newCharacter, updateNewCharacter] = useState({
         userId: 0,
         character: "",
@@ -39,9 +39,15 @@ export const CharacterForm = ({ roles, weapons, servers, factions, feedback, set
             userId: RosterUserObject.id
         }
         saveNewCharacter(newCharacterToAPI)
-            .then(() => {
-                setFeedback("Character successfully added")
-            })
+            .then(() =>
+                getUserCharacters(RosterUserObject))
+
+            .then((charArr) => 
+                updateUserCharacters(charArr)
+            )
+//it doesn't like this and won't rerender due to uncaught promise here^  fix it 
+
+        setFeedback("Character successfully added")
     }
 
     return (

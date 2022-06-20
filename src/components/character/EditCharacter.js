@@ -4,13 +4,13 @@ import { RoleSelect } from "./Role"
 import { ServerSelect } from "./ServerSelect"
 import { WeaponSelect } from "./WeaponSelect"
 import { useState, useEffect } from "react"
-import { deleteCharacter, putCharacter } from "../APIManager"
+import { deleteCharacter, putCharacter, getUserCharacters } from "../APIManager"
 import "./characters.css"
 
 //create a push and delete call to be used a GET request for only the users characters to be displayed, need to iterate v that form for all of them
 //need the arrays of all the options, weapons etc
 //updateCharacter handleUpdateClick handleDeleteClick
-export const EditCharacter = ({ ownedCharacter, roles, characters, RosterUserObject, weapons, factions, servers, feedback, setFeedback }) => {
+export const EditCharacter = ({ setNeedUpdate, updateUserCharacters, ownedCharacter, roles, characters, RosterUserObject, weapons, factions, servers, feedback, setFeedback }) => {
     let [updatedCharacter, updateCharacter] = useState({
         id: ownedCharacter.id,
         userId: ownedCharacter.userId,
@@ -41,23 +41,33 @@ export const EditCharacter = ({ ownedCharacter, roles, characters, RosterUserObj
         }
 
         putCharacter(letcToAPI) //push request
-        setFeedback("Character Updated")
- }
+        
+       .then(() => 
+       getUserCharacters(RosterUserObject))
+       //i just put this here to get it to re render the page when I make changes 6/19/this could break things so watch out
+.then((charArr) => 
+  updateUserCharacters(charArr))
+    setFeedback("Character Updated")
+    }
 
     const handleDeleteClick = (deleteCharacterId, click) => {
-        click.preventDefault(
+        click.preventDefault()
             deleteCharacter(deleteCharacterId)
-        )
+        
+            .then(() => getUserCharacters(RosterUserObject))
+                //i just put this here to get it to re render the page when I make changes 6/19/this could break things so watch out
+                .then((charArr) =>
+                    updateUserCharacters(charArr))
     }
 
 
     return (
-        <> 
+        <>
             <form className="character_form">
-                 <fieldset className="edit__form">
-                  <h4 className="editcharacter__name">{ownedCharacter?.character}</h4>
+                <fieldset className="edit__form">
+                    <h4 className="editcharacter__name">{ownedCharacter?.character}</h4>
                     <input
-                        
+
                         type="text"
                         className="form-control"
                         placeholder="change name"

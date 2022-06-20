@@ -42,15 +42,7 @@ export const Character = () => {
         },
         [] // When this array is empty, you are observing initial component state
     )
-    const [rerender, setRerender] = useState(false);
 
-useEffect(()=>{
-
-    getUserCharacters(RosterUserObject)
-             //i just put this here to get it to re render the page when I make changes 6/19/this could break things so watch out
-    .then((charArr) => 
-        updateUserCharacters(charArr)) 
-}, [userCharacters]);
 
 
    useEffect(() => {
@@ -60,11 +52,11 @@ useEffect(()=>{
         }
     }, [feedback])
  return <>
-    <CharacterForm factions={factions} setFactions={setFactions} weapons={weapons} setWeapons={setWeapons} servers={servers} roles={roles} feedback={feedback} setFeedback={setFeedback}/>
+    <CharacterForm factions={factions} setFactions={setFactions} RosterUserObject={RosterUserObject} updateUserCharacters={updateUserCharacters}weapons={weapons} setWeapons={setWeapons} servers={servers} roles={roles} feedback={feedback} setFeedback={setFeedback}/>
      <h2 className="characterForm__title">Edit Characters</h2>
   <section className="edit_characters">
  
-   <ManageCharacters  feedback={feedback} userCharacters={userCharacters} updateUserCharacters={updateUserCharacters} setFeedback={setFeedback} 
+   <ManageCharacters feedback={feedback} userCharacters={userCharacters} updateUserCharacters={updateUserCharacters} setFeedback={setFeedback} 
     weapons={weapons} servers={servers} roles={roles} factions={factions}/></section> 
     </>
 }
