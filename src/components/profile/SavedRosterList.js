@@ -20,7 +20,7 @@ export const SavedRosterList = ({roster, setCount}) => {
         
 
   return <><div className="saved--rosters">< Link className="roster__link" onClick={handleClick} to="/roster">Roster #{roster.id}</Link>
-    <button className="delete__button" onClick={click => handleDeleteClick(click, roster)}>Delete Roster</button></div></>
+    <button className="delete__roster" onClick={click => handleDeleteClick(click, roster)}>Delete Roster</button></div></>
     
 }
 

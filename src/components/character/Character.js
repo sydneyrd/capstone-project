@@ -20,6 +20,7 @@ export const Character = () => {
     const [userCharacters, updateUserCharacters] = useState([])
     const [searchWords, setSearch] = useState("")
     const [rendCount, setCount] = useState(0)
+    const [sortedCharacters, setSortedCharacters] = useState([])
    
     useEffect(
         () => {
@@ -63,6 +64,9 @@ export const Character = () => {
              
               .then((charArr) => 
                   updateUserCharacters(charArr)) 
+                  .then(() => {
+                   setSortedCharacters(userCharacters) 
+                  })
       
                 })
                
@@ -77,7 +81,7 @@ export const Character = () => {
             const searchedChar = userCharacters.filter(character => {
                 return character?.character.toLowerCase().startsWith(searchWords.toLowerCase())  //make both lowercase so you can always find a match regardless of case
             })
-            updateUserCharacters(searchedChar)
+            setSortedCharacters(searchedChar)
         },
         [searchWords]//find what you put into the search bar and set that as sorted  it should be watching this??  
         //but it only changes on the first change why or maybe this is another rerender problem, but i'm calling the array down again it should be what the heck
@@ -96,7 +100,8 @@ export const Character = () => {
      <div><SearchCharacters setSearch={setSearch} searchWords={searchWords}/></div> 
   <section className="edit_characters">
  
-   <ManageCharacters  feedback={feedback} userCharacters={userCharacters} updateUserCharacters={updateUserCharacters} setFeedback={setFeedback} 
+   <ManageCharacters  feedback={feedback} userCharacters={sortedCharacters} updateUserCharacters={updateUserCharacters} setFeedback={setFeedback} 
     weapons={weapons} servers={servers} roles={roles} factions={factions}/></section> 
     </>
 }
+//PLEASE BE AWARE I CHANGED THE VALUE OF USERCHARACTERS TO THE SORTED CHARACTER ARRAY IN THE MANAGE CHARACTER COMPONENT^^  SHOULD PROBABLY CLEAN THAT UP

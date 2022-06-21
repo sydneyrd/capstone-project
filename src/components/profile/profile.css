@@ -85,7 +85,7 @@ fieldset {
     padding: 2em;
     justify-items: space-between;
 }
-.delete__button {
+.delete__roster {
     font-family: 'Libre Franklin', sans-serif;
     display: inline-block;
     outline: 0;
@@ -105,5 +105,6 @@ fieldset {
     line-height: 16px;
     font-size: 11px;
     margin: 0.25em;
+    flex-direction: flex-end;
     
 }
