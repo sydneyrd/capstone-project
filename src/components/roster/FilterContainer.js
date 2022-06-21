@@ -4,6 +4,7 @@ import { RoleFilter } from "./FilterChoices/RoleFilter"
 import { WeaponFilter } from "./FilterChoices/WeaponFilter"
 import { ServerFilter } from "./FilterChoices/ServerFilter"
 import { ResetButton } from "./ResetButton"
+import { useEffect } from "react"
 import "./filters.css"
 
 export const FilterContainer = ({ roleSearch, factionSearch, primarySearch, secondarySearch, serverSearch, setPrimarySearch, setSecondarySearch, setServerSearch, setRoleSearch, setFactionSearch,
@@ -40,6 +41,29 @@ const handlePrimarySelect = (e) => {
                 .filter(m => m.secondaryweapon === (secondarySearch == '' ? m.secondaryweapon : secondarySearch))
         setSortedArr(searchArr)
     }
+
+
+    useEffect(
+        () => {
+           
+            const searchArr =
+            characters
+                .filter(x => x.roleId === (roleSearch == '' ? x.roleId : roleSearch))
+                .filter(y => y.serverId === (serverSearch == '' ? y.serverId : serverSearch))
+                .filter(l => l.factionId === (factionSearch == '' ? l.factionId : factionSearch))
+                .filter(k => k.primaryweapon === (primarySearch == '' ? k.primaryweapon : primarySearch))
+                .filter(m => m.secondaryweapon === (secondarySearch == '' ? m.secondaryweapon : secondarySearch))
+        setSortedArr(searchArr)
+
+
+
+
+            setSortedArr(searchArr)
+        },
+        [roleSearch, primarySearch, serverSearch, secondarySearch, ]//find what you put into the search bar and set that as sorted
+    ) 
+
+
 //removed the labels, because it looks better, but left the jsx for them if i change my mind or it messes something else up smh
     return <>
         <form className="character_form">
