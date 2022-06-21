@@ -45,7 +45,6 @@ const handlePrimarySelect = (e) => {
 
     useEffect(
         () => {
-           
             const searchArr =
             characters
                 .filter(x => x.roleId === (roleSearch == '' ? x.roleId : roleSearch))
@@ -99,7 +98,7 @@ const handlePrimarySelect = (e) => {
                     }}><option value="0">Secondary Weapon</option>
                     {weapons.map((weapon) => <WeaponFilter key={`div--weapontwo${weapon.id}`} weapon={weapon} />)}</select><div className="filter__buttons">
                 <SearchFilter setSearchTerms={setSearchTerms} />
-                <button onClick={(e) => { handleSearchButton(e) }} className="search__button">Search</button>
+                {/* <button onClick={(e) => { handleSearchButton(e) }} className="search__button">Search</button> i'm just saving this because i'm afraid to let go.  or it will break */} 
                 <ResetButton className="reset__button" handleSearchButton={handleSearchButton} setFactionSearch={setFactionSearch} setRoleSearch={setRoleSearch} setServerSearch={setServerSearch}
                 setSecondarySearch={setSecondarySearch} 
                 setPrimarySearch={setPrimarySearch} /></div>
