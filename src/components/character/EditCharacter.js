@@ -14,7 +14,7 @@ export const EditCharacter = ({ setNeedUpdate, updateUserCharacters, ownedCharac
     let [updatedCharacter, updateCharacter] = useState({
         id: ownedCharacter.id,
         userId: ownedCharacter.userId,
-        character: "",
+        character: ownedCharacter.character,
         roleId: ownedCharacter.roleId,
         primaryweapon: ownedCharacter.primaryweapon,
         secondaryweapon: ownedCharacter.secondaryweapon,
