@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import {getCurrentRoster} from "../APIManager"
 import { deleteRoster } from "../APIManager"
 
-export const SavedRosterList = ({roster}) => {
+export const SavedRosterList = ({roster, setCount}) => {
 
   const handleClick = () => {
 
@@ -15,6 +15,7 @@ export const SavedRosterList = ({roster}) => {
   alert("successfully deleted")
     click.preventDefault()
     deleteRoster(roster.id)
+    setCount((count) => count + 1)
   }
         
 

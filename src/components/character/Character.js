@@ -19,6 +19,7 @@ export const Character = () => {
     const [feedback, setFeedback] = useState("")
     const [userCharacters, updateUserCharacters] = useState([])
     const [searchWords, setSearch] = useState("")
+    const [rendCount, setCount] = useState(0)
    
     useEffect(
         () => {
@@ -46,12 +47,40 @@ export const Character = () => {
     )
     useEffect(
         () => {
+            getAllRoles(setRoles)
+
+                .then(() => {
+                    getAllFactions(setFactions)
+                })
+                .then(() => {
+                    getAllWeapons(setWeapons)
+                })
+                .then(() => {
+                    getAllServers(setServers)
+                })
+                .then(() => {
+                     getUserCharacters(RosterUserObject)
+             
+              .then((charArr) => 
+                  updateUserCharacters(charArr)) 
+      
+                })
+               
+        },
+        [rendCount] // When this array is empty, you are observing initial component state
+    )
+
+
+    useEffect(
+        () => {
+            getUserCharacters(RosterUserObject)
             const searchedChar = userCharacters.filter(character => {
-                return character.character.toLowerCase().startsWith(searchWords.toLowerCase())  //make both lowercase so you can always find a match regardless of case
+                return character?.character.toLowerCase()?.startsWith(searchWords?.toLowerCase())  //make both lowercase so you can always find a match regardless of case
             })
             updateUserCharacters(searchedChar)
         },
-        [searchWords]//find what you put into the search bar and set that as sorted
+        [searchWords]//find what you put into the search bar and set that as sorted  it should be watching this??  
+        //but it only changes on the first change why or maybe this is another rerender problem, but i'm calling the array down again it should be what the heck
     ) 
 
 
@@ -62,12 +91,12 @@ export const Character = () => {
         }
     }, [feedback])
  return <>
-    <CharacterForm factions={factions} setFactions={setFactions} RosterUserObject={RosterUserObject} updateUserCharacters={updateUserCharacters}weapons={weapons} setWeapons={setWeapons} servers={servers} roles={roles} feedback={feedback} setFeedback={setFeedback}/>
+    <CharacterForm setCount={setCount} factions={factions} setFactions={setFactions} RosterUserObject={RosterUserObject} updateUserCharacters={updateUserCharacters}weapons={weapons} setWeapons={setWeapons} servers={servers} roles={roles} feedback={feedback} setFeedback={setFeedback}/>
      <h2 className="characterForm__title">Edit Characters</h2>
-     <div><SearchCharacters setSearch={setSearch}/></div> 
+     <div><SearchCharacters setSearch={setSearch} searchWords={searchWords}/></div> 
   <section className="edit_characters">
  
-   <ManageCharacters feedback={feedback} userCharacters={userCharacters} updateUserCharacters={updateUserCharacters} setFeedback={setFeedback} 
+   <ManageCharacters  feedback={feedback} userCharacters={userCharacters} updateUserCharacters={updateUserCharacters} setFeedback={setFeedback} 
     weapons={weapons} servers={servers} roles={roles} factions={factions}/></section> 
     </>
 }

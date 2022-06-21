@@ -1,7 +1,7 @@
 
 
 
-export const SearchCharacters = ({setSearch}) => {
+export const SearchCharacters = ({setSearch, searchWords}) => {
     
     
     return <> <div className="search_div"><input type="text" className="input__text"  onChange={

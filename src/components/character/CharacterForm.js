@@ -11,7 +11,7 @@ import "./characters.css"
 // leave this form blank to create new characters and display other characters below
 
 
-export const CharacterForm = ({ updateUserCharacters, getUserCharacters, roles, weapons, servers, factions, feedback, setFeedback }) => {
+export const CharacterForm = ({ updateUserCharacters, setCount, getUserCharacters, roles, weapons, servers, factions, feedback, setFeedback }) => {
     const [newCharacter, updateNewCharacter] = useState({
         userId: 0,
         character: "",
@@ -46,7 +46,7 @@ export const CharacterForm = ({ updateUserCharacters, getUserCharacters, roles, 
                 updateUserCharacters(charArr)}
             ) //another then before set feedback maybe?
 //it doesn't like this and won't rerender due to uncaught promise here^  fix it 
-
+setCount((count) => count + 1)
         setFeedback("Character successfully added")
     }
 
