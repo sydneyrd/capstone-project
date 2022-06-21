@@ -6,15 +6,15 @@ import { getAllCharacters, getCurrentRoster } from "../APIManager"
 export const CalculatorContainer = () => {
     const [characters, setCharacters] = useState([])
     const [rosterCharacters, setRosterCharacters] = useState([])
-    const [rosterCharIds, setRosterCharIds] = useState([])
+    const [rosterChoices, setRosterChoices] = useState([])
     let rosterID = localStorage.getItem("roster_id") //need this to find the right roster
     let rosterIDNUMBER = JSON.parse(rosterID)
-    
+
     useEffect(
         () => {
             getCurrentRoster(rosterIDNUMBER)
                 .then((res) => {
-                    setRosterCharIds(res)
+                    setRosterChoices(res)
                 })
                 .then(() => {
                     getAllCharacters(setCharacters)
@@ -23,12 +23,8 @@ export const CalculatorContainer = () => {
         },
         []
     )
-    
-    //compare the two arrays and return only the matching values
-   
-const foundCharacters = characters.filter(element => element.id === (rosterCharIds.map(e => e.characterId === element.id)))
 
 
-
-return <><div>{foundCharacters.map((FC) =>  <Calculator key={`character--div${FC.id}`} FC={FC} />)}</div></> 
+return <><div>{rosterChoices.map((rosterChoice) => <Calculator key={rosterChoice.id} rosterChoice={rosterChoice} characters={characters} />)}</div>
+    </>
 }

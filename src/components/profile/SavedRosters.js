@@ -39,11 +39,6 @@ const [rendCount, setCount] = useState(0)
       [rendCount] 
     )
     
-    
-
-
-
-
   return <><div className="savedroster--container">{userRosters.map((roster) => <SavedRosterList setCount={setCount} key={roster.id} roster={roster} />)}</div></>
 }
 

@@ -3,7 +3,7 @@ import { FactionSelect } from "./FactionSelect"
 import { RoleSelect } from "./Role"
 import { ServerSelect } from "./ServerSelect"
 import { WeaponSelect } from "./WeaponSelect"
-import {  saveNewCharacter } from "../APIManager"
+import { saveNewCharacter } from "../APIManager"
 import "./characters.css"
 
 
@@ -39,14 +39,17 @@ export const CharacterForm = ({ updateUserCharacters, setCount, getUserCharacter
             userId: RosterUserObject.id
         }
         saveNewCharacter(newCharacterToAPI)
-            .then(() => {
-                getUserCharacters(RosterUserObject)})
+            // .then(() =>
+            //     getUserCharacters(RosterUserObject)
+            // )
+            // .then((charArr) => 
+            //     updateUserCharacters(charArr)
+            
+            // ) //another then before set feedback maybe?
+        //it doesn't like this and won't rerender due to uncaught promise here^  fix it 
+        //I don't think i need this anymore because the setCount causes it to rerrender, and as long as it posts successfully that should be just fine  
 
-            .then((charArr) => {
-                updateUserCharacters(charArr)}
-            ) //another then before set feedback maybe?
-//it doesn't like this and won't rerender due to uncaught promise here^  fix it 
-setCount((count) => count + 1)
+        setCount((count) => count + 1)
         setFeedback("Character successfully added")
     }
 
