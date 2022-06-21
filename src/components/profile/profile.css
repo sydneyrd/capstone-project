@@ -43,7 +43,8 @@ fieldset {
     background-blend-mode: overlay;
     background-repeat: no-repeat;
     margin:4em;
-    align-self: left;
+   align-items: center;
+    justify-items: center;
 }
 
 .button--close {
@@ -74,13 +75,15 @@ fieldset {
 .saved--rosters {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    margin: 0.25em;
 }
 
 .savedroster--container{
     display: flex;
     flex-direction: column; 
     padding: 2em;
-    justify-items: space-evenly;
+    justify-items: space-between;
 }
 .delete__button {
     font-family: 'Libre Franklin', sans-serif;
@@ -101,5 +104,6 @@ fieldset {
     text-transform: uppercase;
     line-height: 16px;
     font-size: 11px;
+    margin: 0.25em;
     
 }

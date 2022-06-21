@@ -73,9 +73,9 @@ export const Character = () => {
 
     useEffect(
         () => {
-            getUserCharacters(RosterUserObject)
+            
             const searchedChar = userCharacters.filter(character => {
-                return character?.character.toLowerCase()?.startsWith(searchWords?.toLowerCase())  //make both lowercase so you can always find a match regardless of case
+                return character?.character.toLowerCase().startsWith(searchWords.toLowerCase())  //make both lowercase so you can always find a match regardless of case
             })
             updateUserCharacters(searchedChar)
         },

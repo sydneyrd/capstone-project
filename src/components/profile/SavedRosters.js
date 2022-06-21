@@ -27,15 +27,7 @@ useEffect(
 )
 
 //just put this useEffect here to try and rerender when deleting, it might break something watch it sundaymorning
-useEffect(
-  () => {
-    getUserRosters(localUser)
-      .then((URost) => {
-        setUserRosters(URost)
-      })
-  },
-  [] 
-)
+
 const [rendCount, setCount] = useState(0)
    useEffect(
       () => {

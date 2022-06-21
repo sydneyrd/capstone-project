@@ -4,7 +4,7 @@ import { newRoster, newRosterChoice } from "../APIManager"
 //id for character id, newRosterPicks for the array of picks
 
 
-export const AddButton = ({ character, id, setNewRosterPick, newRosterPicks }) => {
+export const AddButton = ({ editRosterCharacters, character, id, setNewRosterPick, newRosterPicks }) => {
     // const [rosterCount, setRostercount ] = useState(0)
     const localUser = localStorage.getItem("roster_user")
     const rosterUser = JSON.parse(localUser)
@@ -12,9 +12,6 @@ export const AddButton = ({ character, id, setNewRosterPick, newRosterPicks }) =
         setNewRosterPick(state => [...state, c])//only adding one object to an array usestate
     }
 
-    // const doubleAlert = () => {
-    //     if newRoster.includes(characterId) to prevent doubles?
-    // }
     const handleStartClick = () => {
         let newR = {
             userId: rosterUser.id
@@ -24,20 +21,19 @@ export const AddButton = ({ character, id, setNewRosterPick, newRosterPicks }) =
             localStorage.setItem('roster_id', parseFloat(roster.id))
             addUserToEnd(character)
         })
-
         alert("Saving New Roster...")
     }
     const handleAddClick = () => {  //posts if an existing roster object is found in localstorage so we only get 1 roster id on all choices made in this session
-        let rosterID = localStorage.getItem("roster_id")
-        let rosterIDNUMBER = JSON.parse(rosterID)
-        let nrc = {
-            rosterId: rosterIDNUMBER,
-            characterId: id
-        }
-        newRosterPicks.find((playerId) => playerId.id === id) ?  //just added this ternary statement, it worked okay without it, keep an eye on it.  just cheking for doubles
-        alert("already added") :
-        addUserToEnd(character)
-        
+        // let rosterID = localStorage.getItem("roster_id")
+        // let rosterIDNUMBER = JSON.parse(rosterID)
+        // let nrc = {
+        //     rosterId: rosterIDNUMBER,
+        //     characterId: id  //need another OR if .length is too much to add another player, or set a window alert or something
+        newRosterPicks.find((playerId) => playerId.id === id) || editRosterCharacters.find((playerId) => playerId.characterId === id) ? 
+        // } //^i don't think i need this in the add click anymore check yeah i don't think so delete this when you feel ready babey 
+            //just added this ternary statement, it worked okay without it, keep an eye on it.  just cheking for doubles//works on edit now
+            alert("already added") :
+            addUserToEnd(character)
     }
     return <>
         {localStorage.getItem('roster_id') ? <button onClick={() => handleAddClick()} >Add to Roster</button> :
