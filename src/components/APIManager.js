@@ -92,6 +92,13 @@ export const getRosterCharacter = (rosterNum) => {
     //no set function included in this don't forget .then
 }
 
+
+export const getCalculatedRosterChar = (calculatedRosterId) => {
+    return fetch(`http://localhost:8088/calculatedrosterchoices?&calcRosterId=${calculatedRosterId}`)
+        .then(res => res.json())
+    //no set function included in this don't forget .then
+}
+
 export const saveNewCharacter = (newCharacterToAPI) => {
     return fetch(`http://localhost:8088/characters`, {
         method: "POST",

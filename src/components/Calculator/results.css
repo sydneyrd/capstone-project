@@ -1,0 +1,6 @@
+.results__headers{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
