@@ -24,10 +24,7 @@ export const AddButton = ({ editRosterCharacters, character, id, setNewRosterPic
         alert("Saving New Roster...")
     }
     const handleAddClick = () => {  //posts if an existing roster object is found in localstorage so we only get 1 roster id on all choices made in this session
-        // let rosterID = localStorage.getItem("roster_id")
-        // let rosterIDNUMBER = JSON.parse(rosterID)
-        // let nrc = {
-        //     rosterId: rosterIDNUMBER,
+       
         //     characterId: id  //need another OR if .length is too much to add another player, or set a window alert or something
         newRosterPicks.find((playerId) => playerId.id === id) || editRosterCharacters.find((playerId) => playerId.characterId === id) ? 
         // } //^i don't think i need this in the add click anymore check yeah i don't think so delete this when you feel ready babey 
