@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom"
  import { useEffect, useState } from "react"
 import { getCalculatedRoster, getCalculatedRosterChar } from "../APIManager"
 import {ResultsMap} from "./ResultsMap"
+import "./results.css"
 
 export const ViewStats = () => {
 

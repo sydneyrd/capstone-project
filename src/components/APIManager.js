@@ -180,6 +180,20 @@ export const deleteRoster = (rosterId) => {
     )
 }
 
+export const deleteCalculatedRoster = (calculatedRosterId) => {
+    return fetch(`http://localhost:8088/calculatedrosters/${calculatedRosterId}`, {
+        method: "DELETE",
+
+    }
+    )
+}
+export const deleteAllCalculatedChoices = (calculatedRosterId) => {
+    return fetch(`http://localhost:8088/calculatedRosterchoices&calcRosterId=${calculatedRosterId}`,
+    {
+        method: "DELETE",
+    })
+}
+
 export const putCharacter = (uCharacter) => {
     return fetch(`http://localhost:8088/characters/${uCharacter?.id}`, {
         method: "PUT",

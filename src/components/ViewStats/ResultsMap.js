@@ -1,4 +1,4 @@
-export const ResultsMap = ({player, totalHealings, totalDam, totalDyings, totalKillings}) => {
+export const ResultsMap = ({player, totalHealings, totalDam, totalKillings}) => {
 
     const KDR = player?.kills / player?.deaths
     
