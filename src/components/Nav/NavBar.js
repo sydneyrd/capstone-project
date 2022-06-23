@@ -12,7 +12,7 @@ export const NavBar = () => {
             </li>
             <li className="navbar__item active"><Link className="navbar__link" to="/characters">Characters</Link></li>
             <li className="navbar__item active"><Link className="navbar__link"  to="/roster">Build a Roster</Link></li>
-            <li className="navbar__item active"><Link className="navbar__link" to="/resources">Resources</Link></li>
+            <li className="navbar__item active"><Link className="navbar__link" to="/resources">War Stats</Link></li>
             {
                 localStorage.getItem("roster_user")
                     ? <li className="navbar__item navbar__logout">

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { updateProfile } from "../APIManager"
 import { SavedRosters } from "./SavedRosters"
+import { WarStats } from "./WarStats"
 
 
 
@@ -61,8 +62,10 @@ export const UpdateUser = () => {
                     <button className="email__button" type="submit" onClick={handleSaveButtonClick}> Update </button>
                 </fieldset>
             </form>
-            
-            <SavedRosters localUser={localUser} />
+            <div>  <h4>Saved Rosters</h4>
+                <SavedRosters localUser={localUser} /></div>
+            <div> <h4>War Results</h4>
+                <WarStats localUser={localUser} /></div>
         </main> </>
 
 }

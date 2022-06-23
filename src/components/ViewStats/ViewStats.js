@@ -1,10 +1,22 @@
-import { useEffect, useState } from "react"
-import { getCalculatedRosterChar } from "../APIManager"
-import { ResultsMap } from "./ResultsMap"
-import "./results.css"
+import { useParams } from "react-router-dom"
+ import { useEffect, useState } from "react"
+import { getCalculatedRoster, getCalculatedRosterChar } from "../APIManager"
+import {ResultsMap} from "./ResultsMap"
 
-export const Results = ({ calculatedRosterId, currentCalcRostName, showResults }) => {
-    const [players, setPlayers] = useState([])
+export const ViewStats = () => {
+
+    const { calculatedRosterId } = useParams()
+ const [players, setPlayers] = useState([])
+const [currentCalcRoster, setCurrentCalcRoster] = useState({})
+
+
+
+
+//need rostername  get roster obj
+
+   
+
+   
 
 
     useEffect(
@@ -13,8 +25,14 @@ export const Results = ({ calculatedRosterId, currentCalcRostName, showResults }
                 .then((res) => {
                     setPlayers(res)
                 })
+                .then(() => 
+                getCalculatedRoster(calculatedRosterId)
+                .then((r) => 
+               {
+                setCurrentCalcRoster(r)
+               } ))
         },
-        [showResults, calculatedRosterId] //i put rosterID in there because it keeps warning me about it one npm start so I thought i'd try it, prolly break things
+        [] //i put rosterID in there because it keeps warning me about it one npm start so I thought i'd try it, prolly break things
     )
 
     let sumDamage = 0
@@ -44,7 +62,7 @@ export const Results = ({ calculatedRosterId, currentCalcRostName, showResults }
 
     return <>
         <div className="results">
-            <h2> {currentCalcRostName}</h2>
+            <h2> {currentCalcRoster.name}</h2>
             <h2>Total Damage: {totalDam}</h2>
             <h2>Total Healing: {totalHealings}</h2>
             <h2>Kill/Death Ratio: {armyKDR}</h2>
@@ -60,6 +78,7 @@ export const Results = ({ calculatedRosterId, currentCalcRostName, showResults }
             key={player.id} player={player} />)}</div>
     </>
 }
+
 
 
 

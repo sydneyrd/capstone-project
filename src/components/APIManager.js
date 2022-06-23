@@ -25,8 +25,10 @@ export const getCurrentRoster = (rosterId) => {
 
 }
 
-
-
+export const getUserWarStats = (user) => {
+    return fetch(`http://localhost:8088/calculatedRosters?userId=${user.id}`)
+        .then(res => res.json())
+}
 
 export const postNewUser = (user) => {
     return fetch("http://localhost:8088/users", {
@@ -91,7 +93,10 @@ export const getRosterCharacter = (rosterNum) => {
         .then(res => res.json())
     //no set function included in this don't forget .then
 }
-
+export const getCalculatedRoster = (calculatedrosterId) => {
+    return fetch(`http://localhost:8088/calculatedRosters?id=${calculatedrosterId}`)
+        .then(res => res.json())
+}
 
 export const getCalculatedRosterChar = (calculatedRosterId) => {
     return fetch(`http://localhost:8088/calculatedrosterchoices?&calcRosterId=${calculatedRosterId}`)

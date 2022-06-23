@@ -50,15 +50,10 @@ export const CalculatorContainer = () => {
         setSelectedRoster(0)
         setShowResults(false)
         setCalculatedRoster([])
-
-        // setViewResults(false) not sure if it's wise to turn off the display for the results with the same button but it works
+// setViewResults(false) not sure if it's wise to turn off the display for the results with the same button but it works
     }
 
-
-
-
-
-    return <> Choose a Roster  <>
+    return <> Choose a Roster  <> 
         {userRosters.map((roster) => <RosterList key={roster.id} setSelectedRoster={setSelectedRoster} roster={roster} />)}
         <button onClick={(click) => handleClear(click)}>Clear Roster Choice</button></>
 

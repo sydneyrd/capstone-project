@@ -3,4 +3,17 @@
     flex-direction: column;
     justify-content: left;
 }
+.player__results{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0.25em;
+    align-content: space-between;
 
+}
+.labels{
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+    margin: 0.25em;
+}
