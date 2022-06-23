@@ -1,8 +1,9 @@
-import { click } from "@testing-library/user-event/dist/click"
+import { useNavigate } from "react-router-dom"
 import { newCalculatedRosterChoices } from "../APIManager"
 
-export const CalculateResults = ({ calculatedRoster, setShowResults, currentCalcRostName, 
-    newCalculatedRoster, selectedRoster, localUser, setCalculatedRosterId, calculatedRosterId }) => {
+export const CalculateResults = ({ calculatedRoster, currentCalcRostName,
+    newCalculatedRoster, selectedRoster, localUser, setCalculatedRosterId }) => {
+    let navigate = useNavigate()
 
     let thisName = currentCalcRostName
     const handleNewRosterId = (click) => {
@@ -19,9 +20,16 @@ export const CalculateResults = ({ calculatedRoster, setShowResults, currentCalc
             const readyToPostCalculated = calculatedRoster.map((element) => ({ ...element, calcRosterId: newIdObj.id }))  //adding the calculatedRosterId as a new property to each element
             Promise.all(readyToPostCalculated.map((r) => { newCalculatedRosterChoices(r) })).then((result) => {
                 console.log(result)
-                setShowResults(true) //to show the grid of results and also turn off the form
+                //to show the grid of results and also turn off the form
             })
-        }) }
+            .then(() => {
+                navigate(`/resources/${newIdObj.id}/view`)
+            })
+
+           
+            
+        })
+    }
     return <><div>HELLO HELLO HELLO</div>
         <button onClick={(click) => handleNewRosterId(click)}>Click to test post</button></>
 }

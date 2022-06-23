@@ -68,7 +68,7 @@ export const CalculatorContainer = () => {
                 <>Calculate Results</></>
             : ""}
 
-            {showResults ? <Results showResults={showResults} currentCalcRostName={currentCalcRostName} calculatedRosterId={calculatedRosterId}/>
-            : ''}
+            {/* {showResults ? <Results showResults={showResults} currentCalcRostName={currentCalcRostName} calculatedRosterId={calculatedRosterId}/>
+            : ''} */}
     </>
 }

@@ -9,16 +9,6 @@ export const ViewStats = () => {
  const [players, setPlayers] = useState([])
 const [currentCalcRoster, setCurrentCalcRoster] = useState({})
 
-
-
-
-//need rostername  get roster obj
-
-   
-
-   
-
-
     useEffect(
         () => {
             getCalculatedRosterChar(calculatedRosterId)
