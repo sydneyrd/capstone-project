@@ -99,7 +99,7 @@ export const getCalculatedRoster = (calculatedrosterId) => {
 }
 
 export const getCalculatedRosterChar = (calculatedRosterId) => {
-    return fetch(`http://localhost:8088/calculatedrosterchoices?&calcRosterId=${calculatedRosterId}`)
+    return fetch(`http://localhost:8088/calculatedrosterchoices?&calculatedrosterId=${calculatedRosterId}`)
         .then(res => res.json())
     //no set function included in this don't forget .then
 }
@@ -186,12 +186,6 @@ export const deleteCalculatedRoster = (calculatedRosterId) => {
 
     }
     )
-}
-export const deleteAllCalculatedChoices = (calculatedRosterId) => {
-    return fetch(`http://localhost:8088/calculatedRosterchoices&calcRosterId=${calculatedRosterId}`,
-    {
-        method: "DELETE",
-    })
 }
 
 export const putCharacter = (uCharacter) => {

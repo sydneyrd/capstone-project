@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { deleteCalculatedRoster, deleteAllCalculatedChoices} from "../APIManager"
+import { deleteCalculatedRoster} from "../APIManager"
 export const WarResultMap = ({stat, setCount}) => {
 
    
@@ -7,10 +7,6 @@ export const WarResultMap = ({stat, setCount}) => {
     alert("successfully deleted")
       click.preventDefault()
       deleteCalculatedRoster(stat.id)
-      .then(() => {
-        deleteAllCalculatedChoices(stat.id)
-      })
-      
       setCount((count) => count + 1)
     }
           

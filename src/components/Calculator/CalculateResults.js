@@ -17,13 +17,15 @@ export const CalculateResults = ({ calculatedRoster, currentCalcRostName,
         newCalculatedRoster(newcalcR).then((newRosterObj) => {
             const newIdObj = { ...newRosterObj }
             setCalculatedRosterId(newIdObj.id)  //maybe can get rid of this now, watch out and see
-            const readyToPostCalculated = calculatedRoster.map((element) => ({ ...element, calcRosterId: newIdObj.id }))  //adding the calculatedRosterId as a new property to each element
+            const readyToPostCalculated = calculatedRoster.map((element) => ({ ...element, calculatedrosterId: newIdObj.id }))  //adding the calculatedRosterId as a new property to each element
             Promise.all(readyToPostCalculated.map((r) => { newCalculatedRosterChoices(r) })).then((result) => {
                 console.log(result)
                 //to show the grid of results and also turn off the form
             })
             .then(() => {
-                navigate(`/resources/${newIdObj.id}/view`)
+                setTimeout(() => {
+                    navigate(`/resources/${newIdObj.id}/view`);
+                  }, "1000") 
             })
 
            

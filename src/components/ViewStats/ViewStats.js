@@ -5,9 +5,8 @@ import {ResultsMap} from "./ResultsMap"
 import "./results.css"
 
 export const ViewStats = () => {
-
-    const { calculatedRosterId } = useParams()
- const [players, setPlayers] = useState([])
+const { calculatedRosterId } = useParams()
+const [players, setPlayers] = useState([])
 const [currentCalcRoster, setCurrentCalcRoster] = useState({})
 
     useEffect(

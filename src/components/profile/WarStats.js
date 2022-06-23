@@ -22,7 +22,7 @@ export const WarStats = ({ localUser }) => {
                     setUserWarStats(URost)
                 })
         },
-        [rendCount, localUser]
+        [rendCount]
     )
 
     return <>
