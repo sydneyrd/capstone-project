@@ -2,10 +2,10 @@
 import { useState, useEffect } from "react"
 
 export const CalculatorForm = ({ characters, selectedRoster, rosterChoice, calculatedRoster, setCalculatedRoster }) => {
-  let rightName = characters.find(({ id }) => id === rosterChoice?.characterId)
+  let rightCharacter = characters.find(({ id }) => id === rosterChoice?.characterId)
 
   const [playerStats, setPlayerStats] = useState({
-    name: rightName?.character,
+    characterId: rightCharacter?.id,
     damage: 0,
     healing: 0,
     kills: 0,
@@ -20,7 +20,7 @@ export const CalculatorForm = ({ characters, selectedRoster, rosterChoice, calcu
   useEffect(
     () => {
          const copy = { ...playerStats }
-    const noRepeats = calculatedRoster.filter((playerId) => playerId.name !== copy.name)  //removes the same player from the list before adding it again.
+    const noRepeats = calculatedRoster.filter((playerId) => playerId.characterId !== copy.characterId)  //removes the same player from the list before adding it again.
     setCalculatedRoster(noRepeats)
     addPlayerToEnd(copy)
     
@@ -32,7 +32,7 @@ export const CalculatorForm = ({ characters, selectedRoster, rosterChoice, calcu
     <div>
       <form className="War Statistics">
         <></>
-        <fieldset><div>{rightName?.character}</div>
+        <fieldset><div>{rightCharacter?.character}</div>
           <input onChange={(event) => {
             const copy = { ...playerStats }
             copy.kills = parseInt(event.target.value)

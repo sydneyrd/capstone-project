@@ -26,10 +26,7 @@ export const CalculateResults = ({ calculatedRoster, currentCalcRostName,
                 setTimeout(() => {
                     navigate(`/resources/${newIdObj.id}/view`);
                   }, "1000") 
-            })
-
-           
-            
+            })       
         })
     }
     return <><div>HELLO HELLO HELLO</div>

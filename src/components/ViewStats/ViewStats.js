@@ -1,12 +1,13 @@
 import { useParams } from "react-router-dom"
  import { useEffect, useState } from "react"
-import { getCalculatedRoster, getCalculatedRosterChar } from "../APIManager"
+import { getAllCharacters, getCalculatedRoster, getCalculatedRosterChar } from "../APIManager"
 import {ResultsMap} from "./ResultsMap"
 import "./results.css"
 
 export const ViewStats = () => {
 const { calculatedRosterId } = useParams()
 const [players, setPlayers] = useState([])
+const [characters, setCharacters] = useState([])
 const [currentCalcRoster, setCurrentCalcRoster] = useState({})
 
     useEffect(
@@ -21,6 +22,9 @@ const [currentCalcRoster, setCurrentCalcRoster] = useState({})
                {
                 setCurrentCalcRoster(r)
                } ))
+               .then(() => {
+                getAllCharacters(setCharacters)
+               })
         },
         [] //i put rosterID in there because it keeps warning me about it one npm start so I thought i'd try it, prolly break things
     )
@@ -64,7 +68,7 @@ const [currentCalcRoster, setCurrentCalcRoster] = useState({})
         <div>Assist</div>
         <div>KDR</div></div>
         <div className="player__resultsmap"> {players.map((player) => <ResultsMap totalHealings={totalHealings}
-            totalDyings={totalDyings} totalDam={totalDam} totalKillings={totalKillings}
+            totalDyings={totalDyings} totalDam={totalDam} totalKillings={totalKillings} characters={characters}
             key={player.id} player={player} />)}</div>
     </>
 }
