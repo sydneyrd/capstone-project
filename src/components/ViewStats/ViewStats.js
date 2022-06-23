@@ -59,7 +59,7 @@ const [currentCalcRoster, setCurrentCalcRoster] = useState({})
             <h2> {currentCalcRoster.name}</h2>
             <h2>Total Damage: {totalDam}</h2>
             <h2>Total Healing: {totalHealings}</h2>
-            <h2>Kill/Death Ratio: {armyKDR}</h2>
+            <h2>Kill/Death Ratio: {armyKDR.toFixed(2)}</h2>
             <h2>Total Deaths: {totalDyings}</h2>
             <h2>Total Kills: {totalKillings}</h2></div>
       <div className="labels">  <div>Damage</div>
