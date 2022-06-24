@@ -33,7 +33,7 @@ export const AddButton = ({ editRosterCharacters, character, id, setNewRosterPic
             addUserToEnd(character)
     }
     return <>
-        {localStorage.getItem('roster_id') ? <button onClick={() => handleAddClick()} >Add to Roster</button> :
-            <button onClick={() => handleStartClick()} >Add to Roster</button>}
+        {localStorage.getItem('roster_id') ? <button className="add__button"onClick={() => handleAddClick()} >Add</button> :
+            <button className="add__button" onClick={() => handleStartClick()} >Add</button>}
     </>
 }

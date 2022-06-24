@@ -1,4 +1,24 @@
+/* Works on Firefox */
+* {
+  scrollbar-width:thin;
+      border-color: #1D1D1E;
+      scrollbar-color:#1D1D1E;
+}
 
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #1D1D1E;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: (108, 108, 115);
+  border-radius: 20px;
+  border: 3px solid #1D1D1E;
+}
 
  .body {
      display: flex;
@@ -8,19 +28,18 @@
  .add__button {
     font-family: 'Libre Franklin', sans-serif;
     display: flex;
-    outline: 0;
+    justify-content: center;
     text-align: center;
     cursor: pointer;
-    height: 34px;
-    padding: 0 13px;
+    width: 4.5em;
+
     color: #fff;
-    vertical-align: top;
     border-radius: 3px;
     border: 1px solid transparent;
     transition: all .3s ease;
-    background: #570B08;
-    border-color: #570B08;
-    font-weight: 600;
+    background:transparent;
+    border-color: darkgreen;
+    font-weight: 300;
     text-transform: uppercase;
     line-height: 16px;
     font-size: 11px;
@@ -88,7 +107,7 @@
 
  .save__div {
      flex-direction: row;
-     justify-content: flex-end;
+     justify-content: flex-start;
      align-self: right;
  }
 
@@ -115,6 +134,7 @@
 
  /* this is the pop up details element */
  .details__element {
+    display:flex;
      width: 25%;
      height: fit-content;
      position: relative;
@@ -125,6 +145,7 @@
     width: 250px; 
     align-items: center;
     justify-items: center;
+    justify-content:center;
  }
 
  .character__card {
@@ -134,13 +155,12 @@
     justify-content:space-between;
  }
 
- .character__list {
-    height: 35em;
+ section.character__list {
+    height: 40em;
     width: 15em;
     scrollbar-width:0;
     overflow: hidden;
-
-    overflow-y:scroll;
+overflow-y:scroll;
         padding: 0.5em;
         
         
