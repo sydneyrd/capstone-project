@@ -29,7 +29,7 @@ export const CalculatorForm = ({ characters, selectedRoster, rosterChoice, calcu
 ) 
 
   return <>
-    <div>
+    <div className="player__form">
       <form className="War Statistics">
         <></>
         <fieldset><div>{rightCharacter?.character}</div>
@@ -37,31 +37,31 @@ export const CalculatorForm = ({ characters, selectedRoster, rosterChoice, calcu
             const copy = { ...playerStats }
             copy.kills = parseInt(event.target.value)
             setPlayerStats(copy)
-          }} className="form-control"
+          }} className="form-controlstat"
             placeholder="kills"
             type="number">
           </input>
-          <input className="form-control"
+          <input className="form-controlstat"
             placeholder="deaths"
             type="number" onChange={(event) => {
               const copy = { ...playerStats }
               copy.deaths = parseInt(event.target.value)
               setPlayerStats(copy)
-            }}></input>  <input className="form-control"
+            }}></input>  <input className="form-controlstat"
               placeholder="Assists"
               type="number" onChange={(event) => {
                 const copy = { ...playerStats }
                 copy.assists = parseInt(event.target.value)
                 setPlayerStats(copy)
               }}></input>
-          <input className="form-control"
+          <input className="form-controlstat"
             placeholder="Healing"
             type="number" onChange={(event) => {
               const copy = { ...playerStats }
               copy.healing = parseInt(event.target.value)
               setPlayerStats(copy)
             }}></input>
-          <input className="form-control"
+          <input className="form-controlstat"
             placeholder="Damage"
             type="number" onChange={(event) => {
               const copy = { ...playerStats }

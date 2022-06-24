@@ -32,8 +32,7 @@
     text-align: center;
     cursor: pointer;
     width: 4.5em;
-
-    color: #fff;
+ color: #fff;
     border-radius: 3px;
     border: 1px solid transparent;
     transition: all .3s ease;
@@ -45,7 +44,7 @@
     font-size: 11px;
     flex-direction: flex-end;
    }
-  
+ 
 
  .character__details {
      opacity: 0.0;
@@ -82,7 +81,7 @@
     text-align: center;
     cursor: pointer;
     height: 34px;
-    padding: 0 13px;
+    padding: 0 14px;
     color: #fff;
     border-radius: 3px;
     border: 1px solid transparent;
@@ -93,6 +92,9 @@
     text-transform: uppercase;
     line-height: 16px;
     font-size: 11px;
+    margin-top: 2em;
+   
+
  }
  .save__button:hover {
     background-color: lightgreen;
@@ -113,14 +115,10 @@
      background-color: transparent;
  }
 
-
-
  .details {
      position: center;
 
  }
-
- 
 
  .list__container {
      width: 40%;
@@ -143,6 +141,7 @@
     align-items: center;
     justify-items: center;
     justify-content:center;
+    margin: 1em;
  }
 
  .character__card {
@@ -153,13 +152,17 @@
  }
 
  section.character__list {
-    height: 38.5em;
+    height: 39em;
     width: 15em;
     scrollbar-width:0;
     overflow: hidden;
 overflow-y:scroll;
         padding: 0.5em;
-        
+        border: 1px rgb(107, 21, 4);
+        -webkit-box-shadow: 2px 4px 23px 4px #000000; 
+    box-shadow: 2px 4px 23px 4px #000000;
+    border: 5px hidden transparent;
+    border-radius: 6px 6px 6px 6px;
         
         
 /* i changed the overflow-y to hidden in case that makes this not scroll anymore later */

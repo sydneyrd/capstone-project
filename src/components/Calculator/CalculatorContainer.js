@@ -4,7 +4,7 @@ import { getAllCharacters, getCurrentRoster, getUserRosters } from "../APIManage
 import { RosterList } from "./RosterList"
 import { CalculateResults } from "./CalculateResults"
 import { newCalculatedRoster } from "../APIManager"
-
+import "./calculator.css"
 
 export const CalculatorContainer = () => {
     const [characters, setCharacters] = useState([])
@@ -51,14 +51,16 @@ export const CalculatorContainer = () => {
         <button onClick={(click) => handleClear(click)}>Clear Roster Choice</button></>
 
         {selectedRoster ?
-            <>   <input type="text" onChange={(event) => { setCurrentCalcRostName(event.target.value) }} placeholder="name this roster"></input>
-                <div>{rosterChoices.map((rosterChoice) => <CalculatorForm key={rosterChoice.id} calculatedRoster={calculatedRoster} selectedRoster={selectedRoster} setCalculatedRoster={setCalculatedRoster}
+            <>   <input className="roster__name" type="text" onChange={(event) => { setCurrentCalcRostName(event.target.value) }} placeholder="name this roster"></input>
+                <div className="parent__div">{rosterChoices.map((rosterChoice) => <CalculatorForm key={rosterChoice.id} calculatedRoster={calculatedRoster} selectedRoster={selectedRoster} 
+                setCalculatedRoster={setCalculatedRoster}
                     rosterChoice={rosterChoice} characters={characters} />)}</div>
 
                 <CalculateResults currentCalcRostName={currentCalcRostName}
                     calculatedRosterId={calculatedRosterId} newCalculatedRoster={newCalculatedRoster} setCalculatedRosterId={setCalculatedRosterId}
                     localUser={localUser} selectedRoster={selectedRoster} calculatedRoster={calculatedRoster} />
-                <>Calculate Results</></>
+                <></></>
+                
             : ""}
     </>
 }

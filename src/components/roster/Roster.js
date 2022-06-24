@@ -32,7 +32,7 @@ export const Roster = () => {
         setId(parseInt(e.target.id))
     } //sets identifier to get correct detail info
     const handleMouseEnter = e => {
-        e.target.style.background = "grey"
+        e.target.style.background = "grey" //maybe remove 
         setShowText(true)
     } //show pop up element when mouse
     const handleMouseLeave = e => {

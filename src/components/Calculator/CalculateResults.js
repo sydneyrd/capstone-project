@@ -29,6 +29,6 @@ export const CalculateResults = ({ calculatedRoster, currentCalcRostName,
             })       
         })
     }
-    return <><div>HELLO HELLO HELLO</div>
-        <button onClick={(click) => handleNewRosterId(click)}>Click to test post</button></>
+    return <><div className="button__click">
+        <button className="calculate__click" onClick={(click) => handleNewRosterId(click)}>Calculate</button></div></>
 }
