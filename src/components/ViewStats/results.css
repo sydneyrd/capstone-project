@@ -8,12 +8,33 @@
     flex-direction: row;
     justify-content: space-between;
     margin: 0.25em;
-    align-content: space-between;
-
+    align-content: space-around;
+border-color:  1px, solid, grey;
 }
 .labels{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     align-content: space-between;
     margin: 0.25em;
+   
+}
+
+div.player__resultsmap{
+    display: grid;
+    align-content: space-between;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width:30em;
+    height: fit-content;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    grid-column-gap: 1px;
+    grid-row-gap: 3px;
+    border: solid 1px rgb(115, 109, 107);
+    -webkit-box-shadow: 2px 4px 23px 4px #000000; 
+box-shadow: 2px 4px 23px 4px #000000;
+border-radius: 6px 6px 6px 6px;
+background-color: #272624;
+position: sticky;
 }

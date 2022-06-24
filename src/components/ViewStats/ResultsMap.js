@@ -9,10 +9,10 @@ export const ResultsMap = ({player, totalHealings, totalDam, totalKillings, char
      } 
     
     
-        return <div className="player__results"><div className="player__name">{rightCharacter?.character}</div><div className="damage"> Damage: {percentage(player?.damage, totalDam)}% </div>
-        <div className="healing">Healing: {percentage(player?.healing, totalHealings)}% </div>
-       <div className="kills"> Kills: {percentage(player?.kills, totalKillings)}% </div> <div className="kills"> Assists: {percentage(player?.assists, totalKillings)}</div>
-      <div className="kdr">  KDR: {KDR.toFixed(2)} </div>
+        return <div className="player__results"><div className="player__name">{rightCharacter?.character}</div><div className="damage">{percentage(player?.damage, totalDam)}%</div>
+        <div className="healing">{percentage(player?.healing, totalHealings)}%</div>
+       <div className="kills">{percentage(player?.kills, totalKillings)}%</div> <div className="kills">{percentage(player?.assists, totalKillings)}</div>
+      <div className="kdr">{KDR.toFixed(2)}</div>
     </div>
     }  
         
