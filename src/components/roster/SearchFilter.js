@@ -5,6 +5,6 @@ export const SearchFilter = ({ setSearchTerms }) => {
             setSearchTerms(changeEvent.target.value)
         } //sets the state of our searchTerms to whatever is input here
     }
-placeholder="Search for Player" /></div></>
+placeholder="search for player..." /></div></>
 }
 

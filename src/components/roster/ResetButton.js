@@ -9,7 +9,7 @@ export const ResetButton = ({setFactionSearch, handleSearchButton, setRoleSearch
  handleSearchButton(e)
 }
 return <>
-<button onClick={click =>  handleReset(click)
+<button className="reset__button" onClick={click =>  handleReset(click)
 }>Reset Filters</button>
 </>
 }

@@ -83,23 +83,23 @@ const handlePrimarySelect = (e) => {
                 <select onChange={
                     (e) => {
                         handleServerSelect(e)
-                    }}><option value="0">Servers</option>
+                    }}><option value="0">servers</option>
                     {servers.map((server) => <ServerFilter key={`div--server${server.id}`} server={server} />)}</select>
                 <label htmlFor="primary__filter"></label>
                 <select onChange={
                     (e) => {
                         handlePrimarySelect(e)
-                    }}><option value="0">Primary Weapon</option>
+                    }}><option value="0">primary Weapon</option>
                     {weapons.map((weapon) => <WeaponFilter key={`div--weapon${weapon.id}`} weapon={weapon} />)}</select>
                 <label htmlFor="secondary"></label>
                 <select onChange={
                     (e) => {
                         handleSecondarySelect(e)
-                    }}><option value="0">Secondary Weapon</option>
+                    }}><option value="0">secondary Weapon</option>
                     {weapons.map((weapon) => <WeaponFilter key={`div--weapontwo${weapon.id}`} weapon={weapon} />)}</select><div className="filter__buttons">
                 <SearchFilter setSearchTerms={setSearchTerms} />
                 {/* <button onClick={(e) => { handleSearchButton(e) }} className="search__button">Search</button> i'm just saving this because i'm afraid to let go.  or it will break */} 
-                <ResetButton className="reset__button" handleSearchButton={handleSearchButton} setFactionSearch={setFactionSearch} setRoleSearch={setRoleSearch} setServerSearch={setServerSearch}
+                <ResetButton  handleSearchButton={handleSearchButton} setFactionSearch={setFactionSearch} setRoleSearch={setRoleSearch} setServerSearch={setServerSearch}
                 setSecondarySearch={setSecondarySearch} 
                 setPrimarySearch={setPrimarySearch} /></div>
             </fieldset></form>

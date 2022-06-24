@@ -36,7 +36,7 @@ export const Roster = () => {
         setShowText(true)
     } //show pop up element when mouse
     const handleMouseLeave = e => {
-        e.target.style.background = "#232220"
+        e.target.style.background = "transparent"
         setShowText(false)
         setId(0)
     }//removes the pop up and identifier when mouse leaves
@@ -76,6 +76,8 @@ export const Roster = () => {
         },
         [characters]//sort them alphabetically honestly it's just to put the characters into a sorted array because that's where i want them for future sorting
     )
+
+  
 
     
     let rosterID = localStorage.getItem("roster_id") //need this for the new array for the api
@@ -117,15 +119,15 @@ e.preventDefault()
             setRoleSearch={setRoleSearch} setPrimarySearch={setPrimarySearch} setServerSearch={setServerSearch} setSecondarySearch={setSecondarySearch}
             roleSearch={roleSearch} serverSearch={serverSearch} factionSearch={factionSearch} primarySearch={primarySearch} secondarySearch={secondarySearch}
             setSortedArr={setSortedArr} characters={characters} servers={servers} weapons={weapons} factions={factions} roles={roles} />
-        <section className="body">
+      <div className="save__div"> <button className="save__button" onClick={(click) => { handleSave(click, newRosterPicks) }}>Save Roster</button> 
+       <button onClick={(e) => handleNewRoster(e) 
+    }  className="new__button">New Roster</button> </div>  <section className="body">
             <ListContainer editRosterCharacters={editRosterCharacters} showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} setNewRosterPick={setNewRosterPick} newRosterPicks={newRosterPicks} characters={sortedArr} servers={servers} weapons={weapons} factions={factions} roles={roles} />
            
             <div className="parent" >
                 <RosterGrid showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} 
                 setEditCharacters={setEditCharacters} editRosterCharacters={editRosterCharacters} rosterIDNUMBER={rosterIDNUMBER} characters={characters}  newRosterPicks={newRosterPicks} setNewRosterPick={setNewRosterPick} /></div>
      
-       </section>  <div className="save__div"> <button className="save__button" onClick={(click) => { handleSave(click, newRosterPicks) }}>Save Roster</button> 
-       <button onClick={(e) => handleNewRoster(e) 
-    }  className="new__button">New Roster</button> </div></>
+       </section>  </>
 }
  

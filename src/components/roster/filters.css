@@ -81,8 +81,9 @@
  }
 
  .reset__button {
+  margin: .5em;
   font-family: 'Libre Franklin', sans-serif;
-  display: inline-block;
+  
   outline: 0;
   text-align: center;
   cursor: pointer;
@@ -93,7 +94,7 @@
   border-radius: 3px;
   border: 1px solid transparent;
   transition: all .3s ease;
-  background: #570B08;
+  background: transparent;
   border-color: #570B08;
   font-weight: 600;
   text-transform: uppercase;

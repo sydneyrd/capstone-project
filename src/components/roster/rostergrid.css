@@ -2,9 +2,9 @@
     display: grid;
     align-content: space-between;
     flex-direction: column;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     width:fit-content;
-    height: fit-content;
+    height: 40em;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(10, 1fr);
     grid-column-gap: 1px;
@@ -21,7 +21,7 @@ position: sticky;
 .roster__choices {
     display: flex;
     justify-content: space-between;
-    padding: 1.65em;
+    padding: 1.45em;
     text-size-adjust: 2;
     flex-wrap: wrap;
     justify-content: space-around;
