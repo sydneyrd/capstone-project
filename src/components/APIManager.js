@@ -162,12 +162,18 @@ export const newCalculatedRoster = (newRosterObj) => {
 export const deleteRosterChoice = (rosterChoiceId) => {
     return fetch(`http://localhost:8088/rosterchoices/${rosterChoiceId}`, {
         method: "DELETE",
+        headers: {
+            'Content-type': 'application/json'
+        }
     })
 }
 
 export const deleteCharacter = (deleteCharacterId) => {
     return fetch(`http://localhost:8088/characters/${deleteCharacterId}`, {
         method: "DELETE",
+        headers: {
+            'Content-type': 'application/json'
+        }
     }
     )
 }
@@ -175,14 +181,20 @@ export const deleteCharacter = (deleteCharacterId) => {
 export const deleteRoster = (rosterId) => {
     return fetch(`http://localhost:8088/rosters/${rosterId}`, {
         method: "DELETE",
+        headers: {
+            'Content-type': 'application/json'
+        }
 
     }
     )
 }
 
 export const deleteCalculatedRoster = (calculatedRosterId) => {
-    return fetch(`http://localhost:8088/calculatedrosters/${calculatedRosterId}`, {
+     fetch(`http://localhost:8088/calculatedrosters/${calculatedRosterId}`, {
         method: "DELETE",
+        headers: {
+            'Content-type': 'application/json'
+        }
 
     }
     )

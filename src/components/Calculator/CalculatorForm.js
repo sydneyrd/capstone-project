@@ -14,15 +14,17 @@ export const CalculatorForm = ({ characters, selectedRoster, rosterChoice, calcu
   })
 
   const addPlayerToEnd = (c) => {
+    
     setCalculatedRoster(state => [...state, c])//only adding one object to an array usestate
   }
-
+  // in src/components/Calculator/CalculateResults.js
+  // Line 21:55:  Array.prototype.map() expects a return value from arrow function  array  i just put an extra around playeridcharacterid parenthesis down there
   useEffect(
     () => {
          const copy = { ...playerStats }
-    const noRepeats = calculatedRoster.filter((playerId) => playerId.characterId !== copy.characterId)  //removes the same player from the list before adding it again.
+    const noRepeats = calculatedRoster.filter((playerId) => (playerId.characterId !== copy.characterId))  //removes the same player from the list before adding it again.//this is not working correctly
     setCalculatedRoster(noRepeats)
-    addPlayerToEnd(copy)
+    addPlayerToEnd(copy)//need to make sure there is no allowance for repeats in the array before post
     
     },
     [playerStats ]

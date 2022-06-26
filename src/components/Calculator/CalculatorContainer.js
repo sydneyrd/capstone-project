@@ -23,11 +23,13 @@ export const CalculatorContainer = () => {
                 .then((URost) => {
                     setUserRosters(URost)
                 })
+                
         },
         []
     )
     useEffect(
         () => {
+            
             getCurrentRoster(selectedRoster)
                 .then((res) => {
                     setRosterChoices(res)
@@ -43,13 +45,15 @@ export const CalculatorContainer = () => {
         click.preventDefault()
         setSelectedRoster(0)
         setCalculatedRoster([])
-        // setViewResults(false) not sure if it's wise to turn off the display for the results with the same button but it works
     }
 
     return <> Choose a Roster  <>
-        {userRosters.map((roster) => <RosterList key={roster.id} setSelectedRoster={setSelectedRoster} roster={roster} />)}
-        <button onClick={(click) => handleClear(click)}>Clear Roster Choice</button></>
-
+    {!selectedRoster ?  <> {userRosters.map((roster) => <RosterList key={roster.id} setSelectedRoster={setSelectedRoster} roster={roster} />)}</>
+: ""    
+}
+        
+       <button onClick={(click) => handleClear(click)}>Clear Roster Choice</button></>
+ 
         {selectedRoster ?
             <>   <input className="roster__name" type="text" onChange={(event) => { setCurrentCalcRostName(event.target.value) }} placeholder="name this roster"></input>
                 <div className="parent__div">{rosterChoices.map((rosterChoice) => <CalculatorForm key={rosterChoice.id} calculatedRoster={calculatedRoster} selectedRoster={selectedRoster} 
