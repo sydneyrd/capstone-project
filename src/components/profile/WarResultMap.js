@@ -7,7 +7,7 @@ export const WarResultMap = ({stat, setCount}) => {
     alert("successfully deleted")
       click.preventDefault()
       deleteCalculatedRoster(stat.id)
-      setCount((count) => count + 1)
+      setCount((count) => count + 2 )
     }
           
   

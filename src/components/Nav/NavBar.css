@@ -1,9 +1,9 @@
 .navbar {
     display: flex;
-    flex-wrap: nowrap;
-    justify-content: left;
+    
+    justify-content: space-evenly;
     align-items: left;
-    position:sticky;
+    /* position:sticky; */
 }
 
 .navbar__item {

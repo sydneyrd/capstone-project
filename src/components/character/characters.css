@@ -226,3 +226,11 @@ input.form-control{
     padding: 0.25em;
     width:auto;
 }
+
+.search_div{
+    margin: 25px 25px 25px 25px;
+
+}
+.characterForm__title{
+    margin: 25px 25px 25px 25px;
+}

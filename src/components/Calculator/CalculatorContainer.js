@@ -47,15 +47,15 @@ export const CalculatorContainer = () => {
         setCalculatedRoster([])
     }
 
-    return <> Choose a Roster  <>
+    return <> <>
     {!selectedRoster ?  <> {userRosters.map((roster) => <RosterList key={roster.id} setSelectedRoster={setSelectedRoster} roster={roster} />)}</>
 : ""    
 }
         
-       <button onClick={(click) => handleClear(click)}>Clear Roster Choice</button></>
+       <button className="clear__button" onClick={(click) => handleClear(click)}>Clear Roster Choice</button></>
  
         {selectedRoster ?
-            <>   <input className="roster__name" type="text" onChange={(event) => { setCurrentCalcRostName(event.target.value) }} placeholder="name this roster"></input>
+            <>   <input className="roster__name" type="text" onChange={(event) => { setCurrentCalcRostName(event.target.value) }} placeholder="name these results..."></input>
                 <div className="parent__div">{rosterChoices.map((rosterChoice) => <CalculatorForm key={rosterChoice.id} calculatedRoster={calculatedRoster} selectedRoster={selectedRoster} 
                 setCalculatedRoster={setCalculatedRoster}
                     rosterChoice={rosterChoice} characters={characters} />)}</div>

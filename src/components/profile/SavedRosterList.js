@@ -16,7 +16,7 @@ export const SavedRosterList = ({roster, setCount}) => {
     click.preventDefault()
     deleteRoster(roster.id)
     localStorage.removeItem("roster_id") 
-    setCount((count) => count + 1)
+    setCount((count) => count + 1 )
   }
         
 

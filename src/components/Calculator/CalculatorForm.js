@@ -14,7 +14,9 @@ export const CalculatorForm = ({ characters, selectedRoster, rosterChoice, calcu
   })
 
   const addPlayerToEnd = (c) => {
-    
+    const copy = { ...playerStats }
+    const noRepeats = calculatedRoster.filter((playerId) => (playerId.characterId !== copy.characterId)) //originially only in the useeffect, i'm just trying shit, the set calc one at a time is the ONLY thing I need here
+    setCalculatedRoster(noRepeats)
     setCalculatedRoster(state => [...state, c])//only adding one object to an array usestate
   }
   // in src/components/Calculator/CalculateResults.js
@@ -50,21 +52,21 @@ export const CalculatorForm = ({ characters, selectedRoster, rosterChoice, calcu
               copy.deaths = parseInt(event.target.value)
               setPlayerStats(copy)
             }}></input>  <input className="form-controlstat"
-              placeholder="Assists"
+              placeholder="assists"
               type="number" onChange={(event) => {
                 const copy = { ...playerStats }
                 copy.assists = parseInt(event.target.value)
                 setPlayerStats(copy)
               }}></input>
           <input className="form-controlstat"
-            placeholder="Healing"
+            placeholder="healing"
             type="number" onChange={(event) => {
               const copy = { ...playerStats }
               copy.healing = parseInt(event.target.value)
               setPlayerStats(copy)
             }}></input>
           <input className="form-controlstat"
-            placeholder="Damage"
+            placeholder="damage"
             type="number" onChange={(event) => {
               const copy = { ...playerStats }
               copy.damage = parseInt(event.target.value)

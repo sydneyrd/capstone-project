@@ -1,7 +1,7 @@
 import { CharacterForm } from "./CharacterForm"
 import { ManageCharacters } from "./ManageCharacters"
 import { SearchCharacters } from "./SearchCharacters"
-import { getAllFactions, getAllCharacters, getAllRoles, getAllWeapons, getAllServers, saveNewCharacter, getUserCharacters } from "../APIManager"
+import { getAllFactions, getAllRoles, getAllWeapons, getAllServers, saveNewCharacter, getUserCharacters } from "../APIManager"
 import { useState, useEffect } from "react"
 // import { useEffect, useState } from "react"
 // import { useNavigate } from "react-router-dom"
@@ -103,7 +103,7 @@ export const Character = () => {
     }, [feedback])
     return <>
         <CharacterForm setCount={setCount} factions={factions} setFactions={setFactions} RosterUserObject={RosterUserObject} updateUserCharacters={updateUserCharacters} weapons={weapons} setWeapons={setWeapons} servers={servers} roles={roles} feedback={feedback} setFeedback={setFeedback} />
-        <h2 className="characterForm__title">Edit Characters</h2>
+        <h2 className="characterForm__title">Manage Characters</h2>
         <div><SearchCharacters setSearch={setSearch} searchWords={searchWords} /></div>
         <section className="edit_characters">
 
