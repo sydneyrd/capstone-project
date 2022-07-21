@@ -81,7 +81,7 @@
     text-align: center;
     cursor: pointer;
     height: 34px;
-    padding: 0 14px;
+    padding: 0 13px;
     color: #fff;
     border-radius: 3px;
     border: 1px solid transparent;
@@ -93,9 +93,7 @@
     line-height: 16px;
     font-size: 11px;
     margin-top: 2em;
-   
-
- }
+    }
  .save__button:hover {
     background-color: lightgreen;
  }

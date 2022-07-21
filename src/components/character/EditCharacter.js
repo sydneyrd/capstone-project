@@ -86,7 +86,7 @@ export const EditCharacter = ({ setNeedUpdate, updateUserCharacters, ownedCharac
                             updateCharacter(copy)
                         }
                     } className="role__select">
-                        <option value={0}>select a role</option>
+                        <option value={0}>update role</option>
                         {roles.map((role) => <RoleSelect key={`role--${role?.id}`} role={role} />)}
                     </select>
 
@@ -98,7 +98,7 @@ export const EditCharacter = ({ setNeedUpdate, updateUserCharacters, ownedCharac
                             updateCharacter(copy)
                         }
                     } className="character__select">
-                        <option value={0}>select a weapon</option>
+                        <option value={0}>update weapon</option>
                         {weapons.map((weapon) => <WeaponSelect key={`weapon--${weapon?.id}`} weapon={weapon} />)}
                     </select>
                     <label htmlFor="second__weapon">{rightSecondary?.name}</label>
@@ -109,7 +109,7 @@ export const EditCharacter = ({ setNeedUpdate, updateUserCharacters, ownedCharac
                             updateCharacter(copy)
                         }
                     } className="character__second">
-                        <option value={0}>select a weapon</option>
+                        <option value={0}>update weapon</option>
                         {weapons.map((weapon) => <WeaponSelect key={`{weaponsecond--${weapon?.id}`} weapon={weapon} />)}
 
                     </select>
@@ -122,7 +122,7 @@ export const EditCharacter = ({ setNeedUpdate, updateUserCharacters, ownedCharac
                             updateCharacter(copy)
                         }
                     } htmlFor="server">
-                        <option value={0}>select a server</option>
+                        <option value={0}>update server</option>
                         {servers.map((server) => <ServerSelect key={`server--${server?.id}`} server={server} />)}
                     </select>
                     <label htmlFor="factions">{rightFaction?.name}</label>
@@ -134,7 +134,7 @@ export const EditCharacter = ({ setNeedUpdate, updateUserCharacters, ownedCharac
                             updateCharacter(copy)
                         }
                     } className="character__select">
-                        <option value={0}>select a faction</option>
+                        <option value={0}>update faction</option>
                         {factions.map((faction) => <FactionSelect key={`faction--${faction?.id}`} faction={faction} />)}
                     </select>
                     <button className="update__button" onClick={click => handleUpdateClick(updatedCharacter, click)}>Update</button>

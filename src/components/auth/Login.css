@@ -26,6 +26,7 @@ fieldset {
 
 .form-control {
     display: block;
+    align-content: center;
     width: 94%;
     height: calc(1.5em + .75rem + 2px);
     padding: .75rem .75rem;
@@ -49,7 +50,7 @@ fieldset {
     z-index: 1;
     min-height: 25rem;
     min-width: 45rem;
-    background-color: hsla(0,0%,100%,0.40);
+    background-color: transparent;
     background-blend-mode: overlay;
     background-repeat: no-repeat;
 }

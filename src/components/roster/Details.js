@@ -17,11 +17,11 @@ export const DetailButton = ({ charId, servers, roles, weapons, factions, showTe
                         <h3>{rightCharacter?.character}</h3>
                         <>{rightRole?.name}
                             <br></br>
-                             {rightPrimary?.name}
+                            {rightPrimary?.name}
                             <br></br>
-                             {rightSecondary?.name}
+                            {rightSecondary?.name}
                             <br></br>
-                           {rightServer?.name}
+                            {rightServer?.name}
                             <br></br>
                             {rightFaction?.name}
                         </>
