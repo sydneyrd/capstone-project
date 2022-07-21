@@ -21,7 +21,7 @@ export const Login = () => {
                         
                     }))
 
-                    navigate("/home")
+                    navigate("/profile")
                 }
                 else {
                     window.alert("Invalid login")
@@ -34,9 +34,9 @@ export const Login = () => {
             <section>
                 <form className="form--login" onSubmit={handleLogin}>
                     <h1>Dead Game Roster</h1>
-                    <h2>Please sign in</h2>
+                    
                     <fieldset>
-                        <label htmlFor="inputEmail"> Email address </label>
+                        <label htmlFor="inputEmail"></label>
                         <input type="email"
                             value={email}
                             onChange={evt => set(evt.target.value)}
@@ -46,7 +46,7 @@ export const Login = () => {
                     </fieldset>
                     <fieldset>
                         <button type="submit">
-                            Sign in
+                            Login
                         </button>
                     </fieldset>
                 </form>

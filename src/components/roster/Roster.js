@@ -22,8 +22,25 @@ export const Roster = () => {
     const [primarySearch, setPrimarySearch] = useState(0)
     const [secondarySearch, setSecondarySearch] = useState(0)
     const [newRosterPicks, setNewRosterPick] = useState([])
-    
+    const [editRosterCharacters, setEditCharacters] = useState([])
     let navigate = useNavigate()
+    const [showText, setShowText] = useState(false)
+    const [charId, setId] = useState(0)
+    //we are capturing the new roster id when we first click add to roster and saving it to start roster  //pass those props ^
+    
+    const setCharId = e => {
+        setId(parseInt(e.target.id))
+    } //sets identifier to get correct detail info
+    const handleMouseEnter = e => {
+        e.target.style.background = "grey" //maybe remove 
+        setShowText(true)
+    } //show pop up element when mouse
+    const handleMouseLeave = e => {
+        e.target.style.background = "transparent"
+        setShowText(false)
+        setId(0)
+    }//removes the pop up and identifier when mouse leaves
+
     useEffect(
         () => {
             getAllCharacters(setCharacters)
@@ -54,11 +71,15 @@ export const Roster = () => {
     ) 
     useEffect(
         () => {
-            //  let alphaCharacters = characters.sort((a, b) => a.character.localeCompare(b.character))
-            setSortedArr(characters) ///this alphabet sort stopped working????  it's supposed to be alphaCharacters passed into it???? why is everything not working anymore -_-
+              let alphaCharacters = characters.sort((a, b) => a.character.localeCompare(b.character))
+            setSortedArr(characters) ///this alphabet sort stopped working????  it's supposed to be alphaCharacters passed into it???? why is everything not working anymore -_- it works now but could break watchout
         },
         [characters]//sort them alphabetically honestly it's just to put the characters into a sorted array because that's where i want them for future sorting
     )
+
+  
+
+    
     let rosterID = localStorage.getItem("roster_id") //need this for the new array for the api
     let rosterIDNUMBER = JSON.parse(rosterID)
 const handleSave = (click, newRosterPicks) => { //onclickingSave
@@ -82,18 +103,31 @@ const handleSave = (click, newRosterPicks) => { //onclickingSave
         Promise.all(rosterToPost.map((r) => { newRosterChoice(r) })).then((result) => {//maybe my finest achievment thus far?   promise waits for all the promises to come back in an iterable before resolving
             console.log(result)
         })
-        navigate("/home")
+        alert("Roster successfully saved")
+        
 
     }
-    return <><h1>THIS IS WHERE YOU WILL BUILD THE ROSTER  saved rosters link, and build roster link?</h1>
+   const handleNewRoster = (e) => {
+e.preventDefault()
+    localStorage.removeItem("roster_id")
+    setNewRosterPick([])
+    setEditCharacters([])
+   }
+ 
+    return <>
         <FilterContainer setFactionSearch={setFactionSearch} filterButton={filterButton} setFilterButton={setFilterButton} searchTerms={searchTerms} setSearchTerms={setSearchTerms}
             setRoleSearch={setRoleSearch} setPrimarySearch={setPrimarySearch} setServerSearch={setServerSearch} setSecondarySearch={setSecondarySearch}
             roleSearch={roleSearch} serverSearch={serverSearch} factionSearch={factionSearch} primarySearch={primarySearch} secondarySearch={secondarySearch}
             setSortedArr={setSortedArr} characters={characters} servers={servers} weapons={weapons} factions={factions} roles={roles} />
-        <section className="body">
-            <ListContainer setNewRosterPick={setNewRosterPick} newRosterPicks={newRosterPicks} characters={sortedArr} servers={servers} weapons={weapons} factions={factions} roles={roles} />
-            <button onClick={(click) => { handleSave(click, newRosterPicks) }}>Save Roster</button>
+      <div className="save__div"> <button className="save__button" onClick={(click) => { handleSave(click, newRosterPicks) }}>Save Roster</button> 
+       <button onClick={(e) => handleNewRoster(e) 
+    }  className="new__button">New Roster</button> </div>  <section className="body">
+            <ListContainer editRosterCharacters={editRosterCharacters} showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} setNewRosterPick={setNewRosterPick} newRosterPicks={newRosterPicks} characters={sortedArr} servers={servers} weapons={weapons} factions={factions} roles={roles} />
+           
             <div className="parent" >
-                <RosterGrid  rosterIDNUMBER={rosterIDNUMBER} characters={characters}  newRosterPicks={newRosterPicks} setNewRosterPick={setNewRosterPick} characters={characters} /></div>
-        </section> </>
+                <RosterGrid showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} 
+                setEditCharacters={setEditCharacters} editRosterCharacters={editRosterCharacters} rosterIDNUMBER={rosterIDNUMBER} characters={characters}  newRosterPicks={newRosterPicks} setNewRosterPick={setNewRosterPick} /></div>
+     
+       </section>  </>
 }
+ 

@@ -1,0 +1,91 @@
+.parent__div {
+  display: grid;
+  align-content: space-between;
+  flex-wrap: nowrap;
+  width: fit-content;
+  height: fit-content;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(50, 1fr);
+  grid-column-gap: 1px;
+  grid-row-gap: 1px;
+  border: 1px rgb(107, 21, 4);
+  -webkit-box-shadow: 2px 4px 23px 4px #000000;
+  box-shadow: 2px 4px 23px 4px #000000;
+  border: 5px hidden transparent;
+  border-radius: 6px 6px 6px 6px;
+  background-color: #272624;
+  position: sticky;
+  margin-top: 4em;
+}
+
+.player__form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: space-evenly;
+  margin: .25em;
+  padding: .25em;
+}
+
+input[type=number] {
+  margin: .5em;
+  font-size: 18px;
+  border-radius: 6px;
+  width: 7em;
+  line-height: 1.5;
+  padding: 5px 7px;
+  transition: box-shadow 100ms ease-in, border 100ms ease-in, background-color 100ms ease-in;
+  border: 2px solid #dee1e2;
+  color: rgb(108, 108, 115);
+  background: transparent;
+  display: block;
+  height: 36px;
+}
+
+input[type=number]:focus {
+  color: white;
+  background: black;
+}
+
+.calculate__click {
+  display: flex;
+  flex-direction: center;
+  justify-content: center;
+  font-family: 'Libre Franklin', sans-serif;
+  outline: 0;
+  text-align: center;
+  cursor: pointer;
+  height: 5em;
+  padding: 2em;
+  color: #fff;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  transition: all .3s ease;
+  background: green;
+  border-color: green;
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 16px;
+  font-size: 11px;
+  margin-top: 2em;
+  margin-bottom: 4em;
+
+}
+
+input.roster__name {
+  margin-top: 2em;
+  
+}
+
+.Roster__button{
+  margin: 20px 20px 20px 20px;
+  padding: 2em;
+  font-weight: 200;
+  font-size: .7em;
+}
+
+.clear__button{
+  margin: 20px 20px 20px 20px;
+  padding: 2em;
+  background:rgb(107, 21, 4)
+}

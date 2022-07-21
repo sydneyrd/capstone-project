@@ -1,0 +1,236 @@
+.character__list {
+    height: 30em;
+    width: 10em;
+    overflow: hidden;
+    overflow-y: hidden;
+    padding: 0.5em;
+
+    /* i changed the overflow-y to hidden in case that makes this not scroll anymore later */
+}
+
+h4 {
+    font-size: 1em;
+}
+
+h2 {
+    margin: 10px 10px 10px 10px;
+    font-size: 1.5em;
+
+}
+
+.body {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+label {
+    margin: 1px 1px 1px 1px;
+    font-size: 1em;
+}
+
+.addcharacter__name {
+    font-size: 0.75em;
+}
+
+.character__details {
+    opacity: 0.0;
+    -webkit-transition: all 500ms ease-in-out;
+    -moz-transition: all 500ms ease-in-out;
+    -ms-transition: all 500ms ease-in-out;
+    -o-transition: all 500ms ease-in-out;
+    transition: all 500ms ease-in-out;
+}
+
+form.addcharacter_form {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-self: center;
+    justify-content: center;
+    justify-self: center;
+    margin: 20px 20px 20px 20px
+}
+
+h2 {
+    align-self: center;
+}
+
+fieldset.add__form {
+    display: flex;
+
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
+    
+    padding: 20px;
+    border: 1px solid #c9c9c9;
+    border-radius: 7px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+    padding: 0.25em;
+    justify-items: space-between;
+    width: 20em;
+    
+    
+    border-radius: 7px;
+    font-family: 'Libre Franklin', sans-serif;
+   
+    grid-template-columns: 32% 32% 32%;
+    margin: 35px 35px 35px 35px;
+
+
+
+}
+
+label {
+    font-style: bold;
+
+}
+
+select {
+    font-family: 'Libre Franklin', sans-serif;
+}
+
+.edit_characters {
+    display: flex;
+    flex-flow: row wrap;
+    width: 70%;
+    justify-content: space-between;
+    align-items: flex-end;
+
+}
+
+.edit__section {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+
+}
+
+.add_form {
+    justify-items: center;
+    align-items: center;
+}
+
+.editcharacter__name {
+    margin: 2px 2px 2px 2px;
+}
+
+.edit__form {
+
+    flex-direction: column;
+    /*yes don't touch*/
+    justify-items: space-between;
+    width: 320px;
+    padding: 10px;
+    border: 1px solid #c9c9c9;
+    border-radius: 7px;
+    font-family: 'Libre Franklin', sans-serif;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+    grid-template-columns: 32% 32% 32%;
+    margin: 25px 25px 25px 25px;
+}
+
+select {
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 18px;
+}
+
+.option {
+    font-family: 'Libre Franklin', sans-serif;
+}
+
+button.save__button {
+    font-family: 'Libre Franklin', sans-serif;
+    display: inline-block;
+    outline: 0;
+    text-align: center;
+    cursor: pointer;
+    height: 34px;
+    padding: 0 13px;
+    color: #fff;
+    vertical-align: top;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    transition: all .3s ease;
+    background: green;
+    border-color: green;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 16px;
+    font-size: 11px;
+    margin: 20px;
+}
+
+button.delete__button {
+    font-family: 'Libre Franklin', sans-serif;
+    display: inline-block;
+    outline: 0;
+    text-align: center;
+    cursor: pointer;
+    height: 34px;
+    padding: 0 13px;
+    color: #fff;
+    vertical-align: top;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    transition: all .3s ease;
+    background: #570B08;
+    border-color: #570B08;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 16px;
+    font-size: 11px;
+    margin: 10px 5px 5px 5px;
+}
+
+.details {
+    position: center, right;
+
+}
+
+.update__button {
+    font-family: 'Libre Franklin', sans-serif;
+    display: inline-block;
+    outline: 0;
+    text-align: center;
+    cursor: pointer;
+    height: 34px;
+    padding: 0 13px;
+    color: #fff;
+    vertical-align: top;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    transition: all .3s ease;
+    background: green;
+    border-color: green;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 16px;
+    font-size: 11px;
+    margin: 20px 5px 5px 5px;
+}
+
+
+.details__element {
+    width: 10%;
+    height: fit-content;
+}
+input[type=text] {
+    margin: 0.15em;
+    padding: .5em;
+    border-radius: 3px;
+}
+input.form-control{
+    padding: 0.25em;
+    width:auto;
+}
+
+.search_div{
+    margin: 25px 25px 25px 25px;
+
+}
+.characterForm__title{
+    margin: 25px 25px 25px 25px;
+}

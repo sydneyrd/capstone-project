@@ -3,16 +3,15 @@ import { FactionSelect } from "./FactionSelect"
 import { RoleSelect } from "./Role"
 import { ServerSelect } from "./ServerSelect"
 import { WeaponSelect } from "./WeaponSelect"
-import { getAllFactions, getAllRoles, getAllWeapons, getAllServers, saveNewCharacter } from "../APIManager"
+import { saveNewCharacter } from "../APIManager"
+import "./characters.css"
 
 
 //iterate this form and make the default values the character values in the database.  
 // leave this form blank to create new characters and display other characters below
 
 
-
-
-export const CharacterForm = ({roles, weapons, servers, factions, feedback, setFeedback}) => {
+export const CharacterForm = ({ updateUserCharacters, setCount, getUserCharacters, roles, weapons, servers, factions, feedback, setFeedback }) => {
     const [newCharacter, updateNewCharacter] = useState({
         userId: 0,
         character: "",
@@ -23,32 +22,35 @@ export const CharacterForm = ({roles, weapons, servers, factions, feedback, setF
         factionId: 0
     })
 
-     const localRosterUser = localStorage.getItem("roster_user")  
-     const RosterUserObject = JSON.parse(localRosterUser)
+    const localRosterUser = localStorage.getItem("roster_user")
+    const RosterUserObject = JSON.parse(localRosterUser)
 
-const handleSaveButtonClick = (event) => {
+    const handleSaveButtonClick = (event) => {
         event.preventDefault()
 
         // TODO: Create the object to be saved to the API
         let newCharacterToAPI = {
             character: newCharacter.character,
             roleId: parseInt(newCharacter.roleId),
-            primaryId: parseInt(newCharacter.primaryId),
-            secondaryId: parseInt(newCharacter.secondaryId),
+            primaryweapon: parseInt(newCharacter.primaryId),
+            secondaryweapon: parseInt(newCharacter.secondaryId),
             serverId: parseInt(newCharacter.serverId),
             factionId: parseInt(newCharacter.factionId),
             userId: RosterUserObject.id
         }
-
-        
-
-        // TODO: Perform the fetch() to POST the object to the API
         saveNewCharacter(newCharacterToAPI)
-            .then(() => {
-                setFeedback("Character successfully added")
-            }
-            )
+            // .then(() =>
+            //     getUserCharacters(RosterUserObject)
+            // )
+            // .then((charArr) => 
+            //     updateUserCharacters(charArr)
+            
+            // ) //another then before set feedback maybe?
+        //it doesn't like this and won't rerender due to uncaught promise here^  fix it 
+        //I don't think i need this anymore because the setCount causes it to rerrender, and as long as it posts successfully that should be just fine  
 
+        setCount((count) => count + 1)
+        setFeedback("Character successfully added")
     }
 
     return (
@@ -56,11 +58,10 @@ const handleSaveButtonClick = (event) => {
             <div className={`${feedback.includes("Error") ? "error" : "feedback"} ${feedback === "" ? "invisible" : "visible"}`}>
                 {feedback}
             </div>
-            <form className="character_form">
+            <form className="addcharacter_form">
                 <h2 className="characterForm__title">Add Character</h2>
-                <fieldset>
-
-                    <label hmtlFor="charactername">Character Name:</label>
+                <fieldset className="add__form">
+                    <label className="addcharacter__name" htmlFor="charactername">Character Name:</label>
                     <input
                         required autoFocus
                         type="text"
@@ -84,7 +85,7 @@ const handleSaveButtonClick = (event) => {
                         }
                     } className="role__select">
                         <option value={0}>select a role</option>
-                        {roles.map((role) => <RoleSelect key={`${role.id}`} role={role} />)}
+                        {roles.map((role) => <RoleSelect key={`role--${role.id}`} role={role} />)}
                     </select>
 
                     <label hmtlfor="weapon__select">Primary Weapon:</label>
@@ -96,7 +97,7 @@ const handleSaveButtonClick = (event) => {
                         }
                     } className="character__select">
                         <option value={0}>select a weapon</option>
-                        {weapons.map((weapon) => <WeaponSelect key={`${weapon.id}`} weapon={weapon} />)}
+                        {weapons.map((weapon) => <WeaponSelect key={`weaponprime--${weapon.id}`} weapon={weapon} />)}
                     </select>
                     <label htmlFor="second__weapon">Secondary weapon:</label>
                     <select onChange={
@@ -107,7 +108,7 @@ const handleSaveButtonClick = (event) => {
                         }
                     } className="character__second">
                         <option value={0}>select a weapon</option>
-                        {weapons.map((weapon) => <WeaponSelect key={`${weapon.id}`} weapon={weapon} />)}
+                        {weapons.map((weapon) => <WeaponSelect key={`weapon--${weapon.id}`} weapon={weapon} />)}
 
                     </select>
                     <label htmlFor="servers">
@@ -120,7 +121,7 @@ const handleSaveButtonClick = (event) => {
                         }
                     } htmlFor="server">
                         <option value={0}>select a server</option>
-                        {servers.map((server) => <ServerSelect key={`${server.id}`} server={server} />)}
+                        {servers.map((server) => <ServerSelect key={`server--${server.id}`} server={server} />)}
                     </select>
                     <label htmlFor="factions">Faction:</label>
 
@@ -132,9 +133,9 @@ const handleSaveButtonClick = (event) => {
                         }
                     } className="character__select">
                         <option value={0}>select a faction</option>
-                        {factions.map((faction) => <FactionSelect key={`${faction.id}`} faction={faction} />)}
+                        {factions.map((faction) => <FactionSelect key={`faction--${faction.id}`} faction={faction} />)}
                     </select>
-                    <button onClick={click => handleSaveButtonClick(click)}>Save</button>
+                    <button className="save__button" onClick={click => handleSaveButtonClick(click)}>Save</button>
                 </fieldset>
             </form>
 

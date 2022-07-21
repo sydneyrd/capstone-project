@@ -7,8 +7,9 @@ import { getAllCharacters, getCurrentRoster } from "../APIManager";
 import { RosterDivForEdit } from "./RosterDivForEdit";
 //get all the people in the roster render them in the list
 
-export const RosterGrid = ({ newRosterPicks, rosterIDNUMBER, characters, setNewRosterPick }) => {
-    const [editRosterCharacters, setEditCharacters] = useState([])
+export const RosterGrid = ({showText, setShowText, charId, setNewRosterPick, setCharId, handleMouseEnter, handleMouseLeave, setEditCharacters, editRosterCharacters, 
+    newRosterPicks, rosterIDNUMBER, characters }) => {
+    // const [editRosterCharacters, setEditCharacters] = useState([])
     useEffect(
         () => {
             getCurrentRoster(rosterIDNUMBER)
@@ -23,9 +24,11 @@ export const RosterGrid = ({ newRosterPicks, rosterIDNUMBER, characters, setNewR
 
 
 
-    return <>{editRosterCharacters.map((c) => <RosterDivForEdit rosterIDNUMBER={rosterIDNUMBER} setEditCharacters={setEditCharacters} characters={characters} newRosterPicks={editRosterCharacters}
+    return <>{editRosterCharacters.map((c) => <RosterDivForEdit showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} 
+    handleMouseLeave={handleMouseLeave} rosterIDNUMBER={rosterIDNUMBER} setEditCharacters={setEditCharacters} characters={characters} newRosterPicks={editRosterCharacters}
         setNewRosterPick={setNewRosterPick} key={c.id} c={c} />)}
-        {newRosterPicks.map((c) => <RosterDiv newRosterPicks={newRosterPicks} setNewRosterPick={setNewRosterPick} key={c.id} c={c} />)}
+        {newRosterPicks.map((c) => <RosterDiv showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} 
+    handleMouseLeave={handleMouseLeave} newRosterPicks={newRosterPicks} setNewRosterPick={setNewRosterPick} key={c.id} c={c} />)}
 
     </>
 }

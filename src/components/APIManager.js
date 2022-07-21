@@ -25,8 +25,10 @@ export const getCurrentRoster = (rosterId) => {
 
 }
 
-
-
+export const getUserWarStats = (user) => {
+    return fetch(`http://localhost:8088/calculatedRosters?userId=${user.id}`)
+        .then(res => res.json())
+}
 
 export const postNewUser = (user) => {
     return fetch("http://localhost:8088/users", {
@@ -91,6 +93,16 @@ export const getRosterCharacter = (rosterNum) => {
         .then(res => res.json())
     //no set function included in this don't forget .then
 }
+export const getCalculatedRoster = (calculatedrosterId) => {
+    return fetch(`http://localhost:8088/calculatedRosters?id=${calculatedrosterId}`)
+        .then(res => res.json())
+}
+
+export const getCalculatedRosterChar = (calculatedRosterId) => {
+    return fetch(`http://localhost:8088/calculatedrosterchoices?&calculatedrosterId=${calculatedRosterId}`)
+        .then(res => res.json())
+    //no set function included in this don't forget .then
+}
 
 export const saveNewCharacter = (newCharacterToAPI) => {
     return fetch(`http://localhost:8088/characters`, {
@@ -114,8 +126,30 @@ export const newRosterChoice = (newRosterChoiceObj) => {
         .then(res => res.json())
 }
 
+export const newCalculatedRosterChoices = (newRosterChoiceObj) => {
+    return fetch(`http://localhost:8088/calculatedrosterchoices`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newRosterChoiceObj)
+    })
+        .then(res => res.json())
+}
+
 export const newRoster = (newRosterObj) => {
     return fetch(`http://localhost:8088/rosters`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newRosterObj)
+    })
+        .then(res => res.json())
+}
+
+export const newCalculatedRoster = (newRosterObj) => {
+    return fetch(`http://localhost:8088/calculatedrosters`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -128,12 +162,40 @@ export const newRoster = (newRosterObj) => {
 export const deleteRosterChoice = (rosterChoiceId) => {
     return fetch(`http://localhost:8088/rosterchoices/${rosterChoiceId}`, {
         method: "DELETE",
+        headers: {
+            'Content-type': 'application/json'
+        }
     })
 }
 
 export const deleteCharacter = (deleteCharacterId) => {
     return fetch(`http://localhost:8088/characters/${deleteCharacterId}`, {
         method: "DELETE",
+        headers: {
+            'Content-type': 'application/json'
+        }
+    }
+    )
+}
+
+export const deleteRoster = (rosterId) => {
+    return fetch(`http://localhost:8088/rosters/${rosterId}`, {
+        method: "DELETE",
+        headers: {
+            'Content-type': 'application/json'
+        }
+
+    }
+    )
+}
+
+export const deleteCalculatedRoster = (calculatedRosterId) => {
+     fetch(`http://localhost:8088/calculatedrosters/${calculatedRosterId}`, {
+        method: "DELETE",
+        headers: {
+            'Content-type': 'application/json'
+        }
+
     }
     )
 }

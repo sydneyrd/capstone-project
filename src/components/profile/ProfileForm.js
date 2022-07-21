@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { updateProfile } from "../APIManager"
 import { SavedRosters } from "./SavedRosters"
+import { WarStats } from "./WarStats"
 
 
 
@@ -12,7 +13,7 @@ export const UpdateUser = () => {
     const localRosterUser = localStorage.getItem("roster_user")
     const rosterUserObject = JSON.parse(localRosterUser)
     const localUser = { ...rosterUserObject }
-  
+
     const [user, setUser] = useState({
         email: localUser.email,
         id: localUser.id,
@@ -26,7 +27,6 @@ export const UpdateUser = () => {
         }
     }, [feedback])
 
-
     const emailUpdate = (evt) => {
         const copy = { ...user }
         copy.email = evt.target.value
@@ -34,33 +34,24 @@ export const UpdateUser = () => {
     }
     const handleSaveButtonClick = (evt) => {
         evt.preventDefault()
-
-        /*
-            TODO: Perform the PUT fetch() call here to update the profile.
-            Navigate user to home page when done.
-        */
-
-
         updateProfile(user, user.id)
             .then(() => {
                 setFeedback("Email successfully updated")
             }
             )
-
-
     }
     return <>
         <div className={`${feedback.includes("Error") ? "error" : "feedback"} ${feedback === "" ? "invisible" : "visible"}`}>
             {feedback}
         </div>
-        <main style={{ textAlign: "center" }}>
-            <form className="form--login" >
+        <main className="profile--page" style={{ textAlign: "center" }}>
+            <form className="form--update" >
 
                 <h1 className="h3 mb-3 font-weight-normal">Update Email</h1>
 
 
                 <fieldset>
-                    <label htmlFor="email"> Update email address </label>
+                    <label htmlFor="email"></label>
                     <input onChange={(evt) => emailUpdate(evt)}
                         type="email" id="email" className="form-control"
                         value={user.email}
@@ -68,10 +59,13 @@ export const UpdateUser = () => {
                 </fieldset>
 
                 <fieldset>
-                    <button type="submit" onClick={handleSaveButtonClick}> Update </button>
+                    <button className="email__button" type="submit" onClick={handleSaveButtonClick}> Update </button>
                 </fieldset>
             </form>
-            <SavedRosters localUser={localUser}/>
+            <div>  <h4>Saved Rosters</h4>
+                <SavedRosters localUser={localUser} /></div>
+            <div> <h4>War Results</h4>
+                <WarStats localUser={localUser} /></div>
         </main> </>
 
 }

@@ -1,0 +1,86 @@
+.results__headers {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+div.player__results {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0.25em;
+    align-content: center;
+    align-items: center;
+
+    border: 1px, solid, grey;
+}
+
+div.labels {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0.25em;
+    align-content: center;
+    align-items: center;
+}
+
+
+div.player__name {
+    padding: 1em;
+    margin: auto
+}
+
+div.label__playername {
+    display: flex;
+    justify-content: center;
+    padding: 1em;
+    margin: auto
+}
+
+div.damage {
+    font-family: 'Libre Franklin', sans-serif;
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+}
+
+div.healing {
+    font-family: 'Libre Franklin', sans-serif;
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+}
+
+div.kdr {
+    font-family: 'Libre Franklin', sans-serif;
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+}
+
+div.kills {
+    font-family: 'Libre Franklin', sans-serif;
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+}
+
+div.player__resultsmap {
+    display: grid;
+    align-content: space-between;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 35em;
+    height: fit-content;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    grid-column-gap: 1px;
+    grid-row-gap: 3px;
+    border: solid 1px rgb(115, 109, 107);
+    -webkit-box-shadow: 2px 4px 23px 4px #000000;
+    box-shadow: 2px 4px 23px 4px #000000;
+    border-radius: 6px 6px 6px 6px;
+    background-color: #272624;
+    position: sticky;
+}

@@ -1,42 +1,172 @@
- .character__list {height:100%; width:30%;overflow:hidden; overflow-y:scroll}
-
-.body {
-  display: flex;
-  flex-direction: row;
+/* Works on Firefox */
+* {
+  scrollbar-width:thin;
+      border-color: #1D1D1E;
+      scrollbar-color:#1D1D1E;
 }
 
-.character__details {
-    opacity: 0.0;
-    -webkit-transition: all 500ms ease-in-out;
-    -moz-transition: all 500ms ease-in-out;
-    -ms-transition: all 500ms ease-in-out;
-    -o-transition: all 500ms ease-in-out;
-    transition: all 500ms ease-in-out;
-}
-.detail__button {
-    align-items: flex-end;
-    width:fit-content;
-    height:20px;
-    background-color:green;
-    margin-bottom:15px;
-}
-.character__details:hover > .character__details {
-    opacity: 1.0;
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
 }
 
-.details {
-    position: center, right;
-
-}
-.add__button{
-    position: bottom;
+*::-webkit-scrollbar-track {
+  background: #1D1D1E;
 }
 
-.list__container {
-    width: 30%;
-    height: 100vh;
+*::-webkit-scrollbar-thumb {
+  background-color: (108, 108, 115);
+  border-radius: 20px;
+  border: 3px solid #1D1D1E;
 }
-.details__element {
-    width: 10%;
-    height: fit-content;
+
+ .body {
+     display: flex;
+     flex-direction: row;
+ }
+
+ .add__button {
+    font-family: 'Libre Franklin', sans-serif;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    width: 4.5em;
+ color: #fff;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    transition: all .3s ease;
+    background:transparent;
+    border-color: darkgreen;
+    font-weight: 300;
+    text-transform: uppercase;
+    line-height: 16px;
+    font-size: 11px;
+    flex-direction: flex-end;
+   }
+ 
+
+ .character__details {
+     opacity: 0.0;
+     
+     -webkit-transition: all 500ms ease-in-out;
+     -moz-transition: all 500ms ease-in-out;
+     -ms-transition: all 500ms ease-in-out;
+     -o-transition: all 500ms ease-in-out;
+     transition: all 500ms ease-in-out;
+ }
+  
+ button.save__button {
+    font-family: 'Libre Franklin', sans-serif;
+     outline: 0;
+    text-align: center;
+    cursor: pointer;
+    height: 34px;
+    padding: 0 13px;
+    color: #fff;
+     border-radius: 3px;
+    border: 1px solid transparent;
+    transition: all .3s ease;
+    background: green;
+    border-color: green;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 16px;
+    font-size: 11px;
+ }
+
+ button.new__button {
+    font-family: 'Libre Franklin', sans-serif;
+    outline: 0;
+    text-align: center;
+    cursor: pointer;
+    height: 34px;
+    padding: 0 13px;
+    color: #fff;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    transition: all .3s ease;
+    background: #570B08;
+    border-color: #570B08;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 16px;
+    font-size: 11px;
+    margin-top: 2em;
+    }
+ .save__button:hover {
+    background-color: lightgreen;
+ }
+ .new__button:hover {
+    background-color: darkgreen;
+ }
+
+ .save__div {
+     flex-direction: row;
+     justify-content: flex-end;
+     align-items: flex-end;
+     
+ }
+
+ .character__details:hover>.character__details {
+     opacity: 1.0;
+     background-color: transparent;
+ }
+
+ .details {
+     position: center;
+
+ }
+
+ .list__container {
+     width: 40%;
+     height: 60%;
+     background-color: none;
+ }
+
+
+ /* this is the pop up details element */
+ .details__element {
+    display:flex;
+     width: 25%;
+     height: fit-content;
+     position: relative;
+     background-color: transparent; 
+    position: sticky;
+    top: 10px;
+    left: 25px;
+    width: 250px; 
+    align-items: center;
+    justify-items: center;
+    justify-content:center;
+    margin: 1em;
+ }
+
+ .character__card {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 15em;
+    justify-content:space-between;
+ }
+
+ section.character__list {
+    height: 39em;
+    width: 15em;
+    scrollbar-width:0;
+    overflow: hidden;
+overflow-y:scroll;
+        padding: 0.5em;
+        border: 1px rgb(107, 21, 4);
+        -webkit-box-shadow: 2px 4px 23px 4px #000000; 
+    box-shadow: 2px 4px 23px 4px #000000;
+    border: 5px hidden transparent;
+    border-radius: 6px 6px 6px 6px;
+        
+        
+/* i changed the overflow-y to hidden in case that makes this not scroll anymore later */
+
+
+
 }
+
+

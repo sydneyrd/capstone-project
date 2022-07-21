@@ -3,35 +3,29 @@ import { FactionSelect } from "./FactionSelect"
 import { RoleSelect } from "./Role"
 import { ServerSelect } from "./ServerSelect"
 import { WeaponSelect } from "./WeaponSelect"
-import { useState } from "react"
-import { deleteCharacter, putCharacter } from "../APIManager"
+import { useState, useEffect } from "react"
+import { deleteCharacter, putCharacter, getUserCharacters } from "../APIManager"
+import "./characters.css"
 
 //create a push and delete call to be used a GET request for only the users characters to be displayed, need to iterate v that form for all of them
 //need the arrays of all the options, weapons etc
 //updateCharacter handleUpdateClick handleDeleteClick
-export const EditCharacter = ({ ownedCharacter, roles, characters, RosterUserObject, weapons, factions, servers, feedback, setFeedback }) => {
-
-
-
-
+export const EditCharacter = ({ setNeedUpdate, updateUserCharacters, ownedCharacter, roles, characters, RosterUserObject, weapons, factions, servers, feedback, setFeedback }) => {
     let [updatedCharacter, updateCharacter] = useState({
         id: ownedCharacter.id,
         userId: ownedCharacter.userId,
-        character: "",
+        character: ownedCharacter.character,
         roleId: ownedCharacter.roleId,
         primaryweapon: ownedCharacter.primaryweapon,
         secondaryweapon: ownedCharacter.secondaryweapon,
         serverId: ownedCharacter.serverId,
         factionId: ownedCharacter.factionId
     })
-    let rightServer = servers.find(({ id }) => id === ownedCharacter.serverId)
-    let rightPrimary = weapons.find(({ id }) => id === ownedCharacter.primaryweapon)
-    let rightSecondary = weapons.find(({ id }) => id === ownedCharacter.secondaryweapon)
-    let rightFaction = factions.find(({ id }) => id === ownedCharacter.factionId)
-    let rightRole = roles.find(({ id }) => id === ownedCharacter.roleId)
-
-
-
+    let rightServer = servers.find(({ id }) => id === ownedCharacter?.serverId)
+    let rightPrimary = weapons.find(({ id }) => id === ownedCharacter?.primaryweapon)
+    let rightSecondary = weapons.find(({ id }) => id === ownedCharacter?.secondaryweapon)
+    let rightFaction = factions.find(({ id }) => id === ownedCharacter?.factionId)
+    let rightRole = roles.find(({ id }) => id === ownedCharacter?.roleId)
 
     const handleUpdateClick = (UC, click) => {//userId
         click.preventDefault()
@@ -46,46 +40,45 @@ export const EditCharacter = ({ ownedCharacter, roles, characters, RosterUserObj
             factionId: parseInt(UC.factionId)
         }
 
-
-
-
-
-
-
         putCharacter(letcToAPI) //push request
-        setFeedback("Character Updated")
-        //reload area to display updated character info?
-
+        
+       .then(() => 
+       getUserCharacters(RosterUserObject))
+       //i just put this here to get it to re render the page when I make changes 6/19/this could break things so watch out
+.then((charArr) => 
+  updateUserCharacters(charArr))
+    setFeedback("Character Updated")
     }
 
     const handleDeleteClick = (deleteCharacterId, click) => {
-        click.preventDefault(
+        click.preventDefault()
             deleteCharacter(deleteCharacterId)
-        )
+        
+            .then(() => getUserCharacters(RosterUserObject))
+                //i just put this here to get it to re render the page when I make changes 6/19/this could break things so watch out
+                .then((charArr) =>
+                    updateUserCharacters(charArr))
     }
 
 
     return (
-        <> <div className={`${feedback.includes("Error") ? "error" : "feedback"} ${feedback === "" ? "invisible" : "visible"}`}>
-            {feedback}
-        </div>
+        <>
             <form className="character_form">
-                <h2 className="characterForm__title">Edit Characters</h2>
-                <fieldset>
-                    <label >{ownedCharacter.character}</label>
+                <fieldset className="edit__form">
+                    <h4 className="editcharacter__name">{ownedCharacter?.character}</h4>
                     <input
-                        
+
                         type="text"
                         className="form-control"
                         placeholder="change name"
-                        value={updatedCharacter.character} /**onChange{update character state}**/ onChange={
+                        value={updatedCharacter?.character} /**onChange{update character state}**/ onChange={
                             (event) => {
                                 const copy = { ...updatedCharacter }
                                 copy.character = event.target.value
                                 updateCharacter(copy)
                             }
                         } />
-                    <label>{rightRole.name}</label>
+                    <label htmlFor="role__name">{rightRole?.name}</label>
                     <select onChange={
                         (event) => {
                             const copy = { ...updatedCharacter }
@@ -93,11 +86,11 @@ export const EditCharacter = ({ ownedCharacter, roles, characters, RosterUserObj
                             updateCharacter(copy)
                         }
                     } className="role__select">
-                        <option value={0}>select a role</option>
-                        {roles.map((role) => <RoleSelect key={role.id} role={role} />)}
+                        <option value={0}>update role</option>
+                        {roles.map((role) => <RoleSelect key={`role--${role?.id}`} role={role} />)}
                     </select>
 
-                    <label >{}</label>
+                    <label htmlFor="primary__name">{rightPrimary?.name}</label>
                     <select onChange={
                         (event) => {
                             const copy = { ...updatedCharacter }
@@ -105,10 +98,10 @@ export const EditCharacter = ({ ownedCharacter, roles, characters, RosterUserObj
                             updateCharacter(copy)
                         }
                     } className="character__select">
-                        <option value={0}>select a weapon</option>
-                        {weapons.map((weapon) => <WeaponSelect key={weapon.id} weapon={weapon} />)}
+                        <option value={0}>update weapon</option>
+                        {weapons.map((weapon) => <WeaponSelect key={`weapon--${weapon?.id}`} weapon={weapon} />)}
                     </select>
-                    <label htmlFor="second__weapon">{}</label>
+                    <label htmlFor="second__weapon">{rightSecondary?.name}</label>
                     <select onChange={
                         (event) => {
                             const copy = { ...updatedCharacter }
@@ -116,23 +109,23 @@ export const EditCharacter = ({ ownedCharacter, roles, characters, RosterUserObj
                             updateCharacter(copy)
                         }
                     } className="character__second">
-                        <option value={0}>select a weapon</option>
-                        {weapons.map((weapon) => <WeaponSelect key={weapon.id} weapon={weapon} />)}
+                        <option value={0}>update weapon</option>
+                        {weapons.map((weapon) => <WeaponSelect key={`{weaponsecond--${weapon?.id}`} weapon={weapon} />)}
 
                     </select>
                     <label htmlFor="servers">
-                        {rightServer.name}</label>
+                        {rightServer?.name}</label>
                     <select onChange={
                         (event) => {
                             const copy = { ...updatedCharacter }
                             copy.serverId = event.target.value
                             updateCharacter(copy)
                         }
-                    } htmlfor="server">
-                        <option value={0}>select a server</option>
-                        {servers.map((server) => <ServerSelect key={server.id} server={server} />)}
+                    } htmlFor="server">
+                        <option value={0}>update server</option>
+                        {servers.map((server) => <ServerSelect key={`server--${server?.id}`} server={server} />)}
                     </select>
-                    <label htmlFor="factions">{rightFaction.name}</label>
+                    <label htmlFor="factions">{rightFaction?.name}</label>
 
                     <select onChange={
                         (event) => {
@@ -141,11 +134,11 @@ export const EditCharacter = ({ ownedCharacter, roles, characters, RosterUserObj
                             updateCharacter(copy)
                         }
                     } className="character__select">
-                        <option value={0}>select a faction</option>
-                        {factions.map((faction) => <FactionSelect key={faction.id} faction={faction} />)}
+                        <option value={0}>update faction</option>
+                        {factions.map((faction) => <FactionSelect key={`faction--${faction?.id}`} faction={faction} />)}
                     </select>
-                    <button onClick={click => handleUpdateClick(updatedCharacter, click)}>Save</button>
-                    <button onClick={click => handleDeleteClick(updatedCharacter.id, click)}>Delete</button>
+                    <button className="update__button" onClick={click => handleUpdateClick(updatedCharacter, click)}>Update</button>
+                    <button className="delete__button" onClick={click => handleDeleteClick(updatedCharacter.id, click)}>Delete</button>
                 </fieldset>
             </form>
         </>)

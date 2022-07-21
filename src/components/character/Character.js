@@ -1,6 +1,7 @@
 import { CharacterForm } from "./CharacterForm"
 import { ManageCharacters } from "./ManageCharacters"
-import { getAllFactions, getAllCharacters, getAllRoles, getAllWeapons, getAllServers, saveNewCharacter, getUserCharacters } from "../APIManager"
+import { SearchCharacters } from "./SearchCharacters"
+import { getAllFactions, getAllRoles, getAllWeapons, getAllServers, saveNewCharacter, getUserCharacters } from "../APIManager"
 import { useState, useEffect } from "react"
 // import { useEffect, useState } from "react"
 // import { useNavigate } from "react-router-dom"
@@ -10,14 +11,17 @@ import { useState, useEffect } from "react"
 export const Character = () => {
     const localRosterUser = localStorage.getItem("roster_user")
     const RosterUserObject = JSON.parse(localRosterUser)
-    
+
     const [factions, setFactions] = useState([])
     const [weapons, setWeapons] = useState([])
     const [servers, setServers] = useState([])
     const [roles, setRoles] = useState([])
     const [feedback, setFeedback] = useState("")
     const [userCharacters, updateUserCharacters] = useState([])
-   
+    const [searchWords, setSearch] = useState("")
+    const [rendCount, setCount] = useState(0)
+    const [sortedCharacters, setSortedCharacters] = useState([])
+
     useEffect(
         () => {
             getAllRoles(setRoles)
@@ -32,196 +36,79 @@ export const Character = () => {
                     getAllServers(setServers)
                 })
                 .then(() => {
-                     getUserCharacters(RosterUserObject)
-             
-              .then((charArr) => 
-                  updateUserCharacters(charArr)) 
-      
+                    getUserCharacters(RosterUserObject)
+
+                        .then((charArr) =>
+                            updateUserCharacters(charArr))
+
                 })
-               
+
         },
         [] // When this array is empty, you are observing initial component state
     )
-  
+    useEffect(
+        () => {
+            getAllRoles(setRoles)
+
+                .then(() => {
+                    getAllFactions(setFactions)
+                })
+                .then(() => {
+                    getAllWeapons(setWeapons)
+                })
+                .then(() => {
+                    getAllServers(setServers)
+                })
+                .then(() => {
+                    getUserCharacters(RosterUserObject)
+
+                        .then((charArr) =>
+                            updateUserCharacters(charArr))
+                        .then(() => {
+                            setSortedCharacters(userCharacters)
+                        })
+
+                })
+
+        },
+        [rendCount] // When this array is empty, you are observing initial component state
+    )
+
+
+    useEffect(
+        () => {
+
+            const searchedChar = userCharacters.filter(character => {
+                return character?.character.toLowerCase().startsWith(searchWords.toLowerCase())  //make both lowercase so you can always find a match regardless of case
+            })
+            setSortedCharacters(searchedChar)
+        },
+        [searchWords]//find what you put into the search bar and set that as sorted  it should be watching this??  
+        //but it only changes on the first change why or maybe this is another rerender problem, but i'm calling the array down again it should be what the heck
+    )
+    useEffect(
+        () => {
+            setSortedCharacters(userCharacters)
+        },
+        [userCharacters]  //this is here to keep the usercharacters in the sorted array which is the one being mapped to create the character cards, also used for searching
+        
+    )
+
+
     useEffect(() => {
         if (feedback !== "") {
             // Clear feedback to make entire element disappear after 3 seconds
             setTimeout(() => setFeedback(""), 3000);
         }
     }, [feedback])
+    return <>
+        <CharacterForm setCount={setCount} factions={factions} setFactions={setFactions} RosterUserObject={RosterUserObject} updateUserCharacters={updateUserCharacters} weapons={weapons} setWeapons={setWeapons} servers={servers} roles={roles} feedback={feedback} setFeedback={setFeedback} />
+        <h2 className="characterForm__title">Manage Characters</h2>
+        <div><SearchCharacters setSearch={setSearch} searchWords={searchWords} /></div>
+        <section className="edit_characters">
 
-  
-  
-
-    return <><h1>HERE IS WHERE YOU WILL FILL OUT AND ADD/EDIT CHARACTERS</h1>
-    <CharacterForm factions={factions} setFactions={setFactions} weapons={weapons} setWeapons={setWeapons} servers={servers} roles={roles} feedback={feedback} setFeedback={setFeedback}/>
-  <section> <ManageCharacters  feedback={feedback} userCharacters={userCharacters} updateUserCharacters={updateUserCharacters} setFeedback={setFeedback} 
-    weapons={weapons} servers={servers} roles={roles} factions={factions}/></section> 
+            <ManageCharacters feedback={feedback} sortedCharacters={sortedCharacters} updateUserCharacters={updateUserCharacters} setFeedback={setFeedback}
+                weapons={weapons} servers={servers} roles={roles} factions={factions} /></section>
     </>
 }
-
-
-
-
-
-
-
-
-// export const EmployeeForm = () => {
-//     const navigate = useNavigate()characters={characters}
-
-
-//     const [locationsArray, setLocations] = useState([])
-//     const [newCharacter, updateCharacter] = useState({ /*when you callupdate it will automatically assign these given properties to a new object.  or i mean a copy of the existing state*/
-
-//         fullName: "",
-//         isStaff: true,
-//         email: ""
-
-//     })
-
-//     const [newEmployee, updateEmployee] = useState({
-//         userId: 0,
-//         payrate: 0,
-//         locationId: 0,
-//         startDate: ""
-//     })
-
-//     useEffect(
-//         () => {
-//             getLocations()
-//                 .then((locationArr) => {
-//                     setLocations(locationArr)
-//                 })
-//         },
-//         [] // When this array is empty, you are observing initial component state
-//     )
-
-
-//     const handleSaveButtonClick = (event) => {
-//         event.preventDefault()
-//         // TODO: Perform the fetch() to POST the object to the API
-//         saveNewEmployee()
-
-//     }
-//  const saveNewEmployee = () => {
-//      let userToSendToAPI = {...newUser }
-     
-//         postNewUser(userToSendToAPI)
-//                 .then((newEmployeeObj) => {
-//                     let employee = { ...newEmployee}
-                    
-//                             let employeeToSendToAPI = { 
-//                                 payrate: parseFloat(employee.payRate),
-//                                 locationId: parseFloat(employee.locationId),
-//                                 startDate: employee.startDate,
-//                                 userId: newEmployeeObj.id
-                             
-                            
-//                         }
-
-                            
-//                     postNewEmployee(employeeToSendToAPI)
-//                         .then(() => {
-//                             navigate("/employees")
-//                         })
-    
-//                 })
-//     }
-//     // TODO: Create the object to be saved to the API
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//     return <form className="employee__Form">
-//         <h2 className="employeeForm__title">Add Staff</h2>
-//         <fieldset>
-//             <div className="form-group">
-//                 <label className="name">Full Name:</label>
-//                 <input
-//                     required autoFocus
-//                     type="text"
-//                     className="form-control"
-//                     placeholder="First and Last"
-//                     value={newUser.fullName}  //default value included
-//                     onChange={
-//                         (evt) => {
-//                             const copy = { ...newUser }
-//                             copy.fullName = evt.target.value
-//                             update(copy)
-//                         }
-//                     } />
-//             </div>
-//         </fieldset>
-//         <fieldset>
-//             <div className="form-group">
-//                 <label className="email">Email:</label>
-//                 <input
-//                     required autoFocus
-//                     type="text"
-//                     className="form-control"
-//                     placeholder="Employee Email"
-//                     value={newUser.email}  //default value included
-//                     onChange={
-//                         (evt) => {
-//                             const copy = { ...newUser }
-//                             copy.email = evt.target.value
-//                             update(copy)
-//                         }
-//                     } />
-//             </div>
-//         </fieldset>
-//         <fieldset>
-
-//             <div className="form-group">
-//                 <label for="hireDate">Start Date: </label>
-//                 <input type="date" value={newEmployee.startDate} className="hireDate"
-//                     onChange={
-//                         (evt) => {
-//                             const copy = { ...newEmployee }
-//                             copy.startDate = evt.target.value
-//                             updateEmployee(copy)
-//                         }
-//                     } />
-//             </div>
-//         </fieldset>
-
-//         <fieldset>
-//             {locationsArray.map((location) => <EmployeeFormCheck key={`${location.id}`} locationObj={location} newUser={newEmployee} update={updateEmployee} />)}
-
-//         </fieldset>
-//         <fieldset>
-//             <label className="form__group">Rate: </label>
-//             <input type="number" value={newEmployee.rate}
-//                 onChange={
-//                     (evt) => {
-//                         const copy = { ...newEmployee }
-//                         copy.payRate = evt.target.value
-//                         updateEmployee(copy)
-//                     }}>
-//             </input>
-//         </fieldset>
-//         <button onClick={handleSaveButtonClick}>Add Employee</button>
-
-
-
-
-
-//     </form>
-    
-
-
-// }
-
+//PLEASE BE AWARE I CHANGED THE VALUE OF USERCHARACTERS TO THE SORTED CHARACTER ARRAY IN THE MANAGE CHARACTER COMPONENT^^  SHOULD PROBABLY CLEAN THAT UP
