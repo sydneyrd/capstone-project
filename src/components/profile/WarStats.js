@@ -27,7 +27,7 @@ export const WarStats = ({ localUser }) => {
 
     return <>
     
-   { userWarStats ? <><div className="savedroster--container">{userWarStats.map((stat) => <WarResultMap setCount={setCount} key={stat.id} stat={stat} />)}</div></>
+    { userWarStats ? <><div className="savedroster--container">{userWarStats.map((stat) => <WarResultMap  key={stat.id} stat={stat} />)}</div></>
     : ""
     
     }</>

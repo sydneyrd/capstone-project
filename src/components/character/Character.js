@@ -79,7 +79,7 @@ export const Character = () => {
         () => {
 
             const searchedChar = userCharacters.filter(character => {
-                return character?.character.toLowerCase().startsWith(searchWords.toLowerCase())  //make both lowercase so you can always find a match regardless of case
+                return character?.character_name.toLowerCase().startsWith(searchWords.toLowerCase())  //make both lowercase so you can always find a match regardless of case
             })
             setSortedCharacters(searchedChar)
         },

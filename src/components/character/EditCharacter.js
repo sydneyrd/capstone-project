@@ -13,40 +13,38 @@ import "./characters.css"
 export const EditCharacter = ({ setNeedUpdate, updateUserCharacters, ownedCharacter, roles, characters, RosterUserObject, weapons, factions, servers, feedback, setFeedback }) => {
     let [updatedCharacter, updateCharacter] = useState({
         id: ownedCharacter.id,
-        userId: ownedCharacter.userId,
-        character: ownedCharacter.character,
-        roleId: ownedCharacter.roleId,
-        primaryweapon: ownedCharacter.primaryweapon,
-        secondaryweapon: ownedCharacter.secondaryweapon,
-        serverId: ownedCharacter.serverId,
-        factionId: ownedCharacter.factionId
+        user: ownedCharacter.user,
+        character_name: ownedCharacter.character_name,
+        role: ownedCharacter.role,
+        primary_weapon: ownedCharacter.primary_weapon,
+        secondary_weapon: ownedCharacter.secondary_weapon,
+        server: ownedCharacter.server,
+        faction: ownedCharacter.faction
     })
-    let rightServer = servers.find(({ id }) => id === ownedCharacter?.serverId)
-    let rightPrimary = weapons.find(({ id }) => id === ownedCharacter?.primaryweapon)
-    let rightSecondary = weapons.find(({ id }) => id === ownedCharacter?.secondaryweapon)
-    let rightFaction = factions.find(({ id }) => id === ownedCharacter?.factionId)
-    let rightRole = roles.find(({ id }) => id === ownedCharacter?.roleId)
+    let rightServer = servers.find(({ id }) => id === ownedCharacter?.server)
+    let rightPrimary = weapons.find(({ id }) => id === ownedCharacter?.primary_weapon)
+    let rightSecondary = weapons.find(({ id }) => id === ownedCharacter?.secondary_weapon)
+    let rightFaction = factions.find(({ id }) => id === ownedCharacter?.faction)
+    let rightRole = roles.find(({ id }) => id === ownedCharacter?.role)
 
     const handleUpdateClick = (UC, click) => {//userId
         click.preventDefault()
         const letcToAPI = {
-            id: UC.id,
-            userId: parseInt(UC.userId),
-            character: UC.character,
-            roleId: parseInt(UC.roleId),
-            primaryweapon: parseInt(UC.primaryweapon),
-            secondaryweapon: parseInt(UC.secondaryweapon),
-            serverId: parseInt(UC.serverId),
-            factionId: parseInt(UC.factionId)
+            character_name: UC.character_name,
+            role: parseInt(UC.role),
+            primary_weapon: parseInt(UC.primary_weapon),
+            secondary_weapon: parseInt(UC.secondary_weapon),
+            server: parseInt(UC.server),
+            faction: parseInt(UC.faction)
         }
 
-        putCharacter(letcToAPI) //push request
+        putCharacter(letcToAPI, UC.id) //push request
         
-       .then(() => 
-       getUserCharacters(RosterUserObject))
+    .then(() => 
+    getUserCharacters(RosterUserObject))
        //i just put this here to get it to re render the page when I make changes 6/19/this could break things so watch out
 .then((charArr) => 
-  updateUserCharacters(charArr))
+updateUserCharacters(charArr))
     setFeedback("Character Updated")
     }
 
@@ -65,16 +63,16 @@ export const EditCharacter = ({ setNeedUpdate, updateUserCharacters, ownedCharac
         <>
             <form className="character_form">
                 <fieldset className="edit__form">
-                    <h4 className="editcharacter__name">{ownedCharacter?.character}</h4>
+                    <h4 className="editcharacter__name">{ownedCharacter?.character_name}</h4>
                     <input
 
                         type="text"
                         className="form-control"
                         placeholder="change name"
-                        value={updatedCharacter?.character} /**onChange{update character state}**/ onChange={
+                        value={updatedCharacter?.character_name} /**onChange{update character state}**/ onChange={
                             (event) => {
                                 const copy = { ...updatedCharacter }
-                                copy.character = event.target.value
+                                copy.character_name = event.target.value
                                 updateCharacter(copy)
                             }
                         } />
@@ -82,7 +80,7 @@ export const EditCharacter = ({ setNeedUpdate, updateUserCharacters, ownedCharac
                     <select onChange={
                         (event) => {
                             const copy = { ...updatedCharacter }
-                            copy.roleId = event.target.value
+                            copy.role = event.target.value
                             updateCharacter(copy)
                         }
                     } className="role__select">
@@ -94,7 +92,7 @@ export const EditCharacter = ({ setNeedUpdate, updateUserCharacters, ownedCharac
                     <select onChange={
                         (event) => {
                             const copy = { ...updatedCharacter }
-                            copy.primaryweapon = event.target.value
+                            copy.primary_weapon = event.target.value
                             updateCharacter(copy)
                         }
                     } className="character__select">
@@ -105,7 +103,7 @@ export const EditCharacter = ({ setNeedUpdate, updateUserCharacters, ownedCharac
                     <select onChange={
                         (event) => {
                             const copy = { ...updatedCharacter }
-                            copy.secondaryweapon = event.target.value
+                            copy.secondary_weapon = event.target.value
                             updateCharacter(copy)
                         }
                     } className="character__second">
@@ -118,7 +116,7 @@ export const EditCharacter = ({ setNeedUpdate, updateUserCharacters, ownedCharac
                     <select onChange={
                         (event) => {
                             const copy = { ...updatedCharacter }
-                            copy.serverId = event.target.value
+                            copy.server = event.target.value
                             updateCharacter(copy)
                         }
                     } htmlFor="server">
@@ -130,7 +128,7 @@ export const EditCharacter = ({ setNeedUpdate, updateUserCharacters, ownedCharac
                     <select onChange={
                         (event) => {
                             const copy = { ...updatedCharacter }
-                            copy.factionId = event.target.value
+                            copy.faction = event.target.value
                             updateCharacter(copy)
                         }
                     } className="character__select">

@@ -4,55 +4,77 @@ export const getUserByEmail = (email) => {
 }
 
 export const getUserbyId = (id) => {
-    return fetch(`http://localhost:8088/users/${id}`)
+    return fetch(`http://127.0.0.1:8000/users/${id}`, {
+    headers:{
+        "Authorization": `Token ${localStorage.getItem("roster_token")}`}
+    })
         .then(res => res.json())
 }
 export const getUserCharacters = (user) => {
-    return fetch(`http://localhost:8088/characters?&userId=${user.id}`)
+    return fetch(`http://127.0.0.1:8000/characters?user=${user.id}`, {
+    headers:{
+        "Authorization": `Token ${localStorage.getItem("roster_token")}`}
+    })
         .then(res => res.json())
 
 }
 
 export const getUserRosters = (user) => {
-    return fetch(`http://localhost:8088/rosters?&userId=${user.id}`)
+    return fetch(`http://127.0.0.1:8000/rosters?user=${user.id}`,{
+        headers:{
+            "Authorization": `Token ${localStorage.getItem("roster_token")}`
+        }
+    })
         .then(res => res.json())
 
 }
 
 export const getCurrentRoster = (rosterId) => {
-    return fetch(`http://localhost:8088/rosterchoices?&rosterId=${rosterId}`)
+    return fetch(`http://127.0.0.1:8000/rosterchoices?roster=${rosterId}`, {
+        headers:{
+            "Authorization": `Token ${localStorage.getItem("roster_token")}`
+        }
+    })
         .then(res => res.json())
 
 }
 
 export const getUserWarStats = (user) => {
-    return fetch(`http://localhost:8088/calculatedRosters?userId=${user.id}`)
+    return fetch(`http://127.0.0.1:8000/calculatedrosters?user=${user.id}`, {
+    headers:{
+        "Authorization": `Token ${localStorage.getItem("roster_token")}`}
+    })
         .then(res => res.json())
 }
-
+//post new user fix during auth adjustments
 export const postNewUser = (user) => {
     return fetch("http://localhost:8088/users", {
         method: "POST",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Authorization": `Token ${localStorage.getItem("roster_token")}`
         },
         body: JSON.stringify(user)
     })
         .then(res => res.json())
 }
-
+//auth fixes as well probably
 export const updateProfile = (profile, id) => {
-    return fetch(`http://localhost:8088/users/${id}`, {
+    return fetch(`http://127.0.0.1:8000/users/${id}`, {
         method: "PUT",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Authorization": `Token ${localStorage.getItem("roster_token")}`
         },
         body: JSON.stringify(profile)
     })
         .then(response => response.json())
 }
 export const getAllWeapons = (setWeapons) => {
-    return fetch(`http://localhost:8088/weapons`)
+    return fetch(`http://127.0.0.1:8000/weapons`, {
+    headers:{
+        "Authorization": `Token ${localStorage.getItem("roster_token")}`}
+    })
         .then(res => res.json())
         .then((weaponsArr) => {
             setWeapons(weaponsArr)
@@ -60,14 +82,19 @@ export const getAllWeapons = (setWeapons) => {
 }
 
 export const getAllRoles = (setRoles) => {
-    return fetch(`http://localhost:8088/roles`)
+    return fetch(`http://127.0.0.1:8000/roles`, {headers:{
+        "Authorization": `Token ${localStorage.getItem("roster_token")}`
+    }})
         .then(res => res.json())
         .then((roleArr) => {
             setRoles(roleArr)
         })
 }
 export const getAllServers = (setServers) => {
-    return fetch(`http://localhost:8088/servers`)
+    return fetch(`http://127.0.0.1:8000/servers`, {
+    headers:{
+        "Authorization": `Token ${localStorage.getItem("roster_token")}`}
+    })
         .then(res => res.json())
         .then((serverArr) => {
             setServers(serverArr)
@@ -75,40 +102,57 @@ export const getAllServers = (setServers) => {
 }
 
 export const getAllFactions = (setFactions) => {
-    return fetch(`http://localhost:8088/factions`)
+    return fetch(`http://127.0.0.1:8000/factions`,
+    {headers:{
+        "Authorization": `Token ${localStorage.getItem("roster_token")}`
+    }})
         .then(res => res.json())
         .then((factionArr) => {
             setFactions(factionArr)
         })
 }
 export const getAllCharacters = (setCharacters) => {
-    return fetch(`http://localhost:8088/characters`)
+    return fetch(`http://127.0.0.1:8000/characters`,{
+    headers:{
+        "Authorization": `Token ${localStorage.getItem("roster_token")}`}
+    })
         .then(res => res.json())
         .then((charactersArr) => {
             setCharacters(charactersArr)
         })
 }
 export const getRosterCharacter = (rosterNum) => {
-    return fetch(`http://localhost:8088/rosterchoices?&rosterId=${rosterNum}`)
+    return fetch(`http://127.0.0.1:8000/rosterchoices?roster=${rosterNum}`,
+    {headers:{
+        "Authorization": `Token ${localStorage.getItem("roster_token")}`
+    }})
         .then(res => res.json())
     //no set function included in this don't forget .then
 }
 export const getCalculatedRoster = (calculatedrosterId) => {
-    return fetch(`http://localhost:8088/calculatedRosters?id=${calculatedrosterId}`)
+    return fetch(`http://127.0.0.1:8000/calculatedrosters/${calculatedrosterId}`,
+    {headers:{
+        "Authorization": `Token ${localStorage.getItem("roster_token")}`
+    }})
         .then(res => res.json())
 }
 
 export const getCalculatedRosterChar = (calculatedRosterId) => {
-    return fetch(`http://localhost:8088/calculatedrosterchoices?&calculatedrosterId=${calculatedRosterId}`)
+    return fetch(`http://127.0.0.1:8000/calculatedrosterchoices?calculatedroster=${calculatedRosterId}`,{
+        headers:{
+            "Authorization": `Token ${localStorage.getItem("roster_token")}`
+        }
+    })
         .then(res => res.json())
     //no set function included in this don't forget .then
 }
 
 export const saveNewCharacter = (newCharacterToAPI) => {
-    return fetch(`http://localhost:8088/characters`, {
+    return fetch(`http://127.0.0.1:8000/characters`, {
         method: "POST",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Authorization": `Token ${localStorage.getItem("roster_token")}`
         },
         body: JSON.stringify(newCharacterToAPI)
     })
@@ -116,21 +160,23 @@ export const saveNewCharacter = (newCharacterToAPI) => {
 }
 
 export const newRosterChoice = (newRosterChoiceObj) => {
-    return fetch(`http://localhost:8088/rosterchoices`, {
+    return fetch(`http://127.0.0.1:8000/rosterchoices`, {
         method: "POST",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Authorization": `Token ${localStorage.getItem("roster_token")}`
         },
         body: JSON.stringify(newRosterChoiceObj)
     })
         .then(res => res.json())
 }
-
+//double check thsese new calc picks//
 export const newCalculatedRosterChoices = (newRosterChoiceObj) => {
-    return fetch(`http://localhost:8088/calculatedrosterchoices`, {
+    return fetch(`http://127.0.0.1:8000/calculatedrosterchoices`, {
         method: "POST",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Authorization": `Token ${localStorage.getItem("roster_token")}`
         },
         body: JSON.stringify(newRosterChoiceObj)
     })
@@ -138,10 +184,11 @@ export const newCalculatedRosterChoices = (newRosterChoiceObj) => {
 }
 
 export const newRoster = (newRosterObj) => {
-    return fetch(`http://localhost:8088/rosters`, {
+    return fetch(`http://127.0.0.1:8000/rosters`, {
         method: "POST",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Authorization": `Token ${localStorage.getItem("roster_token")}`
         },
         body: JSON.stringify(newRosterObj)
     })
@@ -149,10 +196,11 @@ export const newRoster = (newRosterObj) => {
 }
 
 export const newCalculatedRoster = (newRosterObj) => {
-    return fetch(`http://localhost:8088/calculatedrosters`, {
+    return fetch(`http://127.0.0.1:8000/calculatedrosters`, {
         method: "POST",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Authorization": `Token ${localStorage.getItem('roster_token')}`
         },
         body: JSON.stringify(newRosterObj)
     })
@@ -160,29 +208,32 @@ export const newCalculatedRoster = (newRosterObj) => {
 }
 
 export const deleteRosterChoice = (rosterChoiceId) => {
-    return fetch(`http://localhost:8088/rosterchoices/${rosterChoiceId}`, {
+    return fetch(`http://127.0.0.1:8000/rosterchoices/${rosterChoiceId}`, {
         method: "DELETE",
         headers: {
-            'Content-type': 'application/json'
+            'Content-type': 'application/json',
+            "Authorization": `Token ${localStorage.getItem('roster_token')}`
         }
     })
 }
 
 export const deleteCharacter = (deleteCharacterId) => {
-    return fetch(`http://localhost:8088/characters/${deleteCharacterId}`, {
+    return fetch(`http://127.0.0.1:8000/characters/${deleteCharacterId}`, {
         method: "DELETE",
         headers: {
-            'Content-type': 'application/json'
+            'Content-type': 'application/json',
+            "Authorization": `Token ${localStorage.getItem('roster_token')}`
         }
     }
     )
 }
 
 export const deleteRoster = (rosterId) => {
-    return fetch(`http://localhost:8088/rosters/${rosterId}`, {
+    return fetch(`http://127.0.0.1:8000/rosters/${rosterId}`, {
         method: "DELETE",
         headers: {
-            'Content-type': 'application/json'
+            'Content-type': 'application/json',
+            'Authorization': `Token ${localStorage.getItem('roster_token')}`
         }
 
     }
@@ -190,24 +241,49 @@ export const deleteRoster = (rosterId) => {
 }
 
 export const deleteCalculatedRoster = (calculatedRosterId) => {
-     fetch(`http://localhost:8088/calculatedrosters/${calculatedRosterId}`, {
+    fetch(`http://127.0.0.1:8000/calculatedrosters/${calculatedRosterId}`, {
         method: "DELETE",
         headers: {
-            'Content-type': 'application/json'
+            'Content-type': 'application/json',
+            "Authorization": `Token ${localStorage.getItem('roster_token')}`
         }
 
     }
     )
 }
 
-export const putCharacter = (uCharacter) => {
-    return fetch(`http://localhost:8088/characters/${uCharacter?.id}`, {
+export const putCharacter = (uCharacter, id) => {
+    return fetch(`http://127.0.0.1:8000/characters/${id}`, {
         method: "PUT",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Authorization": `Token ${localStorage.getItem('roster_token')}`
         },
         body: JSON.stringify(uCharacter)
     })
-        .then(response => response.json())
+        
 }
 
+export const loginUser = (user) => {
+    return fetch("http://127.0.0.1:8000/login", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify(user)
+    })
+        .then(res => res.json())
+}
+
+export const registerUser = (user) => {
+    return fetch("http://127.0.0.1:8000/register", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify(user)
+    })
+        .then(res => res.json())
+}

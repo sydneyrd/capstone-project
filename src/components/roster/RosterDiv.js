@@ -14,7 +14,7 @@ export const RosterDiv = ({c, setNewRosterPick, newRosterPicks, showText, setSho
     }
 return <>
  <div id={c?.id} onMouseOver={setCharId} onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}className="roster__choices">{c?.character}<button className="roster__remove" onClick={click => handleRemove(c, click)}>Remove</button></div>
+      onMouseLeave={handleMouseLeave}className="roster__choices">{c?.character_name}<button className="roster__remove" onClick={click => handleRemove(c, click)}>Remove</button></div>
 </>
 
 }

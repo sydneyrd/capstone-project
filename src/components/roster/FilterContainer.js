@@ -34,11 +34,11 @@ const handlePrimarySelect = (e) => {
         e.preventDefault(e)
         const searchArr =
             characters
-                .filter(x => x.roleId === (roleSearch == '' ? x.roleId : roleSearch))
-                .filter(y => y.serverId === (serverSearch == '' ? y.serverId : serverSearch))
-                .filter(l => l.factionId === (factionSearch == '' ? l.factionId : factionSearch))
-                .filter(k => k.primaryweapon === (primarySearch == '' ? k.primaryweapon : primarySearch))
-                .filter(m => m.secondaryweapon === (secondarySearch == '' ? m.secondaryweapon : secondarySearch))
+                .filter(x => x.role === (roleSearch == '' ? x.role : roleSearch))
+                .filter(y => y.server === (serverSearch == '' ? y.server : serverSearch))
+                .filter(l => l.faction === (factionSearch == '' ? l.faction : factionSearch))
+                .filter(k => k.primary_weapon === (primarySearch == '' ? k.primary_weapon : primarySearch))
+                .filter(m => m.secondary_weapon === (secondarySearch == '' ? m.secondary_weapon : secondarySearch))
         setSortedArr(searchArr)
     }
 
@@ -47,11 +47,11 @@ const handlePrimarySelect = (e) => {
         () => {
             const searchArr =
             characters
-                .filter(x => x.roleId === (roleSearch == '' ? x.roleId : roleSearch))
-                .filter(y => y.serverId === (serverSearch == '' ? y.serverId : serverSearch))
-                .filter(l => l.factionId === (factionSearch == '' ? l.factionId : factionSearch))
-                .filter(k => k.primaryweapon === (primarySearch == '' ? k.primaryweapon : primarySearch))
-                .filter(m => m.secondaryweapon === (secondarySearch == '' ? m.secondaryweapon : secondarySearch))
+                .filter(x => x.role === (roleSearch == '' ? x.role : roleSearch))
+                .filter(y => y.server === (serverSearch == '' ? y.server : serverSearch))
+                .filter(l => l.faction === (factionSearch == '' ? l.faction : factionSearch))
+                .filter(k => k.primary_weapon === (primarySearch == '' ? k.primary_weapon : primarySearch))
+                .filter(m => m.secondary_weapon === (secondarySearch == '' ? m.secondary_weapon : secondarySearch))
         setSortedArr(searchArr)
 
 
@@ -59,7 +59,7 @@ const handlePrimarySelect = (e) => {
 
             setSortedArr(searchArr)
         },
-        [roleSearch, primarySearch, serverSearch, secondarySearch, ]//find what you put into the search bar and set that as sorted
+        [roleSearch, primarySearch, serverSearch, secondarySearch, factionSearch ]//find what you put into the search bar and set that as sorted
     ) 
 
 

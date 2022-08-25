@@ -13,7 +13,6 @@ export const RosterGrid = ({showText, setShowText, charId, setNewRosterPick, set
     useEffect(
         () => {
             getCurrentRoster(rosterIDNUMBER)
-
                 .then((res) => {
                     setEditCharacters(res)
                 })
