@@ -102,9 +102,10 @@
  }
 
  .save__div {
+  display: flex;
      flex-direction: row;
-     justify-content: flex-end;
-     align-items: flex-end;
+     justify-content: flex-start;
+     align-content: space-around;
      
  }
 
