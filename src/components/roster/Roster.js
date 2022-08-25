@@ -1,4 +1,4 @@
-import { getAllCharacters, getAllRoles, getAllFactions, getCurrentRoster, getAllWeapons, getAllServers, newRoster } from "../APIManager"
+import { getAllCharacters, getAllRoles, getAllFactions, getCurrentRoster, getAllWeapons, getAllServers, newRoster, putRosterName, getRosterName } from "../APIManager"
 import { useEffect, useState } from "react"
 import { RosterGrid } from "./RosterGrid"
 import { ListContainer } from "./ListContainer"
@@ -26,8 +26,10 @@ export const Roster = () => {
     let navigate = useNavigate()
     const [showText, setShowText] = useState(false)
     const [charId, setId] = useState(0)
+    const [rosterName, setRosterName] = useState({})
     //we are capturing the new roster id when we first click add to roster and saving it to start roster  //pass those props ^
-    
+    let rosterID = localStorage.getItem("roster_id") //need this for the new array for the api
+    let rosterIDNUMBER = JSON.parse(rosterID)
     const setCharId = e => {
         setId(parseInt(e.target.id))
     } //sets identifier to get correct detail info
@@ -76,12 +78,32 @@ export const Roster = () => {
         },
         [characters]//sort them alphabetically honestly it's just to put the characters into a sorted array because that's where i want them for future sorting
     )
+    useEffect(
+        () => {
+          if (rosterIDNUMBER) {
+            getRosterName(rosterIDNUMBER).then((data) => {setRosterName(data)}
+            )
+          } 
+        },
+        [rosterIDNUMBER]//find what you put into the search bar and set that as sorted
+    ) 
 
-  
+
+
+const handleRosterName = (event) => {
+    ///we are gonna match the value of the text input here, 
+    //and send it to the server as a put
+    //check to see if a rosterID is available in storage first and do that, if not do nothing/display pop up saying make a selection to start a roster
+    let newName = {...rosterName}
+    newName[event.target.name] = event.target.value
+    if (rosterIDNUMBER) { 
+    putRosterName(rosterIDNUMBER, newName)} 
+    else {
+    alert('Pick a character first please ok just do it')}
+}
 
     
-    let rosterID = localStorage.getItem("roster_id") //need this for the new array for the api
-    let rosterIDNUMBER = JSON.parse(rosterID)
+    
 const handleSave = (click, newRosterPicks) => { //onclickingSave
         click.preventDefault()
             localStorage.removeItem("roster_id")
@@ -121,7 +143,8 @@ e.preventDefault()
             setSortedArr={setSortedArr} characters={characters} servers={servers} weapons={weapons} factions={factions} roles={roles} />
       <div className="save__div"> <button className="save__button" onClick={(click) => { handleSave(click, newRosterPicks) }}>Save Roster</button> 
        <button onClick={(e) => handleNewRoster(e) 
-    }  className="new__button">New Roster</button> </div>  <section className="body">
+    }  className="new__button">New Roster</button> 
+    <input type="text" className="roster_name" name="name" placeholder="name this roster ?" value={rosterName.name} onChange={(event) => handleRosterName(event)}/></div>  <section className="body">
             <ListContainer editRosterCharacters={editRosterCharacters} showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} setNewRosterPick={setNewRosterPick} newRosterPicks={newRosterPicks} characters={sortedArr} servers={servers} weapons={weapons} factions={factions} roles={roles} />
            
             <div className="parent" >

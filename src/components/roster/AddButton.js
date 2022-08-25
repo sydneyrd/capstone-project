@@ -17,7 +17,8 @@ export const AddButton = ({ editRosterCharacters, character, id, setNewRosterPic
             user: rosterUser.id
         }  //posts successfully as a new roster sets a localitem to check for to condition to only run one time.
         newRoster(newR).then((newRosterObj) => {
-            let roster = { ...newRosterObj }
+            let roster = { ...newRosterObj 
+            } 
             localStorage.setItem('roster_id', parseFloat(roster.id))
             addUserToEnd(character)
         })

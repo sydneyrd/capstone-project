@@ -147,6 +147,14 @@ export const getCalculatedRosterChar = (calculatedRosterId) => {
     //no set function included in this don't forget .then
 }
 
+export const getRosterName = (rosterId) => {
+    return fetch(`http://127.0.0.1:8000/rosters/${rosterId}`,
+    {headers:{
+        "Authorization": `Token ${localStorage.getItem("roster_token")}`
+    }})
+        .then(res => res.json())
+}
+
 export const saveNewCharacter = (newCharacterToAPI) => {
     return fetch(`http://127.0.0.1:8000/characters`, {
         method: "POST",
@@ -238,6 +246,20 @@ export const deleteRoster = (rosterId) => {
 
     }
     )
+}
+
+//we are going to PUT our Roster's name with a text field
+
+export const putRosterName = (id, rosterName) => {
+    return fetch(`http://127.0.0.1:8000/rosters/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Token ${localStorage.getItem('roster_token')}`
+        },
+        body: JSON.stringify(rosterName)
+    })
+        
 }
 
 export const deleteCalculatedRoster = (calculatedRosterId) => {
