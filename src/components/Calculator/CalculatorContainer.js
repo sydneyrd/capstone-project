@@ -1,5 +1,6 @@
 import { CalculatorForm } from "./CalculatorForm"
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 import { getAllCharacters, getCurrentRoster, getUserRosters } from "../APIManager"
 import { RosterList } from "./RosterList"
 import { CalculateResults } from "./CalculateResults"
@@ -47,15 +48,16 @@ export const CalculatorContainer = () => {
         setCalculatedRoster([])
     }
 
-    return <> <>
-    {!selectedRoster ?  <> {userRosters.map((roster) => <RosterList key={roster.id} setSelectedRoster={setSelectedRoster} roster={roster} />)}</>
+    return <> <> 
+    {!selectedRoster ? <> <> <h3>Select an existing Roster</h3> {userRosters.map((roster) => <RosterList key={roster.id} setSelectedRoster={setSelectedRoster} roster={roster} />)}</>
+    <div><Link to="/calculate/new">Create New</Link></div> </>
 : ""    
 }
-        
-       <button className="clear__button" onClick={(click) => handleClear(click)}>Clear Roster Choice</button></>
+        </>
+       
  
-        {selectedRoster ?
-            <>   <input className="roster__name" type="text" onChange={(event) => { setCurrentCalcRostName(event.target.value) }} placeholder="name these results..."></input>
+        {selectedRoster ? 
+            <>  <button className="clear__button" onClick={(click) => handleClear(click)}>Go Back</button> <input className="roster__name" type="text" onChange={(event) => { setCurrentCalcRostName(event.target.value) }} placeholder="name these results..."></input>
                 <div className="parent__div">{rosterChoices.map((rosterChoice) => <CalculatorForm key={rosterChoice.id} calculatedRoster={calculatedRoster} selectedRoster={selectedRoster} 
                 setCalculatedRoster={setCalculatedRoster}
                     rosterChoice={rosterChoice} characters={characters} />)}</div>
