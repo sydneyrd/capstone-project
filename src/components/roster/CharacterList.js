@@ -13,7 +13,7 @@ id={character.id} onMouseOver={setCharId}
 
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave} >
-      {character.character}
+      {character.character_name}
       <AddButton className="add__button" editRosterCharacters={editRosterCharacters} setNewRosterPick={setNewRosterPick} newRosterPicks={newRosterPicks} character={character}  id={character.id}  charId={charId} />
  </div>
   )

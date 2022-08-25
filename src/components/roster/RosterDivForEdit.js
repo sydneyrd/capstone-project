@@ -6,7 +6,7 @@ export const RosterDivForEdit = ({c, showText, setShowText, charId, setNewRoster
 
  
 
-let rightName = characters?.find(({id}) => id === c?.characterId)
+let rightName = characters?.find(({id}) => id === c?.character)
     const handleRemove = (c, event) => {
       event.preventDefault() 
        let updatedRoster = newRosterPicks.filter((v) => v.id != c.id)
@@ -15,7 +15,7 @@ let rightName = characters?.find(({id}) => id === c?.characterId)
     }
 return <>
  <div id={rightName?.id} onMouseOver={setCharId} onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave} className="roster__choices">{`${rightName?.character}`}<button className="roster__remove" onClick={click => handleRemove(c, click)}>Remove</button></div>
+      onMouseLeave={handleMouseLeave} className="roster__choices">{`${rightName?.character_name}`}<button className="roster__remove" onClick={click => handleRemove(c, click)}>Remove</button></div>
 </>}
 
 

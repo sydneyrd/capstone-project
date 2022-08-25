@@ -10,8 +10,10 @@
 }
 
 
-.form--login > fieldset > input[type="email"] {
-    width: 15em;
+input[type="email"] {
+        margin: 0.15em;
+        padding: 1em;
+        border-radius: 3px;
 }
 fieldset {
     margin: 2px;
@@ -35,6 +37,7 @@ fieldset {
 .form--update {
     display: flex;
     flex-direction: column;
+    align-content: center;
     background-position-x: left;
     z-index: 1;
     min-height: 20rem;
@@ -43,7 +46,7 @@ fieldset {
     background-blend-mode: overlay;
     background-repeat: no-repeat;
     margin:4em;
-   align-items: center;
+    align-items: center;
     justify-items: center;
 }
 

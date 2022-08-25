@@ -13,8 +13,8 @@ export const EditOrCreateView = ({ rosterIDNUMBER, newRosterPicks, setNewRosterP
         },
         []
     )
- {rosterIDNUMBER ? <div className="parent" ><RosterGrid newRosterPicks={editPicks} setNewRosterPick={setNewRosterPick} characters={characters} /></div>
-                         :
+{rosterIDNUMBER ? <div className="parent" ><RosterGrid newRosterPicks={editPicks} setNewRosterPick={setNewRosterPick} characters={characters} /></div>
+                        :
 <><div className="parent" ><RosterGrid newRosterPicks={newRosterPicks} setNewRosterPick={setNewRosterPick} characters={characters} /></div></>}
     
             

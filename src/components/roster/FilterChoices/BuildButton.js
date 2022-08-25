@@ -4,7 +4,7 @@ export const BuildButton = () => {
    
     const handleStartClick = () => {
         let newR = {
-            userId: rosterUser.id
+            user: rosterUser.id
         }
 newRoster(newR) //post func
     

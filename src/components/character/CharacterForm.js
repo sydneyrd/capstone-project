@@ -30,24 +30,16 @@ export const CharacterForm = ({ updateUserCharacters, setCount, getUserCharacter
 
         // TODO: Create the object to be saved to the API
         let newCharacterToAPI = {
-            character: newCharacter.character,
-            roleId: parseInt(newCharacter.roleId),
-            primaryweapon: parseInt(newCharacter.primaryId),
-            secondaryweapon: parseInt(newCharacter.secondaryId),
-            serverId: parseInt(newCharacter.serverId),
-            factionId: parseInt(newCharacter.factionId),
-            userId: RosterUserObject.id
+            character_name: newCharacter.character,
+            role: parseInt(newCharacter.roleId),
+            primary_weapon: parseInt(newCharacter.primaryId),
+            secondary_weapon: parseInt(newCharacter.secondaryId),
+            server: parseInt(newCharacter.serverId),
+            faction: parseInt(newCharacter.factionId),
+            user: RosterUserObject.id
         }
         saveNewCharacter(newCharacterToAPI)
-            // .then(() =>
-            //     getUserCharacters(RosterUserObject)
-            // )
-            // .then((charArr) => 
-            //     updateUserCharacters(charArr)
-            
-            // ) //another then before set feedback maybe?
-        //it doesn't like this and won't rerender due to uncaught promise here^  fix it 
-        //I don't think i need this anymore because the setCount causes it to rerrender, and as long as it posts successfully that should be just fine  
+
 
         setCount((count) => count + 1)
         setFeedback("Character successfully added")

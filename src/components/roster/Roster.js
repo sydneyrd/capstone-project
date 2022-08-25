@@ -63,7 +63,7 @@ export const Roster = () => {
     useEffect(
         () => {
             const searchedChar = characters.filter(character => {
-                return character.character.toLowerCase().startsWith(searchTerms.toLowerCase())  //make both lowercase so you can always find a match regardless of case
+                return character.character_name.toLowerCase().startsWith(searchTerms.toLowerCase())  //make both lowercase so you can always find a match regardless of case
             })
             setSortedArr(searchedChar)
         },
@@ -71,7 +71,7 @@ export const Roster = () => {
     ) 
     useEffect(
         () => {
-              let alphaCharacters = characters.sort((a, b) => a.character.localeCompare(b.character))
+            let alphaCharacters = characters.sort((a, b) => a.character_name.localeCompare(b.character_name))
             setSortedArr(characters) ///this alphabet sort stopped working????  it's supposed to be alphaCharacters passed into it???? why is everything not working anymore -_- it works now but could break watchout
         },
         [characters]//sort them alphabetically honestly it's just to put the characters into a sorted array because that's where i want them for future sorting
@@ -90,11 +90,11 @@ const handleSave = (click, newRosterPicks) => { //onclickingSave
             for (const c of cArr) {  //there might be an easier way idk, this works.   iterating the array of players in roster and uses takes their character id to create a new object
                 let right = c.id
                 let nC = {
-                    rosterId: rosterIDNUMBER,
-                    characterId: 0
+                    roster: rosterIDNUMBER,
+                    character: 0
                 }
-                if (nC.characterId != right) {
-                    nC.characterId = right
+                if (nC.character != right) {
+                    nC.character = right
                     rosterChoiceArr.push(nC)
                 } else { }
             } return rosterChoiceArr

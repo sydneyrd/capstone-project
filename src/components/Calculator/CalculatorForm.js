@@ -2,10 +2,10 @@
 import { useState, useEffect } from "react"
 
 export const CalculatorForm = ({ characters, selectedRoster, rosterChoice, calculatedRoster, setCalculatedRoster }) => {
-  let rightCharacter = characters.find(({ id }) => id === rosterChoice?.characterId)
+  let rightCharacter = characters.find(({ id }) => id === rosterChoice?.character)
 
   const [playerStats, setPlayerStats] = useState({
-    characterId: rightCharacter?.id,
+    character: rightCharacter?.id,
     damage: 0,
     healing: 0,
     kills: 0,
@@ -15,7 +15,7 @@ export const CalculatorForm = ({ characters, selectedRoster, rosterChoice, calcu
 
   const addPlayerToEnd = (c) => {
     const copy = { ...playerStats }
-    const noRepeats = calculatedRoster.filter((playerId) => (playerId.characterId !== copy.characterId)) //originially only in the useeffect, i'm just trying shit, the set calc one at a time is the ONLY thing I need here
+    const noRepeats = calculatedRoster.filter((playerId) => (playerId.character !== copy.character)) //originially only in the useeffect, i'm just trying shit, the set calc one at a time is the ONLY thing I need here
     setCalculatedRoster(noRepeats)
     setCalculatedRoster(state => [...state, c])//only adding one object to an array usestate
   }
@@ -24,7 +24,7 @@ export const CalculatorForm = ({ characters, selectedRoster, rosterChoice, calcu
   useEffect(
     () => {
          const copy = { ...playerStats }
-    const noRepeats = calculatedRoster.filter((playerId) => (playerId.characterId !== copy.characterId))  //removes the same player from the list before adding it again.//this is not working correctly
+    const noRepeats = calculatedRoster.filter((playerId) => (playerId.character !== copy.character))  //removes the same player from the list before adding it again.//this is not working correctly
     setCalculatedRoster(noRepeats)
     addPlayerToEnd(copy)//need to make sure there is no allowance for repeats in the array before post
     
@@ -36,7 +36,7 @@ export const CalculatorForm = ({ characters, selectedRoster, rosterChoice, calcu
     <div className="player__form">
       <form className="War Statistics">
         <></>
-        <fieldset><div>{rightCharacter?.character}</div>
+        <fieldset><div>{rightCharacter?.character_name}</div>
           <input onChange={(event) => {
             const copy = { ...playerStats }
             copy.kills = parseInt(event.target.value)
