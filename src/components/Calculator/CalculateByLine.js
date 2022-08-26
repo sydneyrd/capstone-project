@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react"
-
+import { CalculateResultsByLine } from "./CalculateResultsByLine"
 import { getAllCharacters } from "../APIManager"
 
 
 export const CalculateByLine = () => {
+  const localRosterUser = localStorage.getItem("roster_user")
+const rosterUserObject = JSON.parse(localRosterUser)
+const localUser = { ...rosterUserObject }
 const [characters, setCharacters] = useState([])
 const [calculatedRoster, setCalculatedRoster] = useState([])
+const [currentCalcRostName, setCurrentCalcRostName] = useState("")
 const [playerStats, setPlayerStats] = useState({
     character: 0,
     damage: 0,
@@ -21,24 +25,42 @@ useEffect(
 )
 const handlePlayerChoice = (event) => {
   const copy = {...playerStats}
-  copy.character = event.target.value
+  // let getTag = event.currentTarget.getAttribute('data-tag')
+  let character = characters.find(character => character.character_name === event.target.value)
+  copy.character = character?.id
   setPlayerStats(copy)  
 }
 const handleSaveAndAdd = (click) => {
     click.preventDefault()
     const copy = { ...playerStats }
-    
-     setCalculatedRoster(state => [...state, c])//only adding one object to an array usestate
-   
+    if (calculatedRoster.find(rosterChoices =>  rosterChoices.character === copy.character))
+    { alert("You've already added this character")}
+    else {setCalculatedRoster(state => [...state, copy])}
+    //only adding one object to an array usestate
+    let list = document.getElementById('select_Character')
+    list.value = ''
+}
+const handleRemove = (click, charId) => {
+  click.preventDefault()
+  const index = calculatedRoster.findIndex(object => {
+    return object.character === charId;
+  })
+  const copyRoster = [ ...calculatedRoster ]
+  copyRoster.splice(index, 1);
+  setCalculatedRoster(copyRoster)
 }
 
+const findCharacter = (c) => {
+  let character = characters.find(character => character.id === c.character)
+return character}
 
-
-    return <div className="calculater_page">OKay we gon have 1 autocomplete text box here first with character name to assign character ID, after that we got ez pz numerical inputs
-<div className="form"><input type='text' list='listid' autocomplete="on" onChange={(event) => {handlePlayerChoice(event)}} />
- <datalist id='listid'>
-   {characters.map((c) => <option key={c.id} id={c.id} value={c.id} >{c.character_name}</option>)}
-</datalist>  
+    return <div className="calculater_page">
+      <input className="roster__name" type="text" onChange={(event) => { setCurrentCalcRostName(event.target.value) }} placeholder="name these results..."></input>
+<div className="form">
+  <input type='text' id='select_Character' list='listid' autoComplete="on" onChange={(event) => {handlePlayerChoice(event)}} />
+  <datalist id='listid'>
+      {characters.map((c) => <option key={c.id} id={c.id} value={c.character_name}  ></option>)}
+  </datalist>  
 <input onChange={(event) => {
             const copy = { ...playerStats }
             copy.kills = parseInt(event.target.value)
@@ -60,62 +82,31 @@ const handleSaveAndAdd = (click) => {
                 copy.assists = parseInt(event.target.value)
                 setPlayerStats(copy)
               }}></input>
-          <input className="form-controlstat"
+  <input className="form-controlstat"
             placeholder="healing"
             type="number" onChange={(event) => {
               const copy = { ...playerStats }
               copy.healing = parseInt(event.target.value)
               setPlayerStats(copy)
             }}></input>
-          <input className="form-controlstat"
+  <input className="form-controlstat"
             placeholder="damage"
             type="number" onChange={(event) => {
               const copy = { ...playerStats }
               copy.damage = parseInt(event.target.value)
-               setPlayerStats(copy)
+            setPlayerStats(copy)
           }}></input>
           
-          <button onClick={(click) => {handleSaveAndAdd(click)}}>Save and Add Another</button>
-          <button>Finish Roster</button></div>
+    <button onClick={(click) => {handleSaveAndAdd(click)}}>Save and Add Another</button>
+    <button>Finish Roster</button></div>
 
 { calculatedRoster.length ?
-          <div className="player-list">
-            {calculatedRoster.map((c) => <div className='player--'>{c.character_name} {c.kills} {c.deaths} {c.assists} {c.healing} {c.damage}</div>)}
-          </div>
+          <><div className="player-list">
+            {calculatedRoster.map((c) => <div key={c.character} className='player--'> {findCharacter(c).character_name} &nbsp;
+            Kills: {c.kills} Deaths: {c.deaths} Assists: {c.assists} Healing: {c.healing} Damage: {c.damage} <button onClick={(click) => {handleRemove(click, c.character)}}>remove</button></div>)}
+          </div></>
           : ""}
-
-
-</div>    
+  <CalculateResultsByLine localUser={localUser} calculatedRoster={calculatedRoster} currentCalcRostName={currentCalcRostName}/> </div> 
 }
-
-
-//NEED TO CREATE A NEW CALCULATED ROSTER, THEN ADD ONE BY ONE, UPDATE DISPLAY AS THEY ARE BEING ADDED
-
-
-
-
-
-
-
-// export const CalculateByLine = ({ characters, selectedRoster, rosterChoice, calculatedRoster, setCalculatedRoster }) => {
-//   let rightCharacter = characters.find(({ id }) => id === rosterChoice?.character)
-
-//  
-
-//   const addPlayerToEnd = (c) => {
-//     
-//   // in src/components/Calculator/CalculateResults.js
-//   // Line 21:55:  Array.prototype.map() expects a return value from arrow function  array  i just put an extra around playeridcharacterid parenthesis down there
-//   useEffect(
-//     () => {
-//         const copy = { ...playerStats }
-//     const noRepeats = calculatedRoster.filter((playerId) => (playerId.character !== copy.character))  //removes the same player from the list before adding it again.//this is not working correctly
-//     setCalculatedRoster(noRepeats)
-//     addPlayerToEnd(copy)//need to make sure there is no allowance for repeats in the array before post
-    
-//     },
-//     [playerStats ]
-// ) 
-
 
 
