@@ -23,26 +23,14 @@ export const CalculatorContainer = () => {
             getUserRosters(localUser)
                 .then((URost) => {
                     setUserRosters(URost)
-                })
+                }).then(
+                    getAllCharacters(setCharacters)
+                )
                 
         },
         []
     )
-    useEffect(
-        () => {
-            
-            getCurrentRoster(selectedRoster)
-                .then((res) => {
-                    setRosterChoices(res)
-                })
-                .then(() => {
-                    getAllCharacters(setCharacters)
-                }
-                )
-        },
-        [selectedRoster]
-    )
-    const handleClear = (click) => {
+const handleClear = (click) => {
         click.preventDefault()
         setSelectedRoster(0)
         setCalculatedRoster([])
@@ -54,13 +42,11 @@ export const CalculatorContainer = () => {
 : ""    
 }
         </>
-       
- 
         {selectedRoster ? 
             <>  <button className="clear__button" onClick={(click) => handleClear(click)}>Go Back</button> <input className="roster__name" type="text" onChange={(event) => { setCurrentCalcRostName(event.target.value) }} placeholder="name these results..."></input>
-                <div className="parent__div">{rosterChoices.map((rosterChoice) => <CalculatorForm key={rosterChoice.id} calculatedRoster={calculatedRoster} selectedRoster={selectedRoster} 
+                <div className="parent__div"> <CalculatorForm calculatedRoster={calculatedRoster} selectedRoster={selectedRoster} 
                 setCalculatedRoster={setCalculatedRoster}
-                    rosterChoice={rosterChoice} characters={characters} />)}</div>
+                    characters={characters} /></div>
 
                 <CalculateResults currentCalcRostName={currentCalcRostName}
                     calculatedRosterId={calculatedRosterId} newCalculatedRoster={newCalculatedRoster} setCalculatedRosterId={setCalculatedRosterId}
