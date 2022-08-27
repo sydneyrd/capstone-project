@@ -44,13 +44,14 @@ const handleClear = (click) => {
         </>
         {selectedRoster ? 
             <>  <button className="clear__button" onClick={(click) => handleClear(click)}>Go Back</button> <input className="roster__name" type="text" onChange={(event) => { setCurrentCalcRostName(event.target.value) }} placeholder="name these results..."></input>
-                <div className="parent__div"> <CalculatorForm calculatedRoster={calculatedRoster} selectedRoster={selectedRoster} 
-                setCalculatedRoster={setCalculatedRoster}
-                    characters={characters} /></div>
-
                 <CalculateResults currentCalcRostName={currentCalcRostName}
                     calculatedRosterId={calculatedRosterId} newCalculatedRoster={newCalculatedRoster} setCalculatedRosterId={setCalculatedRosterId}
                     localUser={localUser} selectedRoster={selectedRoster} calculatedRoster={calculatedRoster} />
+                    <div className="parent__div"> <CalculatorForm calculatedRoster={calculatedRoster} selectedRoster={selectedRoster} 
+                setCalculatedRoster={setCalculatedRoster}
+                    characters={characters} /></div>
+
+                
                 <></></>
                 
             : ""}

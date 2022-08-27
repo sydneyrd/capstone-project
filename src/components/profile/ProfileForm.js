@@ -5,9 +5,6 @@ import { WarStats } from "./WarStats"
 
 
 
-/// we need an id, a username, and an email address for the user object, text text put  whatdoonsubmit
-//onSubmit={whatdoonsubmit} on form--login   onChange={updateUser} on input   
-
 export const UpdateUser = () => {
     const [feedback, setFeedback] = useState("")
     const localRosterUser = localStorage.getItem("roster_user")
@@ -69,14 +66,14 @@ export const UpdateUser = () => {
                         type="text" name="username" className="form-control--update"
                         value={user.username}
                         placeholder="" required />
-                    <label htmlFor="First Name"></label>
-                    <input onChange={(evt) => userUpdate(evt)}
+                    {/* <label htmlFor="First Name"></label> */}
+                    {/* <input onChange={(evt) => userUpdate(evt)}
                     type="text" name="first_name" className="form-control--update"
                     value={user.first_name} placeholder="" required />
                 <label htmlFor="lastName"></label>
                 <input onChange={(evt) => userUpdate(evt)}
                 type="text" name="last_name" className="form-control--update"
-                value={user.last_name} placeholder="" required />
+                value={user.last_name} placeholder="" required /> */}
                 </fieldset>
 
                     <button className="email__button" type="submit" onClick={handleSaveButtonClick}> Update </button>

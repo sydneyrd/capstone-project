@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import {getCurrentRoster} from "../APIManager"
 import { deleteRoster } from "../APIManager"
 
-export const SavedRosterList = ({roster, setCount}) => {
+export const SavedRosterList = ({roster, getUserRosters, setUserRosters, localUser}) => {
 
   const handleClick = () => {
 
@@ -16,7 +16,10 @@ export const SavedRosterList = ({roster, setCount}) => {
     click.preventDefault()
     deleteRoster(roster.id)
     localStorage.removeItem("roster_id") 
-    setCount((count) => count + 1 )
+    getUserRosters(localUser)
+        .then((URost) => {
+          setUserRosters(URost)
+        })
   }
         
 

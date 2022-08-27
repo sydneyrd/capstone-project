@@ -1,12 +1,16 @@
 import { Link } from "react-router-dom"
 import { deleteCalculatedRoster} from "../APIManager"
-export const WarResultMap = ({stat, setCount}) => {
+export const WarResultMap = ({stat, getUserWarStats, setUserWarStats, localUser}) => {
 
     const handleDeleteClick = (click, stat) => {
     alert("successfully deleted")
       click.preventDefault()
       deleteCalculatedRoster(stat.id)
-      setCount((count) => count + 2 )
+        getUserWarStats(localUser)
+        .then((URost) => {
+            setUserWarStats(URost)
+        })
+      
     }
           
   

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { CalculateResultsByLine } from "./CalculateResultsByLine"
 import { getAllCharacters } from "../APIManager"
+import "./calculator.css"
 
 
 export const CalculateByLine = () => {
@@ -54,9 +55,13 @@ const findCharacter = (c) => {
   let character = characters.find(character => character.id === c.character)
 return character}
 
-    return <div className="calculater_page">
-      <input className="roster__name" type="text" onChange={(event) => { setCurrentCalcRostName(event.target.value) }} placeholder="name these results..."></input>
-<div className="form">
+    return <><input className="roster__name" type="text" onChange={(event) => { setCurrentCalcRostName(event.target.value) }} placeholder="name these results..."></input>
+    <CalculateResultsByLine localUser={localUser} calculatedRoster={calculatedRoster} currentCalcRostName={currentCalcRostName}/>
+    <div className="parent__div">
+      
+<div className="player__form">
+  <form className="War Statistics">
+    <fieldset>
   <input type='text' id='select_Character' list='listid' autoComplete="on" onChange={(event) => {handlePlayerChoice(event)}} />
   <datalist id='listid'>
       {characters.map((c) => <option key={c.id} id={c.id} value={c.character_name}  ></option>)}
@@ -98,7 +103,7 @@ return character}
           }}></input>
           
     <button onClick={(click) => {handleSaveAndAdd(click)}}>Save and Add Another</button>
-    <button>Finish Roster</button></div>
+    </fieldset></form></div>
 
 { calculatedRoster.length ?
           <><div className="player-list">
@@ -106,7 +111,7 @@ return character}
             Kills: {c.kills} Deaths: {c.deaths} Assists: {c.assists} Healing: {c.healing} Damage: {c.damage} <button onClick={(click) => {handleRemove(click, c.character)}}>remove</button></div>)}
           </div></>
           : ""}
-  <CalculateResultsByLine localUser={localUser} calculatedRoster={calculatedRoster} currentCalcRostName={currentCalcRostName}/> </div> 
+   </div> </>
 }
 
 
