@@ -1,4 +1,7 @@
 import { newRoster, newRosterChoice } from "../APIManager"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { library } from '@fortawesome/fontawesome-svg-core'
+import {faPlus } from '@fortawesome/free-solid-svg-icons'
 
 //if id of character matches an id in the new roster picks already don't allow the add
 //id for character id, newRosterPicks for the array of picks
@@ -11,7 +14,7 @@ export const AddButton = ({ editRosterCharacters, character, id, setNewRosterPic
     const addUserToEnd = (c) => {
         setNewRosterPick(state => [...state, c])//only adding one object to an array usestate
     }
-
+library.add(faPlus)
     const handleStartClick = () => {
         let newR = {
             user: rosterUser.id
@@ -34,7 +37,7 @@ export const AddButton = ({ editRosterCharacters, character, id, setNewRosterPic
             addUserToEnd(character)
     }
     return <>
-        {localStorage.getItem('roster_id') ? <button className="add__button"onClick={() => handleAddClick()} >Add</button> :
-            <button className="add__button" onClick={() => handleStartClick()} >Add</button>}
+        {localStorage.getItem('roster_id') ? <FontAwesomeIcon onClick={() => handleAddClick()}className="plus" icon="fa-solid fa-plus" /> :
+            <FontAwesomeIcon icon="fa-solid fa-plus" className="plus" onClick={() => handleStartClick()}/>}
     </>
 }

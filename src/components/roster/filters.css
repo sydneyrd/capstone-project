@@ -54,31 +54,9 @@
   margin: 1.5em;
  
 }
-.roster__remove{
-  font-family: 'Libre Franklin', sans-serif;
-  display: inline-block;
-  outline: 0;
-  text-align: center;
-  cursor: pointer;
-  height: 34px;
-  padding: 0 13px;
-  color: #fff;
-  vertical-align: top;
-  border-radius: 3px;
-  border: 1px solid transparent;
-  transition: all .3s ease;
-  background: #570B08;
-  border-color: #570B08;
-  font-weight: 600;
-  text-transform: uppercase;
-  line-height: 16px;
-  font-size: 11px;
-  flex-direction: flex-end;
- }
 
- .roster__remove:hover{
-  background: darkred;
- }
+
+
 
  .reset__button {
   margin: .5em;

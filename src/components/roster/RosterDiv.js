@@ -1,10 +1,12 @@
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { library } from '@fortawesome/fontawesome-svg-core'
+import {faTrashArrowUp } from '@fortawesome/free-solid-svg-icons'
 import { deleteRosterChoice } from "../APIManager"
 
 
     
 export const RosterDiv = ({c, setNewRosterPick, newRosterPicks, showText, setShowText, charId, setCharId, handleMouseEnter, handleMouseLeave,}) => {
-    
+    library.add(faTrashArrowUp)
     const handleRemove = (c, event) => {
       event.preventDefault() 
        let updatedRoster = newRosterPicks.filter((v) => v.id !== c.id)
@@ -14,7 +16,12 @@ export const RosterDiv = ({c, setNewRosterPick, newRosterPicks, showText, setSho
     }
 return <>
  <div id={c?.id} onMouseOver={setCharId} onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}className="roster__choices">{c?.character_name}<button className="roster__remove" onClick={click => handleRemove(c, click)}>Remove</button></div>
+      onMouseLeave={handleMouseLeave}className="roster__choices">{c?.character_name}
+      <FontAwesomeIcon className="roster__remove" onClick={click => handleRemove(c, click)} icon="fa-solid fa-trash-arrow-up" />  
+      
+      
+      
+      </div>
 </>
 
 }
