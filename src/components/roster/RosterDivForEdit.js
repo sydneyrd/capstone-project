@@ -15,7 +15,7 @@ let rightName = characters?.find(({id}) => id === c?.character)
     }
 return <>
  <div id={rightName?.id} onMouseOver={setCharId} onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave} className="roster__choices">{`${rightName?.character_name}`}<button className="roster__remove" onClick={click => handleRemove(c, click)}>Remove</button></div>
+      onMouseLeave={handleMouseLeave} className="roster__choices">{`${c?.character?.character_name}`}<button className="roster__remove" onClick={click => handleRemove(c, click)}>Remove</button></div>
 </>}
 
 

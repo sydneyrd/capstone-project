@@ -30,6 +30,6 @@ export const CalculateResults = ({ calculatedRoster, currentCalcRostName,
         })
     }
     return <><div className="button__click">
-        <button className="calculate__click" onClick={(click) => handleNewRosterId(click)}>Calculate</button></div></>
+        <button className="calculate__click" onClick={(click) => handleNewRosterId(click)}>Finish</button></div></>
 }
 
