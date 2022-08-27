@@ -1,9 +1,12 @@
 import { deleteRosterChoice } from "../APIManager"
 import { CharacterList } from "./CharacterList"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { library } from '@fortawesome/fontawesome-svg-core'
+import {faTrashArrowUp } from '@fortawesome/free-solid-svg-icons'
 
 export const RosterDivForEdit = ({c, showText, setShowText, charId, setNewRosterPick, setCharId, handleMouseEnter, handleMouseLeave,
    setEditCharacters, newRosterPicks, characters}) => {
-
+library.add(faTrashArrowUp)
  
 
 let rightName = characters?.find(({id}) => id === c?.character)
@@ -15,7 +18,10 @@ let rightName = characters?.find(({id}) => id === c?.character)
     }
 return <>
  <div id={rightName?.id} onMouseOver={setCharId} onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave} className="roster__choices">{`${c?.character?.character_name}`}<button className="roster__remove" onClick={click => handleRemove(c, click)}>Remove</button></div>
+      onMouseLeave={handleMouseLeave} className="roster__choices">{`${c?.character?.character_name}`}
+      
+      <FontAwesomeIcon className="roster__remove" onClick={click => handleRemove(c, click)} icon="fa-solid fa-trash-arrow-up" />
+         </div>
 </>}
 
 
