@@ -322,3 +322,15 @@ export const registerUser = (user) => {
     })
         .then(res => res.json())
 }
+
+export const newLink = (link) => {
+    return fetch(`http://127.0.0.1:8000/links`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Token ${localStorage.getItem("roster_token")}`
+        },
+        body: JSON.stringify(link)
+    })
+        .then(res => res.json())
+}
