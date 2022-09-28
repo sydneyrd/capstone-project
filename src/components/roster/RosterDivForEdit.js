@@ -15,7 +15,7 @@ let rightName = characters?.find(({id}) => id === c?.character)
        let updatedRoster = newRosterPicks.filter((v) => v.id != c.id)
        setEditCharacters(updatedRoster)
        deleteRosterChoice(c.id)
-    }
+   }
 return <>
  <div id={rightName?.id} onMouseOver={setCharId} onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave} className="roster__choices">{`${c?.character?.character_name}`}

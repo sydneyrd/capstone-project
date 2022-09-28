@@ -121,6 +121,19 @@ export const getAllCharacters = (setCharacters) => {
             setCharacters(charactersArr)
         })
 }
+
+export const getSingleCharacter = (characterId, setCharacter) => {
+    return fetch(`http://127.0.0.1:8000/characters/${characterId}`,{
+        headers:{
+            "Authorization": `Token ${localStorage.getItem("roster_token")}`
+        }
+    })
+        .then(res => res.json())
+        .then((character) => {
+            setCharacter(character)
+        })
+    //no set function included in this don't forget .then
+}
 export const getRosterCharacter = (rosterNum) => {
     return fetch(`http://127.0.0.1:8000/rosterchoices?roster=${rosterNum}`,
     {headers:{
