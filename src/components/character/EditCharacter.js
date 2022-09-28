@@ -5,6 +5,7 @@ import { ServerSelect } from "./ServerSelect"
 import { WeaponSelect } from "./WeaponSelect"
 import { useState, useEffect } from "react"
 import { deleteCharacter, putCharacter, getUserCharacters } from "../APIManager"
+import { Link } from "react-router-dom"
 import "./characters.css"
 
 //create a push and delete call to be used a GET request for only the users characters to be displayed, need to iterate v that form for all of them
@@ -137,7 +138,11 @@ updateUserCharacters(charArr))
                     </select>
                     <button className="update__button" onClick={click => handleUpdateClick(updatedCharacter, click)}>Update</button>
                     <button className="delete__button" onClick={click => handleDeleteClick(updatedCharacter.id, click)}>Delete</button>
-                </fieldset>
+                <Link to={`/character/${ownedCharacter.id}`}>
+                            <div name="details" value={ownedCharacter.id}>See Details</div>
+                        </Link> </fieldset>
+               
             </form>
+            
         </>)
 }

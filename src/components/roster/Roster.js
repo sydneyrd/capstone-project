@@ -4,8 +4,9 @@ import { RosterGrid } from "./RosterGrid"
 import { ListContainer } from "./ListContainer"
 import "./roster.css"
 import { FilterContainer } from "./FilterContainer"
-import { newRosterChoice,  } from "../APIManager"
+import { newRosterChoice, } from "../APIManager"
 import { useNavigate } from "react-router-dom"
+import { SearchFilter } from "./SearchFilter"
 
 export const Roster = () => {
     const [characters, setCharacters] = useState([])
@@ -34,11 +35,11 @@ export const Roster = () => {
         setId(parseInt(e.target.id))
     } //sets identifier to get correct detail info
     const handleMouseEnter = e => {
-        e.target.style.background = "grey" //maybe remove 
+
         setShowText(true)
     } //show pop up element when mouse
     const handleMouseLeave = e => {
-        e.target.style.background = "transparent"
+        // e.target.style.background = "transparent"
         setShowText(false)
         setId(0)
     }//removes the pop up and identifier when mouse leaves
@@ -57,7 +58,7 @@ export const Roster = () => {
                         .then(() => {
                             getAllServers(setServers)
                         })
-                        
+
                 })
         },
         [] //init get all stuff
@@ -70,7 +71,7 @@ export const Roster = () => {
             setSortedArr(searchedChar)
         },
         [searchTerms]//find what you put into the search bar and set that as sorted
-    ) 
+    )
     useEffect(
         () => {
             let alphaCharacters = characters.sort((a, b) => a.character_name.localeCompare(b.character_name))
@@ -80,33 +81,35 @@ export const Roster = () => {
     )
     useEffect(
         () => {
-          if (rosterIDNUMBER) {
-            getRosterName(rosterIDNUMBER).then((data) => {setRosterName(data)}
-            )
-          } 
+            if (rosterIDNUMBER) {
+                getRosterName(rosterIDNUMBER).then((data) => { setRosterName(data) }
+                )
+            }
         },
         [rosterIDNUMBER]//find what you put into the search bar and set that as sorted
-    ) 
+    )
 
 
 
-const handleRosterName = (event) => {
-    ///we are gonna match the value of the text input here, 
-    //and send it to the server as a put
-    //check to see if a rosterID is available in storage first and do that, if not do nothing/display pop up saying make a selection to start a roster
-    let newName = {...rosterName}
-    newName[event.target.name] = event.target.value
-    if (rosterIDNUMBER) { 
-    putRosterName(rosterIDNUMBER, newName)} 
-    else {
-    alert('Pick a character first please ok just do it')}
-}
+    const handleRosterName = (event) => {
+        ///we are gonna match the value of the text input here, 
+        //and send it to the server as a put
+        //check to see if a rosterID is available in storage first and do that, if not do nothing/display pop up saying make a selection to start a roster
+        let newName = { ...rosterName }
+        newName[event.target.name] = event.target.value
+        if (rosterIDNUMBER) {
+            putRosterName(rosterIDNUMBER, newName)
+        }
+        else {
+            alert('Pick a character first please ok just do it')
+        }
+    }
 
-    
-    
-const handleSave = (click, newRosterPicks) => { //onclickingSave
+
+
+    const handleSave = (click, newRosterPicks) => { //onclickingSave
         click.preventDefault()
-            localStorage.removeItem("roster_id")
+        localStorage.removeItem("roster_id")
         const createRosterChoices = (cArr) => {
             let rosterChoiceArr = []
             for (const c of cArr) {  //there might be an easier way idk, this works.   iterating the array of players in roster and uses takes their character id to create a new object
@@ -126,31 +129,34 @@ const handleSave = (click, newRosterPicks) => { //onclickingSave
             console.log(result)
         })
         alert("Roster successfully saved")
-        
+
 
     }
-   const handleNewRoster = (e) => {
-e.preventDefault()
-    localStorage.removeItem("roster_id")
-    setNewRosterPick([])
-    setEditCharacters([])
-   }
- 
+    const handleNewRoster = (e) => {
+        e.preventDefault()
+        localStorage.removeItem("roster_id")
+        setNewRosterPick([])
+        setEditCharacters([])
+    }
+
     return <>
         <FilterContainer setFactionSearch={setFactionSearch} filterButton={filterButton} setFilterButton={setFilterButton} searchTerms={searchTerms} setSearchTerms={setSearchTerms}
             setRoleSearch={setRoleSearch} setPrimarySearch={setPrimarySearch} setServerSearch={setServerSearch} setSecondarySearch={setSecondarySearch}
             roleSearch={roleSearch} serverSearch={serverSearch} factionSearch={factionSearch} primarySearch={primarySearch} secondarySearch={secondarySearch}
             setSortedArr={setSortedArr} characters={characters} servers={servers} weapons={weapons} factions={factions} roles={roles} />
-      <div className="save__div"> <button className="save__button" onClick={(click) => { handleSave(click, newRosterPicks) }}>Save Roster</button> 
-       <button onClick={(e) => handleNewRoster(e) 
-    }  className="new__button">New Roster</button> 
-    <input type="text" className="roster_name" name="name" placeholder="name this roster ?" value={rosterName.name} onChange={(event) => handleRosterName(event)}/></div>  <section className="body">
+        <div className="save__div">
+        <SearchFilter setSearchTerms={setSearchTerms} />
+        
+            <input type="text" className="roster_name" name="name" placeholder="name this roster ?" value={rosterName.name} onChange={(event) => handleRosterName(event)} />
+            <button className="save__button" onClick={(click) => { handleSave(click, newRosterPicks) }}>Save Roster</button>
+            <button onClick={(e) => handleNewRoster(e)
+            } className="new__button">New Roster</button>
+        </div>  <section className="body">
             <ListContainer editRosterCharacters={editRosterCharacters} showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} setNewRosterPick={setNewRosterPick} newRosterPicks={newRosterPicks} characters={sortedArr} servers={servers} weapons={weapons} factions={factions} roles={roles} />
-           
+
             <div className="parent" >
-                <RosterGrid showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} 
-                setEditCharacters={setEditCharacters} editRosterCharacters={editRosterCharacters} rosterIDNUMBER={rosterIDNUMBER} characters={characters}  newRosterPicks={newRosterPicks} setNewRosterPick={setNewRosterPick} /></div>
-     
-       </section>  </>
+                <RosterGrid showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave}
+                    setEditCharacters={setEditCharacters} editRosterCharacters={editRosterCharacters} rosterIDNUMBER={rosterIDNUMBER} characters={characters} newRosterPicks={newRosterPicks} setNewRosterPick={setNewRosterPick} /></div>
+
+        </section>  </>
 }
- 

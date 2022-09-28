@@ -1,4 +1,3 @@
-import { SearchFilter } from "./SearchFilter"
 import { FactionFilter } from "./FilterChoices/FactionFilter"
 import { RoleFilter } from "./FilterChoices/RoleFilter"
 import { WeaponFilter } from "./FilterChoices/WeaponFilter"
@@ -8,7 +7,7 @@ import { useEffect } from "react"
 import "./filters.css"
 
 export const FilterContainer = ({ roleSearch, factionSearch, primarySearch, secondarySearch, serverSearch, setPrimarySearch, setSecondarySearch, setServerSearch, setRoleSearch, setFactionSearch,
-    setSortedArr, setSearchTerms = { setSearchTerms }, searchTerms = { searchTerms }, characters, weapons, roles, factions, servers }) => {
+    setSortedArr, characters, weapons, roles, factions, servers }) => {
      
 const handleFacSelect = (e) => {
         e.preventDefault()
@@ -64,9 +63,11 @@ const handlePrimarySelect = (e) => {
 
 
 //removed the labels, because it looks better, but left the jsx for them if i change my mind or it messes something else up smh
+//can add a checkbox to only show MY characters here if wanted
     return <>
         <form className="character_form">
             <fieldset>
+
                 <label htmlFor="role__filter"></label>
                 <select onChange={
                     (e) => {
@@ -97,7 +98,7 @@ const handlePrimarySelect = (e) => {
                         handleSecondarySelect(e)
                     }}><option value="0">secondary Weapon</option>
                     {weapons.map((weapon) => <WeaponFilter key={`div--weapontwo${weapon.id}`} weapon={weapon} />)}</select><div className="filter__buttons">
-                <SearchFilter setSearchTerms={setSearchTerms} />
+               
                 {/* <button onClick={(e) => { handleSearchButton(e) }} className="search__button">Search</button> i'm just saving this because i'm afraid to let go.  or it will break */} 
                 <ResetButton  handleSearchButton={handleSearchButton} setFactionSearch={setFactionSearch} setRoleSearch={setRoleSearch} setServerSearch={setServerSearch}
                 setSecondarySearch={setSecondarySearch} 
