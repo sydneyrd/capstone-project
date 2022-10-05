@@ -83,7 +83,7 @@ export const CharacterDetails = () => {
 
     const handleNewLink = (click) => {
         click.preventDefault()
-        linkCopy = {...link }
+       let linkCopy = {...link }
         newLink(linkCopy)
      }
 
