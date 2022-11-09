@@ -1,7 +1,7 @@
 import { faInfo, faNoteSticky } from "@fortawesome/free-solid-svg-icons"
 import { useParams } from "react-router-dom"
 import { getSingleCharacter } from "../APIManager"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { RoleSelect } from "./Role"
 import { WeaponSelect } from "./WeaponSelect"
 import { FactionSelect } from "./FactionSelect"
@@ -16,14 +16,11 @@ export const CharacterDetails = () => {
     const [weapons, setWeapons] = useState([])
     const [roles, setRoles] = useState([])
     const [servers, setServers] = useState([])
-    const [link, setLink] = useState({})
-    const [characterLinks, setCharacterLinks] = useState([])
+    const [link, setLink] = useState({ roster: 0 }) //this is for new links
+    const [characterLinks, setCharacterLinks] = useState([]) //this one is for existing links
     const [notes, setNotes] = useState('')
-
     const localRosterUser = localStorage.getItem("roster_user")
     const RosterUserObject = JSON.parse(localRosterUser)
-
-
     useEffect(
         () => {
             getAllRoles(setRoles)
@@ -53,9 +50,6 @@ export const CharacterDetails = () => {
     let rightFaction = factions.find(({ id }) => id === character?.faction)
     let rightRole = roles.find(({ id }) => id === character?.role)
 
-
-
-
     const handleUpdateClick = (UC, click) => {//userId
         click.preventDefault()
         const letcToAPI = {
@@ -65,12 +59,11 @@ export const CharacterDetails = () => {
             secondary_weapon: parseInt(UC.secondary_weapon),
             server: parseInt(UC.server),
             faction: parseInt(UC.faction),
-            notes: {...notes } 
+            notes: notes
+        
         }
-
         putCharacter(letcToAPI, UC.id) //push request get char again to refrssh?
         alert('updated')
-
     }
 
     const handleDeleteClick = (deleteCharacterId, click) => {
@@ -83,40 +76,35 @@ export const CharacterDetails = () => {
 
     const handleNewLink = (click) => {
         click.preventDefault()
-       let linkCopy = {...link }
+        let linkCopy = { ...link }
         newLink(linkCopy)
-     }
+    }
 
 
-        const handleChange = (e) => {
+    const handleChange = (e) => {
         const linkCopy = { ...link }
         linkCopy[e.target.name] = e.target.value
         linkCopy["character"] = character?.id
         setLink(linkCopy)
     }
+    {/* <input onChange={(evt) => userUpdate(evt)}
+                        type="email" name="email" className="form-control--update"
+                        value={user.email}
+                        placeholder="Email address" required />
+ */}
+
 
     const handleNotes = (e) => {
         e.preventDefault()
         const noteCopy = { ...notes }
-        noteCopy[e.target.name] = e.target.value
         setNotes(noteCopy)
         //post notes
     }
-    return (<> Some character details
-        <div>{character?.character_name}</div>
-        <div>{rightServer?.name}</div>
-        <div>{rightRole?.name}</div>
-        <div>{rightPrimary?.name}</div>
-        <div>{rightSecondary?.name}</div>
-        <div>{rightFaction?.name}</div>
-        <div>{character?.character_name}</div>
-
-
+    return (<>
         <form className="character_form">
             <fieldset className="edit__form">
                 <h4 className="editcharacter__name">{character?.character_name}</h4>
                 <input
-
                     type="text"
                     className="form-control"
                     placeholder="change name"
@@ -197,7 +185,12 @@ export const CharacterDetails = () => {
             <input type="url" name="link" onChange={handleChange} placeholder="vod links?" />
 
             <button className="link__button" onClick={click => handleNewLink(click)}>New Link</button>
-                <textarea name="notes" value={notes} rows="4" cols="50" onChange={handleNotes} placeholder="add notes talk shit" /></form>
+            <textarea rows="4" cols="50" placeholder="add notes talk mad shit" defaultValue={character?.notes} onChange={
+                        (event) => {
+                            setNotes(event.target.value)
+                        }
+                    }
+            /></form>
 
         <div name='characterLinks'>
             <></>{characterLinks.map(link => <li key={`link--${link.id}`}>{link}</li>)}
