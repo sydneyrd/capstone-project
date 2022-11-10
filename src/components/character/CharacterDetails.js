@@ -16,7 +16,7 @@ export const CharacterDetails = () => {
     const [weapons, setWeapons] = useState([])
     const [roles, setRoles] = useState([])
     const [servers, setServers] = useState([])
-    const [link, setLink] = useState({ roster: 0 }) //this is for new links
+    const [link, setLink] = useState({}) //this is for new links
     const [characterLinks, setCharacterLinks] = useState([]) //this one is for existing links
     const [notes, setNotes] = useState('')
     const localRosterUser = localStorage.getItem("roster_user")
@@ -85,21 +85,10 @@ export const CharacterDetails = () => {
         const linkCopy = { ...link }
         linkCopy[e.target.name] = e.target.value
         linkCopy["character"] = character?.id
+        linkCopy['roster'] = 0;
         setLink(linkCopy)
     }
-    {/* <input onChange={(evt) => userUpdate(evt)}
-                        type="email" name="email" className="form-control--update"
-                        value={user.email}
-                        placeholder="Email address" required />
- */}
 
-
-    const handleNotes = (e) => {
-        e.preventDefault()
-        const noteCopy = { ...notes }
-        setNotes(noteCopy)
-        //post notes
-    }
     return (<>
         <form className="character_form">
             <fieldset className="edit__form">
@@ -193,7 +182,7 @@ export const CharacterDetails = () => {
             /></form>
 
         <div name='characterLinks'>
-            <></>{characterLinks.map(link => <li key={`link--${link.id}`}>{link}</li>)}
+            <></>{characterLinks.map(link => <li key={`link--${link.id}`}>{link.link}</li>)}
         </div></>
 
 

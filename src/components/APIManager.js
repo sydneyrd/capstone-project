@@ -335,7 +335,7 @@ export const newLink = (link) => {
         .then(res => res.json())
 }
 export const getCharacterLinks = (characterId, setCharacterLinks) => {
-    return fetch(`http://127.0.0.1:8000/links/${characterId}`,{
+    return fetch(`http://127.0.0.1:8000/links?character=${characterId}`,{
         headers:{
             "Authorization": `Token ${localStorage.getItem("roster_token")}`
         }
