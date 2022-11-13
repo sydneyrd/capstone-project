@@ -8,6 +8,9 @@ import { FactionSelect } from "./FactionSelect"
 import { ServerSelect } from "./ServerSelect"
 import { getAllFactions, newLink, getCharacterLinks, getAllServers, getAllWeapons, getAllRoles, deleteCharacter, putCharacter } from "../APIManager"
 import { click } from "@testing-library/user-event/dist/click"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { library } from '@fortawesome/fontawesome-svg-core'
+import {faTrashCan } from '@fortawesome/free-solid-svg-icons'
 
 export const CharacterDetails = () => {
     const [character, setCharacter] = useState({})
@@ -44,6 +47,8 @@ export const CharacterDetails = () => {
         []
     )
 
+
+
     let rightServer = servers.find(({ id }) => id === character?.server)
     let rightPrimary = weapons.find(({ id }) => id === character?.primary_weapon)
     let rightSecondary = weapons.find(({ id }) => id === character?.secondary_weapon)
@@ -60,11 +65,11 @@ export const CharacterDetails = () => {
             server: parseInt(UC.server),
             faction: parseInt(UC.faction),
             notes: notes
-        
         }
         putCharacter(letcToAPI, UC.id) //push request get char again to refrssh?
         alert('updated')
     }
+
 
     const handleDeleteClick = (deleteCharacterId, click) => {
         click.preventDefault()
@@ -73,7 +78,11 @@ export const CharacterDetails = () => {
 
         //reroute to characters list, alert are you sure
     }
+function handleDeleteLink(){
+    //send delete call
+    //rerender page/reget all the data//reget just those links?  thattt seems better
 
+} 
     const handleNewLink = (click) => {
         click.preventDefault()
         let linkCopy = { ...link }
@@ -179,11 +188,14 @@ export const CharacterDetails = () => {
                             setNotes(event.target.value)
                         }
                     }
-            /></form>
+            /><button className='save__note__button' onClick={click => {handleUpdateClick(character, click)}}>Save Notes</button></form>
 
         <div name='characterLinks'>
-            <></>{characterLinks.map(link => <li key={`link--${link.id}`}>{link.link}</li>)}
-        </div></>
+            <></>{characterLinks.map(link => <li key={`link--${link.id}`}>{link.link}
+            <button className="delete__link__button" onClick={click => handleDeleteLink()}>Delete VOD Link</button></li>
+            )}
+        </div> 
+        </>
 
 
 
