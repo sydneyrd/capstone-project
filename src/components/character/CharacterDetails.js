@@ -6,6 +6,7 @@ import { RoleSelect } from "./Role"
 import { WeaponSelect } from "./WeaponSelect"
 import { FactionSelect } from "./FactionSelect"
 import { ServerSelect } from "./ServerSelect"
+import { deleteCharLink } from "../APIManager"
 import { getAllFactions, newLink, getCharacterLinks, getAllServers, getAllWeapons, getAllRoles, deleteCharacter, putCharacter } from "../APIManager"
 import { click } from "@testing-library/user-event/dist/click"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -78,10 +79,11 @@ export const CharacterDetails = () => {
 
         //reroute to characters list, alert are you sure
     }
-function handleDeleteLink(){
-    //send delete call
-    //rerender page/reget all the data//reget just those links?  thattt seems better
-
+function handleDeleteLink(id, click){
+    click.preventDefault()
+    deleteCharLink(id).then(()=> 
+    {getCharacterLinks(characterId, setCharacterLinks)})
+    .then(() => {})
 } 
     const handleNewLink = (click) => {
         click.preventDefault()
@@ -192,7 +194,7 @@ function handleDeleteLink(){
 
         <div name='characterLinks'>
             <></>{characterLinks.map(link => <li key={`link--${link.id}`}>{link.link}
-            <button className="delete__link__button" onClick={click => handleDeleteLink()}>Delete VOD Link</button></li>
+            <button className="delete__link__button" onClick={click => handleDeleteLink(link.id, click)}>Delete VOD Link</button></li>
             )}
         </div> 
         </>
