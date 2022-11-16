@@ -67,7 +67,11 @@ export const CharacterDetails = () => {
             faction: parseInt(UC.faction),
             notes: notes
         }
-        putCharacter(letcToAPI, UC.id) //push request get char again to refrssh?
+        putCharacter(letcToAPI, UC.id) 
+        .then(()=>
+        getSingleCharacter(characterId, setCharacter))
+        //push request get char again to refresh 
+        // just get the character and set the character again?
         alert('updated')
     }
 
