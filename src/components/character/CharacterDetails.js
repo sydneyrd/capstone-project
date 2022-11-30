@@ -48,8 +48,6 @@ export const CharacterDetails = () => {
         []
     )
 
-
-
     let rightServer = servers.find(({ id }) => id === character?.server)
     let rightPrimary = weapons.find(({ id }) => id === character?.primary_weapon)
     let rightSecondary = weapons.find(({ id }) => id === character?.secondary_weapon)
@@ -202,10 +200,6 @@ function handleDeleteLink(id, click){
             )}
         </div> 
         </>
-
-
-
-
     )
 }
 
