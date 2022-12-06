@@ -64,7 +64,9 @@ const [currentCalcRoster, setCurrentCalcRoster] = useState({})
             <h2>Total Kills: {totalKillings}</h2></div>
       
         <div className="player__resultsmap">
-            <div className="labels"> <div className="player__name">Player</div> <div className="damage">Damage</div>
+            <div className="labels"> <div className="player__name">Player</div> 
+            <div className="labels">Group</div>
+            <div className="damage">Damage</div>
         <div className="healing">Healing</div>
         <div  className="kills">Kills</div>
         <div className="kills">Assist</div>
