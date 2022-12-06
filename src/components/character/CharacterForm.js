@@ -86,7 +86,7 @@ export const CharacterForm = ({ updateUserCharacters, setCount, getUserCharacter
                             const copy = { ...newCharacter }
                             copy.primaryId = event.target.value
                             updateNewCharacter(copy)
-                        }
+                        } 
                     } className="character__select">
                         <option value={0}>select a weapon</option>
                         {weapons.map((weapon) => <WeaponSelect key={`weaponprime--${weapon.id}`} weapon={weapon} />)}

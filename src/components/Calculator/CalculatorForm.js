@@ -10,7 +10,8 @@ export const CalculatorForm = ({ characters, selectedRoster, rosterChoice, calcu
     healing: 0,
     kills: 0,
     deaths: 0,
-    assists: 0
+    assists: 0,
+    group: 0,
   })
   useEffect(
         () => {
@@ -69,6 +70,17 @@ return character}
       {rosterChoices.map((c) => <option key={c.id} id={c.id} value={c?.character?.character_name}  ></option>)}
   </datalist>  
           <div></div>
+          <input className="form-control-stat" 
+          placeholder='group number'
+          type='number'
+
+          onChange={(event) => {
+            const copy={...playerStats }
+            copy.group = parseInt(event.target.value)
+            setPlayerStats(copy)
+          }}>
+
+          </input>
           <input onChange={(event) => {
             const copy = { ...playerStats }
             copy.kills = parseInt(event.target.value)
