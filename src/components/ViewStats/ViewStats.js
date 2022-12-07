@@ -1,32 +1,36 @@
 import { useParams } from "react-router-dom"
- import { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { getAllCharacters, getCalculatedRoster, getCalculatedRosterChar } from "../APIManager"
-import {ResultsMap} from "./ResultsMap"
+import { ResultsMap } from "./ResultsMap"
+import { StatFilters } from "./StatFilters"
+
 import "./results.css"
 
 export const ViewStats = () => {
-const { calculatedRosterId } = useParams()
-const [players, setPlayers] = useState([])
-const [characters, setCharacters] = useState([])
-const [currentCalcRoster, setCurrentCalcRoster] = useState({})
+    const { calculatedRosterId } = useParams()
+    const [players, setPlayers] = useState([])
+    const [filteredPlayers, setFilteredPlayers] = useState([])
+    const [characters, setCharacters] = useState([])
+    const [currentCalcRoster, setCurrentCalcRoster] = useState({})
+ 
 
     useEffect(
         () => {
             getCalculatedRosterChar(calculatedRosterId)
                 .then((res) => {
                     setPlayers(res)
+                    setFilteredPlayers(res)
                 })
-                .then(() => 
-                getCalculatedRoster(calculatedRosterId)
-                .then((r) => 
-               {
-                setCurrentCalcRoster(r)
-               } ))
-               .then(() => {
-                getAllCharacters(setCharacters)
-               })
+                .then(() =>
+                    getCalculatedRoster(calculatedRosterId)
+                        .then((r) => {
+                            setCurrentCalcRoster(r)
+                        }))
+                .then(() => {
+                    getAllCharacters(setCharacters)
+                })
         },
-        [] //i put rosterID in there because it keeps warning me about it one npm start so I thought i'd try it, prolly break things
+        []
     )
 
     let sumDamage = 0
@@ -55,6 +59,8 @@ const [currentCalcRoster, setCurrentCalcRoster] = useState({})
     const armyKDR = totalKillings / totalDyings   //why isn't this working here?
 
     return <>
+
+
         <div className="results">
             <h2> {currentCalcRoster.name}</h2>
             <h2>Total Damage: {totalDam}</h2>
@@ -62,18 +68,20 @@ const [currentCalcRoster, setCurrentCalcRoster] = useState({})
             <h2>Kill/Death Ratio: {armyKDR.toFixed(2)}</h2>
             <h2>Total Deaths: {totalDyings}</h2>
             <h2>Total Kills: {totalKillings}</h2></div>
-      
+     <StatFilters players={players} filteredPlayers={filteredPlayers} setFilteredPlayers={setFilteredPlayers}/>
         <div className="player__resultsmap">
-            <div className="labels"> <div className="player__name">Player</div> 
-            <div className="labels">Group</div>
-            <div className="damage">Damage</div>
-        <div className="healing">Healing</div>
-        <div  className="kills">Kills</div>
-        <div className="kills">Assist</div>
-        <div  className="kdr">KDR</div></div>     
-             {players.map((player) => <ResultsMap totalHealings={totalHealings}
-            totalDyings={totalDyings} totalDam={totalDam} totalKillings={totalKillings} characters={characters}
-            key={player.id} player={player} />)}</div>
+            <div className="labels">
+                <div className="player__name">Player</div>
+                <div className="labels">Group</div>
+                <div className="damage">Damage</div>
+                <div className="healing">Healing</div>
+                <div className="kills">Kills</div>
+                <div className="kills">Assist</div>
+                <div className="kdr">KDR</div></div>
+
+            {filteredPlayers.map((player) => <ResultsMap key={`result--${player.id}`}totalHealings={totalHealings}
+                totalDyings={totalDyings} totalDam={totalDam} totalKillings={totalKillings} characters={characters}
+                player={player} />)}</div>
     </>
 }
 
