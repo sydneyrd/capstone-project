@@ -13,16 +13,16 @@ function compareNumbers(a, b) {
     return a.group - b.group;
   }
   function compareDamage(a, b) {
-    return a.damage - b.damage;
+    return b.damage - a.damage;
   }
   function compareHeal(a, b) {
-    return a.healing - b.healing;
+    return b.healing - a.healing;
   }
   function compareKill(a, b) {
-    return a.kills - b.kills;
+    return b.kills - a.kills;
   }
   function compareAssist(a, b) {
-    return a.assists - b.assists;
+    return b.assists - a.assists;
   }
 //   function compareKDR(a, b) {
 // //to sort KDR i need to be able to compare their own kills to deaths, get the total kdr and then compare those two values 
@@ -64,7 +64,11 @@ function roleFilter(event){
     const rolePlayers = copy.filter(e => e?.character?.role === parseInt(event.target.value))
     setFilteredPlayers(rolePlayers)
 }
-
+function handleReset(click){
+    click.preventDefault()
+   const copy = [...players]
+    setFilteredPlayers(copy)
+}
 
 
 
@@ -77,12 +81,14 @@ function roleFilter(event){
             <button className='button-84' onClick={(click) => {sortKill(click)}}>Kills</button>
             <button className='button-84' onClick={(click)=>{sortAssist(click)}}>Assists</button>
             <button className='button-84'>KDR</button>
+            <button className='button-84' onClick={(click) => {handleReset(click)}}>Reset</button>
             <label htmlFor="roles">
                 <select
                 onChange={(event) => roleFilter(event)}
                 >{roles.map((role) => <RoleSelect key={`role--${role.id}`}role={role}
                 />)}
                 </select></label>
+                
         </div>
     
     </>
