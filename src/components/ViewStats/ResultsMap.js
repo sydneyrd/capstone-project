@@ -1,5 +1,4 @@
-export const ResultsMap = ({ player, totalHealings, totalDam, totalKillings, characters }) => {
-   const rightCharacter = characters.find(({ id }) => id === player?.character)
+export const ResultsMap = ({ player, totalHealings, totalDam, totalKillings}) => {
 
    const KDR = () => {
      if (player?.deaths) {
@@ -16,7 +15,7 @@ export const ResultsMap = ({ player, totalHealings, totalDam, totalKillings, cha
    }
 
 
-   return <div className="player__results"><div className="player__name">{rightCharacter?.character_name}</div>
+   return <div className="player__results"><div className="player__name">{player?.character?.character_name}</div>
    <div className="player__results">{player?.group}</div>
    <div className="damage">{player?.damage ? <>{percentage(player?.damage, totalDam)}%</> : "0"}
    </div>

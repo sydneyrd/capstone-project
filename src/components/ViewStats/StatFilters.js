@@ -24,6 +24,9 @@ function compareNumbers(a, b) {
   function compareAssist(a, b) {
     return a.assists - b.assists;
   }
+//   function compareKDR(a, b) {
+// //to sort KDR i need to be able to compare their own kills to deaths, get the total kdr and then compare those two values 
+//   }
 function sortGroup(click){
     click.preventDefault()
     const copy = [...players]
@@ -55,9 +58,16 @@ copy.sort(compareAssist)
 setFilteredPlayers(copy)
 }
 
+function roleFilter(event){
+    event.preventDefault()
+    const copy = [...players]
+    const rolePlayers = copy.filter(e => e?.character?.role === parseInt(event.target.value))
+    setFilteredPlayers(rolePlayers)
+}
 
 
-//to sort KDR i need to be able to compare their own kills to deaths, get the total kdr and then compare those two values 
+
+
 
     return <>
        <div>
@@ -68,7 +78,9 @@ setFilteredPlayers(copy)
             <button className='button-84' onClick={(click)=>{sortAssist(click)}}>Assists</button>
             <button className='button-84'>KDR</button>
             <label htmlFor="roles">
-                <select>{roles.map((role) => <RoleSelect key={`role--${role.id}`}role={role}
+                <select
+                onChange={(event) => roleFilter(event)}
+                >{roles.map((role) => <RoleSelect key={`role--${role.id}`}role={role}
                 />)}
                 </select></label>
         </div>

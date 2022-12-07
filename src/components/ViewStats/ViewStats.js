@@ -10,7 +10,6 @@ export const ViewStats = () => {
     const { calculatedRosterId } = useParams()
     const [players, setPlayers] = useState([])
     const [filteredPlayers, setFilteredPlayers] = useState([])
-    const [characters, setCharacters] = useState([])
     const [currentCalcRoster, setCurrentCalcRoster] = useState({})
  
 
@@ -26,9 +25,6 @@ export const ViewStats = () => {
                         .then((r) => {
                             setCurrentCalcRoster(r)
                         }))
-                .then(() => {
-                    getAllCharacters(setCharacters)
-                })
         },
         []
     )
@@ -80,7 +76,7 @@ export const ViewStats = () => {
                 <div className="kdr">KDR</div></div>
 
             {filteredPlayers.map((player) => <ResultsMap key={`result--${player.id}`}totalHealings={totalHealings}
-                totalDyings={totalDyings} totalDam={totalDam} totalKillings={totalKillings} characters={characters}
+                totalDyings={totalDyings} totalDam={totalDam} totalKillings={totalKillings} 
                 player={player} />)}</div>
     </>
 }
