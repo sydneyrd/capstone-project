@@ -12,22 +12,60 @@ useEffect(() => {
 function compareNumbers(a, b) {
     return a.group - b.group;
   }
+  function compareDamage(a, b) {
+    return a.damage - b.damage;
+  }
+  function compareHeal(a, b) {
+    return a.healing - b.healing;
+  }
+  function compareKill(a, b) {
+    return a.kills - b.kills;
+  }
+  function compareAssist(a, b) {
+    return a.assists - b.assists;
+  }
 function sortGroup(click){
     click.preventDefault()
     const copy = [...players]
 copy.sort(compareNumbers)
 setFilteredPlayers(copy)
 }
+function sortDamage(click){
+    click.preventDefault()
+    const copy = [...players]
+copy.sort(compareDamage)
+setFilteredPlayers(copy)
+}
+function sortHeal(click){
+    click.preventDefault()
+    const copy = [...players]
+copy.sort(compareHeal)
+setFilteredPlayers(copy)
+}
+function sortKill(click){
+    click.preventDefault()
+    const copy = [...players]
+copy.sort(compareKill)
+setFilteredPlayers(copy)
+}
+function sortAssist(click){
+    click.preventDefault()
+    const copy = [...players]
+copy.sort(compareAssist)
+setFilteredPlayers(copy)
+}
 
 
+
+//to sort KDR i need to be able to compare their own kills to deaths, get the total kdr and then compare those two values 
 
     return <>
        <div>
             <button className='button-84' onClick={(click) => {sortGroup(click)}}>Group</button>
-            <button className='button-84'>Damage</button>
-            <button className='button-84'>Healing</button>
-            <button className='button-84'>Kills</button>
-            <button className='button-84'>Assists</button>
+            <button className='button-84' onClick={(click)=> {sortDamage(click)}}>Damage</button>
+            <button className='button-84' onClick={(click) => {sortHeal(click)}}>Healing</button>
+            <button className='button-84' onClick={(click) => {sortKill(click)}}>Kills</button>
+            <button className='button-84' onClick={(click)=>{sortAssist(click)}}>Assists</button>
             <button className='button-84'>KDR</button>
             <label htmlFor="roles">
                 <select>{roles.map((role) => <RoleSelect key={`role--${role.id}`}role={role}
