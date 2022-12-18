@@ -24,9 +24,9 @@ function compareNumbers(a, b) {
   function compareAssist(a, b) {
     return b.assists - a.assists;
   }
-//   function compareKDR(a, b) {
-// //to sort KDR i need to be able to compare their own kills to deaths, get the total kdr and then compare those two values 
-//   }
+  function compareKDR(a, b) {
+ return b.kills / b.deaths - a.kills / a.deaths; 
+  }
 function sortGroup(click){
     click.preventDefault()
     const copy = [...players]
@@ -57,6 +57,13 @@ function sortAssist(click){
 copy.sort(compareAssist)
 setFilteredPlayers(copy)
 }
+function sortKDR(click){
+    click.preventDefault()
+    const copy = [...players]
+    copy.sort(compareKDR)
+    setFilteredPlayers(copy)
+}
+
 
 function roleFilter(event){
     event.preventDefault()
@@ -80,7 +87,7 @@ function handleReset(click){
             <button className='button-84' onClick={(click) => {sortHeal(click)}}>Healing</button>
             <button className='button-84' onClick={(click) => {sortKill(click)}}>Kills</button>
             <button className='button-84' onClick={(click)=>{sortAssist(click)}}>Assists</button>
-            <button className='button-84'>KDR</button>
+            <button className='button-84' onClick={(click)=>{sortKDR(click)}}>KDR</button>
             <button className='button-84' onClick={(click) => {handleReset(click)}}>Reset</button>
             <label htmlFor="roles">
                 <select
