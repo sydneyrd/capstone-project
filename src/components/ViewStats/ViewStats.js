@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { getAllCharacters, getCalculatedRoster, getCalculatedRosterChar } from "../APIManager"
 import { ResultsMap } from "./ResultsMap"
 import { StatFilters } from "./StatFilters"
-
+import {GroupContainer} from "./GroupContainer"
 import "./results.css"
 
 export const ViewStats = () => {
@@ -11,7 +11,8 @@ export const ViewStats = () => {
     const [players, setPlayers] = useState([])
     const [filteredPlayers, setFilteredPlayers] = useState([])
     const [currentCalcRoster, setCurrentCalcRoster] = useState({})
- 
+    const [group, setGroup] = useState(false)
+
 
     useEffect(
         () => {
@@ -54,6 +55,26 @@ export const ViewStats = () => {
     const totalKillings = sumKills
     const armyKDR = totalKillings / totalDyings   //why isn't this working here?
 
+
+    const splitArray = (arr, prop) =>
+        arr.reduce((acc, item) => {
+            const key = item[prop] || "null";
+            acc[key] = acc[key] || [];
+            acc[key].push(item);
+            return acc;
+        }, {});
+
+
+    const changeGroup = (click) => {
+        click.preventDefault()
+        const copy = [...players]
+        const grouped = splitArray(copy, "group")
+        setFilteredPlayers(grouped)
+        let copyGroup = !group
+        setGroup(!copyGroup)
+    }
+const groups = splitArray(filteredPlayers, "group");
+
     return <>
 
 
@@ -64,7 +85,9 @@ export const ViewStats = () => {
             <h2>Kill/Death Ratio: {armyKDR.toFixed(2)}</h2>
             <h2>Total Deaths: {totalDyings}</h2>
             <h2>Total Kills: {totalKillings}</h2></div>
-     <StatFilters players={players} filteredPlayers={filteredPlayers} setFilteredPlayers={setFilteredPlayers}/>
+        <StatFilters players={players} filteredPlayers={filteredPlayers} setFilteredPlayers={setFilteredPlayers} />
+        <button className="sort__button" onClick={click => changeGroup(click)}>Group</button>
+        <button className="sort__button" onClick={click => changeGroup(click)}>Army</button>
         <div className="player__resultsmap">
             <div className="labels">
                 <div className="player__name">Player</div>
@@ -75,9 +98,14 @@ export const ViewStats = () => {
                 <div className="kills">Assist</div>
                 <div className="kdr">KDR</div></div>
 
-            {filteredPlayers.map((player) => <ResultsMap key={`result--${player.id}`}totalHealings={totalHealings}
-                totalDyings={totalDyings} totalDam={totalDam} totalKillings={totalKillings} 
+            
+            {filteredPlayers.map((player) => <ResultsMap key={`result--${player.id}`} totalHealings={totalHealings}
+                totalDyings={totalDyings} totalDam={totalDam} totalKillings={totalKillings}
                 player={player} />)}</div>
+
+                {Object.values(groups).map((group) => {
+                return <GroupContainer key={`group--${group[0].group}`} group={group} />
+})}
     </>
 }
 
