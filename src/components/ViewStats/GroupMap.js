@@ -45,14 +45,13 @@ const KDR = () => {
    return <div className="group__results">
      
       <div className="player__name">{player?.character?.character_name}</div>
+      <ul><li>KDR {KDR()}</li>
       
-      <div className="damage">{}
-      </div>
+      <li className="damage">{}
+      </li>
+         </ul>
          
-         {/* <div className="healing">{percentage(player?.healing, totalHealings)}%</div>
-         <div className="kills">{percentage(player?.kills, totalKillings)}%</div> 
-         <div className="kills">{percentage(player?.assists, totalKillings)}</div> */}
-         <div className="kdr">{KDR()}</div>
+         
       </div>
    }
    

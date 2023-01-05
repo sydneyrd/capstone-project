@@ -30,30 +30,8 @@ export const ViewStats = () => {
         []
     )
 
-    let sumDamage = 0
-    players.map(element => {
-        sumDamage += element.damage
-    })
 
-    let sumHealing = 0
-    players.map(element => {
-        sumHealing += element.healing
-    })
-
-    let sumKills = 0
-    players.map(element => {
-        sumKills += element.kills
-    })
-
-    let sumDeaths = 0
-    players.map(element => {
-        sumDeaths += element.deaths
-    })
-    const totalDam = sumDamage
-    const totalHealings = sumHealing
-    const totalDyings = sumDeaths
-    const totalKillings = sumKills
-    const armyKDR = totalKillings / totalDyings   //why isn't this working here?
+    const armyKDR = currentCalcRoster.total_kills / currentCalcRoster.total_deaths   
 
 
     const splitArray = (arr, prop) =>
@@ -65,29 +43,30 @@ export const ViewStats = () => {
         }, {});
 
 
-    const changeGroup = (click) => {
-        click.preventDefault()
-        const copy = [...players]
-        const grouped = splitArray(copy, "group")
-        setFilteredPlayers(grouped)
-        let copyGroup = !group
-        setGroup(!copyGroup)
-    }
-const groups = splitArray(filteredPlayers, "group");
+    // const changeGroup = (click) => {
+    //     click.preventDefault()
+    //     const copy = [...players]
+    //     const grouped = splitArray(copy, "group")
+    //     setFilteredPlayers(grouped)
+    //     let copyGroup = !group
+    //     setGroup(!copyGroup)
+    // }
+    const playerCopy = [...players]
+const groups = splitArray(playerCopy, "group");
 
     return <>
 
 
         <div className="results">
             <h2> {currentCalcRoster.name}</h2>
-            <h2>Total Damage: {totalDam}</h2>
-            <h2>Total Healing: {totalHealings}</h2>
+            <h2>Total Damage: {currentCalcRoster.total_damage}</h2>
+            <h2>Total Healing: {currentCalcRoster.total_healing}</h2>
             <h2>Kill/Death Ratio: {armyKDR.toFixed(2)}</h2>
-            <h2>Total Deaths: {totalDyings}</h2>
-            <h2>Total Kills: {totalKillings}</h2></div>
+            <h2>Total Deaths: {currentCalcRoster.total_deaths}</h2>
+            <h2>Total Kills: {currentCalcRoster.total_kills}</h2></div>
         <StatFilters players={players} filteredPlayers={filteredPlayers} setFilteredPlayers={setFilteredPlayers} />
-        <button className="sort__button" onClick={click => changeGroup(click)}>Group</button>
-        <button className="sort__button" onClick={click => changeGroup(click)}>Army</button>
+        <button className="sort__button" onClick>Group</button>
+        <button className="sort__button" onClick>Army</button>
         <div className="player__resultsmap">
             <div className="labels">
                 <div className="player__name">Player</div>
@@ -95,12 +74,12 @@ const groups = splitArray(filteredPlayers, "group");
                 <div className="damage">Damage</div>
                 <div className="healing">Healing</div>
                 <div className="kills">Kills</div>
-                <div className="kills">Assist</div>
+                <div className="Assists">Assist</div>
                 <div className="kdr">KDR</div></div>
 
             
-            {filteredPlayers.map((player) => <ResultsMap key={`result--${player.id}`} totalHealings={totalHealings}
-                totalDyings={totalDyings} totalDam={totalDam} totalKillings={totalKillings}
+            {filteredPlayers.map((player) => <ResultsMap key={`result--${player.id}`}  currentCalcRoster={currentCalcRoster}
+                
                 player={player} />)}</div>
 
                 {Object.values(groups).map((group) => {
