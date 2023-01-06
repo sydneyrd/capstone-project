@@ -23,6 +23,7 @@ export const ResultsMap = ({ player, totalHealings, totalDam, totalKillings, cur
       <div className="healing">{percentage(player?.healing, currentCalcRoster.total_healing)}%</div>
       <div className="kills">{percentage(player?.kills, currentCalcRoster.total_kills)}%</div> 
       <div className="kills">{percentage(player?.deaths, currentCalcRoster.total_deaths)}%</div>
+      <div className='assists'>{percentage(player?.assists, currentCalcRoster.total_kills)}</div>
       <div className="kdr">{KDR()}</div>
    </div>
 }

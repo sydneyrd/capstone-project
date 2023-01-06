@@ -1,6 +1,6 @@
 import { GroupMap } from "./GroupMap"
 
-export const GroupContainer = ({ group }) => {
+export const GroupContainer = ({ group, currentCalcRoster }) => {
 
 
 
@@ -8,16 +8,23 @@ const percentage = (partialValue, totalValue) => {
     const results = (100 * partialValue) / totalValue;
     return results.toFixed(2)
  }
-const totalGroupDamage = group.reduce((acc, value) => acc + value.damage, 0);
-const totalGroupHealing = group.reduce((acc, value) => acc + value.healing, 0);
-const totalGroupKillings = group.reduce((acc, value) => acc + value.kills, 0);
-const totalGroupAssists = group.reduce((acc, value) => acc + value.assists, 0);
-const totalGroupDeaths = group.reduce((acc, value) => acc + value.deaths, 0);
-const totalGroupKills = group.reduce((acc, value) => acc + value.kills, 0);
-const totalGroupKDR = totalGroupKills / totalGroupDeaths
 
+
+const totalGroupDamage = percentage(group.reduce((acc, value) => acc + value.damage, 0), currentCalcRoster.total_damage);
+const totalGroupHealing = percentage(group.reduce((acc, value) => acc + value.healing, 0), currentCalcRoster.total_healing);
+const totalGroupKillings = percentage(group.reduce((acc, value) => acc + value.kills, 0), currentCalcRoster.total_kills);
+const totalGroupAssists = percentage(group.reduce((acc, value) => acc + value.assists, 0), currentCalcRoster.total_kills);
+const totalGroupDeaths = percentage(group.reduce((acc, value) => acc + value.deaths, 0), currentCalcRoster.total_deaths);
+const totalGroupKills = percentage(group.reduce((acc, value) => acc + value.kills, 0), currentCalcRoster.total_kills);
+const totalGroupKDR = totalGroupKills / totalGroupDeaths
+console.log(totalGroupDamage)
 return (<>
- <h4 className="group__results">Group {group[0].group} KDR{totalGroupKDR.toFixed(2)} </h4>  
+{ group[0].group ? 
+<h3>Group {group[0].group}</h3>
+: <h3>Group 0</h3>}
+ <h4 className="group__results">KDR {totalGroupKDR.toFixed(2)} Damage {totalGroupDamage}%
+ Healing {totalGroupHealing}% Kills {totalGroupKillings}% Assists {totalGroupAssists}% Deaths {totalGroupDeaths}
+ </h4>  
 
 
 {group.map(player =>  
@@ -27,7 +34,3 @@ return (<>
 
 }
 
-
-
-// Damage{percentage(totalGroupDamage, armyDamage)} Healing {percentage(totalGroupHealing, armyHealing)}
-//  Kills {percentage(totalGroupKillings)} Assists {percentage(totalGroupAssists, armyAssists)} Kills {totalGroupKills} Deaths {totalGroupDeaths}

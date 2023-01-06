@@ -83,7 +83,7 @@ const groups = splitArray(playerCopy, "group");
                 player={player} />)}</div>
 
                 {Object.values(groups).map((group) => {
-                return <GroupContainer key={`group--${group[0].group}`} group={group} />
+                return <GroupContainer key={`group--${group[0].group}`} currentCalcRoster={currentCalcRoster} group={group} />
 })}
     </>
 }
