@@ -3,7 +3,7 @@ import { RoleSelect } from "../character/Role"
 import { getAllRoles } from "../APIManager"
 import { useEffect, useState } from "react"
 
-export const StatFilters = ({players, setFilteredPlayers, setGroup}) => {
+export const StatFilters = ({players, setFilteredPlayers, sortByArmy, sortByGroup}) => {
     const [roles, setRoles] = useState([])
 useEffect(() => {
     getAllRoles(setRoles)
@@ -27,12 +27,12 @@ function compareNumbers(a, b) {
   function compareKDR(a, b) {
  return b.kills / b.deaths - a.kills / a.deaths; 
   }
-function sortGroup(click){
-    click.preventDefault()
-    const copy = [...players]
-copy.sort(compareNumbers)
-setFilteredPlayers(copy)
-}
+// function sortGroup(click){
+//     click.preventDefault()
+//     const copy = [...players]
+// copy.sort(compareNumbers)
+// setFilteredPlayers(copy)
+// }
 function sortDamage(click){
     click.preventDefault()
     const copy = [...players]
@@ -82,7 +82,8 @@ function handleReset(click){
 
     return <>
        <div>
-            <button className='button-84' onClick={(click) => {sortGroup(click)}}>Group</button>
+            <button className='button-84' onClick={click => sortByGroup(click)}>Group</button>
+            <button className='button-84' onClick={click => sortByArmy(click)}>Army</button>
             <button className='button-84' onClick={(click)=> {sortDamage(click)}}>Damage</button>
             <button className='button-84' onClick={(click) => {sortHeal(click)}}>Healing</button>
             <button className='button-84' onClick={(click) => {sortKill(click)}}>Kills</button>
