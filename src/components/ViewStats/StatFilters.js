@@ -2,8 +2,9 @@ import "./results.css"
 import { RoleSelect } from "../character/Role"
 import { getAllRoles } from "../APIManager"
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 
-export const StatFilters = ({players, setFilteredPlayers, sortByArmy, sortByGroup}) => {
+export const StatFilters = ({players, currentCalcRoster, setFilteredPlayers, sortByArmy, sortByGroup}) => {
     const [roles, setRoles] = useState([])
 useEffect(() => {
     getAllRoles(setRoles)
@@ -27,12 +28,6 @@ function compareNumbers(a, b) {
   function compareKDR(a, b) {
  return b.kills / b.deaths - a.kills / a.deaths; 
   }
-// function sortGroup(click){
-//     click.preventDefault()
-//     const copy = [...players]
-// copy.sort(compareNumbers)
-// setFilteredPlayers(copy)
-// }
 function sortDamage(click){
     click.preventDefault()
     const copy = [...players]
@@ -81,6 +76,7 @@ function handleReset(click){
 
 
     return <>
+    <><Link to="/resources/edit/{}"></Link>
        <div>
             <button className='button-84' onClick={click => sortByGroup(click)}>Group</button>
             <button className='button-84' onClick={click => sortByArmy(click)}>Army</button>
@@ -90,6 +86,7 @@ function handleReset(click){
             <button className='button-84' onClick={(click)=>{sortAssist(click)}}>Assists</button>
             <button className='button-84' onClick={(click)=>{sortKDR(click)}}>KDR</button>
             <button className='button-84' onClick={(click) => {handleReset(click)}}>Reset</button>
+             <Link className='button-84' to={`/resources/edit/${currentCalcRoster.id}`} > Edit Players</Link>
             <label htmlFor="roles">
                 <select
                 onChange={(event) => roleFilter(event)}
@@ -99,6 +96,6 @@ function handleReset(click){
                 
         </div>
     
-    </>
+    </></>
 
 }

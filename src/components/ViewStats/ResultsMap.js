@@ -1,4 +1,4 @@
-export const ResultsMap = ({ player, totalHealings, totalDam, totalKillings, currentCalcRoster}) => {
+export const ResultsMap = ({ player, currentCalcRoster}) => {
 
    const KDR = () => {
      if (player?.deaths) {

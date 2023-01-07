@@ -4,6 +4,7 @@ import { getAllCharacters, getCalculatedRoster, getCalculatedRosterChar } from "
 import { ResultsMap } from "./ResultsMap"
 import { StatFilters } from "./StatFilters"
 import { GroupContainer } from "./GroupContainer"
+import { BaseStatContainer } from "./BaseStats/BaseStatContainer.js"
 import "./results.css"
 
 export const ViewStats = () => {
@@ -12,6 +13,7 @@ export const ViewStats = () => {
     const [filteredPlayers, setFilteredPlayers] = useState([])
     const [currentCalcRoster, setCurrentCalcRoster] = useState({})
     const [group, setGroup] = useState(false)
+    const [base, setBase] = useState(false)
     useEffect(
         () => {
             getCalculatedRosterChar(calculatedRosterId)
@@ -41,12 +43,17 @@ export const ViewStats = () => {
     function sortByGroup(click) {
         click.preventDefault()
         setGroup(true)
+        setBase(false)
     }
     function sortByArmy(click) {
         click.preventDefault()
         setGroup(false)
+        setBase(false)
     }
-
+function setBaseStats(click){
+click.preventDefault()
+setBase(true)
+}
     return <>
         <div className="results">
             <h2> {currentCalcRoster.name}</h2>
@@ -55,7 +62,7 @@ export const ViewStats = () => {
             <h2>Kill/Death Ratio: {armyKDR.toFixed(2)}</h2>
             <h2>Total Deaths: {currentCalcRoster.total_deaths}</h2>
             <h2>Total Kills: {currentCalcRoster.total_kills}</h2></div>
-        <StatFilters setGroup={setGroup} players={players} sortByGroup={sortByGroup} sortByArmy={sortByArmy}filteredPlayers={filteredPlayers} setFilteredPlayers={setFilteredPlayers} />
+        <StatFilters currentCalcRoster={currentCalcRoster} setGroup={setGroup} players={players} sortByGroup={sortByGroup} setBaseStats={setBaseStats} sortByArmy={sortByArmy}filteredPlayers={filteredPlayers} setFilteredPlayers={setFilteredPlayers} />
         <div className="player__resultsmap">
             <div className="labels">
                 <div className="player__name">Player</div>
@@ -66,13 +73,14 @@ export const ViewStats = () => {
                 <div className="Assists">Assist</div>
                 <div className="kdr">KDR</div></div>
             {
-                !group ?
+                !group && !base ?
                     filteredPlayers.map((player) => <ResultsMap key={`result--${player.id}`} currentCalcRoster={currentCalcRoster} player={player} />)
                     :
                     Object.values(groups).map((group) => {
                         return <GroupContainer key={`group--${group[0].group}`} currentCalcRoster={currentCalcRoster} group={group} />
                     })
-            }
+                    
+            }  
         </div>
     </>
 }
