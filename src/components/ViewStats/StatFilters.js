@@ -3,7 +3,7 @@ import { RoleSelect } from "../character/Role"
 import { getAllRoles } from "../APIManager"
 import { useEffect, useState } from "react"
 
-export const StatFilters = ({players, setFilteredPlayers}) => {
+export const StatFilters = ({players, setFilteredPlayers, setGroup}) => {
     const [roles, setRoles] = useState([])
 useEffect(() => {
     getAllRoles(setRoles)

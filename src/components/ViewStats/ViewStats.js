@@ -51,8 +51,18 @@ export const ViewStats = () => {
     //     let copyGroup = !group
     //     setGroup(!copyGroup)
     // }
-    const playerCopy = [...players]
+ 
+       const playerCopy = [...players]
 const groups = splitArray(playerCopy, "group");
+const sortByGroup = (click) => {
+    click.preventDefault()
+
+setGroup(true)
+}
+
+ function sortByArmy(click){
+    click.preventDefault()
+    setGroup(false)}
 
     return <>
 
@@ -64,9 +74,9 @@ const groups = splitArray(playerCopy, "group");
             <h2>Kill/Death Ratio: {armyKDR.toFixed(2)}</h2>
             <h2>Total Deaths: {currentCalcRoster.total_deaths}</h2>
             <h2>Total Kills: {currentCalcRoster.total_kills}</h2></div>
-        <StatFilters players={players} filteredPlayers={filteredPlayers} setFilteredPlayers={setFilteredPlayers} />
-        <button className="sort__button" onClick>Group</button>
-        <button className="sort__button" onClick>Army</button>
+        <StatFilters setGroup={setGroup}players={players} filteredPlayers={filteredPlayers} setFilteredPlayers={setFilteredPlayers} />
+        <button className="sort__button" onClick={click => sortByGroup(click)}>Group</button>
+        <button className="sort__button" onClick={click => sortByArmy(click)}>Army</button>
         <div className="player__resultsmap">
             <div className="labels">
                 <div className="player__name">Player</div>
@@ -77,14 +87,18 @@ const groups = splitArray(playerCopy, "group");
                 <div className="Assists">Assist</div>
                 <div className="kdr">KDR</div></div>
 
-            
-            {filteredPlayers.map((player) => <ResultsMap key={`result--${player.id}`}  currentCalcRoster={currentCalcRoster}
-                
-                player={player} />)}</div>
-
-                {Object.values(groups).map((group) => {
-                return <GroupContainer key={`group--${group[0].group}`} currentCalcRoster={currentCalcRoster} group={group} />
-})}
+            {}
+            {
+    !group ?
+      filteredPlayers.map((player) => <ResultsMap key={`result--${player.id}`} currentCalcRoster={currentCalcRoster} player={player} />)
+      :
+      Object.values(groups).map((group) => {
+        return <GroupContainer key={`group--${group[0].group}`} currentCalcRoster={currentCalcRoster} group={group} />
+      })
+  }
+</div>
+   
+   
     </>
 }
 
