@@ -10,7 +10,7 @@ import {ViewStats} from "../ViewStats/ViewStats"
 import { useState } from "react"
 import { CalculateByLine } from "../Calculator/CalculateByLine"
 import { CharacterDetails } from "../character/CharacterDetails"
-import { BaseStatContainer } from "../ViewStats/BaseStats/BaseStatContainer"
+import { BaseStatContainer } from "../ViewStats/BaseStatContainer"
 export const ApplicationViews = () => {
 
 

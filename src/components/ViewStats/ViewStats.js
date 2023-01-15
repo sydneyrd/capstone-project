@@ -4,7 +4,7 @@ import { getAllCharacters, getCalculatedRoster, getCalculatedRosterChar } from "
 import { ResultsMap } from "./ResultsMap"
 import { StatFilters } from "./StatFilters"
 import { GroupContainer } from "./GroupContainer"
-import { BaseStatContainer } from "./BaseStats/BaseStatContainer.js"
+import { BaseStatContainer } from "./BaseStatContainer.js"
 import "./results.css"
 
 export const ViewStats = () => {
