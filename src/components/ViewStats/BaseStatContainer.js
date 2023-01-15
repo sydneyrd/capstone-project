@@ -11,6 +11,7 @@ export function BaseStatContainer() {
     const [players, setPlayers] = useState([])
     const [filteredPlayers, setFilteredPlayers] = useState([])
     const [currentCalcRoster, setCurrentCalcRoster] = useState({})
+    const [update, setUpdate] = useState(false)
 
     
 
@@ -35,5 +36,5 @@ export function BaseStatContainer() {
         <Link to={`/resources/${calculatedRosterId}/view`}>Return to Results</Link>
 
         <div className="kdr">KDR</div>HELLO I AM THE NEW MODULE FOR EDITING DELETING AND VIEWING BASE PLAYER STATS
-        {filteredPlayers.map(player => <BaseStatMap key={`${player.id}`} player={player}/>)}</>
+        {filteredPlayers.map(player => <BaseStatMap setUpdate={setUpdate} key={`${player.id}`} player={player}/>)}</>
 }

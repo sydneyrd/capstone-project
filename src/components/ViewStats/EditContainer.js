@@ -49,6 +49,8 @@ export class EditContainer extends Component {
             player={this.props.player}
             setPlayerStats={this.props.setPlayerStats}
             playerStats={this.props.playerStats}
+            setUpdate={this.props.setUpdate}
+            update={this.props.update}
           />
         ) : null}
       </React.Fragment>

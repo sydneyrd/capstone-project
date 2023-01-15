@@ -3,8 +3,8 @@ import React from 'react';
 import { EditContainer } from "./EditContainer";
 import { useState } from "react";
 
-export const BaseStatMap = ({ player}) => {
-const [setPlayerStats, playerStats] = useState({})
+export const BaseStatMap = ({ player, setUpdate, update}) => {
+const [playerStats, setPlayerStats] = useState({})
  
  
     return <div className="player__results"><div className="player__name">{player?.character?.character_name}</div>
@@ -14,6 +14,6 @@ const [setPlayerStats, playerStats] = useState({})
        <div className="healing">{player?.healing}</div>
        <div className="kills">{player?.kills}</div> 
        <div className='kdr'>{player?.assists}</div>
-       <EditContainer player={player} setPlayerStats={setPlayerStats} playerStats={playerStats}/>
+       <EditContainer player={player} setUpdate={setUpdate} update={update} setPlayerStats={setPlayerStats} playerStats={playerStats}/>
 </div>
  }

@@ -5,23 +5,25 @@ export const getUserByEmail = (email) => {
 
 export const getUserbyId = (id) => {
     return fetch(`http://127.0.0.1:8000/users/${id}`, {
-    headers:{
-        "Authorization": `Token ${localStorage.getItem("roster_token")}`}
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("roster_token")}`
+        }
     })
         .then(res => res.json())
 }
 export const getUserCharacters = (user) => {
     return fetch(`http://127.0.0.1:8000/characters?user=${user.id}`, {
-    headers:{
-        "Authorization": `Token ${localStorage.getItem("roster_token")}`}
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("roster_token")}`
+        }
     })
         .then(res => res.json())
 
 }
 
 export const getUserRosters = (user) => {
-    return fetch(`http://127.0.0.1:8000/rosters?user=${user.id}`,{
-        headers:{
+    return fetch(`http://127.0.0.1:8000/rosters?user=${user.id}`, {
+        headers: {
             "Authorization": `Token ${localStorage.getItem("roster_token")}`
         }
     })
@@ -31,7 +33,7 @@ export const getUserRosters = (user) => {
 
 export const getCurrentRoster = (rosterId) => {
     return fetch(`http://127.0.0.1:8000/rosterchoices?roster=${rosterId}`, {
-        headers:{
+        headers: {
             "Authorization": `Token ${localStorage.getItem("roster_token")}`
         }
     })
@@ -41,8 +43,9 @@ export const getCurrentRoster = (rosterId) => {
 
 export const getUserWarStats = (user) => {
     return fetch(`http://127.0.0.1:8000/calculatedrosters?user=${user.id}`, {
-    headers:{
-        "Authorization": `Token ${localStorage.getItem("roster_token")}`}
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("roster_token")}`
+        }
     })
         .then(res => res.json())
 }
@@ -72,8 +75,9 @@ export const updateProfile = (profile, id) => {
 }
 export const getAllWeapons = (setWeapons) => {
     return fetch(`http://127.0.0.1:8000/weapons`, {
-    headers:{
-        "Authorization": `Token ${localStorage.getItem("roster_token")}`}
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("roster_token")}`
+        }
     })
         .then(res => res.json())
         .then((weaponsArr) => {
@@ -82,9 +86,11 @@ export const getAllWeapons = (setWeapons) => {
 }
 
 export const getAllRoles = (setRoles) => {
-    return fetch(`http://127.0.0.1:8000/roles`, {headers:{
-        "Authorization": `Token ${localStorage.getItem("roster_token")}`
-    }})
+    return fetch(`http://127.0.0.1:8000/roles`, {
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("roster_token")}`
+        }
+    })
         .then(res => res.json())
         .then((roleArr) => {
             setRoles(roleArr)
@@ -92,8 +98,9 @@ export const getAllRoles = (setRoles) => {
 }
 export const getAllServers = (setServers) => {
     return fetch(`http://127.0.0.1:8000/servers`, {
-    headers:{
-        "Authorization": `Token ${localStorage.getItem("roster_token")}`}
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("roster_token")}`
+        }
     })
         .then(res => res.json())
         .then((serverArr) => {
@@ -103,18 +110,21 @@ export const getAllServers = (setServers) => {
 
 export const getAllFactions = (setFactions) => {
     return fetch(`http://127.0.0.1:8000/factions`,
-    {headers:{
-        "Authorization": `Token ${localStorage.getItem("roster_token")}`
-    }})
+        {
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("roster_token")}`
+            }
+        })
         .then(res => res.json())
         .then((factionArr) => {
             setFactions(factionArr)
         })
 }
 export const getAllCharacters = (setCharacters) => {
-    return fetch(`http://127.0.0.1:8000/characters`,{
-    headers:{
-        "Authorization": `Token ${localStorage.getItem("roster_token")}`}
+    return fetch(`http://127.0.0.1:8000/characters`, {
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("roster_token")}`
+        }
     })
         .then(res => res.json())
         .then((charactersArr) => {
@@ -123,8 +133,8 @@ export const getAllCharacters = (setCharacters) => {
 }
 
 export const getSingleCharacter = (characterId, setCharacter) => {
-    return fetch(`http://127.0.0.1:8000/characters/${characterId}`,{
-        headers:{
+    return fetch(`http://127.0.0.1:8000/characters/${characterId}`, {
+        headers: {
             "Authorization": `Token ${localStorage.getItem("roster_token")}`
         }
     })
@@ -136,23 +146,27 @@ export const getSingleCharacter = (characterId, setCharacter) => {
 }
 export const getRosterCharacter = (rosterNum) => {
     return fetch(`http://127.0.0.1:8000/rosterchoices?roster=${rosterNum}`,
-    {headers:{
-        "Authorization": `Token ${localStorage.getItem("roster_token")}`
-    }})
+        {
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("roster_token")}`
+            }
+        })
         .then(res => res.json())
     //no set function included in this don't forget .then
 }
 export const getCalculatedRoster = (calculatedrosterId) => {
     return fetch(`http://127.0.0.1:8000/calculatedrosters/${calculatedrosterId}`,
-    {headers:{
-        "Authorization": `Token ${localStorage.getItem("roster_token")}`
-    }})
+        {
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("roster_token")}`
+            }
+        })
         .then(res => res.json())
 }
 
 export const getCalculatedRosterChar = (calculatedRosterId) => {
-    return fetch(`http://127.0.0.1:8000/calculatedrosterchoices?calculatedroster=${calculatedRosterId}`,{
-        headers:{
+    return fetch(`http://127.0.0.1:8000/calculatedrosterchoices?calculatedroster=${calculatedRosterId}`, {
+        headers: {
             "Authorization": `Token ${localStorage.getItem("roster_token")}`
         }
     })
@@ -162,9 +176,11 @@ export const getCalculatedRosterChar = (calculatedRosterId) => {
 
 export const getRosterName = (rosterId) => {
     return fetch(`http://127.0.0.1:8000/rosters/${rosterId}`,
-    {headers:{
-        "Authorization": `Token ${localStorage.getItem("roster_token")}`
-    }})
+        {
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("roster_token")}`
+            }
+        })
         .then(res => res.json())
 }
 
@@ -272,7 +288,7 @@ export const putRosterName = (id, rosterName) => {
         },
         body: JSON.stringify(rosterName)
     })
-        
+
 }
 
 export const deleteCalculatedRoster = (calculatedRosterId) => {
@@ -296,7 +312,7 @@ export const putCharacter = (uCharacter, id) => {
         },
         body: JSON.stringify(uCharacter)
     })
-        
+
 }
 
 export const loginUser = (user) => {
@@ -335,8 +351,8 @@ export const newLink = (link) => {
         .then(res => res.json())
 }
 export const getCharacterLinks = (characterId, setCharacterLinks) => {
-    return fetch(`http://127.0.0.1:8000/links?character=${characterId}`,{
-        headers:{
+    return fetch(`http://127.0.0.1:8000/links?character=${characterId}`, {
+        headers: {
             "Authorization": `Token ${localStorage.getItem("roster_token")}`
         }
     })
@@ -355,4 +371,13 @@ export const deleteCharLink = (id) => {
         }
     }
     )
+}
+
+export const editCalculatedRosterChoices = (post_body) => {
+    return fetch(`http://127.0.0.1:8000/calculatedrosterchoices/${post_body.id}`, {
+        method: "PUT",
+        headers: {
+            'Content-type': 'application/json',
+            "Authorization": `Token ${localStorage.getItem('roster_token')}`
+        }})
 }

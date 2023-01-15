@@ -2,6 +2,7 @@ import FocusTrap from 'focus-trap-react';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { EditForm } from './EditForm';
+import  './modal.css'
 
 export const Modal = ({
   onClickOutside,
@@ -10,9 +11,10 @@ export const Modal = ({
   buttonRef,
   closeModal,
   onSubmit,
-  player,
-  setPlayerStats,
+    setPlayerStats,
     playerStats,
+    setUpdate,
+    update
 }) => {
   return ReactDOM.createPortal(
     <FocusTrap>
@@ -44,6 +46,8 @@ export const Modal = ({
             <EditForm onSubmit={onSubmit}
             setPlayerStats={setPlayerStats}
             playerStats={playerStats}
+            setUpdate={setUpdate}
+            update={update}
              />
           </div>
         </div>
