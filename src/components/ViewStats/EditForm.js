@@ -2,32 +2,34 @@ import React, { useEffect, useState } from 'react';
 import { editCalculatedRosterChoices } from '../APIManager';
 // import  './modal.css'
 
-export const EditForm = ({ onSubmit, player, setPlayerStats, playerStats, setUpdate, update }) => {
+export const EditForm = ({ onSubmit, player, getPlayersAgain, closeModal }) => {
  let copy = {...player}
- console.log(copy)
  const [playerCopy, setPlayerCopy] = useState({
       kills: copy.kills,
       deaths: copy.deaths,
       assists: copy.assists,
       healing: copy.healing,
-      damage: copy.damage
+      damage: copy.damage,
+      id: copy.id,
+      group: copy.group
 
  })
 
- console.log(playerCopy)
+
 
 const handleUpdate = (event) => {
     event.preventDefault()
-    let copy = { ...playerStats }
+    let copy = { ...playerCopy }
+    console.log(copy)
     editCalculatedRosterChoices(copy)
         .then(() => {
-            let copy = !update
-            setUpdate(copy)
+            //reget and rerender
+            getPlayersAgain(player.calculated_roster.id)
+            
         })
+        closeModal()
 }
-const changeValue = (event) => {
 
-}
 
   return (
     <form onSubmit={onSubmit}>
@@ -78,8 +80,17 @@ const changeValue = (event) => {
               copy.damage = parseInt(event.target.value)
             setPlayerCopy(copy)
           }}></input>
+      <label>Group # {player.group}</label>
+      <input className="form-controlstat"
+            placeholder="group" 
+            defaultValue={player.group ?  player.group : 0}
+            type="number" onChange={(event) => {
+              const copy = { ...playerCopy }
+              copy.group = parseInt(event.target.value)
+              setPlayerCopy(copy)
+            }}></input>
       <div className="form-group">
-        <button className="form-control btn btn-primary" type="submit">
+        <button className="form-control btn btn-primary" type="submit" onClick={click=> {handleUpdate(click)}}>
           Submit
         </button>
       </div>

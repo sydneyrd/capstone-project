@@ -1,7 +1,7 @@
 //this will provide an edit button for the basestat map that will allow updating each characters stats
 import React from 'react';
 import  './modal.css'
-export const EditButton = ({ player, triggerText, buttonRef, showModal  }) => {
+export const EditButton = ({ triggerText, buttonRef, showModal  }) => {
 
 
 

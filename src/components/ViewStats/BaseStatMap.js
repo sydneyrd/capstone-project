@@ -3,7 +3,7 @@ import React from 'react';
 import { EditContainer } from "./EditContainer";
 import { useState } from "react";
 
-export const BaseStatMap = ({ setPlayerStats, player, setUpdate, update}) => {
+export const BaseStatMap = ({ setPlayerStats, getPlayersAgain, player}) => {
 
 
  
@@ -14,7 +14,7 @@ export const BaseStatMap = ({ setPlayerStats, player, setUpdate, update}) => {
     </div>
        <div className="healing">{player?.healing}</div>
        <div className="kills">{player?.kills}</div> 
-       <div className='kdr'>{player?.assists}</div>
-       <EditContainer player={player} setUpdate={setUpdate} update={update} setPlayerStats={setPlayerStats} />
+       <div className='assists'>{player?.assists}</div>
+       <EditContainer player={player} getPlayersAgain={getPlayersAgain} setPlayerStats={setPlayerStats} />
 </div>
  }

@@ -379,5 +379,6 @@ export const editCalculatedRosterChoices = (post_body) => {
         headers: {
             'Content-type': 'application/json',
             "Authorization": `Token ${localStorage.getItem('roster_token')}`
-        }})
+        },
+        body: JSON.stringify(post_body)})
 }

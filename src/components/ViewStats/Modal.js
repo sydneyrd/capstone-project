@@ -15,7 +15,8 @@ export const Modal = ({
     playerStats,
     setUpdate,
     update,
-    player
+    player,
+    getPlayersAgain
 }) => {
   return ReactDOM.createPortal(
     <FocusTrap>
@@ -50,6 +51,8 @@ export const Modal = ({
             setUpdate={setUpdate}
             update={update}
             player={player}
+          getPlayersAgain={getPlayersAgain}
+          closeModal={closeModal}
              />
           </div>
         </div>

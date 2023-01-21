@@ -47,9 +47,7 @@ export class EditContainer extends Component {
             onKeyDown={this.onKeyDown}
             onClickOutside={this.onClickOutside}
             player={this.props.player}
-            setPlayerStats={this.props.setPlayerStats}
-            setUpdate={this.props.setUpdate}
-            update={this.props.update}
+            getPlayersAgain={this.props.getPlayersAgain}
           />
         ) : null}
       </React.Fragment>
