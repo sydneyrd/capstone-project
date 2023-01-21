@@ -62,7 +62,7 @@ setBase(true)
             <h2>Kill/Death Ratio: {armyKDR.toFixed(2)}</h2>
             <h2>Total Deaths: {currentCalcRoster.total_deaths}</h2>
             <h2>Total Kills: {currentCalcRoster.total_kills}</h2></div>
-        <StatFilters currentCalcRoster={currentCalcRoster} setGroup={setGroup} players={players} sortByGroup={sortByGroup} setBaseStats={setBaseStats} sortByArmy={sortByArmy}filteredPlayers={filteredPlayers} setFilteredPlayers={setFilteredPlayers} />
+        <StatFilters currentCalcRoster={currentCalcRoster} setBase={setBase} setGroup={setGroup} players={players} sortByGroup={sortByGroup} setBaseStats={setBaseStats} sortByArmy={sortByArmy}filteredPlayers={filteredPlayers} setFilteredPlayers={setFilteredPlayers} />
         <div className="player__resultsmap">
             <div className="labels">
                 <div className="player__name">Player</div>

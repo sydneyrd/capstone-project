@@ -4,7 +4,7 @@ import { getAllRoles } from "../APIManager"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
-export const StatFilters = ({players, currentCalcRoster, setFilteredPlayers, sortByArmy, sortByGroup}) => {
+export const StatFilters = ({players,setGroup, setBase, currentCalcRoster, setFilteredPlayers, sortByArmy, sortByGroup}) => {
     const [roles, setRoles] = useState([])
 useEffect(() => {
     getAllRoles(setRoles)
@@ -30,30 +30,37 @@ function compareNumbers(a, b) {
   }
 function sortDamage(click){
     click.preventDefault()
+    setBase(false)
+    setGroup(false)
     const copy = [...players]
 copy.sort(compareDamage)
 setFilteredPlayers(copy)
+
 }
 function sortHeal(click){
     click.preventDefault()
+    setGroup(false)
     const copy = [...players]
 copy.sort(compareHeal)
 setFilteredPlayers(copy)
 }
 function sortKill(click){
     click.preventDefault()
+    setGroup(false)
     const copy = [...players]
 copy.sort(compareKill)
 setFilteredPlayers(copy)
 }
 function sortAssist(click){
     click.preventDefault()
+    setGroup(false)
     const copy = [...players]
 copy.sort(compareAssist)
 setFilteredPlayers(copy)
 }
 function sortKDR(click){
     click.preventDefault()
+    setGroup(false)
     const copy = [...players]
     copy.sort(compareKDR)
     setFilteredPlayers(copy)
