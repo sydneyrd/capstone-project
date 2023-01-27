@@ -7,6 +7,7 @@ import { WarStats } from "./WarStats"
 
 export const UpdateUser = () => {
     const [feedback, setFeedback] = useState("")
+    const [userWarStats, setUserWarStats] = useState([])
     const localRosterUser = localStorage.getItem("roster_user")
     const rosterUserObject = JSON.parse(localRosterUser)
     const localUser = { ...rosterUserObject }
@@ -82,7 +83,7 @@ export const UpdateUser = () => {
             <div>  <h4>Saved Rosters</h4>
                 <SavedRosters localUser={localUser} /></div>
             <div> <h4>War Results</h4>
-                <WarStats localUser={localUser} /></div>
+                <WarStats userWarStats={userWarStats} setUserWarStats={setUserWarStats} localUser={localUser} /></div>
         </main> </>
 
 }

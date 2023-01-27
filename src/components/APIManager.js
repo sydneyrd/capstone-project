@@ -272,7 +272,6 @@ export const deleteRoster = (rosterId) => {
             'Content-type': 'application/json',
             'Authorization': `Token ${localStorage.getItem('roster_token')}`
         }
-
     }
     )
 }
@@ -292,7 +291,7 @@ export const putRosterName = (id, rosterName) => {
 }
 
 export const deleteCalculatedRoster = (calculatedRosterId) => {
-    fetch(`http://127.0.0.1:8000/calculatedrosters/${calculatedRosterId}`, {
+    return fetch(`http://127.0.0.1:8000/calculatedrosters/${calculatedRosterId}`, {
         method: "DELETE",
         headers: {
             'Content-type': 'application/json',
