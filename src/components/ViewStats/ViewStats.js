@@ -1,77 +1,87 @@
 import { useParams } from "react-router-dom"
- import { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { getAllCharacters, getCalculatedRoster, getCalculatedRosterChar } from "../APIManager"
-import {ResultsMap} from "./ResultsMap"
+import { ResultsMap } from "./ResultsMap"
+import { StatFilters } from "./StatFilters"
+import { GroupContainer } from "./GroupContainer"
+import { BaseStatContainer } from "./BaseStatContainer.js"
 import "./results.css"
 
 export const ViewStats = () => {
-const { calculatedRosterId } = useParams()
-const [players, setPlayers] = useState([])
-const [characters, setCharacters] = useState([])
-const [currentCalcRoster, setCurrentCalcRoster] = useState({})
-
+    const { calculatedRosterId } = useParams()
+    const [players, setPlayers] = useState([])
+    const [filteredPlayers, setFilteredPlayers] = useState([])
+    const [currentCalcRoster, setCurrentCalcRoster] = useState({})
+    const [group, setGroup] = useState(false)
+    const [base, setBase] = useState(false)
     useEffect(
         () => {
             getCalculatedRosterChar(calculatedRosterId)
                 .then((res) => {
                     setPlayers(res)
+                    setFilteredPlayers(res)
                 })
-                .then(() => 
-                getCalculatedRoster(calculatedRosterId)
-                .then((r) => 
-               {
-                setCurrentCalcRoster(r)
-               } ))
-               .then(() => {
-                getAllCharacters(setCharacters)
-               })
+                .then(() =>
+                    getCalculatedRoster(calculatedRosterId)
+                        .then((r) => {
+                            setCurrentCalcRoster(r)
+                        }))
         },
-        [] //i put rosterID in there because it keeps warning me about it one npm start so I thought i'd try it, prolly break things
+        []
     )
+    const armyKDR = currentCalcRoster.total_kills / currentCalcRoster.total_deaths
+    const splitArray = (arr, prop) =>
+        arr.reduce((acc, item) => {
+            const key = item[prop] || "null";
+            acc[key] = acc[key] || [];
+            acc[key].push(item);
+            return acc;
+        }, {});
 
-    let sumDamage = 0
-    players.map(element => {
-        sumDamage += element.damage
-    })
-
-    let sumHealing = 0
-    players.map(element => {
-        sumHealing += element.healing
-    })
-
-    let sumKills = 0
-    players.map(element => {
-        sumKills += element.kills
-    })
-
-    let sumDeaths = 0
-    players.map(element => {
-        sumDeaths += element.deaths
-    })
-    const totalDam = sumDamage
-    const totalHealings = sumHealing
-    const totalDyings = sumDeaths
-    const totalKillings = sumKills
-    const armyKDR = totalKillings / totalDyings   //why isn't this working here?
-
+    const playerCopy = [...players]
+    const groups = splitArray(playerCopy, "group");
+    function sortByGroup(click) {
+        click.preventDefault()
+        setGroup(true)
+        setBase(false)
+    }
+    function sortByArmy(click) {
+        click.preventDefault()
+        setGroup(false)
+        setBase(false)
+    }
+function setBaseStats(click){
+click.preventDefault()
+setBase(true)
+}
     return <>
         <div className="results">
             <h2> {currentCalcRoster.name}</h2>
-            <h2>Total Damage: {totalDam}</h2>
-            <h2>Total Healing: {totalHealings}</h2>
+            <h2>Total Damage: {currentCalcRoster.total_damage}</h2>
+            <h2>Total Healing: {currentCalcRoster.total_healing}</h2>
             <h2>Kill/Death Ratio: {armyKDR.toFixed(2)}</h2>
-            <h2>Total Deaths: {totalDyings}</h2>
-            <h2>Total Kills: {totalKillings}</h2></div>
-      
+            <h2>Total Deaths: {currentCalcRoster.total_deaths}</h2>
+            <h2>Total Kills: {currentCalcRoster.total_kills}</h2></div>
+        <StatFilters currentCalcRoster={currentCalcRoster} setBase={setBase} setGroup={setGroup} players={players} sortByGroup={sortByGroup} setBaseStats={setBaseStats} sortByArmy={sortByArmy}filteredPlayers={filteredPlayers} setFilteredPlayers={setFilteredPlayers} />
         <div className="player__resultsmap">
-            <div className="labels"> <div className="player__name">Player</div> <div className="damage">Damage</div>
-        <div className="healing">Healing</div>
-        <div  className="kills">Kills</div>
-        <div className="kills">Assist</div>
-        <div  className="kdr">KDR</div></div>     
-             {players.map((player) => <ResultsMap totalHealings={totalHealings}
-            totalDyings={totalDyings} totalDam={totalDam} totalKillings={totalKillings} characters={characters}
-            key={player.id} player={player} />)}</div>
+            <div className="labels">
+                <div className="player__name">Player</div>
+                <div className="labels">Group</div>
+                <div className="damage">Damage</div>
+                <div className="healing">Healing</div>
+                <div className="kills">Kills</div>
+                <div className="Assists">Assist</div>
+                <div className="kdr">KDR</div></div>
+            {
+                !group && !base ?
+                    filteredPlayers.map((player) => <ResultsMap key={`result--${player.id}`} currentCalcRoster={currentCalcRoster} player={player} />)
+                    :
+                    Object.values(groups).map((group) => {
+                        return <GroupContainer key={`group--${group[0].group}`} currentCalcRoster={currentCalcRoster} group={group} />
+                    })
+                    
+            }  
+        </div>
     </>
 }
 

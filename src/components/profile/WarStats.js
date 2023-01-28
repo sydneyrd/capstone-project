@@ -2,17 +2,9 @@ import { useEffect, useState } from "react"
 import { WarResultMap } from "./WarResultMap"
 import { getUserWarStats } from "../APIManager"
 
-export const WarStats = ({ localUser }) => {
-    const [userWarStats, setUserWarStats] = useState([])
-    useEffect(
-        () => {
-            getUserWarStats(localUser)
-                .then((URost) => {
-                    setUserWarStats(URost)
-                })
-        },
-        [localUser]
-    )
+export const WarStats = ({ localUser, userWarStats, setUserWarStats }) => {
+    
+
     useEffect(
         () => {
             getUserWarStats(localUser)

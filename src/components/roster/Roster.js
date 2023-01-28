@@ -123,9 +123,9 @@ export const Roster = () => {
                     rosterChoiceArr.push(nC)
                 } else { }
             } return rosterChoiceArr
-        }
+        }//promise waits for all the promises to come back in an iterable before resolving
         const rosterToPost = createRosterChoices(newRosterPicks) //calls ^ 
-        Promise.all(rosterToPost.map((r) => { newRosterChoice(r) })).then((result) => {//maybe my finest achievment thus far?   promise waits for all the promises to come back in an iterable before resolving
+        Promise.all(rosterToPost.map((r) => { newRosterChoice(r) })).then((result) => {
             console.log(result)
         })
         alert("Roster successfully saved")

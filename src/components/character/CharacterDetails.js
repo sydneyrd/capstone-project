@@ -23,6 +23,7 @@ export const CharacterDetails = () => {
     const [link, setLink] = useState({}) //this is for new links
     const [characterLinks, setCharacterLinks] = useState([]) //this one is for existing links
     const [notes, setNotes] = useState('')
+    const [image, setImage] = useState('')
     const localRosterUser = localStorage.getItem("roster_user")
     const RosterUserObject = JSON.parse(localRosterUser)
     useEffect(
@@ -47,7 +48,7 @@ export const CharacterDetails = () => {
         },
         []
     )
-
+//could increase the depth from the server to get all this info attached to character instead of a bunch of .finds
     let rightServer = servers.find(({ id }) => id === character?.server)
     let rightPrimary = weapons.find(({ id }) => id === character?.primary_weapon)
     let rightSecondary = weapons.find(({ id }) => id === character?.secondary_weapon)
@@ -63,7 +64,8 @@ export const CharacterDetails = () => {
             secondary_weapon: parseInt(UC.secondary_weapon),
             server: parseInt(UC.server),
             faction: parseInt(UC.faction),
-            notes: notes
+            notes: notes,
+            image: image
         }
         putCharacter(letcToAPI, UC.id) 
         .then(()=>
@@ -73,6 +75,17 @@ export const CharacterDetails = () => {
         alert('updated')
     }
 
+    const getBase64 = (file, callback) => {
+        const reader = new FileReader();
+        reader.addEventListener('load', () => callback(reader.result));
+        reader.readAsDataURL(file);
+    }
+    const createCharacterImageString = (event) => {
+        getBase64(event.target.files[0], (base64ImageString) => {
+            console.log("Base64 of file is", base64ImageString);
+            setImage(base64ImageString)
+        });
+    }
 
     const handleDeleteClick = (deleteCharacterId, click) => {
         click.preventDefault()
@@ -92,7 +105,6 @@ function handleDeleteLink(id, click){
         let linkCopy = { ...link }
         newLink(linkCopy)
     }
-
 
     const handleChange = (e) => {
         const linkCopy = { ...link }
@@ -195,10 +207,16 @@ function handleDeleteLink(id, click){
             /><button className='save__note__button' onClick={click => {handleUpdateClick(character, click)}}>Save Notes</button></form>
 
         <div name='characterLinks'>
-            <></>{characterLinks.map(link => <li key={`link--${link.id}`}>{link.link}
-            <button className="delete__link__button" onClick={click => handleDeleteLink(link.id, click)}>Delete VOD Link</button></li>
+            <></>{characterLinks.map(link => <div key={`link--${link.id}`}><a href={`${link.link}`}  target="_blank"
+   rel="noreferrer" key={`link--${link.id}`}>{link.link}</a>
+            <button className="delete__link__button" onClick={click => handleDeleteLink(link.id, click)}>Delete VOD Link</button></div>
             )}
         </div> 
+        <div> <input type="file" id="image" onChange={createCharacterImageString} />
+ <input type="hidden" name="character_id" value={character.id} />
+</div>
+
+<img src={`http://localhost:8000${character?.image}`}alt={`${character.character_name} picture`}></img>
         </>
     )
 }
