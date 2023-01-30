@@ -101,10 +101,22 @@ function handleDeleteLink(id, click){
     .then(() => {})
 } 
     const handleNewLink = (click) => {
-        click.preventDefault()
-        let linkCopy = { ...link }
-        newLink(linkCopy)
-    }
+        click.preventDefault();
+        try {
+            let linkCopy = { ...link };
+            let urlString = linkCopy.link;
+            if (!urlString.startsWith("http://") && !urlString.startsWith("https://")) {
+                urlString = "http://" + urlString;
+            }
+            linkCopy.link = urlString;
+            const myUrl = new URL(urlString);
+            console.log("Valid URL:", myUrl);
+            newLink(linkCopy).then((res) => {getCharacterLinks(characterId, setCharacterLinks)})
+            
+        } catch (err) {
+            console.error("Invalid URL:", err);
+        }
+    };
 
     const handleChange = (e) => {
         const linkCopy = { ...link }
