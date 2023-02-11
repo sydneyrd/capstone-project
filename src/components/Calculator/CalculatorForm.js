@@ -34,7 +34,7 @@ const handlePlayerChoice = (event) => {
 const handleSaveAndAdd = (click) => {
   click.preventDefault()
   const copy = { ...playerStats }
-  if (calculatedRoster.find(rosterChoices =>  rosterChoices.character?.character?.id === copy.character))
+  if (calculatedRoster.find(rosterChoices =>  rosterChoices.character === copy.character))
   { alert("You've already added this character")}
   else {setCalculatedRoster(state => [...state, copy])}
   //only adding one object to an array usestate
