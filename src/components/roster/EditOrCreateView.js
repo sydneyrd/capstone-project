@@ -6,6 +6,7 @@ export const EditOrCreateView = ({ rosterIDNUMBER, newRosterPicks, setNewRosterP
     const [editPicks, setEditPicks] = useState([])
     useEffect(
         () => {
+            if (rosterIDNUMBER)
             getCurrentRoster(rosterIDNUMBER)
                 .then((res) => {
                     setEditPicks(res)

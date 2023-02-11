@@ -85,6 +85,7 @@ export const Roster = () => {
                 getRosterName(rosterIDNUMBER).then((data) => { setRosterName(data) }
                 )
             }
+            else {}
         },
         [rosterIDNUMBER]//find what you put into the search bar and set that as sorted
     )
