@@ -23,12 +23,7 @@ export const CalculatorForm = ({ characters, selectedRoster, rosterChoice, calcu
         },
         [selectedRoster]
     )
-  // const addPlayerToEnd = (c) => {
-  //   const copy = { ...playerStats }
-  //   const noRepeats = calculatedRoster.filter((playerId) => (playerId.character !== copy.character)) //originially only in the useeffect, i'm just trying shit, the set calc one at a time is the ONLY thing I need here
-  //   setCalculatedRoster(noRepeats)
-  //   setCalculatedRoster(state => [...state, c])//only adding one object to an array usestate
-  // }
+
 
 const handlePlayerChoice = (event) => {
   const copy = {...playerStats}

@@ -12,7 +12,6 @@ library.add(faTrashCan)
   const handleClick = () => {
 
     localStorage.setItem("roster_id", roster.id)
-    getCurrentRoster(roster)
   }
 
   const handleDeleteClick = (click, roster) => {
