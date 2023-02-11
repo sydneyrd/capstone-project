@@ -23,12 +23,12 @@ export const CalculatorForm = ({ characters, selectedRoster, rosterChoice, calcu
         },
         [selectedRoster]
     )
-  const addPlayerToEnd = (c) => {
-    const copy = { ...playerStats }
-    const noRepeats = calculatedRoster.filter((playerId) => (playerId.character !== copy.character)) //originially only in the useeffect, i'm just trying shit, the set calc one at a time is the ONLY thing I need here
-    setCalculatedRoster(noRepeats)
-    setCalculatedRoster(state => [...state, c])//only adding one object to an array usestate
-  }
+  // const addPlayerToEnd = (c) => {
+  //   const copy = { ...playerStats }
+  //   const noRepeats = calculatedRoster.filter((playerId) => (playerId.character !== copy.character)) //originially only in the useeffect, i'm just trying shit, the set calc one at a time is the ONLY thing I need here
+  //   setCalculatedRoster(noRepeats)
+  //   setCalculatedRoster(state => [...state, c])//only adding one object to an array usestate
+  // }
 
 const handlePlayerChoice = (event) => {
   const copy = {...playerStats}
@@ -66,9 +66,14 @@ return character}
         
 
   <input type='text' id='select_Character' list='listid' autoComplete="on" onChange={(event) => {handlePlayerChoice(event)}} />
-  <datalist id='listid'>
+  {/* <datalist id='listid'>
       {rosterChoices.map((c) => <option key={c.id} id={c.id} value={c?.character?.character_name}  ></option>)}
-  </datalist>  
+  </datalist>   */}
+  <datalist id='listid'>
+  {rosterChoices.map((c) => (
+    <option key={c.id} value={c?.character?.character_name} />
+  ))}
+</datalist>
           <div></div>
           <input className="form-control-stat" 
           placeholder='group number'
