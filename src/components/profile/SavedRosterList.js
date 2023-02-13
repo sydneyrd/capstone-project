@@ -17,9 +17,9 @@ library.add(faTrashCan)
   const handleDeleteClick = (click, roster) => {
   alert("successfully deleted")
     click.preventDefault()
-    deleteRoster(roster.id)
-    localStorage.removeItem("roster_id") 
-    getUserRosters(localUser)
+    deleteRoster(roster.id).then(() => localStorage.removeItem("roster_id") 
+    ).then(()=>getUserRosters(localUser) )
+    
         .then((URost) => {
           setUserRosters(URost)
         })
