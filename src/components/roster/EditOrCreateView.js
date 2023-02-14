@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { getCurrentRoster } from "../APIManager"
+import { getCurrentRoster } from "../managers/RosterManager"
 import { RosterGrid } from "./RosterGrid"
 
 export const EditOrCreateView = ({ rosterIDNUMBER, newRosterPicks, setNewRosterPick, characters }) => {

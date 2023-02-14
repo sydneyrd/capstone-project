@@ -1,10 +1,11 @@
 import { CalculatorForm } from "./CalculatorForm"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import { getAllCharacters, getCurrentRoster, getUserRosters } from "../APIManager"
+import { getAllCharacters, getCurrentRoster } from "../managers/CharacterManager"
+import {getUserRosters} from  "../managers/UserManager"
 import { RosterList } from "./RosterList"
 import { CalculateResults } from "./CalculateResults"
-import { newCalculatedRoster } from "../APIManager"
+import { newCalculatedRoster } from "../managers/CalculatedRosterManager"
 import "./calculator.css"
 
 export const CalculatorContainer = () => {

@@ -1,4 +1,4 @@
-import { getCurrentRoster } from "../APIManager"
+import { getCurrentRoster } from "../managers/RosterManager"
 import { useState, useEffect } from "react"
 
 export const CalculatorForm = ({ characters, selectedRoster, rosterChoice, calculatedRoster, setCalculatedRoster, setCurrentCalcRostName }) => {

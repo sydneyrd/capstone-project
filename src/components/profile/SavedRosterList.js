@@ -1,7 +1,6 @@
-import { click } from "@testing-library/user-event/dist/click"
+
 import { Link } from "react-router-dom"
-import {getCurrentRoster} from "../APIManager"
-import { deleteRoster } from "../APIManager"
+import { deleteRoster } from "../managers/RosterManager"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { library } from '@fortawesome/fontawesome-svg-core'
 import {faTrashCan } from '@fortawesome/free-solid-svg-icons'
@@ -10,22 +9,18 @@ import {faTrashCan } from '@fortawesome/free-solid-svg-icons'
 export const SavedRosterList = ({roster, getUserRosters, setUserRosters, localUser}) => {
 library.add(faTrashCan)
   const handleClick = () => {
-
     localStorage.setItem("roster_id", roster.id)
   }
-
   const handleDeleteClick = (click, roster) => {
   alert("successfully deleted")
     click.preventDefault()
     deleteRoster(roster.id).then(() => localStorage.removeItem("roster_id") 
     ).then(()=>getUserRosters(localUser) )
-    
         .then((URost) => {
           setUserRosters(URost)
         })
   }
         
-
   return <><div className="saved--rosters">< Link className="roster__link" onClick={handleClick} to="/roster">{roster.name ? `${roster.name}` : `Roster #${roster.id}`}
   
   </Link>
