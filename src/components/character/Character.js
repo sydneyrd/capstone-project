@@ -1,12 +1,10 @@
 import { CharacterForm } from "./CharacterForm"
 import { ManageCharacters } from "./ManageCharacters"
 import { SearchCharacters } from "./SearchCharacters"
-import { getAllFactions, getAllRoles, getAllWeapons, getAllServers, saveNewCharacter, getUserCharacters } from "../APIManager"
+import { getAllFactions, getAllRoles, getAllWeapons, getAllServers } from "../managers/ResourceManager"
+import { saveNewCharacter } from "../managers/CharacterManager"
+import {getUserCharacters} from "../managers/UserManager"
 import { useState, useEffect } from "react"
-// import { useEffect, useState } from "react"
-// import { useNavigate } from "react-router-dom"
-
-// import { getLocations, postNewEmployee, postNewUser } from "../APIManager"
 
 export const Character = () => {
     const localRosterUser = localStorage.getItem("roster_user")

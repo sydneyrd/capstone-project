@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { updateProfile, getUserbyId } from "../APIManager"
+import { updateProfile, getUserbyId } from "../managers/UserManager"
 import { SavedRosters } from "./SavedRosters"
 import { WarStats } from "./WarStats"
 
@@ -23,11 +23,10 @@ export const UpdateUser = () => {
             })
         },
         []
-      )
+    )
 
     useEffect(() => {
         if (feedback !== "") {
-            // Clear feedback to make entire element disappear after 3 seconds
             setTimeout(() => setFeedback(""), 3000);
         }
     }, [feedback])
@@ -67,14 +66,6 @@ export const UpdateUser = () => {
                         type="text" name="username" className="form-control--update"
                         value={user.username}
                         placeholder="" required />
-                    {/* <label htmlFor="First Name"></label> */}
-                    {/* <input onChange={(evt) => userUpdate(evt)}
-                    type="text" name="first_name" className="form-control--update"
-                    value={user.first_name} placeholder="" required />
-                <label htmlFor="lastName"></label>
-                <input onChange={(evt) => userUpdate(evt)}
-                type="text" name="last_name" className="form-control--update"
-                value={user.last_name} placeholder="" required /> */}
                 </fieldset>
 
                     <button className="email__button" type="submit" onClick={handleSaveButtonClick}> Update </button>

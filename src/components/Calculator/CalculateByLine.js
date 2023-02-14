@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { CalculateResultsByLine } from "./CalculateResultsByLine"
-import { getAllCharacters } from "../APIManager"
+import { getAllCharacters } from "../managers/CharacterManager"
 import "./calculator.css"
 
 

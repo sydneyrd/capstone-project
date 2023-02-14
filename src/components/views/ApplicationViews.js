@@ -1,4 +1,4 @@
-import { getUserbyId } from "../APIManager"
+import { getUserbyId } from "../managers/APIManager"
 import { Link, Outlet } from "react-router-dom"
 import { Routes, Route } from "react-router-dom"
 import { Profile } from "../profile/Profile"
@@ -12,13 +12,6 @@ import { CalculateByLine } from "../Calculator/CalculateByLine"
 import { CharacterDetails } from "../character/CharacterDetails"
 import { BaseStatContainer } from "../ViewStats/BaseStatContainer"
 export const ApplicationViews = () => {
-
-
-
-   
-   
-   
-
     return   <Routes>
 
         <Route path="/" element={

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import { newCalculatedRosterChoices, newCalculatedRoster } from "../APIManager"
+import { newCalculatedRosterChoices, newCalculatedRoster } from "../managers/CalculatedRosterManager"
 
 export const CalculateResultsByLine = ({ calculatedRoster, currentCalcRostName,
     localUser, }) => {

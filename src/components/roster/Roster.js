@@ -1,10 +1,11 @@
-import { getAllCharacters, getAllRoles, getAllFactions, getCurrentRoster, getAllWeapons, getAllServers, newRoster, putRosterName, getRosterName } from "../APIManager"
+import { getAllRoles, getAllFactions, getAllWeapons, getAllServers, } from "../managers/ResourceManager"
+import {getAllCharacters} from "../managers/CharacterManager"
+import { newRosterChoice, getCurrentRoster, newRoster, putRosterName, getRosterName   } from "../managers/RosterManager"
 import { useEffect, useState } from "react"
 import { RosterGrid } from "./RosterGrid"
 import { ListContainer } from "./ListContainer"
 import "./roster.css"
 import { FilterContainer } from "./FilterContainer"
-import { newRosterChoice, } from "../APIManager"
 import { useNavigate } from "react-router-dom"
 import { SearchFilter } from "./SearchFilter"
 

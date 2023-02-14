@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
-import { getCalculatedRosterChar, getCalculatedRoster } from "../APIManager.js"
+import { getCalculatedRosterChar, getCalculatedRoster } from "../managers/CalculatedRosterManager"
 import "./results.css"
 
 import { BaseStatMap } from "./BaseStatMap"

@@ -1,4 +1,4 @@
-import { getCurrentRoster } from "../APIManager"
+import { getCurrentRoster } from "../managers/RosterManager"
 import { useState, useEffect } from "react"
 
 export const CalculatorForm = ({ characters, selectedRoster, rosterChoice, calculatedRoster, setCalculatedRoster, setCurrentCalcRostName }) => {
@@ -23,8 +23,6 @@ export const CalculatorForm = ({ characters, selectedRoster, rosterChoice, calcu
         },
         [selectedRoster]
     )
-
-
 const handlePlayerChoice = (event) => {
   const copy = {...playerStats}
   let character = characters.find(character => character.character_name === event.target.value)

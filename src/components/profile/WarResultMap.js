@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { deleteCalculatedRoster } from "../APIManager"
+import { deleteCalculatedRoster } from "../managers/CalculatedRosterManager"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
