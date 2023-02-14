@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
-import { getAllCharacters, getCalculatedRoster, getCalculatedRosterChar } from "../APIManager"
+import { getCalculatedRoster, getCalculatedRosterChar } from "../managers/CalculatedRosterManager"
+import {getAllCharacters} from "../managers/CharacterManager"
 import { ResultsMap } from "./ResultsMap"
 import { StatFilters } from "./StatFilters"
 import { GroupContainer } from "./GroupContainer"

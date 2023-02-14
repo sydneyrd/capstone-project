@@ -1,6 +1,6 @@
 import "./results.css"
 import { RoleSelect } from "../character/Role"
-import { getAllRoles } from "../APIManager"
+import { getAllRoles } from "../managers/ResourceManager"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 

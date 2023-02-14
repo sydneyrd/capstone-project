@@ -3,7 +3,7 @@ import { FactionSelect } from "./FactionSelect"
 import { RoleSelect } from "./Role"
 import { ServerSelect } from "./ServerSelect"
 import { WeaponSelect } from "./WeaponSelect"
-import { saveNewCharacter } from "../APIManager"
+import { saveNewCharacter } from "../managers/CharacterManager"
 import "./characters.css"
 
 

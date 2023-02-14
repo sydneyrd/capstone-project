@@ -1,6 +1,6 @@
 import React, { useRef } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import { registerUser } from "../APIManager"
+import { registerUser } from "../managers/APIManager"
 import "./Login.css"
 
 export const Register = () => {

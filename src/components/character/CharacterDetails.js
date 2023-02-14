@@ -1,13 +1,12 @@
 import { faInfo, faNoteSticky } from "@fortawesome/free-solid-svg-icons"
 import { useParams } from "react-router-dom"
-import { getSingleCharacter } from "../APIManager"
 import { useEffect, useState, useRef } from "react"
 import { RoleSelect } from "./Role"
 import { WeaponSelect } from "./WeaponSelect"
 import { FactionSelect } from "./FactionSelect"
 import { ServerSelect } from "./ServerSelect"
-import { deleteCharLink } from "../APIManager"
-import { getAllFactions, newLink, getCharacterLinks, getAllServers, getAllWeapons, getAllRoles, deleteCharacter, putCharacter } from "../APIManager"
+import { getAllFactions, getAllServers, getAllWeapons, getAllRoles} from "../managers/ResourceManager"
+import {deleteCharLink, newLink, getCharacterLinks, deleteCharacter, putCharacter, getSingleCharacter} from "../managers/CharacterManager"
 import { click } from "@testing-library/user-event/dist/click"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -101,10 +100,22 @@ function handleDeleteLink(id, click){
     .then(() => {})
 } 
     const handleNewLink = (click) => {
-        click.preventDefault()
-        let linkCopy = { ...link }
-        newLink(linkCopy)
-    }
+        click.preventDefault();
+        try {
+            let linkCopy = { ...link };
+            let urlString = linkCopy.link;
+            if (!urlString.startsWith("http://") && !urlString.startsWith("https://")) {
+                urlString = "http://" + urlString;
+            }
+            linkCopy.link = urlString;
+            const myUrl = new URL(urlString);
+            console.log("Valid URL:", myUrl);
+            newLink(linkCopy).then((res) => {getCharacterLinks(characterId, setCharacterLinks)})
+            
+        } catch (err) {
+            console.error("Invalid URL:", err);
+        }
+    };
 
     const handleChange = (e) => {
         const linkCopy = { ...link }

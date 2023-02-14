@@ -1,4 +1,4 @@
-import { deleteRosterChoice } from "../APIManager"
+import { deleteRosterChoice } from "../managers/RosterManager"
 import { CharacterList } from "./CharacterList"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { library } from '@fortawesome/fontawesome-svg-core'

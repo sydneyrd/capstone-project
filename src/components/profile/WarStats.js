@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { WarResultMap } from "./WarResultMap"
-import { getUserWarStats } from "../APIManager"
+import { getUserWarStats } from "../managers/UserManager"
 
 export const WarStats = ({ localUser, userWarStats, setUserWarStats }) => {
     

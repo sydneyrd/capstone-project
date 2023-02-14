@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getUserRosters } from "../APIManager"
+import { getUserRosters } from "../managers/UserManager"
 import { SavedRosterList } from "./SavedRosterList"
 
 

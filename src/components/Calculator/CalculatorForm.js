@@ -1,4 +1,4 @@
-import { getCurrentRoster } from "../APIManager"
+import { getCurrentRoster } from "../managers/RosterManager"
 import { useState, useEffect } from "react"
 
 export const CalculatorForm = ({ characters, selectedRoster, rosterChoice, calculatedRoster, setCalculatedRoster, setCurrentCalcRostName }) => {
@@ -23,13 +23,6 @@ export const CalculatorForm = ({ characters, selectedRoster, rosterChoice, calcu
         },
         [selectedRoster]
     )
-  const addPlayerToEnd = (c) => {
-    const copy = { ...playerStats }
-    const noRepeats = calculatedRoster.filter((playerId) => (playerId.character !== copy.character)) //originially only in the useeffect, i'm just trying shit, the set calc one at a time is the ONLY thing I need here
-    setCalculatedRoster(noRepeats)
-    setCalculatedRoster(state => [...state, c])//only adding one object to an array usestate
-  }
-
 const handlePlayerChoice = (event) => {
   const copy = {...playerStats}
   let character = characters.find(character => character.character_name === event.target.value)
@@ -39,7 +32,7 @@ const handlePlayerChoice = (event) => {
 const handleSaveAndAdd = (click) => {
   click.preventDefault()
   const copy = { ...playerStats }
-  if (calculatedRoster.find(rosterChoices =>  rosterChoices.character?.character?.id === copy.character))
+  if (calculatedRoster.find(rosterChoices =>  rosterChoices.character === copy.character))
   { alert("You've already added this character")}
   else {setCalculatedRoster(state => [...state, copy])}
   //only adding one object to an array usestate
@@ -66,9 +59,14 @@ return character}
         
 
   <input type='text' id='select_Character' list='listid' autoComplete="on" onChange={(event) => {handlePlayerChoice(event)}} />
-  <datalist id='listid'>
+  {/* <datalist id='listid'>
       {rosterChoices.map((c) => <option key={c.id} id={c.id} value={c?.character?.character_name}  ></option>)}
-  </datalist>  
+  </datalist>   */}
+  <datalist id='listid'>
+  {rosterChoices.map((c) => (
+    <option key={c.id} value={c?.character?.character_name} />
+  ))}
+</datalist>
           <div></div>
           <input className="form-control-stat" 
           placeholder='group number'

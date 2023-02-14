@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { editCalculatedRosterChoices } from '../APIManager';
+import { editCalculatedRosterChoices } from '../managers/CalculatedRosterManager';
 // import  './modal.css'
 
 export const EditForm = ({ onSubmit, player, getPlayersAgain, closeModal }) => {
