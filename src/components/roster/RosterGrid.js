@@ -12,10 +12,11 @@ export const RosterGrid = ({showText, setShowText, charId, setNewRosterPick, set
     // const [editRosterCharacters, setEditCharacters] = useState([])
     useEffect(
         () => {
+            if (rosterIDNUMBER){ 
             getCurrentRoster(rosterIDNUMBER)
                 .then((res) => {
                     setEditCharacters(res)
-                })
+                })}
                 
         },
         []

@@ -22,8 +22,7 @@ export const UpdateUser = () => {
             setUser(data)
             })
         },
-        []
-      )
+        [])
 
     useEffect(() => {
         if (feedback !== "") {
@@ -41,8 +40,7 @@ export const UpdateUser = () => {
         evt.preventDefault()
         updateProfile(user, user.id)
             .then(() => {
-                setFeedback("Email successfully updated")
-                localStorage.setItem("roster_user", { email: user.email, id: user.id})
+                localStorage.setItem("roster_user", { id: user.id})
             }
             )
     }
