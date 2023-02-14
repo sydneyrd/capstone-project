@@ -13,13 +13,9 @@ export const WarResultMap = ({ stat, getUserWarStats, setUserWarStats, localUser
     )).then(URost => {
     setUserWarStats(URost)})
   }
-
-
-
-
-  return <><div className="saved--rosters"><Link to={`/resources/${stat.id}/view`}><div className="roster__link" to="/roster">{stat.rosterName ? `${stat.rosterName}` : "War Stats"}</div></Link>
+  return <div className="saved--rosters"><Link to={`/resources/${stat.id}/view`}><div className="roster__link" to="/roster">{stat.rosterName ? `${stat.rosterName}` : "War Stats"}</div></Link>
     <FontAwesomeIcon className="delete__roster" onClick={click => handleDeleteClick(click, stat)} icon="fa-solid fa-trash-can" />
-  </div></>
+  </div>
 
 }
 
