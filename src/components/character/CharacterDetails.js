@@ -19,7 +19,8 @@ export const CharacterDetails = () => {
     const [weapons, setWeapons] = useState([])
     const [roles, setRoles] = useState([])
     const [servers, setServers] = useState([])
-    const [link, setLink] = useState({}) //this is for new links
+    const [link, setLink] = useState({
+    }) //this is for new links
     const [characterLinks, setCharacterLinks] = useState([]) //this one is for existing links
     const [notes, setNotes] = useState('')
     const [image, setImage] = useState('')
@@ -121,7 +122,7 @@ function handleDeleteLink(id, click){
         const linkCopy = { ...link }
         linkCopy[e.target.name] = e.target.value
         linkCopy["character"] = character?.id
-        linkCopy['roster'] = 0;
+        linkCopy['roster'] = 0;   //this is a temp fix for the roster id I need to fix this permanently
         setLink(linkCopy)
     }
 
@@ -218,10 +219,10 @@ function handleDeleteLink(id, click){
             /><button className='save__note__button' onClick={click => {handleUpdateClick(character, click)}}>Save Notes</button></form>
 
         <div name='characterLinks'>
-            <></>{characterLinks.map(link => <div key={`link--${link.id}`}><a href={`${link.link}`}  target="_blank"
+            {characterLinks ? characterLinks.map(link => <div key={`link--${link.id}`}><a href={`${link.link}`} target="_blank"
    rel="noreferrer" key={`link--${link.id}`}>{link.link}</a>
             <button className="delete__link__button" onClick={click => handleDeleteLink(link.id, click)}>Delete VOD Link</button></div>
-            )}
+            ) : <></>}
         </div> 
         <div> <input type="file" id="image" onChange={createCharacterImageString} />
  <input type="hidden" name="character_id" value={character.id} />
