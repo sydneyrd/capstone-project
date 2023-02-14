@@ -2,7 +2,7 @@ import { CharacterForm } from "./CharacterForm"
 import { ManageCharacters } from "./ManageCharacters"
 import { SearchCharacters } from "./SearchCharacters"
 import { getAllFactions, getAllRoles, getAllWeapons, getAllServers } from "../managers/ResourceManager"
-import { saveNewCharacter } from "../managers/CharacterManager"
+import { saveNewCharacter, getCharactersBySearch } from "../managers/CharacterManager"
 import {getUserCharacters} from "../managers/UserManager"
 import { useState, useEffect } from "react"
 
@@ -44,42 +44,47 @@ export const Character = () => {
         },
         [] // When this array is empty, you are observing initial component state
     )
+    // useEffect(
+    //     () => {
+    //         getAllRoles(setRoles)
+
+    //             .then(() => {
+    //                 getAllFactions(setFactions)
+    //             })
+    //             .then(() => {
+    //                 getAllWeapons(setWeapons)
+    //             })
+    //             .then(() => {
+    //                 getAllServers(setServers)
+    //             })
+    //             .then(() => {
+    //                 getUserCharacters(RosterUserObject)
+
+    //                     .then((charArr) =>
+    //                         updateUserCharacters(charArr))
+    //                     .then(() => {
+    //                         setSortedCharacters(userCharacters)
+    //                     })
+
+    //             })
+
+    //     },
+    //     [rendCount] // When this array is empty, you are observing initial component state   i shouldn't be using this rendcount to render lol 
+    // )
+
+
     useEffect(
         () => {
-            getAllRoles(setRoles)
 
-                .then(() => {
-                    getAllFactions(setFactions)
-                })
-                .then(() => {
-                    getAllWeapons(setWeapons)
-                })
-                .then(() => {
-                    getAllServers(setServers)
-                })
-                .then(() => {
-                    getUserCharacters(RosterUserObject)
+            // const searchedChar = userCharacters.filter(character => {
+            //     return character?.character_name.toLowerCase().startsWith(searchWords.toLowerCase())  //make both lowercase so you can always find a match regardless of case
+            // })
+            // setSortedCharacters(searchedChar)
+            //get the characters that match the search words
+            //set the sorted characters to the characters that match the search words
+            !searchWords ? setSortedCharacters(userCharacters) :
+            getCharactersBySearch(searchWords).then(res => (setSortedCharacters(res)))
 
-                        .then((charArr) =>
-                            updateUserCharacters(charArr))
-                        .then(() => {
-                            setSortedCharacters(userCharacters)
-                        })
-
-                })
-
-        },
-        [rendCount] // When this array is empty, you are observing initial component state
-    )
-
-
-    useEffect(
-        () => {
-
-            const searchedChar = userCharacters.filter(character => {
-                return character?.character_name.toLowerCase().startsWith(searchWords.toLowerCase())  //make both lowercase so you can always find a match regardless of case
-            })
-            setSortedCharacters(searchedChar)
         },
         [searchWords]//find what you put into the search bar and set that as sorted  it should be watching this??  
         //but it only changes on the first change why or maybe this is another rerender problem, but i'm calling the array down again it should be what the heck
