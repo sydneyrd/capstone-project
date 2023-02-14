@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { Navigate, useNavigate, useParams } from "react-router-dom"
 import { useEffect, useState, useRef } from "react"
 import { RoleSelect } from "./Role"
 import { WeaponSelect } from "./WeaponSelect"
@@ -35,6 +35,7 @@ export const CharacterDetails = () => {
     const [characterLinks, setCharacterLinks] = useState([]) //this one is for existing links
     const [notes, setNotes] = useState("")
     const [image, setImage] = useState("")
+    const navigate = useNavigate()
     useEffect(
         () => {
             getAllRoles(setRoles)
@@ -61,7 +62,6 @@ export const CharacterDetails = () => {
     )
 useEffect(()=> {
 setNotes(character.notes)
-
 }, [character])
 
 
@@ -87,10 +87,8 @@ setNotes(character.notes)
         }
         putCharacter(letcToAPI, UC.id) 
         .then(()=>
-        getSingleCharacter(characterId, setCharacter))
-        setNotes(character.notes)
-        //push request get char again to refresh 
-        // just get the character and set the character again?
+        getSingleCharacter(characterId, setCharacter));
+        setNotes(character.notes);
         alert('updated')
     }
 
@@ -109,7 +107,7 @@ setNotes(character.notes)
     const handleDeleteClick = (deleteCharacterId, click) => {
         click.preventDefault()
         alert("are you sure?  action can't be undone")
-        deleteCharacter(deleteCharacterId)
+        deleteCharacter(deleteCharacterId).then(() => {navigate("/characters")})
 
         //reroute to characters list, alert are you sure
     }

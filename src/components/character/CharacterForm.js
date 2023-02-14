@@ -7,11 +7,7 @@ import { saveNewCharacter } from "../managers/CharacterManager"
 import "./characters.css"
 
 
-//iterate this form and make the default values the character values in the database.  
-// leave this form blank to create new characters and display other characters below
-
-
-export const CharacterForm = ({ updateUserCharacters, setCount, getUserCharacters, roles, weapons, servers, factions, feedback, setFeedback }) => {
+export const CharacterForm = ({ updateUserCharacters, getUserCharacters, roles, weapons, servers, factions, feedback, setFeedback }) => {
     const [newCharacter, updateNewCharacter] = useState({
         userId: 0,
         character: "",
@@ -27,8 +23,6 @@ export const CharacterForm = ({ updateUserCharacters, setCount, getUserCharacter
 
     const handleSaveButtonClick = (event) => {
         event.preventDefault()
-
-        // TODO: Create the object to be saved to the API
         let newCharacterToAPI = {
             character_name: newCharacter.character,
             role: parseInt(newCharacter.roleId),
@@ -38,10 +32,11 @@ export const CharacterForm = ({ updateUserCharacters, setCount, getUserCharacter
             faction: parseInt(newCharacter.factionId),
             user: RosterUserObject.id
         }
-        saveNewCharacter(newCharacterToAPI)
-
-
-        setCount((count) => count + 1)
+        saveNewCharacter(newCharacterToAPI).then(() => {
+            getUserCharacters(RosterUserObject)
+                .then((charArr) =>
+                    updateUserCharacters(charArr))
+        })
         setFeedback("Character successfully added")
     }
 
