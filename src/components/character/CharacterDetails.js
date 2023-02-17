@@ -23,7 +23,6 @@ export const CharacterDetails = () => {
         id: parseInt(characterId),
         user: parseInt(RosterUserObject.id)
     })
-
     const [factions, setFactions] = useState([])
     const [weapons, setWeapons] = useState([])
     const [roles, setRoles] = useState([])
@@ -54,8 +53,6 @@ export const CharacterDetails = () => {
                 }).then(() => {
                     getCharacterLinks(characterId, setCharacterLinks)
                 }).then(() => {
-                    
-
                 })
         },
         []
@@ -108,8 +105,6 @@ setNotes(character.notes)
         click.preventDefault()
         alert("are you sure?  action can't be undone")
         deleteCharacter(deleteCharacterId).then(() => {navigate("/characters")})
-
-        //reroute to characters list, alert are you sure
     }
 function handleDeleteLink(id, click){
     click.preventDefault()
@@ -129,7 +124,6 @@ function handleDeleteLink(id, click){
             const myUrl = new URL(urlString);
             console.log("Valid URL:", myUrl);
             newLink(linkCopy).then((res) => {getCharacterLinks(characterId, setCharacterLinks)})
-            
         } catch (err) {
             console.error("Invalid URL:", err);
         }
@@ -151,7 +145,7 @@ function handleDeleteLink(id, click){
                     type="text"
                     className="form-control"
                     placeholder="change name"
-                    value={character?.character_name} /**onChange{update character state}**/ onChange={
+                    value={character?.character_name} onChange={
                         (event) => {
                             const copy = { ...character }
                             copy.character_name = event.target.value

@@ -92,7 +92,7 @@ export const deleteCharacter = (deleteCharacterId) => {
     )
 }
 export const getCharactersBySearch = (search) => {
-    return fetch(`http://127.0.0.1:8000/characters?search=${search}`, {
+    return fetch(`http://127.0.0.1:8000/characters?search_text=${search}`, {
       headers: {
         'Authorization': `Token ${localStorage.getItem('roster_token')}`
       }
