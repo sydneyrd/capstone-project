@@ -5,6 +5,7 @@ import { ServerFilter } from "./FilterChoices/ServerFilter"
 import { ResetButton } from "./ResetButton"
 import { useEffect } from "react"
 import "./filters.css"
+import { getFilteredCharacters } from "../managers/CharacterManager"
 
 export const FilterContainer = ({ roleSearch, factionSearch, primarySearch, secondarySearch, serverSearch, setPrimarySearch, setSecondarySearch, setServerSearch, setRoleSearch, setFactionSearch,
     setSortedArr, characters, weapons, roles, factions, servers }) => {
@@ -29,41 +30,43 @@ const handlePrimarySelect = (e) => {
         e.preventDefault(e)
         setSecondarySearch(parseInt(e.target.value))
     }
- const handleSearchButton = (e) => {
-        e.preventDefault(e)
-        const searchArr =
-            characters
-                .filter(x => x.role === (roleSearch == '' ? x.role : roleSearch))
-                .filter(y => y.server === (serverSearch == '' ? y.server : serverSearch))
-                .filter(l => l.faction === (factionSearch == '' ? l.faction : factionSearch))
-                .filter(k => k.primary_weapon === (primarySearch == '' ? k.primary_weapon : primarySearch))
-                .filter(m => m.secondary_weapon === (secondarySearch == '' ? m.secondary_weapon : secondarySearch))
-        setSortedArr(searchArr)
-    }
+//  const handleSearchButton = (e) => {
+//         e.preventDefault(e)
+//         const searchArr =
+//             characters
+//                 .filter(x => x.role === (roleSearch == '' ? x.role : roleSearch))
+//                 .filter(y => y.server === (serverSearch == '' ? y.server : serverSearch))
+//                 .filter(l => l.faction === (factionSearch == '' ? l.faction : factionSearch))
+//                 .filter(k => k.primary_weapon === (primarySearch == '' ? k.primary_weapon : primarySearch))
+//                 .filter(m => m.secondary_weapon === (secondarySearch == '' ? m.secondary_weapon : secondarySearch))
+//         setSortedArr(searchArr)
+//     }
 
 
-    useEffect(
-        () => {
-            const searchArr =
-            characters
-                .filter(x => x.role === (roleSearch == '' ? x.role : roleSearch))
-                .filter(y => y.server === (serverSearch == '' ? y.server : serverSearch))
-                .filter(l => l.faction === (factionSearch == '' ? l.faction : factionSearch))
-                .filter(k => k.primary_weapon === (primarySearch == '' ? k.primary_weapon : primarySearch))
-                .filter(m => m.secondary_weapon === (secondarySearch == '' ? m.secondary_weapon : secondarySearch))
-        setSortedArr(searchArr)
+//     useEffect(
+//         () => {
+//             const searchArr =
+//             characters
+//                 .filter(x => x.role === (roleSearch == '' ? x.role : roleSearch))
+//                 .filter(y => y.server === (serverSearch == '' ? y.server : serverSearch))
+//                 .filter(l => l.faction === (factionSearch == '' ? l.faction : factionSearch))
+//                 .filter(k => k.primary_weapon === (primarySearch == '' ? k.primary_weapon : primarySearch))
+//                 .filter(m => m.secondary_weapon === (secondarySearch == '' ? m.secondary_weapon : secondarySearch))
+//         setSortedArr(searchArr)
+
+//             setSortedArr(searchArr)
+//         },
+//         [roleSearch, primarySearch, serverSearch, secondarySearch, factionSearch ]//find what you put into the search bar and set that as sorted
+//     ) 
 
 
 
 
-            setSortedArr(searchArr)
-        },
-        [roleSearch, primarySearch, serverSearch, secondarySearch, factionSearch ]//find what you put into the search bar and set that as sorted
-    ) 
 
 
-//removed the labels, because it looks better, but left the jsx for them if i change my mind or it messes something else up smh
-//can add a checkbox to only show MY characters here if wanted
+
+
+
     return <>
         <form className="character_form">
             <fieldset>
@@ -100,9 +103,10 @@ const handlePrimarySelect = (e) => {
                     {weapons.map((weapon) => <WeaponFilter key={`div--weapontwo${weapon.id}`} weapon={weapon} />)}</select><div className="filter__buttons">
                
                 {/* <button onClick={(e) => { handleSearchButton(e) }} className="search__button">Search</button> i'm just saving this because i'm afraid to let go.  or it will break */} 
-                <ResetButton  handleSearchButton={handleSearchButton} setFactionSearch={setFactionSearch} setRoleSearch={setRoleSearch} setServerSearch={setServerSearch}
+                <ResetButton   setFactionSearch={setFactionSearch} setRoleSearch={setRoleSearch} setServerSearch={setServerSearch}
                 setSecondarySearch={setSecondarySearch} 
                 setPrimarySearch={setPrimarySearch} /></div>
             </fieldset></form>
     </>
 }
+// handleSearchButton={handleSearchButton}

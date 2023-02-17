@@ -1,5 +1,5 @@
 import { getAllRoles, getAllFactions, getAllWeapons, getAllServers, } from "../managers/ResourceManager"
-import {getAllCharacters} from "../managers/CharacterManager"
+import {getAllCharacters, getFilteredCharacters} from "../managers/CharacterManager"
 import { newRosterChoice, getCurrentRoster, newRoster, putRosterName, getRosterName   } from "../managers/RosterManager"
 import { useEffect, useState } from "react"
 import { RosterGrid } from "./RosterGrid"
@@ -64,15 +64,15 @@ export const Roster = () => {
         },
         [] //init get all stuff
     )
-    useEffect(
-        () => {
-            const searchedChar = characters.filter(character => {
-                return character.character_name.toLowerCase().startsWith(searchTerms.toLowerCase())  //make both lowercase so you can always find a match regardless of case
-            })
-            setSortedArr(searchedChar)
-        },
-        [searchTerms]//find what you put into the search bar and set that as sorted
-    )
+    // useEffect(
+    //     () => {
+    //         const searchedChar = characters.filter(character => {
+    //             return character.character_name.toLowerCase().startsWith(searchTerms.toLowerCase())  //make both lowercase so you can always find a match regardless of case
+    //         })
+    //         setSortedArr(searchedChar)
+    //     },
+    //     [searchTerms]//find what you put into the search bar and set that as sorted
+    // )
     useEffect(
         () => {
             let alphaCharacters = characters.sort((a, b) => a.character_name.localeCompare(b.character_name))
@@ -140,7 +140,33 @@ export const Roster = () => {
         setNewRosterPick([])
         setEditCharacters([])
     }
-
+    useEffect(()=>{
+        let url = ""
+        if (roleSearch !== 0) {
+            url += `role=${roleSearch}&`
+        }
+        if (factionSearch !== 0) {
+            url += `faction=${factionSearch}&`
+        }
+        if (serverSearch !== 0) {
+            url += `server=${serverSearch}&`
+        }
+        if (primarySearch !== 0) {
+            url += `primary_weapon=${primarySearch}&`
+        }
+        if (secondarySearch !== 0) {
+            url += `secondary_weapon=${secondarySearch}&`
+        }
+        
+        if (searchTerms.length > 0) {
+           let search_text = searchTerms.slice()
+            let formatted_search_text = search_text.replace(' ', '%20')
+            url+= `search_text=${formatted_search_text}`
+        }
+        getFilteredCharacters(url, setSortedArr)
+    
+    }, [roleSearch, primarySearch, serverSearch, secondarySearch, factionSearch, searchTerms])
+    
     return <>
         <FilterContainer setFactionSearch={setFactionSearch} filterButton={filterButton} setFilterButton={setFilterButton} searchTerms={searchTerms} setSearchTerms={setSearchTerms}
             setRoleSearch={setRoleSearch} setPrimarySearch={setPrimarySearch} setServerSearch={setServerSearch} setSecondarySearch={setSecondarySearch}
