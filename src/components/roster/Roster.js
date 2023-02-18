@@ -59,20 +59,10 @@ export const Roster = () => {
                         .then(() => {
                             getAllServers(setServers)
                         })
-
                 })
         },
-        [] //init get all stuff
+        [] 
     )
-    // useEffect(
-    //     () => {
-    //         const searchedChar = characters.filter(character => {
-    //             return character.character_name.toLowerCase().startsWith(searchTerms.toLowerCase())  //make both lowercase so you can always find a match regardless of case
-    //         })
-    //         setSortedArr(searchedChar)
-    //     },
-    //     [searchTerms]//find what you put into the search bar and set that as sorted
-    // )
     useEffect(
         () => {
             let alphaCharacters = characters.sort((a, b) => a.character_name.localeCompare(b.character_name))
@@ -94,20 +84,15 @@ export const Roster = () => {
 
 
     const handleRosterName = (event) => {
-        ///we are gonna match the value of the text input here, 
-        //and send it to the server as a put
-        //check to see if a rosterID is available in storage first and do that, if not do nothing/display pop up saying make a selection to start a roster
-        let newName = { ...rosterName }
-        newName[event.target.name] = event.target.value
+        let newName = { ...rosterName } //copy the old name value
+        newName[event.target.name] = event.target.value //update the name value
         if (rosterIDNUMBER) {
-            putRosterName(rosterIDNUMBER, newName)
+            putRosterName(rosterIDNUMBER, newName) //put the new name value to the api
         }
         else {
             alert('Pick a character first please ok just do it')
         }
     }
-
-
 
     const handleSave = (click, newRosterPicks) => { //onclickingSave
         click.preventDefault()
