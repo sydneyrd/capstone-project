@@ -8,7 +8,8 @@ import "./roster.css"
 import { FilterContainer } from "./FilterContainer"
 import { useNavigate } from "react-router-dom"
 import { SearchFilter } from "./SearchFilter"
-
+import { useContext } from "react"
+import { editContext } from "../views/ApplicationViews"
 export const Roster = () => {
     const [characters, setCharacters] = useState([])
     const [servers, setServers] = useState([])
@@ -23,15 +24,18 @@ export const Roster = () => {
     const [serverSearch, setServerSearch] = useState(0)
     const [primarySearch, setPrimarySearch] = useState(0)
     const [secondarySearch, setSecondarySearch] = useState(0)
-    const [newRosterPicks, setNewRosterPick] = useState([])
-    const [editRosterCharacters, setEditCharacters] = useState([])
-    let navigate = useNavigate()
-    const [showText, setShowText] = useState(false)
-    const [charId, setId] = useState(0)
-    const [rosterName, setRosterName] = useState({})
+    const [newRosterPicks, setNewRosterPick] = useState([]);
+    const [editRosterCharacters, setEditCharacters] = useState([]);
+    let navigate = useNavigate();
+    const [showText, setShowText] = useState(false);
+    const [charId, setId] = useState(0);
+    const [rosterName, setRosterName] = useState({});
+    const { currentEditRoster, setCurrentEditRoster} = useContext(editContext);
     //we are capturing the new roster id when we first click add to roster and saving it to start roster  //pass those props ^
-    let rosterID = localStorage.getItem("roster_id") //need this for the new array for the api
-    let rosterIDNUMBER = JSON.parse(rosterID)
+    // let rosterID = localStorage.getItem("roster_id") //need this for the new array for the api
+    // let rosterIDNUMBER = JSON.parse(rosterID)
+    let rosterIDNUMBER = currentEditRoster
+
     const setCharId = e => {
         setId(parseInt(e.target.id))
     } //sets identifier to get correct detail info
@@ -122,6 +126,7 @@ export const Roster = () => {
     const handleNewRoster = (e) => {
         e.preventDefault()
         localStorage.removeItem("roster_id")
+        setCurrentEditRoster(0)
         setNewRosterPick([])
         setEditCharacters([])
     }

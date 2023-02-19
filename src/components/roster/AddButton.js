@@ -2,10 +2,13 @@ import { newRoster, newRosterChoice } from "../managers/RosterManager"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { library } from '@fortawesome/fontawesome-svg-core'
 import {faPlus } from '@fortawesome/free-solid-svg-icons'
+import { useContext } from "react"
+import { editContext } from "../views/ApplicationViews"
 
 
 
 export const AddButton = ({ editRosterCharacters, character, id, setNewRosterPick, newRosterPicks }) => {
+    const { currentEditRoster, setCurrentEditRoster } = useContext(editContext);
     const localUser = localStorage.getItem("roster_user")
     const rosterUser = JSON.parse(localUser)
     const addUserToEnd = (c) => {
@@ -19,6 +22,7 @@ library.add(faPlus)
         newRoster(newR).then((newRosterObj) => { //posts the new roster object to the api
             let roster = { ...newRosterObj 
             } 
+            setCurrentEditRoster(roster.id) //sets the currentEditroster id to the new roster id
             localStorage.setItem('roster_id', parseFloat(roster.id)) //saves the new roster id to local storage
             addUserToEnd(character) //adds the character to the roster useState
         })
