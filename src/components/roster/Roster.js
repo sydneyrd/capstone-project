@@ -32,8 +32,6 @@ export const Roster = () => {
     const [rosterName, setRosterName] = useState({});
     const { currentEditRoster, setCurrentEditRoster} = useContext(editContext);
     //we are capturing the new roster id when we first click add to roster and saving it to start roster  //pass those props ^
-    // let rosterID = localStorage.getItem("roster_id") //need this for the new array for the api
-    // let rosterIDNUMBER = JSON.parse(rosterID)
     let rosterIDNUMBER = currentEditRoster
 
     const setCharId = e => {
@@ -100,7 +98,7 @@ export const Roster = () => {
 
     const handleSave = (click, newRosterPicks) => { //onclickingSave
         click.preventDefault()
-        localStorage.removeItem("roster_id")
+        
         const createRosterChoices = (cArr) => {
             let rosterChoiceArr = []
             for (const c of cArr) {  //there might be an easier way idk, this works.   iterating the array of players in roster and uses takes their character id to create a new object
@@ -125,7 +123,7 @@ export const Roster = () => {
     }
     const handleNewRoster = (e) => {
         e.preventDefault()
-        localStorage.removeItem("roster_id")
+        
         setCurrentEditRoster(0)
         setNewRosterPick([])
         setEditCharacters([])

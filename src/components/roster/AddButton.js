@@ -43,7 +43,8 @@ library.add(faPlus)
     //     }
     //   };
     return <>
-        {localStorage.getItem('roster_id') ? <FontAwesomeIcon onClick={() => handleAddClick()}className="plus" icon="fa-solid fa-plus" /> :
+        { currentEditRoster ? <FontAwesomeIcon onClick={() => handleAddClick()}className="plus" icon="fa-solid fa-plus" /> :
             <FontAwesomeIcon icon="fa-solid fa-plus" className="plus" onClick={() => handleStartClick()}/>}
     </>
 }
+// localStorage.getItem('roster_id')

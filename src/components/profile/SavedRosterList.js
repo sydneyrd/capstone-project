@@ -14,15 +14,12 @@ export const SavedRosterList = ({roster, getUserRosters, setUserRosters, localUs
 console.log(currentEditRoster)
 library.add(faTrashCan)
   const handleClick = () => {
-    localStorage.setItem("roster_id", roster.id) //setting the current roster id to local storage before/during navigation
     setCurrentEditRoster(roster.id)
-
   }
   const handleDeleteClick = (click, roster) => {
   alert("successfully deleted")
     click.preventDefault()
-    deleteRoster(roster.id).then(() => localStorage.removeItem("roster_id") 
-    ).then(()=>getUserRosters(localUser) )
+    deleteRoster(roster.id).then(()=>getUserRosters(localUser) )
         .then((URost) => {
           setUserRosters(URost)
         })
