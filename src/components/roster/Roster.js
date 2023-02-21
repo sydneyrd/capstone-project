@@ -65,6 +65,8 @@ export const Roster = () => {
         },
         [] 
     )
+
+//if i don't use this initial use effect the character details don't appear on screen?   um ok i'll look at it later
     useEffect(
         () => {
             let alphaCharacters = characters.sort((a, b) => a.character_name.localeCompare(b.character_name))
@@ -123,7 +125,6 @@ export const Roster = () => {
     }
     const handleNewRoster = (e) => {
         e.preventDefault()
-        
         setCurrentEditRoster(0)
         setNewRosterPick([])
         setEditCharacters([])
@@ -147,7 +148,7 @@ export const Roster = () => {
         }
         
         if (searchTerms.length > 0) {
-           let search_text = searchTerms.slice()
+        let search_text = searchTerms.slice()
             let formatted_search_text = search_text.replace(' ', '%20')
             url+= `search_text=${formatted_search_text}`
         }

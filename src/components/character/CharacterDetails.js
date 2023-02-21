@@ -228,6 +228,7 @@ function handleDeleteLink(id, click){
         </div> 
         <div> <input type="file" id="image" onChange={createCharacterImageString} />
  <input type="hidden" name="character_id" value={character.id} />
+ <button className="save__button" onClick={click => handleUpdateClick(character, click)}>save image</button>
 </div>
 
 <img src={`http://localhost:8000${character?.image}`}alt={`${character.character_name} picture`}></img>
