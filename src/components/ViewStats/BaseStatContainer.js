@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom"
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
-import { getCalculatedRosterChar, getCalculatedRoster } from "../managers/CalculatedRosterManager"
+import { getCalculatedRosterChar, getCalculatedRoster } from "../managers/CalculatedRosterManager";
+import {AddContainer} from "./AddContainer"
 import "./results.css"
 
 import { BaseStatMap } from "./BaseStatMap"
@@ -11,11 +12,7 @@ export function BaseStatContainer() {
     const [players, setPlayers] = useState([])
     const [filteredPlayers, setFilteredPlayers] = useState([])
     const [currentCalcRoster, setCurrentCalcRoster] = useState({})
-    
     const [playerStats, setPlayerStats] = useState({})
-
-    
-
 
     useEffect(
         () => {
@@ -43,6 +40,7 @@ export function BaseStatContainer() {
 
     return<>
         <Link to={`/resources/${calculatedRosterId}/view`}>Return to Results</Link>
+        <AddContainer getPlayersAgain={getPlayersAgain} calculatedRosterId={calculatedRosterId} />
 
 
 <div className="labels"> <h4 className="player__results">group #</h4>
