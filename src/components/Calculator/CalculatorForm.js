@@ -67,14 +67,6 @@ return character}
     <option key={c.id} value={c?.character?.character_name} />
   ))}
 </datalist>
-          <div></div>
-          {/* <input className="form-control-stat" 
-          placeholder='group number'
-          type='number'
-
-          >
-
-          </input> */}
 <label></label>
 <select onChange={(event) => {
             const copy={...playerStats }
