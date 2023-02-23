@@ -68,17 +68,23 @@ return character}
   ))}
 </datalist>
           <div></div>
-          <input className="form-control-stat" 
+          {/* <input className="form-control-stat" 
           placeholder='group number'
           type='number'
 
-          onChange={(event) => {
+          >
+
+          </input> */}
+<label></label>
+<select onChange={(event) => {
             const copy={...playerStats }
             copy.group = parseInt(event.target.value)
             setPlayerStats(copy)
-          }}>
-
-          </input>
+          }} name="number">
+  {Array.from({length: 10}, (_, i) => i + 1).map(num => (
+    <option value={num}>{num}</option>
+  ))}
+</select>
           <input onChange={(event) => {
             const copy = { ...playerStats }
             copy.kills = parseInt(event.target.value)
@@ -121,7 +127,7 @@ return character}
         { calculatedRoster.length ?
           <><div className="player__list">
             {calculatedRoster.map((c) => <div key={c.character} className='player--'> {findCharacter(c).character_name} &nbsp;
-            Kills: {c.kills} Deaths: {c.deaths} Assists: {c.assists} Healing: {c.healing} Damage: {c.damage} <button onClick={(click) => {handleRemove(click, c.character)}}>remove</button></div>)}
+           Group: {c.group} Kills: {c.kills} Deaths: {c.deaths} Assists: {c.assists} Healing: {c.healing} Damage: {c.damage} <button onClick={(click) => {handleRemove(click, c.character)}}>remove</button></div>)}
           </div></>
           : ""}
 
