@@ -37,6 +37,8 @@ setPlayer(copy)},
     copy[event.target.name] = parseInt(event.target.value)
     setPlayer(copy)
   }
+
+  
   return (
 
 
@@ -88,6 +90,8 @@ setPlayer(copy)},
       <input className="form-controlstat"
         placeholder="group"
         name="group"
+        min="0"
+        max="10"
         defaultValue={0}
         type="number" onChange={(event) => {
           handleChange(event)
