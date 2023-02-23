@@ -24,8 +24,8 @@ export const Login = () => {
                 if ("valid" in res && res.valid && "token" in res) {
                     localStorage.setItem("roster_token", res.token)
                     localStorage.setItem("roster_user", JSON.stringify({
-                                                    id: res.userId,
-                                                    email: res.email })
+                                                    id: res.userId
+                                                     })   // **email: res.email  I don't remember why I had this here, but I don't think I need it**//
                     )
                     navigate("/profile")
                 }

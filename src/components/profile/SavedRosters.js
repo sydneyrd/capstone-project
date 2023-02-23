@@ -5,7 +5,6 @@ import { SavedRosterList } from "./SavedRosterList"
 
 export const SavedRosters = ({ localUser }) => {
   const [userRosters, setUserRosters] = useState([])
-  const [rendCount, setCount] = useState(0)
   useEffect(
     () => {
       getUserRosters(localUser)
@@ -15,16 +14,7 @@ export const SavedRosters = ({ localUser }) => {
     },
     []
   )
-  useEffect(
-    () => {
-      getUserRosters(localUser)
-        .then((URost) => {
-          setUserRosters(URost)
-        })
-    },
-    []
-  )
-  return <><div className="savedroster--container">{userRosters.map((roster) => <SavedRosterList localUser={localUser} getUserRosters={getUserRosters} setUserRosters={setUserRosters} key={roster.id} roster={roster} />)}</div></>
+  return <div className="savedroster--container">{userRosters.map((roster) => <SavedRosterList localUser={localUser} getUserRosters={getUserRosters} setUserRosters={setUserRosters} key={roster.id} roster={roster} />)}</div>
 }
 
 

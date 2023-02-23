@@ -9,20 +9,17 @@ import { RosterDivForEdit } from "./RosterDivForEdit";
 
 export const RosterGrid = ({showText, setShowText, charId, setNewRosterPick, setCharId, handleMouseEnter, handleMouseLeave, setEditCharacters, editRosterCharacters, 
     newRosterPicks, rosterIDNUMBER, characters }) => {
-    // const [editRosterCharacters, setEditCharacters] = useState([])
     useEffect(
         () => {
-            if (rosterIDNUMBER)
+            if (rosterIDNUMBER) {
             getCurrentRoster(rosterIDNUMBER)
                 .then((res) => {
                     setEditCharacters(res)
-                })
+                })}}
                 
-        },
+        ,
         []
     )
-
-
 
     return <>{editRosterCharacters.map((c) => <RosterDivForEdit showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} 
     handleMouseLeave={handleMouseLeave} rosterIDNUMBER={rosterIDNUMBER} setEditCharacters={setEditCharacters} characters={characters} newRosterPicks={editRosterCharacters}
@@ -32,4 +29,3 @@ export const RosterGrid = ({showText, setShowText, charId, setNewRosterPick, set
 
     </>
 }
-

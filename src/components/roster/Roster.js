@@ -1,5 +1,5 @@
 import { getAllRoles, getAllFactions, getAllWeapons, getAllServers, } from "../managers/ResourceManager"
-import {getAllCharacters} from "../managers/CharacterManager"
+import {getAllCharacters, getFilteredCharacters} from "../managers/CharacterManager"
 import { newRosterChoice, getCurrentRoster, newRoster, putRosterName, getRosterName   } from "../managers/RosterManager"
 import { useEffect, useState } from "react"
 import { RosterGrid } from "./RosterGrid"
@@ -8,7 +8,8 @@ import "./roster.css"
 import { FilterContainer } from "./FilterContainer"
 import { useNavigate } from "react-router-dom"
 import { SearchFilter } from "./SearchFilter"
-
+import { useContext } from "react"
+import { editContext } from "../views/ApplicationViews"
 export const Roster = () => {
     const [characters, setCharacters] = useState([])
     const [servers, setServers] = useState([])
@@ -23,15 +24,16 @@ export const Roster = () => {
     const [serverSearch, setServerSearch] = useState(0)
     const [primarySearch, setPrimarySearch] = useState(0)
     const [secondarySearch, setSecondarySearch] = useState(0)
-    const [newRosterPicks, setNewRosterPick] = useState([])
-    const [editRosterCharacters, setEditCharacters] = useState([])
-    let navigate = useNavigate()
-    const [showText, setShowText] = useState(false)
-    const [charId, setId] = useState(0)
-    const [rosterName, setRosterName] = useState({})
+    const [newRosterPicks, setNewRosterPick] = useState([]);
+    const [editRosterCharacters, setEditCharacters] = useState([]);
+    let navigate = useNavigate();
+    const [showText, setShowText] = useState(false);
+    const [charId, setId] = useState(0);
+    const [rosterName, setRosterName] = useState({});
+    const { currentEditRoster, setCurrentEditRoster} = useContext(editContext);
     //we are capturing the new roster id when we first click add to roster and saving it to start roster  //pass those props ^
-    let rosterID = localStorage.getItem("roster_id") //need this for the new array for the api
-    let rosterIDNUMBER = JSON.parse(rosterID)
+    let rosterIDNUMBER = currentEditRoster
+
     const setCharId = e => {
         setId(parseInt(e.target.id))
     } //sets identifier to get correct detail info
@@ -59,20 +61,12 @@ export const Roster = () => {
                         .then(() => {
                             getAllServers(setServers)
                         })
-
                 })
         },
-        [] //init get all stuff
+        [] 
     )
-    useEffect(
-        () => {
-            const searchedChar = characters.filter(character => {
-                return character.character_name.toLowerCase().startsWith(searchTerms.toLowerCase())  //make both lowercase so you can always find a match regardless of case
-            })
-            setSortedArr(searchedChar)
-        },
-        [searchTerms]//find what you put into the search bar and set that as sorted
-    )
+
+//if i don't use this initial use effect the character details don't appear on screen?   um ok i'll look at it later
     useEffect(
         () => {
             let alphaCharacters = characters.sort((a, b) => a.character_name.localeCompare(b.character_name))
@@ -94,24 +88,19 @@ export const Roster = () => {
 
 
     const handleRosterName = (event) => {
-        ///we are gonna match the value of the text input here, 
-        //and send it to the server as a put
-        //check to see if a rosterID is available in storage first and do that, if not do nothing/display pop up saying make a selection to start a roster
-        let newName = { ...rosterName }
-        newName[event.target.name] = event.target.value
+        let newName = { ...rosterName } //copy the old name value
+        newName[event.target.name] = event.target.value //update the name value
         if (rosterIDNUMBER) {
-            putRosterName(rosterIDNUMBER, newName)
+            putRosterName(rosterIDNUMBER, newName) //put the new name value to the api
         }
         else {
             alert('Pick a character first please ok just do it')
         }
     }
 
-
-
     const handleSave = (click, newRosterPicks) => { //onclickingSave
         click.preventDefault()
-        localStorage.removeItem("roster_id")
+        
         const createRosterChoices = (cArr) => {
             let rosterChoiceArr = []
             for (const c of cArr) {  //there might be an easier way idk, this works.   iterating the array of players in roster and uses takes their character id to create a new object
@@ -136,11 +125,37 @@ export const Roster = () => {
     }
     const handleNewRoster = (e) => {
         e.preventDefault()
-        localStorage.removeItem("roster_id")
+        setCurrentEditRoster(0)
         setNewRosterPick([])
         setEditCharacters([])
     }
-
+    useEffect(()=>{
+        let url = ""
+        if (roleSearch !== 0) {
+            url += `role=${roleSearch}&`
+        }
+        if (factionSearch !== 0) {
+            url += `faction=${factionSearch}&`
+        }
+        if (serverSearch !== 0) {
+            url += `server=${serverSearch}&`
+        }
+        if (primarySearch !== 0) {
+            url += `primary_weapon=${primarySearch}&`
+        }
+        if (secondarySearch !== 0) {
+            url += `secondary_weapon=${secondarySearch}&`
+        }
+        
+        if (searchTerms.length > 0) {
+        let search_text = searchTerms.slice()
+            let formatted_search_text = search_text.replace(' ', '%20')
+            url+= `search_text=${formatted_search_text}`
+        }
+        getFilteredCharacters(url, setSortedArr)
+    
+    }, [roleSearch, primarySearch, serverSearch, secondarySearch, factionSearch, searchTerms])
+    
     return <>
         <FilterContainer setFactionSearch={setFactionSearch} filterButton={filterButton} setFilterButton={setFilterButton} searchTerms={searchTerms} setSearchTerms={setSearchTerms}
             setRoleSearch={setRoleSearch} setPrimarySearch={setPrimarySearch} setServerSearch={setServerSearch} setSecondarySearch={setSecondarySearch}

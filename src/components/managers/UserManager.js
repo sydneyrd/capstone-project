@@ -3,7 +3,7 @@ export const getUserByEmail = (email) => {
         .then(res => res.json())
 }
 export const getUserbyId = (id) => {
-    return fetch(`http://127.0.0.1:8000/users/${id}`, {
+    return fetch(`http://127.0.0.1:8000/rosterusers/${id}`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("roster_token")}`
         }
