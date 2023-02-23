@@ -1,5 +1,4 @@
-import { faInfo, faNoteSticky } from "@fortawesome/free-solid-svg-icons"
-import { useParams } from "react-router-dom"
+import { Navigate, useNavigate, useParams } from "react-router-dom"
 import { useEffect, useState, useRef } from "react"
 import { RoleSelect } from "./Role"
 import { WeaponSelect } from "./WeaponSelect"
@@ -7,24 +6,35 @@ import { FactionSelect } from "./FactionSelect"
 import { ServerSelect } from "./ServerSelect"
 import { getAllFactions, getAllServers, getAllWeapons, getAllRoles} from "../managers/ResourceManager"
 import {deleteCharLink, newLink, getCharacterLinks, deleteCharacter, putCharacter, getSingleCharacter} from "../managers/CharacterManager"
-import { click } from "@testing-library/user-event/dist/click"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { library } from '@fortawesome/fontawesome-svg-core'
-import {faTrashCan } from '@fortawesome/free-solid-svg-icons'
 
-export const CharacterDetails = () => {
-    const [character, setCharacter] = useState({})
+export const CharacterDetails = () => {    
     const { characterId } = useParams()
+    const localRosterUser = localStorage.getItem("roster_user")
+    const RosterUserObject = JSON.parse(localRosterUser)
+    const [character, setCharacter] = useState({
+        character_name: "",
+        role: 0,
+        primary_weapon: 0,
+        secondary_weapon: 0,
+        faction: 0,
+        server: 0,
+        notes: "",
+        image: "",
+        id: parseInt(characterId),
+        user: parseInt(RosterUserObject.id)
+    })
     const [factions, setFactions] = useState([])
     const [weapons, setWeapons] = useState([])
     const [roles, setRoles] = useState([])
     const [servers, setServers] = useState([])
-    const [link, setLink] = useState({}) //this is for new links
+    const [link, setLink] = useState({
+        link: "",
+        character: parseInt(characterId)
+    }) //this is for new links, I need to add a way for them to be tied to a calculated roster still
     const [characterLinks, setCharacterLinks] = useState([]) //this one is for existing links
-    const [notes, setNotes] = useState('')
-    const [image, setImage] = useState('')
-    const localRosterUser = localStorage.getItem("roster_user")
-    const RosterUserObject = JSON.parse(localRosterUser)
+    const [notes, setNotes] = useState("")
+    const [image, setImage] = useState("")
+    const navigate = useNavigate()
     useEffect(
         () => {
             getAllRoles(setRoles)
@@ -38,15 +48,21 @@ export const CharacterDetails = () => {
                     getAllServers(setServers)
                 })
                 .then(() => {
-                    getSingleCharacter(characterId, setCharacter)
+                    getSingleCharacter(characterId, setCharacter);
+                    
                 }).then(() => {
                     getCharacterLinks(characterId, setCharacterLinks)
                 }).then(() => {
-
                 })
         },
         []
     )
+useEffect(()=> {
+setNotes(character.notes)
+}, [character])
+
+
+
 //could increase the depth from the server to get all this info attached to character instead of a bunch of .finds
     let rightServer = servers.find(({ id }) => id === character?.server)
     let rightPrimary = weapons.find(({ id }) => id === character?.primary_weapon)
@@ -68,9 +84,8 @@ export const CharacterDetails = () => {
         }
         putCharacter(letcToAPI, UC.id) 
         .then(()=>
-        getSingleCharacter(characterId, setCharacter))
-        //push request get char again to refresh 
-        // just get the character and set the character again?
+        getSingleCharacter(characterId, setCharacter));
+        setNotes(character.notes);
         alert('updated')
     }
 
@@ -89,9 +104,7 @@ export const CharacterDetails = () => {
     const handleDeleteClick = (deleteCharacterId, click) => {
         click.preventDefault()
         alert("are you sure?  action can't be undone")
-        deleteCharacter(deleteCharacterId)
-
-        //reroute to characters list, alert are you sure
+        deleteCharacter(deleteCharacterId).then(() => {navigate("/characters")})
     }
 function handleDeleteLink(id, click){
     click.preventDefault()
@@ -111,7 +124,6 @@ function handleDeleteLink(id, click){
             const myUrl = new URL(urlString);
             console.log("Valid URL:", myUrl);
             newLink(linkCopy).then((res) => {getCharacterLinks(characterId, setCharacterLinks)})
-            
         } catch (err) {
             console.error("Invalid URL:", err);
         }
@@ -121,7 +133,7 @@ function handleDeleteLink(id, click){
         const linkCopy = { ...link }
         linkCopy[e.target.name] = e.target.value
         linkCopy["character"] = character?.id
-        linkCopy['roster'] = 0;
+     // i need to be able to assign these to specific calculated rosters
         setLink(linkCopy)
     }
 
@@ -133,7 +145,7 @@ function handleDeleteLink(id, click){
                     type="text"
                     className="form-control"
                     placeholder="change name"
-                    value={character?.character_name} /**onChange{update character state}**/ onChange={
+                    value={character?.character_name} onChange={
                         (event) => {
                             const copy = { ...character }
                             copy.character_name = event.target.value
@@ -141,62 +153,56 @@ function handleDeleteLink(id, click){
                         }
                     } />
                 <label htmlFor="role__name">{rightRole?.name}</label>
-                <select onChange={
+                <select value={character.role} onChange={ 
                     (event) => {
                         const copy = { ...character }
                         copy.role = event.target.value
                         setCharacter(copy)
                     }
                 } className="role__select">
-                    <option value={0}>update role</option>
                     {roles.map((role) => <RoleSelect key={`role--${role?.id}`} role={role} />)}
                 </select>
 
                 <label htmlFor="primary__name">{rightPrimary?.name}</label>
-                <select onChange={
+                <select value={character.primary_weapon} onChange={
                     (event) => {
                         const copy = { ...character }
                         copy.primary_weapon = event.target.value
                         setCharacter(copy)
                     }
                 } className="character__select">
-                    <option value={0}>update weapon</option>
                     {weapons.map((weapon) => <WeaponSelect key={`weapon--${weapon?.id}`} weapon={weapon} />)}
                 </select>
                 <label htmlFor="second__weapon">{rightSecondary?.name}</label>
-                <select onChange={
+                <select value={character.secondary_weapon} onChange={
                     (event) => {
                         const copy = { ...character }
                         copy.secondary_weapon = event.target.value
                         setCharacter(copy)
                     }
                 } className="character__second">
-                    <option value={0}>update weapon</option>
                     {weapons.map((weapon) => <WeaponSelect key={`{weaponsecond--${weapon?.id}`} weapon={weapon} />)}
-
                 </select>
                 <label htmlFor="servers">
                     {rightServer?.name}</label>
-                <select onChange={
+                <select value={character.server}onChange={
                     (event) => {
                         const copy = { ...character }
                         copy.server = event.target.value
                         setCharacter(copy)
                     }
                 } htmlFor="server">
-                    <option value={0}>update server</option>
                     {servers.map((server) => <ServerSelect key={`server--${server?.id}`} server={server} />)}
                 </select>
                 <label htmlFor="factions">{rightFaction?.name}</label>
 
-                <select onChange={
+                <select value={character.faction} onChange={
                     (event) => {
                         const copy = { ...character }
                         copy.faction = event.target.value
                         setCharacter(copy)
                     }
                 } className="character__select">
-                    <option value={0}>update faction</option>
                     {factions.map((faction) => <FactionSelect key={`faction--${faction?.id}`} faction={faction} />)}
                 </select>
 
@@ -207,24 +213,22 @@ function handleDeleteLink(id, click){
 
         </form>
         <form>
-            <input type="url" name="link" onChange={handleChange} placeholder="vod links?" />
+            <input type="url" name="link" value={link.link} onChange={handleChange} placeholder="vod links?" />
 
             <button className="link__button" onClick={click => handleNewLink(click)}>New Link</button>
-            <textarea rows="4" cols="50" placeholder="add notes talk mad shit" defaultValue={character?.notes} onChange={
-                        (event) => {
-                            setNotes(event.target.value)
-                        }
-                    }
-            /><button className='save__note__button' onClick={click => {handleUpdateClick(character, click)}}>Save Notes</button></form>
+            <textarea rows="4" cols="50" value={notes} onChange={
+                        (event) => {setNotes(event.target.value)}}/>
+            <button className='save__note__button' onClick={click => {handleUpdateClick(character, click)}}>Save Notes</button></form>
 
         <div name='characterLinks'>
-            <></>{characterLinks.map(link => <div key={`link--${link.id}`}><a href={`${link.link}`}  target="_blank"
-   rel="noreferrer" key={`link--${link.id}`}>{link.link}</a>
+            {characterLinks ? characterLinks.map(link => <div key={`link--${link.id}`}><a href={`${link.link}`} target="_blank"
+        rel="noreferrer" key={`link--${link.id}`}>{link.link}</a>
             <button className="delete__link__button" onClick={click => handleDeleteLink(link.id, click)}>Delete VOD Link</button></div>
-            )}
+            ) : <></>}
         </div> 
         <div> <input type="file" id="image" onChange={createCharacterImageString} />
  <input type="hidden" name="character_id" value={character.id} />
+ <button className="save__button" onClick={click => handleUpdateClick(character, click)}>save image</button>
 </div>
 
 <img src={`http://localhost:8000${character?.image}`}alt={`${character.character_name} picture`}></img>

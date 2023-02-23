@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { editCalculatedRosterChoices } from '../managers/CalculatedRosterManager';
-// import  './modal.css'
+import  './modal.css'
 
 export const EditForm = ({ onSubmit, player, getPlayersAgain, closeModal }) => {
  let copy = {...player}
@@ -15,7 +15,7 @@ export const EditForm = ({ onSubmit, player, getPlayersAgain, closeModal }) => {
 
  })
 
-
+//I should add a handle change name = value here to condense the jsx
 
 const handleUpdate = (event) => {
     event.preventDefault()
@@ -23,7 +23,6 @@ const handleUpdate = (event) => {
     console.log(copy)
     editCalculatedRosterChoices(copy)
         .then(() => {
-            //reget and rerender
             getPlayersAgain(player.calculated_roster.id)
             
         })
