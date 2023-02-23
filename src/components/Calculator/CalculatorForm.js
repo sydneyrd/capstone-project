@@ -72,7 +72,7 @@ return character}
             const copy={...playerStats }
             copy.group = parseInt(event.target.value)
             setPlayerStats(copy)
-          }} name="number">
+          }} name="number"> <option value={0}>group</option>
   {Array.from({length: 10}, (_, i) => i + 1).map(num => (
     <option value={num}>{num}</option>
   ))}

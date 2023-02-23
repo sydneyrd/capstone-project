@@ -84,7 +84,7 @@ export const EditForm = ({ onSubmit, player, getPlayersAgain, closeModal }) => {
         const copy = { ...playerCopy }
         copy.group = parseInt(event.target.value)
         setPlayerCopy(copy)
-      }} >
+      }} > <option value={0}>group</option>
         {Array.from({ length: 10 }, (_, i) => i + 1).map(num => (
           <option value={num}>{num}</option>
         ))}
