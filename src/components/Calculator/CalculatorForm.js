@@ -67,18 +67,16 @@ return character}
     <option key={c.id} value={c?.character?.character_name} />
   ))}
 </datalist>
-          <div></div>
-          <input className="form-control-stat" 
-          placeholder='group number'
-          type='number'
-
-          onChange={(event) => {
+<label></label>
+<select onChange={(event) => {
             const copy={...playerStats }
             copy.group = parseInt(event.target.value)
             setPlayerStats(copy)
-          }}>
-
-          </input>
+          }} name="number"> <option value={0}>group</option>
+  {Array.from({length: 10}, (_, i) => i + 1).map(num => (
+    <option value={num}>{num}</option>
+  ))}
+</select>
           <input onChange={(event) => {
             const copy = { ...playerStats }
             copy.kills = parseInt(event.target.value)

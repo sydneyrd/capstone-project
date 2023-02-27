@@ -87,15 +87,14 @@ setPlayer(copy)},
           handleChange(event)
         }}></input>
       <label>Group #</label>
-      <input className="form-controlstat"
-        placeholder="group"
-        name="group"
-        min="0"
-        max="10"
-        defaultValue={0}
-        type="number" onChange={(event) => {
+        <select onChange={(event) => {
           handleChange(event)
-        }}></input>
+        }} name="group">
+          <option value={0}>group</option>
+  {Array.from({length: 10}, (_, i) => i + 1).map(num => (
+    <option value={num}>{num}</option>
+  ))}
+</select>
       <div className="form-group">
         <button className="form-control btn btn-primary" type="submit" onClick={click => { handleAdd(click) }}>
           Submit
