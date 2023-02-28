@@ -10,7 +10,7 @@ export const CalculateResultsByLine = ({ calculatedRoster, currentCalcRostName,
         click.preventDefault()
 
         let newcalcR = {
-            roster: null,
+            roster: 0,
             user: localUser.id,
             rosterName: `${thisName}`
         }

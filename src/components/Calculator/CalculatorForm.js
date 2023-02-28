@@ -1,7 +1,7 @@
 import { getCurrentRoster } from "../managers/RosterManager"
 import { useState, useEffect } from "react"
 
-export const CalculatorForm = ({ characters, selectedRoster, rosterChoice, calculatedRoster, setCalculatedRoster, setCurrentCalcRostName }) => {
+export const CalculatorForm = ({ characters, selectedRoster, rosterChoice, calculatedRoster, setCalculatedRoster, setCurrentCalcRostName, createNewRoster }) => {
   const [rosterChoices, setRosterChoices] = useState([])
   let rightCharacter = characters.find(({ id }) => id === rosterChoice?.character?.character?.id)
   const [playerStats, setPlayerStats] = useState({
@@ -15,14 +15,20 @@ export const CalculatorForm = ({ characters, selectedRoster, rosterChoice, calcu
   })
   useEffect(
         () => {
-            
-            getCurrentRoster(selectedRoster)
+          if (selectedRoster)
+          {getCurrentRoster(selectedRoster)
                 .then((res) => {
                     setRosterChoices(res)
-                })
+                }) }
         },
         [selectedRoster]
     )
+  useEffect(() => {
+    if (createNewRoster) {
+      setRosterChoices(characters)
+    } 
+  }, [createNewRoster])  //okay so this isn't working correctly because the characters array is differently formatted than the rosterchoices array since those are join table objects, and these are straight character objects.  so I can create an alternative display for just the drop down or format them so they are the same.  I think I'll do the latter.
+
 const handlePlayerChoice = (event) => {
   const copy = {...playerStats}
   let character = characters.find(character => character.character_name === event.target.value)

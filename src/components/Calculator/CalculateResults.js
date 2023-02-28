@@ -8,7 +8,6 @@ export const CalculateResults = ({ calculatedRoster, currentCalcRostName,
     let thisName = currentCalcRostName
     const handleNewRosterId = (click) => {
         click.preventDefault()
-
         let newcalcR = {
             roster: selectedRoster,
             user: localUser.id,
