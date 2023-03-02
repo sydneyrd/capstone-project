@@ -17,6 +17,7 @@ export const AddModal = ({
     update,
     player,
     getPlayersAgain,
+    players,
     calculatedRosterId
 }) => {
   return ReactDOM.createPortal(
@@ -47,6 +48,7 @@ export const AddModal = ({
           </button>
           <div className="modal-body">
             <AddForm onSubmit={onSubmit}
+            players={players}
             setPlayerStats={setPlayerStats}
             playerStats={playerStats}
             setUpdate={setUpdate}

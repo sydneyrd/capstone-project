@@ -5,7 +5,7 @@ import DropDownSelect from './DropDown';
 import './modal.css'
 
 
-export const AddForm = ({ calculatedRosterId, getPlayersAgain, onSubmit, closeModal }) => {
+export const AddForm = ({ calculatedRosterId, players, getPlayersAgain, onSubmit, closeModal }) => {
   const [selectedPlayer, setSelectedPlayer] = useState({});
   const [player, setPlayer] = useState({
     calculated_roster: parseInt(calculatedRosterId),
@@ -17,20 +17,25 @@ export const AddForm = ({ calculatedRosterId, getPlayersAgain, onSubmit, closeMo
     damage: 0,
     group: 0
   })
+  console.log(players)
 useEffect(() => {
+  
   let copy = {...player}
 copy['character'] = selectedPlayer.id
 setPlayer(copy)},
- 
 [selectedPlayer])
 
   const handleAdd = (event) => {
     event.preventDefault()
-    newCalculatedRosterChoices(player)
+    if (players.find(p => p?.character?.id === selectedPlayer.id)) {
+      alert('player already in roster')
+    }
+    else {newCalculatedRosterChoices(player)
       .then(() => {
         getPlayersAgain(calculatedRosterId) //after add update the base container map
       })
-    closeModal()
+    closeModal()}
+    
   }
   function handleChange(event) {
     const copy = { ...player }

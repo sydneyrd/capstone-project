@@ -40,7 +40,7 @@ export function BaseStatContainer() {
 
     return<>
         <Link to={`/resources/${calculatedRosterId}/view`}>Return to Results</Link>
-        <AddContainer getPlayersAgain={getPlayersAgain} calculatedRosterId={calculatedRosterId} />
+        <AddContainer getPlayersAgain={getPlayersAgain} players={players} calculatedRosterId={calculatedRosterId} />
 
 
 <div className="labels"> <h4 className="player__results">group #</h4>
