@@ -83,7 +83,7 @@ export const EditForm = ({ onSubmit, player, getPlayersAgain, closeModal }) => {
         handleChange(event)
       }} > <option value={0}>group</option>
         {Array.from({ length: 10 }, (_, i) => i + 1).map(num => (
-          <option value={num}>{num}</option>
+          <option key={num} value={num}>{num}</option>
         ))}
       </select>
       <div className="form-group">
