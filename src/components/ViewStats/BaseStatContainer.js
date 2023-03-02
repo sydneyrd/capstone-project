@@ -47,6 +47,7 @@ export function BaseStatContainer() {
     <h4 className="damage">Damage
     </h4>
        <h4 className="healing">Healing</h4>
+        <h4 className="deaths">Deaths</h4>
        <h4 className="kills">Kills</h4> 
        <h4 className='assists'>assists</h4></div>
        

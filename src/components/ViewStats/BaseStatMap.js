@@ -20,6 +20,7 @@ export const BaseStatMap = ({ setPlayerStats, calculatedRosterId, getPlayersAgai
     <div className="damage">{player?.damage}
     </div>
        <div className="healing">{player?.healing}</div>
+       <div className="deaths">{player?.deaths}</div>
        <div className="kills">{player?.kills}</div> 
        <div className='assists'>{player?.assists}</div>
        <EditContainer player={player} getPlayersAgain={getPlayersAgain} setPlayerStats={setPlayerStats} />

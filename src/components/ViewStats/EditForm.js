@@ -15,7 +15,11 @@ export const EditForm = ({ onSubmit, player, getPlayersAgain, closeModal }) => {
 
   })
 
-//I should add a handle change name = value here to condense the jsx
+  function handleChange(event) {
+    const copy = { ...playerCopy }
+    copy[event.target.name] = parseInt(event.target.value)
+    setPlayerCopy(copy)
+  }
 
   const handleUpdate = (event) => {
     event.preventDefault()
@@ -34,11 +38,10 @@ export const EditForm = ({ onSubmit, player, getPlayersAgain, closeModal }) => {
     <form onSubmit={onSubmit}>
       <label>Kills {player?.kills}</label>
       <input onChange={(event) => {
-        const copy = { ...playerCopy }
-        copy.kills = parseInt(event.target.value)
-        setPlayerCopy(copy)
+        handleChange(event)
       }}
         defaultValue={player?.kills}
+        name="kills"
         className="form-controlstat"
         placeholder="kills"
         type="number">
@@ -47,43 +50,37 @@ export const EditForm = ({ onSubmit, player, getPlayersAgain, closeModal }) => {
       <input className="form-controlstat"
         placeholder="deaths"
         defaultValue={player.deaths}
+        name="deaths"
         type="number" onChange={(event) => {
-          const copy = { ...playerCopy }
-          copy.deaths = parseInt(event.target.value)
-          setPlayerCopy(copy)
+          handleChange(event)
         }}></input>
       <label>Assists {player.assists}</label>
       <input className="form-controlstat"
         defaultValue={player.assists}
+        name="assists"
         placeholder="assists"
         type="number" onChange={(event) => {
-          const copy = { ...playerCopy }
-          copy.assists = parseInt(event.target.value)
-          setPlayerCopy(copy)
+          handleChange(event)
         }}></input>
       <label>Healing {player.healing}</label>
       <input className="form-controlstat"
         placeholder="healing"
         defaultValue={player.healing}
+        name="healing"
         type="number" onChange={(event) => {
-          const copy = { ...playerCopy }
-          copy.healing = parseInt(event.target.value)
-          setPlayerCopy(copy)
+          handleChange(event)
         }}></input>
       <label>Damage {player.damage}</label>
       <input className="form-controlstat"
         placeholder="damage"
+        name="damage"
         defaultValue={player.damage}
         type="number" onChange={(event) => {
-          const copy = { ...playerCopy }
-          copy.damage = parseInt(event.target.value)
-          setPlayerCopy(copy)
+          handleChange(event)
         }}></input>
       <label>Group # {player.group}</label>
-      <select defaultValue={player.group ? player.group : 0} name="number" onChange={(event) => {
-        const copy = { ...playerCopy }
-        copy.group = parseInt(event.target.value)
-        setPlayerCopy(copy)
+      <select defaultValue={player.group ? player.group : 0} name="group" onChange={(event) => {
+        handleChange(event)
       }} > <option value={0}>group</option>
         {Array.from({ length: 10 }, (_, i) => i + 1).map(num => (
           <option value={num}>{num}</option>
