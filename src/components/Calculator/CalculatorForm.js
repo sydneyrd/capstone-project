@@ -28,14 +28,8 @@ export const CalculatorForm = ({ characters, selectedRoster, rosterChoice, calcu
     if (createNewRoster) {
       setAllChoices(characters)
     } 
-  }, [createNewRoster])  //okay so this isn't working correctly because the characters array is differently formatted than the rosterchoices array since those are join table objects, and these are straight character objects.  so I can create an alternative display for just the drop down or format them so they are the same.  I think I'll do the latter.
+  }, [createNewRoster]) 
 
-// const handlePlayerChoice = (event) => {
-//   const copy = {...playerStats}
-//   let character = characters.find(character => character.character_name === event.target.value)
-//   copy.character = character?.id
-//   setPlayerStats(copy)  
-// }
 const handleSaveAndAdd = (click) => {
   click.preventDefault()
   const copy = { ...playerStats }
@@ -52,9 +46,6 @@ const handleSaveAndAdd = (click) => {
   {alert("You've already added this character")}
   else
    {setCalculatedRoster(state => [...state, copy])}
-  //only adding one object to an array usestate
-  // let list = document.getElementById('select_Character')
-  // list.value = ''
 }
 const handleRemove = (click, charId) => {
   click.preventDefault()
@@ -71,7 +62,7 @@ return character}
 const handleChange = (e) => {
   e.preventDefault()
   const copy = {...playerStats}
-  copy.character = parseInt(e.target.value)
+  copy[e.target.name] = parseInt(e.target.value)
   setPlayerStats(copy)
 }
   return <>
@@ -96,48 +87,42 @@ const handleChange = (e) => {
     
 <label></label>
 <select onChange={(event) => {
-            const copy={...playerStats }
-            copy.group = parseInt(event.target.value)
-            setPlayerStats(copy)
-          }} name="number"> <option value={0}>group</option>
+            handleChange(event)
+          }} name="group"> <option value={0}>group</option>
   {Array.from({length: 10}, (_, i) => i + 1).map(num => (
     <option value={num}>{num}</option>
   ))}
 </select>
           <input onChange={(event) => {
-            const copy = { ...playerStats }
-            copy.kills = parseInt(event.target.value)
-            setPlayerStats(copy)
+            handleChange(event)
           }} className="form-controlstat"
             placeholder="kills"
+            name="kills"
             type="number">
           </input>
           <input className="form-controlstat"
             placeholder="deaths"
-            type="number" onChange={(event) => {
-              const copy = { ...playerStats }
-              copy.deaths = parseInt(event.target.value)
-              setPlayerStats(copy)
+            type="number"
+            name="deaths" onChange={(event) => {
+              handleChange(event)
             }}></input>  <input className="form-controlstat"
               placeholder="assists"
-              type="number" onChange={(event) => {
-                const copy = { ...playerStats }
-                copy.assists = parseInt(event.target.value)
-                setPlayerStats(copy)
+              type="number"
+              name="assists" onChange={(event) => {
+                handleChange(event)
               }}></input>
           <input className="form-controlstat"
             placeholder="healing"
-            type="number" onChange={(event) => {
-              const copy = { ...playerStats }
-              copy.healing = parseInt(event.target.value)
-              setPlayerStats(copy)
+            type="number"
+            name="healing" onChange={(event) => {
+              handleChange(event)
             }}></input>
           <input className="form-controlstat"
             placeholder="damage"
-            type="number" onChange={(event) => {
-              const copy = { ...playerStats }
-              copy.damage = parseInt(event.target.value)
-              setPlayerStats(copy)
+            type="number" 
+            name="damage"
+            onChange={(event) => {
+              handleChange(event)
             }}></input>
           <button onClick={(click) => {handleSaveAndAdd(click)}}>Save and Add Another</button>
           <br></br>
