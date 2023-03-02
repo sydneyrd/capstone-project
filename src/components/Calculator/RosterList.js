@@ -1,11 +1,11 @@
 
 
-export const RosterList = ({roster, setSelectedRoster}) => {
+export const RosterList = ({roster, setSelectedRoster, handleRosterChange}) => {
 
-  const  handleRosterClick = (click) => {
-        click.preventDefault()
-        setSelectedRoster(roster.id)
-}
+//   const  handleRosterChange = (event) => {
+//         event.preventDefault()
+//         setSelectedRoster(roster.id)
+// }
 
-    return <><button className="Roster__button" onClick={(click) => handleRosterClick(click)}>{roster.name ? `${roster.name}` : `Roster #${roster.id}`}</button></>
+    return <><option className="Roster__button" key={`select--${roster.id}`} value={roster.id} >{roster.name ? `${roster.name}` : `Roster #${roster.id}`}</option></>
 }

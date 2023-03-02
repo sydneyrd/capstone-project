@@ -8,7 +8,6 @@ import { Roster } from "../roster/Roster"
 import { CalculatorContainer } from "../Calculator/CalculatorContainer"
 import { ViewStats } from "../ViewStats/ViewStats"
 import { useState, createContext } from "react"
-import { CalculateByLine } from "../Calculator/CalculateByLine"
 import { CharacterDetails } from "../character/CharacterDetails"
 import { BaseStatContainer } from "../ViewStats/BaseStatContainer"
 
@@ -36,7 +35,6 @@ export const ApplicationViews = () => {
                     <Route path="/characters" element={<Character />} />
                     <Route path="/roster" element={<Roster />} />
                     <Route path="/resources" element={<CalculatorContainer />} />
-                    <Route path="/calculate/new" element={<CalculateByLine />} />
                     <Route path="resources/:calculatedRosterId/view" element={<ViewStats />} />
                     <Route path='resources/edit/:calculatedRosterId' element={<BaseStatContainer />} />
                     <Route path="character/:characterId" element={<CharacterDetails />} />

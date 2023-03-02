@@ -8,7 +8,6 @@ export const CalculateResults = ({ calculatedRoster, currentCalcRostName,
     let thisName = currentCalcRostName
     const handleNewRosterId = (click) => {
         click.preventDefault()
-
         let newcalcR = {
             roster: selectedRoster,
             user: localUser.id,
@@ -19,8 +18,6 @@ export const CalculateResults = ({ calculatedRoster, currentCalcRostName,
             setCalculatedRosterId(newIdObj.id)  //maybe can get rid of this now, watch out and see
             const readyToPostCalculated = calculatedRoster.map((element) => ({ ...element, calculated_roster: newIdObj.id }))  //adding the calculatedRosterId as a new property to each element
             Promise.all(readyToPostCalculated.map((r) => { newCalculatedRosterChoices(r) })).then((result) => {
-                console.log(result)
-                //to show the grid of results and also turn off the form
             })
             .then(() => {
                 setTimeout(() => {
