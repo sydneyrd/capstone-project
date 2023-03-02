@@ -50,5 +50,5 @@ export function BaseStatContainer() {
        <h4 className="kills">Kills</h4> 
        <h4 className='assists'>assists</h4></div>
        
-        {filteredPlayers.map(player => <BaseStatMap getPlayersAgain={getPlayersAgain} key={`${player.id}`} player={player}/>)}</>
+        {filteredPlayers.map(player => <BaseStatMap calculatedRosterId={calculatedRosterId} getPlayersAgain={getPlayersAgain} key={`${player.id}`} player={player}/>)}</>
 }
