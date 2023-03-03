@@ -48,7 +48,7 @@ const handleClear = (click) => {
 //if no roster is selected, it is showing these options at the top.   when one is selected they are replaced with a go back button and a text input to name the results, when the selectedroster is set to 0 again the menu returns
     return <> <> 
     {!selectedRoster && createNewRoster == false ? <> <> <h3>Select an existing Roster <select onChange={(event) => handleRosterChange(event)}><option key="select--0" value={0}>select</option>{userRosters.map((roster) => <RosterList key={roster.id} setSelectedRoster={setSelectedRoster} roster={roster} />)} </select> or <button className="Roster__button" onClick={(click)=>{setCreateNewRoster(true)}}>Create New</button></h3> </>
-    <div><Link to="/calculate/new">Create New</Link></div> </>
+    </>
 : ""    
 }
 {/* if selected roster is true it pops up the go back and the form */}
