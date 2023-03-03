@@ -77,6 +77,7 @@ function handleReset(click){
     click.preventDefault()
    const copy = [...players]
     setFilteredPlayers(copy)
+    setGroup(false)
 }
 
 
