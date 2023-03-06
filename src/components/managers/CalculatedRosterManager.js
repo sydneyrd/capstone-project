@@ -58,3 +58,23 @@ export const deleteCalculatedRoster = (calculatedRosterId) => {
     }
     )
 }
+export const deleteCalculatedRosterChoice = (calculatedRosterChoiceId) => {
+    return fetch(`http://127.0.0.1:8000/calculatedrosterchoices/${calculatedRosterChoiceId}`, {
+        method: "DELETE",
+        headers: {
+            'Content-type': 'application/json',
+            "Authorization": `Token ${localStorage.getItem('roster_token')}`
+        }
+
+    }
+    )
+}
+export const editCalculatedRoster = (post_body) => {
+    return fetch(`http://127.0.0.1:8000/calculatedrosters/${post_body.id}`, {
+        method: "PUT",
+        headers: {
+            'Content-type': 'application/json',
+            "Authorization": `Token ${localStorage.getItem('roster_token')}`
+        },
+        body: JSON.stringify(post_body)})
+}

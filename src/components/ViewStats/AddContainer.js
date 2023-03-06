@@ -46,6 +46,7 @@ export class AddContainer extends Component {
             onClickOutside={this.onClickOutside}
             getPlayersAgain={this.props.getPlayersAgain}
             calculatedRosterId={this.props.calculatedRosterId}
+            players={this.props.players}
           />
         ) : null}
       </React.Fragment>

@@ -1,7 +1,6 @@
 import { CalculatorForm } from "./CalculatorForm"
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
-import { getAllCharacters, getCurrentRoster } from "../managers/CharacterManager"
+import { getAllCharacters} from "../managers/CharacterManager"
 import {getUserRosters} from  "../managers/UserManager"
 import { RosterList } from "./RosterList"
 import { CalculateResults } from "./CalculateResults"
@@ -12,7 +11,7 @@ import "./calculator.css"
 export const CalculatorContainer = () => {
     const [characters, setCharacters] = useState([])
     const [userRosters, setUserRosters] = useState([])
-    const [rosterChoices, setRosterChoices] = useState([])
+    // const [rosterChoices, setRosterChoices] = useState([]) unused error
     const [selectedRoster, setSelectedRoster] = useState(0)
     //have a state to watch for if a new roster is being created as opposed to using an existing roster
     const [createNewRoster, setCreateNewRoster] = useState(false)
@@ -32,7 +31,7 @@ export const CalculatorContainer = () => {
                 )
                 
         },
-        []
+        [localUser]
     )
 const handleClear = (click) => {
         click.preventDefault()
@@ -48,7 +47,7 @@ const handleClear = (click) => {
 //if no roster is selected, it is showing these options at the top.   when one is selected they are replaced with a go back button and a text input to name the results, when the selectedroster is set to 0 again the menu returns
     return <> <> 
     {!selectedRoster && createNewRoster == false ? <> <> <h3>Select an existing Roster <select onChange={(event) => handleRosterChange(event)}><option key="select--0" value={0}>select</option>{userRosters.map((roster) => <RosterList key={roster.id} setSelectedRoster={setSelectedRoster} roster={roster} />)} </select> or <button className="Roster__button" onClick={(click)=>{setCreateNewRoster(true)}}>Create New</button></h3> </>
-    <div><Link to="/calculate/new">Create New</Link></div> </>
+    </>
 : ""    
 }
 {/* if selected roster is true it pops up the go back and the form */}

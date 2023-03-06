@@ -13,23 +13,14 @@ const [searchText, setSearchText] = useState('');
 
   const handleInputClick = () => {
     setIsOpen(!isOpen);
-    // searchInputRef.current.focus();
   };
   useEffect(() => {
     searchText ?
     getAllCharacters(setCharacters)
-    //   .then((response) => response.json())
-    //   .then((data) => setCharacters(data));
+  
     : handleSearchChange(searchText)
   }, [searchText]);
-//   const handleInputChange = (event) => {
-//     const inputValue = event.target.value.toLowerCase();
-//     const filteredOptions = options.filter((option) =>
-//       option.label.toLowerCase().includes(inputValue)
-//     );
-//     setSelectedOption(null);
-//     setFilteredOptions(filteredOptions);
-//   };
+
 
   const handleOptionClick = (option) => {
     setSelectedPlayer(option);

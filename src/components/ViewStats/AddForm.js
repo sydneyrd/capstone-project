@@ -5,7 +5,7 @@ import DropDownSelect from './DropDown';
 import './modal.css'
 
 
-export const AddForm = ({ calculatedRosterId, getPlayersAgain, onSubmit, closeModal }) => {
+export const AddForm = ({ calculatedRosterId, players, getPlayersAgain, onSubmit, closeModal }) => {
   const [selectedPlayer, setSelectedPlayer] = useState({});
   const [player, setPlayer] = useState({
     calculated_roster: parseInt(calculatedRosterId),
@@ -17,20 +17,27 @@ export const AddForm = ({ calculatedRosterId, getPlayersAgain, onSubmit, closeMo
     damage: 0,
     group: 0
   })
-useEffect(() => {
-  let copy = {...player}
-copy['character'] = selectedPlayer.id
-setPlayer(copy)},
- 
-[selectedPlayer])
+  console.log(players)
+  useEffect(() => {
+    let copy = { ...player }
+    copy['character'] = selectedPlayer.id
+    setPlayer(copy)
+  },
+    [selectedPlayer])
 
   const handleAdd = (event) => {
     event.preventDefault()
-    newCalculatedRosterChoices(player)
+    if (players.find(p => p?.character?.id === selectedPlayer.id)) {
+      alert('player already in roster')
+    }
+    else {
+      newCalculatedRosterChoices(player)
       .then(() => {
         getPlayersAgain(calculatedRosterId) //after add update the base container map
       })
-    closeModal()
+      closeModal()
+    }
+
   }
   function handleChange(event) {
     const copy = { ...player }
@@ -38,7 +45,7 @@ setPlayer(copy)},
     setPlayer(copy)
   }
 
-  
+
   return (
 
 
@@ -87,14 +94,14 @@ setPlayer(copy)},
           handleChange(event)
         }}></input>
       <label>Group #</label>
-        <select onChange={(event) => {
-          handleChange(event)
-        }} name="group">
-          <option value={0}>group</option>
-  {Array.from({length: 10}, (_, i) => i + 1).map(num => (
-    <option value={num}>{num}</option>
-  ))}
-</select>
+      <select onChange={(event) => {
+        handleChange(event)
+      }} name="group">
+        <option value={0}>group</option>
+        {Array.from({ length: 10 }, (_, i) => i + 1).map(num => (
+          <option value={num}>{num}</option>
+        ))}
+      </select>
       <div className="form-group">
         <button className="form-control btn btn-primary" type="submit" onClick={click => { handleAdd(click) }}>
           Submit

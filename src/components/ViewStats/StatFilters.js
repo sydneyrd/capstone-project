@@ -10,9 +10,9 @@ useEffect(() => {
     getAllRoles(setRoles)
 }, []) 
 
-function compareNumbers(a, b) {
-    return a.group - b.group;
-  }
+// function compareNumbers(a, b) {
+//     return a.group - b.group;
+//   } unused error
   function compareDamage(a, b) {
     return b.damage - a.damage;
   }
@@ -77,6 +77,7 @@ function handleReset(click){
     click.preventDefault()
    const copy = [...players]
     setFilteredPlayers(copy)
+    setGroup(false)
 }
 
 
