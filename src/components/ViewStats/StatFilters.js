@@ -10,9 +10,9 @@ useEffect(() => {
     getAllRoles(setRoles)
 }, []) 
 
-function compareNumbers(a, b) {
-    return a.group - b.group;
-  }
+// function compareNumbers(a, b) {
+//     return a.group - b.group;
+//   } unused error
   function compareDamage(a, b) {
     return b.damage - a.damage;
   }

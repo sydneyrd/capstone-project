@@ -1,7 +1,6 @@
 import { CalculatorForm } from "./CalculatorForm"
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
-import { getAllCharacters, getCurrentRoster } from "../managers/CharacterManager"
+import { getAllCharacters} from "../managers/CharacterManager"
 import {getUserRosters} from  "../managers/UserManager"
 import { RosterList } from "./RosterList"
 import { CalculateResults } from "./CalculateResults"
@@ -12,7 +11,7 @@ import "./calculator.css"
 export const CalculatorContainer = () => {
     const [characters, setCharacters] = useState([])
     const [userRosters, setUserRosters] = useState([])
-    const [rosterChoices, setRosterChoices] = useState([])
+    // const [rosterChoices, setRosterChoices] = useState([]) unused error
     const [selectedRoster, setSelectedRoster] = useState(0)
     //have a state to watch for if a new roster is being created as opposed to using an existing roster
     const [createNewRoster, setCreateNewRoster] = useState(false)
@@ -32,7 +31,7 @@ export const CalculatorContainer = () => {
                 )
                 
         },
-        []
+        [localUser]
     )
 const handleClear = (click) => {
         click.preventDefault()

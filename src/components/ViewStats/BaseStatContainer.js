@@ -32,7 +32,7 @@ export function BaseStatContainer() {
         id: 0,
         roster: 0
     })
-    const [playerStats, setPlayerStats] = useState({})
+    // const [playerStats, setPlayerStats] = useState({}) unused error
 
     useEffect(
         () => {
@@ -47,7 +47,7 @@ export function BaseStatContainer() {
                             setCurrentCalcRoster(r)
                         }))
         },
-        []
+        [calculatedRosterId]
     )
     useEffect(() => {
         let editValues = {
