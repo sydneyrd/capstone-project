@@ -1,5 +1,5 @@
-import { Navigate, useNavigate, useParams } from "react-router-dom"
-import { useEffect, useState, useRef } from "react"
+import {useNavigate, useParams } from "react-router-dom"
+import { useEffect, useState} from "react"
 import { RoleSelect } from "./Role"
 import { WeaponSelect } from "./WeaponSelect"
 import { FactionSelect } from "./FactionSelect"
@@ -55,13 +55,11 @@ export const CharacterDetails = () => {
                 }).then(() => {
                 })
         },
-        []
+        [characterId]
     )
 useEffect(()=> {
 setNotes(character.notes)
 }, [character])
-
-
 
 //could increase the depth from the server to get all this info attached to character instead of a bunch of .finds
     let rightServer = servers.find(({ id }) => id === character?.server)
@@ -136,6 +134,12 @@ function handleDeleteLink(id, click){
      // i need to be able to assign these to specific calculated rosters
         setLink(linkCopy)
     }
+    const handleValueChange = (e) => {
+        e.preventDefault()
+        const copy = {...character}
+        copy[e.target.name] = parseInt(e.target.value)
+        setCharacter(copy)
+      }
 
     return (<>
         <form className="character_form">
@@ -153,54 +157,44 @@ function handleDeleteLink(id, click){
                         }
                     } />
                 <label htmlFor="role__name">{rightRole?.name}</label>
-                <select value={character.role} onChange={ 
+                <select name='role' value={character.role} onChange={ 
                     (event) => {
-                        const copy = { ...character }
-                        copy.role = event.target.value
-                        setCharacter(copy)
+                        handleValueChange(event)
                     }
                 } className="role__select">
                     {roles.map((role) => <RoleSelect key={`role--${role?.id}`} role={role} />)}
                 </select>
 
                 <label htmlFor="primary__name">{rightPrimary?.name}</label>
-                <select value={character.primary_weapon} onChange={
+                <select name="primary_weapon" value={character.primary_weapon} onChange={
                     (event) => {
-                        const copy = { ...character }
-                        copy.primary_weapon = event.target.value
-                        setCharacter(copy)
+                        handleValueChange(event)
                     }
                 } className="character__select">
                     {weapons.map((weapon) => <WeaponSelect key={`weapon--${weapon?.id}`} weapon={weapon} />)}
                 </select>
                 <label htmlFor="second__weapon">{rightSecondary?.name}</label>
-                <select value={character.secondary_weapon} onChange={
+                <select name='secondary_weapon' value={character.secondary_weapon} onChange={
                     (event) => {
-                        const copy = { ...character }
-                        copy.secondary_weapon = event.target.value
-                        setCharacter(copy)
+                        handleValueChange(event)
                     }
                 } className="character__second">
                     {weapons.map((weapon) => <WeaponSelect key={`{weaponsecond--${weapon?.id}`} weapon={weapon} />)}
                 </select>
                 <label htmlFor="servers">
                     {rightServer?.name}</label>
-                <select value={character.server}onChange={
+                <select name='server' value={character.server}onChange={
                     (event) => {
-                        const copy = { ...character }
-                        copy.server = event.target.value
-                        setCharacter(copy)
+                        handleValueChange(event)
                     }
                 } htmlFor="server">
                     {servers.map((server) => <ServerSelect key={`server--${server?.id}`} server={server} />)}
                 </select>
                 <label htmlFor="factions">{rightFaction?.name}</label>
 
-                <select value={character.faction} onChange={
+                <select name='faction' value={character.faction} onChange={
                     (event) => {
-                        const copy = { ...character }
-                        copy.faction = event.target.value
-                        setCharacter(copy)
+                       handleValueChange(event)
                     }
                 } className="character__select">
                     {factions.map((faction) => <FactionSelect key={`faction--${faction?.id}`} faction={faction} />)}

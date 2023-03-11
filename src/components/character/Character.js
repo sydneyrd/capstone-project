@@ -2,7 +2,7 @@ import { CharacterForm } from "./CharacterForm"
 import { ManageCharacters } from "./ManageCharacters"
 import { SearchCharacters } from "./SearchCharacters"
 import { getAllFactions, getAllRoles, getAllWeapons, getAllServers } from "../managers/ResourceManager"
-import { saveNewCharacter, getCharactersBySearch } from "../managers/CharacterManager"
+import { getCharactersBySearch } from "../managers/CharacterManager"
 import {getUserCharacters} from "../managers/UserManager"
 import { useState, useEffect } from "react"
 
@@ -36,12 +36,12 @@ export const Character = () => {
                             updateUserCharacters(charArr))
                 })
         },
-        [] // When this array is empty, you are observing initial component state
+        [RosterUserObject] 
     )
     useEffect(
         () => {
             !searchWords ? setSortedCharacters(userCharacters) :
-            getCharactersBySearch(searchWords).then(res => (setSortedCharacters(res)))
+            getCharactersBySearch(searchWords).then(res => (setSortedCharacters(res))) //searching ALL characters, not just user characters rip
         },
         [searchWords]
 
