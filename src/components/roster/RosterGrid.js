@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { RosterDiv } from "./RosterDiv";
 import { getAllCharacters} from "../managers/CharacterManager";
 import { RosterDivForEdit } from "./RosterDivForEdit";
+
+
 //get all the people in the roster render them in the list
 
 export const RosterGrid = ({showText, setShowText, charId, setNewRosterPick, setCharId, handleMouseEnter, handleMouseLeave, setEditCharacters, editRosterCharacters, 

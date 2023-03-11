@@ -8,7 +8,8 @@ import { useState, useEffect } from "react"
 
 export const Character = () => {
     const localRosterUser = localStorage.getItem("roster_user")
-    const RosterUserObject = JSON.parse(localRosterUser)
+    
+    const [RosterUserObject, setRosterUserObject] = useState(JSON.parse(localRosterUser))
     const [factions, setFactions] = useState([])
     const [weapons, setWeapons] = useState([])
     const [servers, setServers] = useState([])

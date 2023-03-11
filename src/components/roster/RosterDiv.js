@@ -4,6 +4,8 @@ import {faTrashArrowUp } from '@fortawesome/free-solid-svg-icons'
 import { deleteRosterChoice } from "../managers/RosterManager"
 
 
+
+
     
 export const RosterDiv = ({c, setNewRosterPick, newRosterPicks, showText, setShowText, charId, setCharId, handleMouseEnter, handleMouseLeave,}) => {
     library.add(faTrashArrowUp)
@@ -22,6 +24,8 @@ return <>
       
       
       </div>
+
+
 </>
 
 }

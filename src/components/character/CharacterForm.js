@@ -7,8 +7,8 @@ import { saveNewCharacter } from "../managers/CharacterManager"
 import "./characters.css"
 
 
-export const CharacterForm = ({ updateUserCharacters, getUserCharacters, roles, weapons, servers, factions, feedback, setFeedback }) => {
-    const [newCharacter, updateNewCharacter] = useState({
+export const CharacterForm = ({ updateUserCharacters, RosterUserObject, getUserCharacters, roles, weapons, servers, factions, feedback, setFeedback }) => {
+    const [newCharacter, setNewCharacter] = useState({
         userId: 0,
         character: "",
         roleId: 0,
@@ -17,9 +17,6 @@ export const CharacterForm = ({ updateUserCharacters, getUserCharacters, roles, 
         serverId: 0,
         factionId: 0
     })
-
-    const localRosterUser = localStorage.getItem("roster_user")
-    const RosterUserObject = JSON.parse(localRosterUser)
 
     const handleSaveButtonClick = (event) => {
         event.preventDefault()
@@ -39,6 +36,12 @@ export const CharacterForm = ({ updateUserCharacters, getUserCharacters, roles, 
         })
         setFeedback("Character successfully added")
     }
+    const handleChange = (e) => {
+        e.preventDefault()
+        const copy = { ...newCharacter }
+        copy[e.target.name] = parseInt(e.target.value)
+        setNewCharacter(copy)
+    }
 
     return (
         <>
@@ -50,25 +53,23 @@ export const CharacterForm = ({ updateUserCharacters, getUserCharacters, roles, 
                 <fieldset className="add__form">
                     <label className="addcharacter__name" htmlFor="charactername">Character Name:</label>
                     <input
+                        name='character'
                         required autoFocus
                         type="text"
                         className="form-control"
                         placeholder="probably something dumb"
-                        value={newCharacter.character} /**onChange{update character state}**/ onChange={
+                        value={newCharacter.character} onChange={
                             (event) => {
                                 const copy = { ...newCharacter }
                                 copy.character = event.target.value
-                                updateNewCharacter(copy)
+                                setNewCharacter(copy)
                             }
                         } />
-
-
                     <label htmlFor="role">Choose a Role:</label>
-                    <select onChange={
+                    <select name='roleId' onChange={
                         (event) => {
-                            const copy = { ...newCharacter }
-                            copy.roleId = event.target.value
-                            updateNewCharacter(copy)
+                            handleChange(event)
+                           
                         }
                     } className="role__select">
                         <option value={0}>select a role</option>
@@ -76,22 +77,20 @@ export const CharacterForm = ({ updateUserCharacters, getUserCharacters, roles, 
                     </select>
 
                     <label hmtlfor="weapon__select">Primary Weapon:</label>
-                    <select onChange={
+                    <select name='primaryId' onChange={
                         (event) => {
-                            const copy = { ...newCharacter }
-                            copy.primaryId = event.target.value
-                            updateNewCharacter(copy)
-                        } 
+                            handleChange(event)
+                          
+                        }
                     } className="character__select">
                         <option value={0}>select a weapon</option>
                         {weapons.map((weapon) => <WeaponSelect key={`weaponprime--${weapon.id}`} weapon={weapon} />)}
                     </select>
                     <label htmlFor="second__weapon">Secondary weapon:</label>
-                    <select onChange={
+                    <select name='secondaryId' onChange={
                         (event) => {
-                            const copy = { ...newCharacter }
-                            copy.secondaryId = event.target.value
-                            updateNewCharacter(copy)
+                            handleChange(event)
+                           
                         }
                     } className="character__second">
                         <option value={0}>select a weapon</option>
@@ -100,11 +99,10 @@ export const CharacterForm = ({ updateUserCharacters, getUserCharacters, roles, 
                     </select>
                     <label htmlFor="servers">
                         Server:</label>
-                    <select onChange={
+                    <select name='serverId' onChange={
                         (event) => {
-                            const copy = { ...newCharacter }
-                            copy.serverId = event.target.value
-                            updateNewCharacter(copy)
+                            handleChange(event)
+                       
                         }
                     } htmlFor="server">
                         <option value={0}>select a server</option>
@@ -112,11 +110,10 @@ export const CharacterForm = ({ updateUserCharacters, getUserCharacters, roles, 
                     </select>
                     <label htmlFor="factions">Faction:</label>
 
-                    <select onChange={
+                    <select name='factionId' onChange={
                         (event) => {
-                            const copy = { ...newCharacter }
-                            copy.factionId = event.target.value
-                            updateNewCharacter(copy)
+                            handleChange(event)
+
                         }
                     } className="character__select">
                         <option value={0}>select a faction</option>
