@@ -66,7 +66,7 @@ export const Character = () => {
         <div><SearchCharacters setSearch={setSearch} searchWords={searchWords} /></div>
         <section className="edit_characters">
 
-            <ManageCharacters feedback={feedback} sortedCharacters={sortedCharacters} updateUserCharacters={updateUserCharacters} setFeedback={setFeedback}
+            <ManageCharacters RosterUserObject={RosterUserObject} feedback={feedback} sortedCharacters={sortedCharacters} updateUserCharacters={updateUserCharacters} setFeedback={setFeedback}
                 weapons={weapons} servers={servers} roles={roles} factions={factions} /></section>
     </>
 }

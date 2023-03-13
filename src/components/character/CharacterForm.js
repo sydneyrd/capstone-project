@@ -4,7 +4,9 @@ import { RoleSelect } from "./Role"
 import { ServerSelect } from "./ServerSelect"
 import { WeaponSelect } from "./WeaponSelect"
 import { saveNewCharacter } from "../managers/CharacterManager"
+
 import "./characters.css"
+// import { useChange } from "../../hooks/useChange"
 
 
 export const CharacterForm = ({ updateUserCharacters, RosterUserObject, getUserCharacters, roles, weapons, servers, factions, feedback, setFeedback }) => {
@@ -39,7 +41,10 @@ export const CharacterForm = ({ updateUserCharacters, RosterUserObject, getUserC
     const handleChange = (e) => {
         e.preventDefault()
         const copy = { ...newCharacter }
-        copy[e.target.name] = parseInt(e.target.value)
+        if (/^\d+$/.test(e.target.value)){
+            copy[e.target.name] = parseInt(e.target.value)
+        }
+        else {copy[e.target.name] = e.target.value}
         setNewCharacter(copy)
     }
 
@@ -59,10 +64,7 @@ export const CharacterForm = ({ updateUserCharacters, RosterUserObject, getUserC
                         className="form-control"
                         placeholder="probably something dumb"
                         value={newCharacter.character} onChange={
-                            (event) => {
-                                const copy = { ...newCharacter }
-                                copy.character = event.target.value
-                                setNewCharacter(copy)
+                            (event) => {handleChange(event)
                             }
                         } />
                     <label htmlFor="role">Choose a Role:</label>

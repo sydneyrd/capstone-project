@@ -1,10 +1,10 @@
-.navbar {
+/* .navbar {
     display: flex;
     
     justify-content: space-evenly;
     align-items: left;
     /* position:sticky; */
-}
+
 
 .navbar__item {
     flex-basis: 20%;
@@ -14,4 +14,14 @@
 .navbar__logout {
     margin-left: auto;
 }
+.navbar {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: left;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+  }
 

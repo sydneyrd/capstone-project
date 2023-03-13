@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 export const CalculatorForm = ({ characters, selectedRoster, rosterChoice, calculatedRoster, setCalculatedRoster, setCurrentCalcRostName, createNewRoster }) => {
   const [rosterChoices, setRosterChoices] = useState([])
   const [allChoices, setAllChoices] = useState([])
-  let rightCharacter = characters.find(({ id }) => id === rosterChoice?.character?.character?.id)
+  // let rightCharacter = characters.find(({ id }) => id === rosterChoice?.character?.character?.id)
   const [playerStats, setPlayerStats] = useState({
     character: 0,
     damage: 0,

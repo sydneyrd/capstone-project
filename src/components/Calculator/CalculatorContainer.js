@@ -21,18 +21,17 @@ export const CalculatorContainer = () => {
     const localRosterUser = localStorage.getItem("roster_user")
     const rosterUserObject = JSON.parse(localRosterUser)
     const localUser = { ...rosterUserObject }
+
     useEffect(
         () => {
-            getUserRosters(localUser)
-                .then((URost) => {
-                    setUserRosters(URost)
-                }).then(
-                    getAllCharacters(setCharacters)
-                )
-                
+          getUserRosters(localUser)
+            .then((URost) => {
+              setUserRosters(URost)
+            }).then(() => {getAllCharacters(setCharacters)})
         },
-        [localUser]
-    )
+        []
+      )
+
 const handleClear = (click) => {
         click.preventDefault()
         setSelectedRoster(0)

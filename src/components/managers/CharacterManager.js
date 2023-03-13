@@ -5,10 +5,8 @@ export const getAllCharacters = (setCharacters) => {
             "Authorization": `Token ${localStorage.getItem("roster_token")}`
         }
     })
-        .then(res => res.json())
-        .then((charactersArr) => {
-            setCharacters(charactersArr)
-        })
+        
+        .then(res => res.json()).then((res) => {setCharacters(res)})
 }
 
 export const getSingleCharacter = (characterId, setCharacter) => {
@@ -18,9 +16,7 @@ export const getSingleCharacter = (characterId, setCharacter) => {
         }
     })
         .then(res => res.json())
-        .then((character) => {
-            setCharacter(character)
-        })
+        
     //no set function included in this don't forget .then
 }
 

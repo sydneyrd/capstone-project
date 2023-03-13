@@ -15,9 +15,6 @@ input[type="email"] {
         padding: 1em;
         border-radius: 3px;
 }
-fieldset {
-    margin: 2px;
-}
 
 .label--login {
     width: 8rem;
@@ -34,21 +31,44 @@ fieldset {
     text-align: center;
 }
 
+
+.form--update {
+
+    flex-direction: column;
+    /*yes don't touch*/
+    justify-items: space-between;
+    width: 320px;
+    padding: 10px;
+    border: 1px solid #c9c9c9;
+    border-radius: 7px;
+    font-family: 'Libre Franklin', sans-serif;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+    grid-template-columns: 32% 32% 32%;
+    margin: 25px 25px 25px 25px;
+}
 .form--update {
     display: flex;
     flex-direction: column;
-    align-content: center;
-    background-position-x: left;
-    z-index: 1;
-    min-height: 20rem;
-    min-width: 20rem;
-    background-color: transparent;
-    background-blend-mode: overlay;
-    background-repeat: no-repeat;
-    margin:4em;
-    align-items: center;
-    justify-items: center;
-}
+    justify-content: space-between;
+    width: 320px;
+    padding: 10px;
+    border: 1px solid #c9c9c9;
+    border-radius: 7px;
+    font-family: 'Libre Franklin', sans-serif;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+    grid-template-columns: 32% 32% 32%;
+    margin: 25px;
+  
+    /* New styles */
+    flex-wrap: wrap;
+  }
+  
+  .form--update > * {
+    max-width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+  }
+  
 
 .button--close {
     position: relative;
@@ -74,6 +94,10 @@ fieldset {
     line-height: 16px;
     font-size: 11px;
     
+}
+.form--update fieldset{
+    max-width: 100%;
+    margin: 0;
 }
 .saved--rosters {
     display: flex;
