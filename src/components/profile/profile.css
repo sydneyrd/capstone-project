@@ -36,13 +36,16 @@ input[type="email"] {
     justify-content: space-between;
     width: 100%;
     padding: 10px;
-    border: 1px solid #c9c9c9;
-    border-radius: 7px;
+    /* border: 1px solid #c9c9c9;
+    border-radius: 7px; */
     font-family: 'Libre Franklin', sans-serif;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
     margin: 25px 0;
+    height: 60%;
   }
-  
+  input.form--update{
+    max-width: 100%;
+  }
   .form--update > * {
     max-width: 100%;
     box-sizing: border-box;
@@ -58,29 +61,6 @@ input[type="email"] {
       margin-bottom: 0;
     }
   }
-
-/* .form--update {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 320px;
-    padding: 10px;
-    border: 1px solid #c9c9c9;
-    border-radius: 7px;
-    font-family: 'Libre Franklin', sans-serif;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
-    grid-template-columns: 32% 32% 32%;
-    margin: 25px;
-    /* New styles */
-    /* flex-wrap: wrap;
-  } */
-  
-  /* .form--update > * {
-    max-width: 100%;
-    box-sizing: border-box;
-    margin-bottom: 10px;
-  }
-   */ 
 
 .button--close {
     position: relative;

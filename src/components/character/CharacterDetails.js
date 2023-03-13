@@ -61,13 +61,6 @@ useEffect(()=> {
 setNotes(character.notes)
 }, [character])
 
-//could increase the depth from the server to get all this info attached to character instead of a bunch of .finds
-    let rightServer = servers.find(({ id }) => id === character?.server)
-    let rightPrimary = weapons.find(({ id }) => id === character?.primary_weapon)
-    let rightSecondary = weapons.find(({ id }) => id === character?.secondary_weapon)
-    let rightFaction = factions.find(({ id }) => id === character?.faction)
-    let rightRole = roles.find(({ id }) => id === character?.role)
-
     const handleUpdateClick = (UC, click) => {//userId
         click.preventDefault()
         const letcToAPI = {
@@ -134,67 +127,71 @@ function handleDeleteLink(id, click){
      // i need to be able to assign these to specific calculated rosters
         setLink(linkCopy)
     }
-    const handleValueChange = (e) => {
-        e.preventDefault()
-        const copy = {...character}
-        copy[e.target.name] = parseInt(e.target.value)
+    const handleFormChange = (event) => {
+        event.preventDefault()
+        const copy = { ...character }
+        if (/^\d+$/.test(event.target.value)){
+            copy[event.target.name] = parseInt(event.target.value)
+        }
+        else {copy[event.target.name] = event.target.value}
         setCharacter(copy)
-      }
+    }
 
-    return (<>
-        <form className="character_form">
+    return (<main className="main--characterdetails">
+        <div className="left--container">
+            <h4 className="editcharacter__name">{character?.character_name}</h4>
+        <form className="edit--character-form">
+            
             <fieldset className="edit__form">
-                <h4 className="editcharacter__name">{character?.character_name}</h4>
+                
                 <input
                     type="text"
                     className="form-control"
                     placeholder="change name"
                     value={character?.character_name} onChange={
                         (event) => {
-                            const copy = { ...character }
-                            copy.character_name = event.target.value
-                            setCharacter(copy)
+                            handleFormChange(event)
                         }
                     } />
-                <label htmlFor="role__name">{rightRole?.name}</label>
+                <label htmlFor="role__name">Role</label>
                 <select name='role' value={character.role} onChange={ 
                     (event) => {
-                        handleValueChange(event)
+                        handleFormChange(event)
                     }
                 } className="role__select">
                     {roles.map((role) => <RoleSelect key={`role--${role?.id}`} role={role} />)}
                 </select>
 
-                <label htmlFor="primary__name">{rightPrimary?.name}</label>
+                <label htmlFor="primary__name">Primary Weapon</label>
                 <select name="primary_weapon" value={character.primary_weapon} onChange={
                     (event) => {
-                        handleValueChange(event)
+                        handleFormChange(event)
                     }
                 } className="character__select">
                     {weapons.map((weapon) => <WeaponSelect key={`weapon--${weapon?.id}`} weapon={weapon} />)}
                 </select>
-                <label htmlFor="second__weapon">{rightSecondary?.name}</label>
+                <label htmlFor="second__weapon">Secondary Weapon</label>
                 <select name='secondary_weapon' value={character.secondary_weapon} onChange={
                     (event) => {
-                        handleValueChange(event)
+                        handleFormChange(event)
                     }
                 } className="character__second">
                     {weapons.map((weapon) => <WeaponSelect key={`{weaponsecond--${weapon?.id}`} weapon={weapon} />)}
                 </select>
                 <label htmlFor="servers">
-                    {rightServer?.name}</label>
+                    Server</label>
                 <select name='server' value={character.server}onChange={
                     (event) => {
-                        handleValueChange(event)
+                        handleFormChange(event)
                     }
                 } htmlFor="server">
                     {servers.map((server) => <ServerSelect key={`server--${server?.id}`} server={server} />)}
                 </select>
-                <label htmlFor="factions">{rightFaction?.name}</label>
+                <label htmlFor="factions">Faction</label>
 
                 <select name='faction' value={character.faction} onChange={
                     (event) => {
-                       handleValueChange(event)
+                       handleFormChange(event)
                     }
                 } className="character__select">
                     {factions.map((faction) => <FactionSelect key={`faction--${faction?.id}`} faction={faction} />)}
@@ -206,27 +203,30 @@ function handleDeleteLink(id, click){
             </fieldset>
 
         </form>
-        <form>
-            <input type="url" name="link" value={link.link} onChange={handleChange} placeholder="vod links?" />
+        </div>
+        <div className="right--container">
+        <form className="input--edit--details">
+            <div className="link--input"><input type="url" className="form-control" name="link" value={link.link} onChange={handleChange} placeholder="vod links?" />
 
-            <button className="link__button" onClick={click => handleNewLink(click)}>New Link</button>
-            <textarea rows="4" cols="50" value={notes} onChange={
+            <button className="link__button" onClick={click => handleNewLink(click)}>New Link</button></div>
+            <div className="note--input"><textarea className="character--notes" rows="4" cols="50" value={notes} onChange={
                         (event) => {setNotes(event.target.value)}}/>
-            <button className='save__note__button' onClick={click => {handleUpdateClick(character, click)}}>Save Notes</button></form>
+            <button className='save__note__button' onClick={click => {handleUpdateClick(character, click)}}>Save Notes</button></div>
+            </form>
 
-        <div name='characterLinks'>
-            {characterLinks ? characterLinks.map(link => <div key={`link--${link.id}`}><a href={`${link.link}`} target="_blank"
+        <ul name='characterLinks'>
+            {characterLinks ? characterLinks.map(link => <li key={`link--${link.id}`}><a href={`${link.link}`} target="_blank"
         rel="noreferrer" key={`link--${link.id}`}>{link.link}</a>
-            <button className="delete__link__button" onClick={click => handleDeleteLink(link.id, click)}>Delete VOD Link</button></div>
+            <button className="delete__link__button" onClick={click => handleDeleteLink(link.id, click)}>Delete VOD Link</button></li>
             ) : <></>}
-        </div> 
+        </ul> 
         <div> <input type="file" id="image" onChange={createCharacterImageString} />
  <input type="hidden" name="character_id" value={character.id} />
  <button className="save__button" onClick={click => handleUpdateClick(character, click)}>save image</button>
 </div>
 {character.image ? <img src={`http://localhost:8000${character?.image}`}alt={`${character.character_name} picture`}></img> : <></>}
-
-        </>
+</div>
+        </main>
     )
 }
 

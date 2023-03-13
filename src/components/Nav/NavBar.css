@@ -7,8 +7,12 @@
 
 
 .navbar__item {
+    display: flex;
     flex-basis: 20%;
     list-style-type: none;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .navbar__logout {
@@ -23,5 +27,8 @@
     left: 0;
     width: 100%;
     z-index: 1;
+    height: 3em;
+    margin: 0;
+    padding: 0;
   }
 

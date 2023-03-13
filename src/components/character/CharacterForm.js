@@ -9,7 +9,7 @@ import "./characters.css"
 // import { useChange } from "../../hooks/useChange"
 
 
-export const CharacterForm = ({ updateUserCharacters, RosterUserObject, getUserCharacters, roles, weapons, servers, factions, feedback, setFeedback }) => {
+export const CharacterForm = ({ setModalIsOpen, updateUserCharacters, RosterUserObject, getUserCharacters, roles, weapons, servers, factions, feedback, setFeedback }) => {
     const [newCharacter, setNewCharacter] = useState({
         userId: 0,
         character: "",
@@ -19,7 +19,9 @@ export const CharacterForm = ({ updateUserCharacters, RosterUserObject, getUserC
         serverId: 0,
         factionId: 0
     })
-
+    const closeModal = () => {
+        setModalIsOpen(false);
+      }
     const handleSaveButtonClick = (event) => {
         event.preventDefault()
         let newCharacterToAPI = {
@@ -53,6 +55,7 @@ export const CharacterForm = ({ updateUserCharacters, RosterUserObject, getUserC
             <div className={`${feedback.includes("Error") ? "error" : "feedback"} ${feedback === "" ? "invisible" : "visible"}`}>
                 {feedback}
             </div>
+            <button className="close-button" onClick={closeModal}>X</button>
             <form className="addcharacter_form">
                 <h2 className="characterForm__title">Add Character</h2>
                 <fieldset className="add__form">

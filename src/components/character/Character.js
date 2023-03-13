@@ -5,19 +5,22 @@ import { getAllFactions, getAllRoles, getAllWeapons, getAllServers } from "../ma
 import { getCharactersBySearch } from "../managers/CharacterManager"
 import {getUserCharacters} from "../managers/UserManager"
 import { useState, useEffect } from "react"
+import Modal from 'react-modal';
+
 
 export const Character = () => {
     const localRosterUser = localStorage.getItem("roster_user")
     
-    const [RosterUserObject, setRosterUserObject] = useState(JSON.parse(localRosterUser))
-    const [factions, setFactions] = useState([])
-    const [weapons, setWeapons] = useState([])
-    const [servers, setServers] = useState([])
-    const [roles, setRoles] = useState([])
-    const [feedback, setFeedback] = useState("")
-    const [userCharacters, updateUserCharacters] = useState([])
-    const [searchWords, setSearch] = useState("")
-    const [sortedCharacters, setSortedCharacters] = useState([])
+    const [RosterUserObject, setRosterUserObject] = useState(JSON.parse(localRosterUser));
+    const [factions, setFactions] = useState([]);
+    const [weapons, setWeapons] = useState([]);
+    const [servers, setServers] = useState([]);
+    const [roles, setRoles] = useState([]);
+    const [feedback, setFeedback] = useState("");
+    const [userCharacters, updateUserCharacters] = useState([]);
+    const [searchWords, setSearch] = useState("");
+    const [sortedCharacters, setSortedCharacters] = useState([]);
+    const [modalIsOpen, setModalIsOpen] = useState(false);
 
     useEffect(
         () => {
@@ -60,13 +63,20 @@ export const Character = () => {
             setTimeout(() => setFeedback(""), 3000);
         }
     }, [feedback])
-    return <main>
-        <CharacterForm factions={factions} setFactions={setFactions} RosterUserObject={RosterUserObject} getUserCharacters={getUserCharacters} updateUserCharacters={updateUserCharacters} weapons={weapons} setWeapons={setWeapons} servers={servers} roles={roles} feedback={feedback} setFeedback={setFeedback} />
+    return <div className="main--character">
+    
+        
         <h2 className="characterForm__title">Manage Characters</h2>
-        <div><SearchCharacters setSearch={setSearch} searchWords={searchWords} /></div>
+        <div className='header--bar'><SearchCharacters setSearch={setSearch} searchWords={searchWords} />   <button  className="modal--button" onClick={() => setModalIsOpen(true)}>New Character</button>
+        <Modal isOpen={modalIsOpen}
+      onRequestClose={() => setModalIsOpen(false)}>
+        
+<CharacterForm setModalIsOpen={setModalIsOpen} factions={factions} setFactions={setFactions} RosterUserObject={RosterUserObject} getUserCharacters={getUserCharacters} updateUserCharacters={updateUserCharacters} weapons={weapons} setWeapons={setWeapons} servers={servers} roles={roles} feedback={feedback} setFeedback={setFeedback} />
+
+      </Modal></div>
         <section className="edit_characters">
 
             <ManageCharacters RosterUserObject={RosterUserObject} feedback={feedback} sortedCharacters={sortedCharacters} updateUserCharacters={updateUserCharacters} setFeedback={setFeedback}
                 weapons={weapons} servers={servers} roles={roles} factions={factions} /></section>
-    </main>
+    </div>
 }
