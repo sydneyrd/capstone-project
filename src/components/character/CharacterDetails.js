@@ -224,8 +224,8 @@ function handleDeleteLink(id, click){
  <input type="hidden" name="character_id" value={character.id} />
  <button className="save__button" onClick={click => handleUpdateClick(character, click)}>save image</button>
 </div>
+{character.image ? <img src={`http://localhost:8000${character?.image}`}alt={`${character.character_name} picture`}></img> : <></>}
 
-<img src={`http://localhost:8000${character?.image}`}alt={`${character.character_name} picture`}></img>
         </>
     )
 }

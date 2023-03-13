@@ -60,7 +60,7 @@ export const Character = () => {
             setTimeout(() => setFeedback(""), 3000);
         }
     }, [feedback])
-    return <>
+    return <main>
         <CharacterForm factions={factions} setFactions={setFactions} RosterUserObject={RosterUserObject} getUserCharacters={getUserCharacters} updateUserCharacters={updateUserCharacters} weapons={weapons} setWeapons={setWeapons} servers={servers} roles={roles} feedback={feedback} setFeedback={setFeedback} />
         <h2 className="characterForm__title">Manage Characters</h2>
         <div><SearchCharacters setSearch={setSearch} searchWords={searchWords} /></div>
@@ -68,5 +68,5 @@ export const Character = () => {
 
             <ManageCharacters RosterUserObject={RosterUserObject} feedback={feedback} sortedCharacters={sortedCharacters} updateUserCharacters={updateUserCharacters} setFeedback={setFeedback}
                 weapons={weapons} servers={servers} roles={roles} factions={factions} /></section>
-    </>
+    </main>
 }

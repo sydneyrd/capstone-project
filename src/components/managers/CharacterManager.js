@@ -15,7 +15,7 @@ export const getSingleCharacter = (characterId, setCharacter) => {
             "Authorization": `Token ${localStorage.getItem("roster_token")}`
         }
     })
-        .then(res => res.json())
+        .then(res => res.json()).then((res) => {setCharacter(res)})
         
     //no set function included in this don't forget .then
 }

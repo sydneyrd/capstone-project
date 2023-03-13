@@ -30,23 +30,36 @@ input[type="email"] {
 .container--login {
     text-align: center;
 }
-
-
 .form--update {
-
+    display: flex;
     flex-direction: column;
-    /*yes don't touch*/
-    justify-items: space-between;
-    width: 320px;
+    justify-content: space-between;
+    width: 100%;
     padding: 10px;
     border: 1px solid #c9c9c9;
     border-radius: 7px;
     font-family: 'Libre Franklin', sans-serif;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
-    grid-template-columns: 32% 32% 32%;
-    margin: 25px 25px 25px 25px;
-}
-.form--update {
+    margin: 25px 0;
+  }
+  
+  .form--update > * {
+    max-width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+  }
+  
+  @media (max-width: 480px) {
+    .form--update {
+      flex-wrap: wrap;
+    }
+  
+    .form--update > *:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+/* .form--update {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -58,17 +71,16 @@ input[type="email"] {
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
     grid-template-columns: 32% 32% 32%;
     margin: 25px;
-  
     /* New styles */
-    flex-wrap: wrap;
-  }
+    /* flex-wrap: wrap;
+  } */
   
-  .form--update > * {
+  /* .form--update > * {
     max-width: 100%;
     box-sizing: border-box;
     margin-bottom: 10px;
   }
-  
+   */ 
 
 .button--close {
     position: relative;

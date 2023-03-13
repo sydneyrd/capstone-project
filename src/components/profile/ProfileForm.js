@@ -54,7 +54,7 @@ export const UpdateUser = () => {
                 </fieldset>
                     <button className="email__button" type="submit" onClick={handleSaveButtonClick}> Update </button>
             </form>
-            <div>  <h4>Saved Rosters</h4>
+            <div>  <h4>Rosters</h4>
                 <SavedRosters localUser={localUser} /></div>
             <div> <h4>War Results</h4>
                 <WarStats userWarStats={userWarStats} setUserWarStats={setUserWarStats} localUser={localUser} /></div>

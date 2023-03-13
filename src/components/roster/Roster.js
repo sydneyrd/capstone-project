@@ -164,7 +164,7 @@ export const Roster = () => {
         <div className="save__div">
         <SearchFilter setSearchTerms={setSearchTerms} />
         
-            <input type="text" className="roster_name" name="name" placeholder="name this roster ?" value={rosterName.name} onChange={(event) => handleRosterName(event)} />
+            <input type="text" className="roster_name" name="name" placeholder="name this roster ?" defaultValue={rosterName.name} onChange={(event) => handleRosterName(event)} />
             <button className="save__button" onClick={(click) => { handleSave(click, newRosterPicks) }}>Save Roster</button>
             <button onClick={(e) => handleNewRoster(e)
             } className="new__button">New Roster</button>
