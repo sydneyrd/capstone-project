@@ -38,6 +38,7 @@ export const UpdateUser = () => {
             .then(() => {})}
     return <>
         <main className="profile--page" style={{ textAlign: "center" }}>
+            <div className="left--container">
             <form className="form--update" >
                 <h1 className="h3 mb-3 font-weight-normal">Update Profile</h1>
                 <fieldset className="form--update">
@@ -54,10 +55,9 @@ export const UpdateUser = () => {
                         <button className="email__button" type="submit" onClick={handleSaveButtonClick}> Update </button>
                 </fieldset>
                     
-            </form>
-            <div>  <h4>Rosters</h4>
-                <SavedRosters localUser={localUser} /></div>
-            <div> <h4>War Results</h4>
-                <WarStats userWarStats={userWarStats} setUserWarStats={setUserWarStats} localUser={localUser} /></div>
+            </form></div>
+            <div className="right--container--profile"> <div className="saved--roster"><h4>Rosters</h4>
+                <SavedRosters localUser={localUser} /> </div> <div className="war--results"> <h4>War Results</h4>
+                <WarStats userWarStats={userWarStats} setUserWarStats={setUserWarStats} localUser={localUser} /></div></div>
         </main> </>
 }
