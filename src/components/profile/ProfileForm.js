@@ -51,8 +51,9 @@ export const UpdateUser = () => {
                         type="text" name="username" className="form-control--update"
                         value={user.username || ""}
                         placeholder="" required />
+                        <button className="email__button" type="submit" onClick={handleSaveButtonClick}> Update </button>
                 </fieldset>
-                    <button className="email__button" type="submit" onClick={handleSaveButtonClick}> Update </button>
+                    
             </form>
             <div>  <h4>Rosters</h4>
                 <SavedRosters localUser={localUser} /></div>

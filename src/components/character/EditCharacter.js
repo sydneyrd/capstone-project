@@ -1,4 +1,3 @@
-//put data on api
 import { FactionSelect } from "./FactionSelect"
 import { RoleSelect } from "./Role"
 import { ServerSelect } from "./ServerSelect"
@@ -20,7 +19,7 @@ export const EditCharacter = ({  updateUserCharacters, ownedCharacter, roles, Ro
         server: ownedCharacter.server,
         faction: ownedCharacter.faction
     })
-    const handleUpdateClick = (UC, click) => {//userId
+    const handleUpdateClick = (UC, click) => {
         click.preventDefault()
         const letcToAPI = {
             character_name: UC.character_name,
@@ -119,7 +118,7 @@ updateUserCharacters(charArr))
                     <button className="update__button" onClick={click => handleUpdateClick(updatedCharacter, click)}>Update</button>
                     <button className="delete__button" onClick={click => handleDeleteClick(updatedCharacter.id, click)}>Delete</button>
                 <Link to={`/character/${ownedCharacter.id}`}>
-                            <div name="details" value={ownedCharacter.id}>See Details</div>
+                            <div  className="details" name="details" value={ownedCharacter.id}>See Details</div>
                         </Link> </fieldset>
                
             </form>

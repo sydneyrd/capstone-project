@@ -66,8 +66,8 @@ export const Character = () => {
     return <div className="main--character">
     
         
-        <h2 className="characterForm__title">Manage Characters</h2>
-        <div className='header--bar'><SearchCharacters setSearch={setSearch} searchWords={searchWords} />   <button  className="modal--button" onClick={() => setModalIsOpen(true)}>New Character</button>
+        
+        <div className='header--bar'><h2 className="characterForm__title">Manage Characters</h2><SearchCharacters setSearch={setSearch} searchWords={searchWords} />   <button  className="modal--button" onClick={() => setModalIsOpen(true)}>New Character</button>
         <Modal isOpen={modalIsOpen}
       onRequestClose={() => setModalIsOpen(false)}>
         

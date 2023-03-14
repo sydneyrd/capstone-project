@@ -4,9 +4,17 @@
 
 
 .profile--page{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+  margin-top: 3em;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 
@@ -33,7 +41,7 @@ input[type="email"] {
 .form--update {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    
     width: 100%;
     padding: 10px;
     /* border: 1px solid #c9c9c9;
@@ -44,15 +52,15 @@ input[type="email"] {
     height: 60%;
   }
   input.form--update{
-    max-width: 100%;
+    max-width: 5em;
   }
   .form--update > * {
-    max-width: 100%;
+    max-width: 25em;
     box-sizing: border-box;
     margin-bottom: 10px;
   }
   
-  @media (max-width: 480px) {
+  @media (max-width: 25em) {
     .form--update {
       flex-wrap: wrap;
     }

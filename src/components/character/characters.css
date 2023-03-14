@@ -10,8 +10,15 @@
 .main--character  {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    margin-top: 3em;
+    height: 100%;
+    width: 100%;
+    margin-top: 9em;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .main--characterdetails{
@@ -28,8 +35,8 @@ h4 {
 }
 
 h2 {
-    margin: 10px 10px 10px 10px;
     font-size: 1.5em;
+    margin-top: 3em;
  align-self: center;
 }
 
@@ -168,7 +175,7 @@ button.save__button {
     outline: 0;
     text-align: center;
     cursor: pointer;
-    height: 34px;
+    height: 3em;
     padding: 0 13px;
     color: #fff;
     vertical-align: top;
@@ -190,7 +197,7 @@ button.delete__button {
     outline: 0;
     text-align: center;
     cursor: pointer;
-    height: 34px;
+    height: 3em;
     padding: 0 13px;
     color: #fff;
     vertical-align: top;
@@ -207,9 +214,28 @@ button.delete__button {
 }
 
 .details {
-    position: center, right;
-
+    
+    display: inline-block;
+    font-size: 1em;
+    margin: 10px 5px 5px 5px;
+    outline: 0;
+    text-align: center;
+    cursor: pointer;
+    height: 1em;
+    justify-content: center;
+    justify-self: center;
+    align-self: center;
+    align-content: center;
+    color: #fff;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    transition: all .3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+
 
 .update__button {
     font-family: 'Libre Franklin', sans-serif;
@@ -323,7 +349,7 @@ input.form-control{
     width:auto;
     display: block;
     align-content: center;
-    width: 94%;
+    max-width: 100%;
     height: calc(1.5em + .75rem + 2px);
     padding: .75rem .75rem;
     font-size: 1rem;
@@ -409,27 +435,28 @@ input.form-control{
   }
   .header--bar{
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: left;
+    align-content: baseline;
+    margin-top: 3em;
     padding: 0 20px;
   }
   .modal--button {
     font-family: 'Libre Franklin', sans-serif;
-    display: inline-block;
+    margin: 25px 25px 25px 25px;
     outline: 0;
     text-align: center;
+    padding: 1em;
     cursor: pointer;
-    height: 34px;
-    padding: 0 13px;
+    height: 5em;
+    max-width: 15em;
+    
     color: #fff;
-    vertical-align: top;
     border-radius: 3px;
     border: 1px solid transparent;
     transition: all .3s ease;
-    background: #570B08;
-    border-color: #570B08;
+    background: green;
+    border-color: green;
     font-weight: 600;
     text-transform: uppercase;
-    line-height: 16px;
-    font-size: 11px;
+    font-size: .6em;
 }
