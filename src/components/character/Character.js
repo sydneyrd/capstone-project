@@ -45,7 +45,7 @@ export const Character = () => {
     useEffect(
         () => {
             !searchWords ? setSortedCharacters(userCharacters) :
-            getCharactersBySearch(searchWords).then(res => (setSortedCharacters(res))) //searching ALL characters, not just user characters rip
+            getCharactersBySearch(searchWords, RosterUserObject.id).then(res => (setSortedCharacters(res))) //searching ALL characters, not just user characters rip
         },
         [searchWords]
 
