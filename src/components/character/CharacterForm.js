@@ -71,7 +71,7 @@ export const CharacterForm = ({ setModalIsOpen, updateUserCharacters, RosterUser
             <form className="addcharacter_form">
                 <h2 className="characterForm__title">Add Character</h2>
                 <fieldset className="add__form">
-                    <label className="addcharacter__name" htmlFor="charactername">Character Name:</label>
+                    <label htmlFor="charactername">Character Name:</label>
                     <input
                         name='character'
                         required autoFocus
@@ -136,6 +136,7 @@ export const CharacterForm = ({ setModalIsOpen, updateUserCharacters, RosterUser
                         <option value={0}>select a faction</option>
                         {factions.map((faction) => <FactionSelect key={`faction--${faction.id}`} faction={faction} />)}
                     </select>
+                    <label htmlFor="image">Character Image:</label>
                     <input type="file" id="image" onChange={createCharacterImageString} />
                 <input type="hidden" name="character_id" value={""} />
                     <button className="save__button" onClick={click => handleSaveButtonClick(click)}>Save</button>
