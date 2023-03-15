@@ -24,7 +24,19 @@
      display: flex;
      flex-direction: row;
  }
-.search--container--roseter{
+ .search--bar--wrapper {
+   display:flex;
+   position: sticky;
+   z-index: 1; /* set a higher z-index to keep the search bar on top of the character elements */
+    width: 15em;
+    justify-content:flex-start;
+    box-shadow: 0 4px 4px -4px rgba(0, 0, 0, 0.2); /* add a box-shadow to the bottom */
+    top:0;
+right:0;
+left:0;
+ }
+
+.search--container--roster{
    display:flex;
    
 }
@@ -156,25 +168,22 @@
     flex-wrap: nowrap;
     width: 15em;
     justify-content:space-between;
+    align-items:flex-start;
+    
  }
 
- section.character__list {
+ section.character__list--roster {
     height: 39em;
     width: 15em;
     scrollbar-width:0;
     overflow: hidden;
 overflow-y:scroll;
-        padding: 0.5em;
+        /* padding: 0.5em; */
         border: 1px rgb(107, 21, 4);
         -webkit-box-shadow: 2px 4px 23px 4px #000000; 
     box-shadow: 2px 4px 23px 4px #000000;
     border: 5px hidden transparent;
     border-radius: 6px 6px 6px 6px;
-        
-        
-/* i changed the overflow-y to hidden in case that makes this not scroll anymore later */
-
-
 
 }
 

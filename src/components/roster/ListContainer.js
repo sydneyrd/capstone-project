@@ -8,8 +8,9 @@ export const ListContainer = ({ editRosterCharacters, setSearchTerms, showText, 
   
     return <> <>
     
-         <section className="character__list">
-            <SearchFilter setSearchTerms={setSearchTerms} />
+         <section className="character__list--roster">
+            <div className="search--bar--wrapper">
+            <SearchFilter setSearchTerms={setSearchTerms} /></div>
             {characters.map((character) =>
                 <CharacterList editRosterCharacters={editRosterCharacters} key={`characters--${character.id}`} servers={servers} weapons={weapons} factions={factions}
                     roles={roles} showText={showText} character={character}
