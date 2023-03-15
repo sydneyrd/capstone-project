@@ -156,24 +156,29 @@ export const Roster = () => {
     
     }, [roleSearch, primarySearch, serverSearch, secondarySearch, factionSearch, searchTerms])
     
-    return <>
+    return <main className="main--container--roster">
+        <div className="search--container--roster">
         <FilterContainer setFactionSearch={setFactionSearch} filterButton={filterButton} setFilterButton={setFilterButton} searchTerms={searchTerms} setSearchTerms={setSearchTerms}
             setRoleSearch={setRoleSearch} setPrimarySearch={setPrimarySearch} setServerSearch={setServerSearch} setSecondarySearch={setSecondarySearch}
             roleSearch={roleSearch} serverSearch={serverSearch} factionSearch={factionSearch} primarySearch={primarySearch} secondarySearch={secondarySearch}
             setSortedArr={setSortedArr} characters={characters} servers={servers} weapons={weapons} factions={factions} roles={roles} />
+</div>
+
         <div className="save__div">
-        <SearchFilter setSearchTerms={setSearchTerms} />
-        
             <input type="text" className="roster_name" name="name" placeholder="name this roster ?" defaultValue={rosterName.name} onChange={(event) => handleRosterName(event)} />
             <button className="save__button" onClick={(click) => { handleSave(click, newRosterPicks) }}>Save Roster</button>
             <button onClick={(e) => handleNewRoster(e)
             } className="new__button">New Roster</button>
-        </div>  <section className="body">
-            <ListContainer editRosterCharacters={editRosterCharacters} showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} setNewRosterPick={setNewRosterPick} newRosterPicks={newRosterPicks} characters={sortedArr} servers={servers} weapons={weapons} factions={factions} roles={roles} />
+        </div> 
+         <section className="body">
+            {/* <div className="search--players--container">
+            <SearchFilter setSearchTerms={setSearchTerms} /> */}
+            <ListContainer setSearchTerms={setSearchTerms}editRosterCharacters={editRosterCharacters} showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} setNewRosterPick={setNewRosterPick} newRosterPicks={newRosterPicks} characters={sortedArr} servers={servers} weapons={weapons} factions={factions} roles={roles} />
+            {/* </div> */}
 
             <div className="parent" >
                 <RosterGrid showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave}
                     setEditCharacters={setEditCharacters} editRosterCharacters={editRosterCharacters} rosterIDNUMBER={rosterIDNUMBER} characters={characters} newRosterPicks={newRosterPicks} setNewRosterPick={setNewRosterPick} /></div>
 
-        </section>  </>
+        </section>  </main>
 }

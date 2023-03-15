@@ -1,12 +1,16 @@
 import { CharacterList } from "./CharacterList"
 import { DetailButton } from "./Details"
 import { useState, useEffect } from "react"
+import { SearchFilter } from "./SearchFilter"
 
-export const ListContainer = ({ editRosterCharacters, showText, setShowText, charId, setNewRosterPick, setCharId, handleMouseEnter, handleMouseLeave, newRosterPicks, characters, servers, weapons, factions, roles }) => {
+export const ListContainer = ({ editRosterCharacters, setSearchTerms, showText, setShowText, charId, setNewRosterPick, setCharId, handleMouseEnter, handleMouseLeave, newRosterPicks, characters, servers, weapons, factions, roles }) => {
   
   
     return <> <>
-         <section className="character__list">{characters.map((character) =>
+    
+         <section className="character__list">
+            <SearchFilter setSearchTerms={setSearchTerms} />
+            {characters.map((character) =>
                 <CharacterList editRosterCharacters={editRosterCharacters} key={`characters--${character.id}`} servers={servers} weapons={weapons} factions={factions}
                     roles={roles} showText={showText} character={character}
                     handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave}
