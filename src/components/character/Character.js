@@ -70,7 +70,7 @@ export const Character = () => {
         
         
         <div className='header--bar'>  <button  className="modal--button" onClick={() => setModalIsOpen(true)}>New Character</button>
-        <Modal isOpen={modalIsOpen}
+        <Modal isOpen={modalIsOpen} className="add--character--modal"
       onRequestClose={() => setModalIsOpen(false)}>
         
 <CharacterForm setModalIsOpen={setModalIsOpen} factions={factions} setFactions={setFactions} RosterUserObject={RosterUserObject} getUserCharacters={getUserCharacters} updateUserCharacters={updateUserCharacters} weapons={weapons} setWeapons={setWeapons} servers={servers} roles={roles} feedback={feedback} setFeedback={setFeedback} />

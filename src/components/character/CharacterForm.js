@@ -4,9 +4,8 @@ import { RoleSelect } from "./Role"
 import { ServerSelect } from "./ServerSelect"
 import { WeaponSelect } from "./WeaponSelect"
 import { saveNewCharacter } from "../managers/CharacterManager"
-
 import "./characters.css"
-// import { useChange } from "../../hooks/useChange"
+
 
 
 export const CharacterForm = ({ setModalIsOpen, updateUserCharacters, RosterUserObject, getUserCharacters, roles, weapons, servers, factions, feedback, setFeedback }) => {
@@ -17,8 +16,10 @@ export const CharacterForm = ({ setModalIsOpen, updateUserCharacters, RosterUser
         primaryId: 0,
         secondaryId: 0,
         serverId: 0,
-        factionId: 0
+        factionId: 0,
+        image: ""
     })
+    const [image, setImage] = useState("")
     const closeModal = () => {
         setModalIsOpen(false);
       }
@@ -31,7 +32,8 @@ export const CharacterForm = ({ setModalIsOpen, updateUserCharacters, RosterUser
             secondary_weapon: parseInt(newCharacter.secondaryId),
             server: parseInt(newCharacter.serverId),
             faction: parseInt(newCharacter.factionId),
-            user: RosterUserObject.id
+            user: RosterUserObject.id,
+            image:image
         }
         saveNewCharacter(newCharacterToAPI).then(() => {
             getUserCharacters(RosterUserObject)
@@ -49,7 +51,17 @@ export const CharacterForm = ({ setModalIsOpen, updateUserCharacters, RosterUser
         else {copy[e.target.name] = e.target.value}
         setNewCharacter(copy)
     }
-
+    const getBase64 = (file, callback) => {
+        const reader = new FileReader();
+        reader.addEventListener('load', () => callback(reader.result));
+        reader.readAsDataURL(file);
+    }
+    const createCharacterImageString = (event) => {
+        getBase64(event.target.files[0], (base64ImageString) => {
+            console.log("Base64 of file is", base64ImageString);
+            setImage(base64ImageString)
+        });
+    }
     return (
         <>
             <div className={`${feedback.includes("Error") ? "error" : "feedback"} ${feedback === "" ? "invisible" : "visible"}`}>
@@ -124,6 +136,8 @@ export const CharacterForm = ({ setModalIsOpen, updateUserCharacters, RosterUser
                         <option value={0}>select a faction</option>
                         {factions.map((faction) => <FactionSelect key={`faction--${faction.id}`} faction={faction} />)}
                     </select>
+                    <input type="file" id="image" onChange={createCharacterImageString} />
+                <input type="hidden" name="character_id" value={""} />
                     <button className="save__button" onClick={click => handleSaveButtonClick(click)}>Save</button>
                 </fieldset>
             </form>

@@ -414,27 +414,37 @@ input.form-control{
 .characterForm__title{
     margin: 25px 25px 25px 25px;
 }
+.add--character--modal{
+    position: absolute;
+    inset: 40px;
+    border: 1px solid rgb(204, 204, 204);
+    background: transparent;
+    overflow: auto;
+    border-radius: 4px;
+    outline: none;
+    padding: 20px;
+    margin-top: 3em;
+    
+}
 
-.modal-content {
-    position: relative;
-  }
-  
-  .close-button {
+
+
+.close-button {
     position: absolute;
     top: 10px;
     right: 10px;
     font-size: 20px;
     cursor: pointer;
-  }
-  .header--bar{
+}
+.header--bar{
     display: flex;
     justify-content: left;
     align-content: baseline;
     margin-top: 3em;
     margin-bottom: 3em;
     padding: 0 20px;
-  }
-  .modal--button {
+}
+.modal--button {
     font-family: 'Libre Franklin', sans-serif;
     margin: 0.15em;
     text-align: center;
