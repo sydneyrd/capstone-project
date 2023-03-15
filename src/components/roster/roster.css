@@ -165,13 +165,15 @@ left:0;
 
  .character__card {
     display: flex;
-    flex-wrap: nowrap;
-    width: 15em;
+    flex-wrap: no-wrap;
+    width: 14em;
     justify-content:space-between;
     align-items:flex-start;
     
+
  }
 
+ 
  section.character__list--roster {
     height: 39em;
     width: 15em;
