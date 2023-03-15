@@ -146,8 +146,8 @@ export const CharacterDetails = () => {
                     <input
                         type="text"
                         className="form-control"
-                        placeholder="change name"
-                        value={character?.character_name} onChange={
+                        placeholder="change name" name="character_name"
+                        defaultValue={character?.character_name} onChange={
                             (event) => {
                                 handleFormChange(event)
                             }
