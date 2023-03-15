@@ -4,9 +4,11 @@ import { RoleSelect } from "./Role"
 import { WeaponSelect } from "./WeaponSelect"
 import { FactionSelect } from "./FactionSelect"
 import { ServerSelect } from "./ServerSelect"
+import {faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import { getAllFactions, getAllServers, getAllWeapons, getAllRoles } from "../managers/ResourceManager"
 import { deleteCharLink, newLink, getCharacterLinks, deleteCharacter, putCharacter, getSingleCharacter } from "../managers/CharacterManager"
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { library } from '@fortawesome/fontawesome-svg-core'
 export const CharacterDetails = () => {
     const { characterId } = useParams()
     const localRosterUser = localStorage.getItem("roster_user")
@@ -35,6 +37,7 @@ export const CharacterDetails = () => {
     const [notes, setNotes] = useState("")
     const [image, setImage] = useState("")
     const navigate = useNavigate()
+    library.add(faTrashCan)
     useEffect(
         () => {
             getAllRoles(setRoles)
@@ -222,7 +225,8 @@ export const CharacterDetails = () => {
                 <ul name='characterLinks'>
                     {characterLinks ? characterLinks.map(link => <li key={`link--${link.id}`}><a href={`${link.link}`} target="_blank"
                         rel="noreferrer" key={`link--${link.id}`}>{link.link}</a>
-                        <button className="delete__link__button" onClick={click => handleDeleteLink(link.id, click)}>Delete VOD Link</button></li>
+                        <FontAwesomeIcon className="delete__link" onClick={click => handleDeleteLink(link.id, click)}icon="fa-solid fa-trash-can"/>
+                        </li>
                     ) : <></>}
                 </ul> </div>
         </div>
