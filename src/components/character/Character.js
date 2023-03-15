@@ -63,17 +63,19 @@ export const Character = () => {
             setTimeout(() => setFeedback(""), 3000);
         }
     }, [feedback])
+    
+    // <h2 className="characterForm__title">Manage Characters</h2>
     return <div className="main--character">
     
         
         
-        <div className='header--bar'><h2 className="characterForm__title">Manage Characters</h2><SearchCharacters setSearch={setSearch} searchWords={searchWords} />   <button  className="modal--button" onClick={() => setModalIsOpen(true)}>New Character</button>
+        <div className='header--bar'>  <button  className="modal--button" onClick={() => setModalIsOpen(true)}>New Character</button>
         <Modal isOpen={modalIsOpen}
       onRequestClose={() => setModalIsOpen(false)}>
         
 <CharacterForm setModalIsOpen={setModalIsOpen} factions={factions} setFactions={setFactions} RosterUserObject={RosterUserObject} getUserCharacters={getUserCharacters} updateUserCharacters={updateUserCharacters} weapons={weapons} setWeapons={setWeapons} servers={servers} roles={roles} feedback={feedback} setFeedback={setFeedback} />
 
-      </Modal></div>
+      </Modal></div><SearchCharacters setSearch={setSearch} searchWords={searchWords} /> 
         <section className="edit_characters">
 
             <ManageCharacters RosterUserObject={RosterUserObject} feedback={feedback} sortedCharacters={sortedCharacters} updateUserCharacters={updateUserCharacters} setFeedback={setFeedback}

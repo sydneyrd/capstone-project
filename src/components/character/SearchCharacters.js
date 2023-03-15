@@ -7,6 +7,6 @@ export const SearchCharacters = ({setSearch, searchWords}) => {
         setSearch(event.target.value)
     } 
 }
-placeholder="Search for Player" /></>
+placeholder="search characters..." /></>
 }
 
