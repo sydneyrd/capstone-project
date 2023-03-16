@@ -16,16 +16,36 @@ library.add(faPlus)
 
 
 const addChoiceToEnd = (character) => {
-        // setNewRosterPick(state => [...state, c])//only adding one object to an array usestate
         let new_choice = {roster: currentEditRoster,
             character: character.id}
-console.log(rosterIDNUMBER)
-        newRosterChoice(new_choice).then(()=>{getCurrentRoster(rosterIDNUMBER).then((res) => {setEditCharacters(res)})})
-        //posts the new roster object to the api
-        //.then we need to re get all of the current picks for the current edit roster
+
+        newRosterChoice(new_choice)
+        
+        
+        
+        
+        .then(()=>{getCurrentRoster(rosterIDNUMBER).then((res) => {setEditCharacters(res)})})
     }
 
-
+// const addChoiceToEnd = (character) => {
+//     let new_choice = {
+//       roster: currentEditRoster,
+//       character: character.id
+//     }
+  
+//     newRosterChoice(new_choice).catch((error) => {
+//       if (error.response && error.response.data && error.response.data.message === "UNIQUE constraint failed: nocapapi_rosterchoices.roster_id, nocapapi_rosterchoices.character_id") {
+//         window.alert("This character is already in the roster");
+//       } else {
+//         console.error(error);
+//       }
+//     }).then((response) => {
+//         getCurrentRoster(rosterIDNUMBER).then((res) => {
+//           setEditCharacters(res);
+//         });
+//       });
+//   }
+  
 
     const handleStartClick = () => {
         let newR = {
@@ -35,18 +55,17 @@ console.log(rosterIDNUMBER)
             let roster = { ...newRosterObj 
             } 
             setCurrentEditRoster(roster.id) //sets the context currentEditroster id to the new roster id
-            // localStorage.setItem('roster_id', parseFloat(roster.id)) //saves the new roster id to local storage
-            addChoiceToEnd(character) //adds the character to the roster useState
+            addChoiceToEnd(character) //adds the character to the database
         })
         alert("Saving New Roster...")
     }
 
 
 
-    const handleAddClick = () => {  //if there is a roster id in local storage, add the character to the roster useState
-        newRosterPicks.find((playerId) => playerId.id === id) || editRosterCharacters.find((playerId) => playerId.characterId === id) ? 
+    const handleAddClick = () => {  
+         editRosterCharacters.find((playerId) => playerId.characterId === id) ? 
             alert("already added") :
-            addChoiceToEnd(character) //adds the character to the roster useState
+            addChoiceToEnd(character) //adds the character to the database
     }
 
 

@@ -21,6 +21,17 @@ export const getRosterName = (rosterId) => {
         .then(res => res.json())
 }
 
+// export const newRosterChoice = (newRosterChoiceObj) => {
+//     return fetch(`http://127.0.0.1:8000/rosterchoices`, {
+//         method: "POST",
+//         headers: {
+//             "Content-Type": "application/json",
+//             "Authorization": `Token ${localStorage.getItem("roster_token")}`
+//         },
+//         body: JSON.stringify(newRosterChoiceObj)
+//     })
+//         .then(res => res.json())
+// }
 export const newRosterChoice = (newRosterChoiceObj) => {
     return fetch(`http://127.0.0.1:8000/rosterchoices`, {
         method: "POST",
@@ -30,8 +41,17 @@ export const newRosterChoice = (newRosterChoiceObj) => {
         },
         body: JSON.stringify(newRosterChoiceObj)
     })
-        .then(res => res.json())
-}
+        .then(res => {
+            if (!res.ok) {
+                throw Error(res.statusText);
+            }
+            return res.json();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert("This player has already been added.");
+        });
+};
 
 
 export const deleteRoster = (rosterId) => {
