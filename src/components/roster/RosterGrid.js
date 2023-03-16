@@ -18,16 +18,15 @@ export const RosterGrid = ({showText, setShowText, charId, setNewRosterPick, set
                 .then((res) => {
                     setEditCharacters(res)
                 })}}
-                
         ,
         []
     )
 
-    return <>{editRosterCharacters.map((c) => <RosterDivForEdit showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} 
+    return <>{editRosterCharacters.map((c) => <RosterDivForEdit getCurrentRoster={getCurrentRoster} showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} 
     handleMouseLeave={handleMouseLeave} rosterIDNUMBER={rosterIDNUMBER} setEditCharacters={setEditCharacters} characters={characters} newRosterPicks={editRosterCharacters}
         setNewRosterPick={setNewRosterPick} key={c.id} c={c} />)}
-        {newRosterPicks.map((c) => <RosterDiv showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} 
-    handleMouseLeave={handleMouseLeave} newRosterPicks={newRosterPicks} setNewRosterPick={setNewRosterPick} key={c.id} c={c} />)}
+        {/* {newRosterPicks.map((c) => <RosterDiv showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} 
+    handleMouseLeave={handleMouseLeave} newRosterPicks={newRosterPicks} setNewRosterPick={setNewRosterPick} key={c.id} c={c} />)} */}
 
     </>
 }

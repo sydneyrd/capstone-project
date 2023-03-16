@@ -1,13 +1,13 @@
 import { getAllRoles, getAllFactions, getAllWeapons, getAllServers, } from "../managers/ResourceManager"
 import {getAllCharacters, getFilteredCharacters} from "../managers/CharacterManager"
-import { newRosterChoice, getCurrentRoster, newRoster, putRosterName, getRosterName   } from "../managers/RosterManager"
+import { newRosterChoice, putRosterName, getRosterName   } from "../managers/RosterManager"
 import { useEffect, useState } from "react"
 import { RosterGrid } from "./RosterGrid"
 import { ListContainer } from "./ListContainer"
 import "./roster.css"
 import { FilterContainer } from "./FilterContainer"
 import { useNavigate } from "react-router-dom"
-import { SearchFilter } from "./SearchFilter"
+
 import { useContext } from "react"
 import { editContext } from "../views/ApplicationViews"
 export const Roster = () => {
@@ -70,9 +70,9 @@ export const Roster = () => {
     useEffect(
         () => {
             let alphaCharacters = characters.sort((a, b) => a.character_name.localeCompare(b.character_name))
-            setSortedArr(characters) ///this alphabet sort stopped working????  it's supposed to be alphaCharacters passed into it???? why is everything not working anymore -_- it works now but could break watchout
+            setSortedArr(characters) 
         },
-        [characters]//sort them alphabetically honestly it's just to put the characters into a sorted array because that's where i want them for future sorting
+        [characters]
     )
     useEffect(
         () => {
@@ -82,7 +82,7 @@ export const Roster = () => {
             }
             else {}
         },
-        [rosterIDNUMBER]//find what you put into the search bar and set that as sorted
+        [rosterIDNUMBER]
     )
 
 
@@ -100,7 +100,6 @@ export const Roster = () => {
 
     const handleSave = (click, newRosterPicks) => { //onclickingSave
         click.preventDefault()
-        
         const createRosterChoices = (cArr) => {
             let rosterChoiceArr = []
             for (const c of cArr) {  //there might be an easier way idk, this works.   iterating the array of players in roster and uses takes their character id to create a new object
@@ -120,9 +119,8 @@ export const Roster = () => {
             console.log(result)
         })
         alert("Roster successfully saved")
-
-
     }
+
     const handleNewRoster = (e) => {
         e.preventDefault()
         setCurrentEditRoster(0)
@@ -171,10 +169,9 @@ export const Roster = () => {
             } className="new__button">New Roster</button>
         </div> 
          <section className="body">
-            {/* <div className="search--players--container">
-            <SearchFilter setSearchTerms={setSearchTerms} /> */}
-            <ListContainer setSearchTerms={setSearchTerms}editRosterCharacters={editRosterCharacters} showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} setNewRosterPick={setNewRosterPick} newRosterPicks={newRosterPicks} characters={sortedArr} servers={servers} weapons={weapons} factions={factions} roles={roles} />
-            {/* </div> */}
+            <ListContainer
+            rosterIDNUMBER={rosterIDNUMBER} setEditCharacters={setEditCharacters} setSearchTerms={setSearchTerms}editRosterCharacters={editRosterCharacters} showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} setNewRosterPick={setNewRosterPick} newRosterPicks={newRosterPicks} characters={sortedArr} servers={servers} weapons={weapons} factions={factions} roles={roles} />
+            
 
             <div className="parent" >
                 <RosterGrid showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave}

@@ -4,17 +4,29 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import {faPlus } from '@fortawesome/free-solid-svg-icons'
 import { useContext } from "react"
 import { editContext } from "../views/ApplicationViews"
+import { getCurrentRoster } from "../managers/RosterManager"
 
 
 
-export const AddButton = ({ editRosterCharacters, character, id, setNewRosterPick, newRosterPicks }) => {
-    const { currentEditRoster, setCurrentEditRoster } = useContext(editContext);
-    const localUser = localStorage.getItem("roster_user")
-    const rosterUser = JSON.parse(localUser)
-    const addUserToEnd = (c) => {
-        setNewRosterPick(state => [...state, c])//only adding one object to an array usestate
-    }
+export const AddButton = ({setEditCharacters, rosterIDNUMBER, editRosterCharacters, character, id, setNewRosterPick, newRosterPicks }) => {
+const { currentEditRoster, setCurrentEditRoster } = useContext(editContext);
+const localUser = localStorage.getItem("roster_user")
+const rosterUser = JSON.parse(localUser)
 library.add(faPlus)
+
+
+const addChoiceToEnd = (character) => {
+        // setNewRosterPick(state => [...state, c])//only adding one object to an array usestate
+        let new_choice = {roster: currentEditRoster,
+            character: character.id}
+console.log(rosterIDNUMBER)
+        newRosterChoice(new_choice).then(()=>{getCurrentRoster(rosterIDNUMBER).then((res) => {setEditCharacters(res)})})
+        //posts the new roster object to the api
+        //.then we need to re get all of the current picks for the current edit roster
+    }
+
+
+
     const handleStartClick = () => {
         let newR = {
             user: rosterUser.id
@@ -22,29 +34,25 @@ library.add(faPlus)
         newRoster(newR).then((newRosterObj) => { //posts the new roster object to the api
             let roster = { ...newRosterObj 
             } 
-            setCurrentEditRoster(roster.id) //sets the currentEditroster id to the new roster id
-            localStorage.setItem('roster_id', parseFloat(roster.id)) //saves the new roster id to local storage
-            addUserToEnd(character) //adds the character to the roster useState
+            setCurrentEditRoster(roster.id) //sets the context currentEditroster id to the new roster id
+            // localStorage.setItem('roster_id', parseFloat(roster.id)) //saves the new roster id to local storage
+            addChoiceToEnd(character) //adds the character to the roster useState
         })
         alert("Saving New Roster...")
     }
+
+
+
     const handleAddClick = () => {  //if there is a roster id in local storage, add the character to the roster useState
         newRosterPicks.find((playerId) => playerId.id === id) || editRosterCharacters.find((playerId) => playerId.characterId === id) ? 
             alert("already added") :
-            addUserToEnd(character) //adds the character to the roster useState
+            addChoiceToEnd(character) //adds the character to the roster useState
     }
 
 
-    // const handleAddClick = () => {
-    //     if (new Set([...newRosterPicks, ...editRosterCharacters]).has(id)) {  //checks to see if the character chosen already exists in the roster useState
-    //       alert("already added");
-    //     } else {
-    //       addUserToEnd(character);  //adds the character to the roster useState
-    //     }
-    //   };
+
     return <>
         { currentEditRoster ? <FontAwesomeIcon onClick={() => handleAddClick()}className="plus" icon="fa-solid fa-plus" /> :
             <FontAwesomeIcon icon="fa-solid fa-plus" className="plus" onClick={() => handleStartClick()}/>}
     </>
 }
-// localStorage.getItem('roster_id')
