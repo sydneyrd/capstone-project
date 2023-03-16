@@ -20,32 +20,8 @@ const addChoiceToEnd = (character) => {
             character: character.id}
 
         newRosterChoice(new_choice)
-        
-        
-        
-        
         .then(()=>{getCurrentRoster(rosterIDNUMBER).then((res) => {setEditCharacters(res)})})
     }
-
-// const addChoiceToEnd = (character) => {
-//     let new_choice = {
-//       roster: currentEditRoster,
-//       character: character.id
-//     }
-  
-//     newRosterChoice(new_choice).catch((error) => {
-//       if (error.response && error.response.data && error.response.data.message === "UNIQUE constraint failed: nocapapi_rosterchoices.roster_id, nocapapi_rosterchoices.character_id") {
-//         window.alert("This character is already in the roster");
-//       } else {
-//         console.error(error);
-//       }
-//     }).then((response) => {
-//         getCurrentRoster(rosterIDNUMBER).then((res) => {
-//           setEditCharacters(res);
-//         });
-//       });
-//   }
-  
 
     const handleStartClick = () => {
         let newR = {

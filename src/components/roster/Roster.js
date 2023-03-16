@@ -26,11 +26,14 @@ export const Roster = () => {
     const [secondarySearch, setSecondarySearch] = useState(0)
     const [newRosterPicks, setNewRosterPick] = useState([]);
     const [editRosterCharacters, setEditCharacters] = useState([]);
-    let navigate = useNavigate();
+    const { currentEditRoster, setCurrentEditRoster} = useContext(editContext);
     const [showText, setShowText] = useState(false);
     const [charId, setId] = useState(0);
-    const [rosterName, setRosterName] = useState({});
-    const { currentEditRoster, setCurrentEditRoster} = useContext(editContext);
+    const [rosterName, setRosterName] = useState({
+        name: "",
+        roster: currentEditRoster
+    });
+    
     //we are capturing the new roster id when we first click add to roster and saving it to start roster  //pass those props ^
     let rosterIDNUMBER = currentEditRoster
 
@@ -98,28 +101,28 @@ export const Roster = () => {
         }
     }
 
-    const handleSave = (click, newRosterPicks) => { //onclickingSave
-        click.preventDefault()
-        const createRosterChoices = (cArr) => {
-            let rosterChoiceArr = []
-            for (const c of cArr) {  //there might be an easier way idk, this works.   iterating the array of players in roster and uses takes their character id to create a new object
-                let right = c.id
-                let nC = {
-                    roster: rosterIDNUMBER,
-                    character: 0
-                }
-                if (nC.character != right) {
-                    nC.character = right
-                    rosterChoiceArr.push(nC)
-                } else { }
-            } return rosterChoiceArr
-        }//promise waits for all the promises to come back in an iterable before resolving
-        const rosterToPost = createRosterChoices(newRosterPicks) //calls ^ 
-        Promise.all(rosterToPost.map((r) => { newRosterChoice(r) })).then((result) => {
-            console.log(result)
-        })
-        alert("Roster successfully saved")
-    }
+    // const handleSave = (click, newRosterPicks) => { //onclickingSave
+    //     click.preventDefault()
+    //     const createRosterChoices = (cArr) => {
+    //         let rosterChoiceArr = []
+    //         for (const c of cArr) {  //there might be an easier way idk, this works.   iterating the array of players in roster and uses takes their character id to create a new object
+    //             let right = c.id
+    //             let nC = {
+    //                 roster: rosterIDNUMBER,
+    //                 character: 0
+    //             }
+    //             if (nC.character != right) {
+    //                 nC.character = right
+    //                 rosterChoiceArr.push(nC)
+    //             } else { }
+    //         } return rosterChoiceArr
+    //     }//promise waits for all the promises to come back in an iterable before resolving
+    //     const rosterToPost = createRosterChoices(newRosterPicks) //calls ^ 
+    //     Promise.all(rosterToPost.map((r) => { newRosterChoice(r) })).then((result) => {
+    //         console.log(result)
+    //     })
+    //     alert("Roster successfully saved")
+    // }
 
     const handleNewRoster = (e) => {
         e.preventDefault()
@@ -164,7 +167,7 @@ export const Roster = () => {
 
         <div className="save__div">
             <input type="text" className="roster_name" name="name" placeholder="name this roster ?" defaultValue={rosterName.name} onChange={(event) => handleRosterName(event)} />
-            <button className="save__button" onClick={(click) => { handleSave(click, newRosterPicks) }}>Save Roster</button>
+            {/* <button className="save__button" onClick={(click) => { handleSave(click, newRosterPicks) }}>Save Roster</button> */}
             <button onClick={(e) => handleNewRoster(e)
             } className="new__button">New Roster</button>
         </div> 
