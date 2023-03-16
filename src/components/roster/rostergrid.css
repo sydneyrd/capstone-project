@@ -1,13 +1,12 @@
-.parent {
+/* .parent {
     display: grid;
     align-content: space-between;
     flex-direction: column;
     flex-wrap: nowrap;
-    width:fit-content;
-    height: 40em;
+    width: 40em;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(10, 1fr);
-    grid-column-gap: 1px;
+    grid-column-gap: 3px;
     grid-row-gap: 1px;
     border: 1px rgb(107, 21, 4);
     -webkit-box-shadow: 2px 4px 23px 4px #000000; 
@@ -16,11 +15,28 @@ border: 5px hidden transparent;
 border-radius: 6px 6px 6px 6px;
 background-color: #272624;
 position: sticky;
- }
+ } */
+
+
+/* .parent > div:nth-child(5n+1)
+{
+  border-color: #7a5151;
+  border: solid green;
+}
+.parent > div:nth-child(5n+2)
+{
+  border: solid goldenrod;
+}
+
+.parent > div:nth-child(5n+4),
+.parent > div:nth-child(5n+5) {
+  border-color: #7a5151;
+  border: solid blue;
+} */
 
 .roster__choices {
     display: flex;
-    justify-content: space-between;
+   
     padding: 1.45em;
     text-size-adjust: 2;
     flex-wrap: wrap;
@@ -28,8 +44,30 @@ position: sticky;
     max-width: 3em;
   max-height: 1em;
   align-content: center;
-  margin: 15px 10px 30px 10;
+
 }
+.parent {
+  display: grid;
+  align-content: space-between;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: 40em;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 3px;
+  grid-row-gap: 0;
+  border: 1px rgb(107, 21, 4);
+  -webkit-box-shadow: 2px 4px 23px 4px #000000; 
+  box-shadow: 2px 4px 23px 4px #000000;
+  border: 5px hidden transparent;
+  border-radius: 6px 6px 6px 6px;
+  background-color: #272624;
+  position: sticky;
+}
+
+
+
+
 .roster__choices:hover {
   background-color: transparent;
 }

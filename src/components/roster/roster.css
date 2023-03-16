@@ -57,12 +57,19 @@ left:0;
  .plus{
    font-weight: 300;
    font-size:2em;
-   background: transparent;
+
  }
-.plus:hover {
-   color: lightgreen;
+
+ .plus:hover{
+   box-shadow: 0 0 10px 3px rgba(144,238,144,0.8), 
+   0 0 20px 5px rgba(144,238,144,0.8) inset;
+background: linear-gradient(rgba(144,238,144,0.2), rgba(144,238,144,0.2));
+
    
-}
+
+
+ }
+
  .character__details {
      opacity: 0.0;
      
@@ -147,7 +154,7 @@ left:0;
 
 
  /* this is the pop up details element */
- .details__element {
+ /* .details__element {
     display:flex;
      width: 25%;
      height: fit-content;
@@ -161,7 +168,22 @@ left:0;
     justify-items: center;
     justify-content:center;
     margin: 1em;
+    
+ } */
+
+ .details__element {
+   position: absolute;
+   top: 10em;
+   left: 20em;
+   transform: translate(-50%, -100%);
+   z-index: 1;
+   align-items: center;
  }
+ 
+
+
+
+
 
  .character__card {
     display: flex;
@@ -178,6 +200,7 @@ left:0;
     height: 39em;
     width: 15em;
     scrollbar-width:0;
+    position:relative;
     overflow: hidden;
 overflow-y:scroll;
         /* padding: 0.5em; */
