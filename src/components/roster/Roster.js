@@ -35,7 +35,7 @@ export const Roster = () => {
     });
     
     //we are capturing the new roster id when we first click add to roster and saving it to start roster  //pass those props ^
-    let rosterIDNUMBER = currentEditRoster
+    const rosterIDNUMBER = currentEditRoster
 
     const setCharId = e => {
         setId(parseInt(e.target.id))
@@ -79,11 +79,12 @@ export const Roster = () => {
     )
     useEffect(
         () => {
-            if (rosterIDNUMBER) {
+            if (rosterIDNUMBER > 0) {
                 getRosterName(rosterIDNUMBER).then((data) => { setRosterName(data) }
                 )
             }
             else {}
+            
         },
         [rosterIDNUMBER]
     )

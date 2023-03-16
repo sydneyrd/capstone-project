@@ -18,28 +18,30 @@ library.add(faPlus)
 const addChoiceToEnd = (character) => {
         let new_choice = {roster: currentEditRoster,
             character: character.id}
-
         newRosterChoice(new_choice)
         .then(()=>{getCurrentRoster(rosterIDNUMBER).then((res) => {setEditCharacters(res)})})
     }
 
     const handleStartClick = () => {
-        let newR = {
-            user: rosterUser.id
-        }  //creates a new roster object with the user id
+        let newR = {user: rosterUser.id}  //creates a new roster object with the user id
+
         newRoster(newR).then((newRosterObj) => { //posts the new roster object to the api
-            let roster = { ...newRosterObj 
-            } 
-            setCurrentEditRoster(roster.id) //sets the context currentEditroster id to the new roster id
-            addChoiceToEnd(character) //adds the character to the database
-        })
+
+            setCurrentEditRoster(newRosterObj.id); 
+            
+            //sets the context currentEditroster id to the new roster id
+            
+            
+        }).then(() => {addChoiceToEnd(character)})
+
+        //adds the character to the database
         alert("Saving New Roster...")
     }
 
 
 
     const handleAddClick = () => {  
-         editRosterCharacters.find((playerId) => playerId.characterId === id) ? 
+        editRosterCharacters.find((playerId) => playerId.characterId === id) ? 
             alert("already added") :
             addChoiceToEnd(character) //adds the character to the database
     }
@@ -47,7 +49,7 @@ const addChoiceToEnd = (character) => {
 
 
     return <>
-        { currentEditRoster ? <FontAwesomeIcon onClick={() => handleAddClick()}className="plus" icon="fa-solid fa-plus" /> :
+        { currentEditRoster > 0 ? <FontAwesomeIcon onClick={() => handleAddClick()}className="plus" icon="fa-solid fa-plus" /> :
             <FontAwesomeIcon icon="fa-solid fa-plus" className="plus" onClick={() => handleStartClick()}/>}
     </>
 }
