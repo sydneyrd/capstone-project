@@ -25,10 +25,7 @@ const addChoiceToEnd =  (character, rosterId) => {
         let newR = {user: rosterUser.id}  //creates a new roster object with the user id
         newRoster(newR).then((newRosterObj) => { //posts the new roster object to the api
           setCurrentEditRoster(newRosterObj.id);
-          setTimeout(() => {
             addChoiceToEnd(character, newRosterObj.id);
-          }, 100);
-          
            //adds the character to the database 
         });
       
