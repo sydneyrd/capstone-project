@@ -35,7 +35,7 @@ export const Roster = () => {
     });
     
     //we are capturing the new roster id when we first click add to roster and saving it to start roster  //pass those props ^
-    const rosterIDNUMBER = currentEditRoster
+    let rosterIDNUMBER = currentEditRoster
 
     const setCharId = e => {
         setId(parseInt(e.target.id))

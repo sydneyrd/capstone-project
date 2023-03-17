@@ -14,36 +14,32 @@ const localUser = localStorage.getItem("roster_user")
 const rosterUser = JSON.parse(localUser)
 library.add(faPlus)
 
-
-const addChoiceToEnd = (character) => {
-        let new_choice = {roster: currentEditRoster,
-            character: character.id}
+const addChoiceToEnd =  (character, rosterId) => {
+    {   let new_choice = {roster: rosterId, character: character.id}
         newRosterChoice(new_choice)
-        .then(()=>{getCurrentRoster(rosterIDNUMBER).then((res) => {setEditCharacters(res)})})
+        .then(()=>{getCurrentRoster(rosterId).then((res) => {setEditCharacters(res)})})}
+     
     }
 
-    const handleStartClick = () => {
+    const handleStartClick = async () => {
         let newR = {user: rosterUser.id}  //creates a new roster object with the user id
-
         newRoster(newR).then((newRosterObj) => { //posts the new roster object to the api
-
-            setCurrentEditRoster(newRosterObj.id); 
-            
-            //sets the context currentEditroster id to the new roster id
-            
-            
-        }).then(() => {addChoiceToEnd(character)})
-
-        //adds the character to the database
+          setCurrentEditRoster(newRosterObj.id);
+          setTimeout(() => {
+            addChoiceToEnd(character, newRosterObj.id);
+          }, 100);
+          
+           //adds the character to the database 
+        });
+      
         alert("Saving New Roster...")
-    }
-
-
+      }
+      
 
     const handleAddClick = () => {  
         editRosterCharacters.find((playerId) => playerId.characterId === id) ? 
             alert("already added") :
-            addChoiceToEnd(character) //adds the character to the database
+            addChoiceToEnd(character, rosterIDNUMBER) //adds the character to the database
     }
 
 
