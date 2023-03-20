@@ -24,12 +24,9 @@ export const ApplicationViews = () => {
 
                 <Route path="/" element={
                     <>
-
-
                         <Outlet />
                     </>
                 }>
-
                     <Route path="/home" element={< Home />} />
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/characters" element={<Character />} />
@@ -39,8 +36,6 @@ export const ApplicationViews = () => {
                     <Route path='resources/edit/:calculatedRosterId' element={<BaseStatContainer />} />
                     <Route path="character/:characterId" element={<CharacterDetails />} />
                 </Route>
-
-
             </Routes>  </calculateContext.Provider>
         </editContext.Provider>
     );

@@ -1,5 +1,5 @@
 import { CharacterList } from "./CharacterList"
-import { DetailButton } from "./Details"
+import { DetailWindow } from "./Details"
 import { useState, useEffect } from "react"
 import { SearchFilter } from "./SearchFilter"
 
@@ -23,7 +23,7 @@ export const ListContainer = ({ editRosterCharacters, setSearchTerms, showText, 
             </section></>
 <article className="details__element"> 
             {showText && charId > 0 ?
-                <><DetailButton charId={charId} showText={showText} servers={servers} weapons={weapons} factions={factions} roles={roles} characters={characters} /> </>
+                <><DetailWindow charId={charId} showText={showText} servers={servers} weapons={weapons} factions={factions} roles={roles} characters={characters} /> </>
                 : <></>}
         </article></>
 //only display the detail button if the charId has been set to something other than 0 and showText is true

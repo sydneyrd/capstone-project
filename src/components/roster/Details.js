@@ -1,6 +1,7 @@
 import "./roster.css"
+import "./details.css"
 
-export const DetailButton = ({ charId, servers, roles, weapons, factions, showText, characters  }) => {
+export const DetailWindow = ({ charId, servers, roles, weapons, factions, showText, characters  }) => {
     let rightCharacter = characters.find(({ id }) => id === charId)
     let rightServer = servers.find(({ id }) => id === rightCharacter?.server)
     let rightPrimary = weapons.find(({ id }) => id === rightCharacter?.primary_weapon)

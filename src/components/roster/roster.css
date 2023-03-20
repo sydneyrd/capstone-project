@@ -70,15 +70,7 @@ background: linear-gradient(rgba(144,238,144,0.2), rgba(144,238,144,0.2));
 
  }
 
- .character__details {
-     opacity: 0.0;
-     
-     -webkit-transition: all 500ms ease-in-out;
-     -moz-transition: all 500ms ease-in-out;
-     -ms-transition: all 500ms ease-in-out;
-     -o-transition: all 500ms ease-in-out;
-     transition: all 500ms ease-in-out;
- }
+
   
  button.save__button {
     font-family: 'Libre Franklin', sans-serif;
@@ -136,40 +128,11 @@ background: linear-gradient(rgba(144,238,144,0.2), rgba(144,238,144,0.2));
    align-self:flex-start;
 
 }
- .character__details:hover>.character__details {
-     opacity: 1.0;
-     background-color: transparent;
- }
-
- .details {
-     position: center;
-
- }
-
  .list__container {
      width: 40%;
      height: 60%;
      background-color: none;
  }
-
-
- /* this is the pop up details element */
- /* .details__element {
-    display:flex;
-     width: 25%;
-     height: fit-content;
-     position: relative;
-     background-color: transparent; 
-    position: sticky;
-    top: 10px;
-    left: 25px;
-    width: 250px; 
-    align-items: center;
-    justify-items: center;
-    justify-content:center;
-    margin: 1em;
-    
- } */
 
  .details__element {
    position: absolute;
@@ -178,12 +141,24 @@ background: linear-gradient(rgba(144,238,144,0.2), rgba(144,238,144,0.2));
    transform: translate(-50%, -100%);
    z-index: 1;
    align-items: center;
+   background-color:#000000;
  }
- 
-
-
-
-
+ .character__details:hover>.character__details {
+     opacity: 1.0;
+     background-color: transparent;
+ }
+ .details {
+     position: center;
+ }
+ .character__details {
+     opacity: 0.0;
+     
+     -webkit-transition: all 500ms ease-in-out;
+     -moz-transition: all 500ms ease-in-out;
+     -ms-transition: all 500ms ease-in-out;
+     -o-transition: all 500ms ease-in-out;
+     transition: all 500ms ease-in-out;
+ }
 
  .character__card {
     display: flex;
@@ -191,8 +166,6 @@ background: linear-gradient(rgba(144,238,144,0.2), rgba(144,238,144,0.2));
     width: 14em;
     justify-content:space-between;
     align-items:flex-start;
-    
-
  }
 
  
