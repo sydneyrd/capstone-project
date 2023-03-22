@@ -40,8 +40,8 @@ export const getUserWarStats = (user) => {
     })
         .then(res => res.json())
 }
-export const getUserCharacters = (user) => {
-    return fetch(`http://127.0.0.1:8000/characters?user=${user.id}`, {
+export const getUserCharacters = () => {
+    return fetch(`http://127.0.0.1:8000/characters?user=user`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("roster_token")}`
         }

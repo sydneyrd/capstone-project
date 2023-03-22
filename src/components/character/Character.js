@@ -35,7 +35,7 @@ export const Character = () => {
                     getAllServers(setServers)
                 })
                 .then(() => {
-                    getUserCharacters(RosterUserObject)
+                    getUserCharacters()
                         .then((charArr) =>
                             updateUserCharacters(charArr))
                 })
