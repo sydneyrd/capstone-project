@@ -24,11 +24,11 @@ let rightName = characters?.find(({id}) => id === c?.character)
 
    }
 return <>
- <div id={rightName?.id} onMouseOver={setCharId} onMouseEnter={handleMouseEnter}
+ <li id={rightName?.id} onMouseOver={setCharId} onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave} className="roster__choices">{`${c?.character?.character_name}`}
       
       <FontAwesomeIcon className="roster__remove" onClick={click => handleRemove(c, click)} icon="fa-solid fa-trash-arrow-up" />
-         </div>
+         </li>
 </>}
 
 

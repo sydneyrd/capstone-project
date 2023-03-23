@@ -34,7 +34,7 @@ position: sticky;
   border: solid blue;
 } */
 
-.roster__choices {
+/* .roster__choices {
     display: flex;
    
     padding: 1.45em;
@@ -90,4 +90,63 @@ position: sticky;
 }
 .roster__remove:hover{
   background: darkred;
- }
+ } */
+
+ .roster__choices {
+  display: flex;
+  padding: 1.45em;
+  text-size-adjust: 2;
+  justify-content: center;
+  max-width: 3em;
+  max-height: 1em;
+  align-items: center;
+}
+
+.parent {
+  display: grid;
+  width: 40em;
+  grid-template-columns: repeat(5, 2fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 3px;
+  grid-row-gap: 0;
+  border: 1px rgb(107, 21, 4);
+  -webkit-box-shadow: 2px 4px 23px 4px #000000;
+  box-shadow: 2px 4px 23px 4px #000000;
+  border: 5px hidden transparent;
+  border-radius: 6px 6px 6px 6px;
+  background-color: #272624;
+  position: sticky;
+}
+
+.grid__item {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border: dotted 1px #7a5151;
+}
+
+.roster__choices:hover {
+  background-color: transparent;
+}
+
+button.roster__remove {
+  display: inline-block;
+  outline: 0;
+  text-align: center;
+  cursor: pointer;
+  height: 25px;
+  margin: 30px 10px 5px 10;
+  color: #fff;
+  vertical-align: bottom;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  transition: all .3s ease;
+  font-weight: 600;
+  line-height: 16px;
+  font-size: 11px;
+  align-items: bottom;
+}
+
+.roster__remove:hover {
+  background: darkred;
+}

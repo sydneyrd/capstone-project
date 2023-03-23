@@ -21,12 +21,43 @@ export const RosterGrid = ({showText, setShowText, charId, setNewRosterPick, set
         ,
         []
     )
+    const createNestedArray = (arr, size) => {
+        return Array.from({ length: Math.ceil(arr.length / size) }, (_, i) => arr.slice(i * size, i * size + size));
+    };
 
-    return <>{editRosterCharacters.map((c) => <RosterDivForEdit getCurrentRoster={getCurrentRoster} showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} 
-    handleMouseLeave={handleMouseLeave} rosterIDNUMBER={rosterIDNUMBER} setEditCharacters={setEditCharacters} characters={characters} newRosterPicks={editRosterCharacters}
-        setNewRosterPick={setNewRosterPick} key={c.id} c={c} />)}
-        {/* {newRosterPicks.map((c) => <RosterDiv showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} 
+    const nestedEditRosterCharacters = createNestedArray
+    (editRosterCharacters, 5);
+
+    // return <>{nestedEditRosterCharacters.map((c) => <RosterDivForEdit getCurrentRoster={getCurrentRoster} showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} 
+    // handleMouseLeave={handleMouseLeave} rosterIDNUMBER={rosterIDNUMBER} setEditCharacters={setEditCharacters} characters={characters} newRosterPicks={editRosterCharacters}
+    //     setNewRosterPick={setNewRosterPick} key={c.id} c={c} />)}
+    
+
+    // </>
+
+    return (
+        <>
+            {nestedEditRosterCharacters.map((group, groupIndex) => (
+                <div key={groupIndex} className="grid__item">
+                    {group.map((c) => (
+                        <RosterDivForEdit
+                        getCurrentRoster={getCurrentRoster} showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} 
+                         handleMouseLeave={handleMouseLeave} rosterIDNUMBER={rosterIDNUMBER} setEditCharacters={setEditCharacters} characters={characters} newRosterPicks={editRosterCharacters}
+                            setNewRosterPick={setNewRosterPick}
+                            key={c.id}
+                            c={c}
+                        />
+                    ))}
+                </div>
+            ))}
+        </>
+    );
+
+
+
+}   
+
+
+
+{/* {newRosterPicks.map((c) => <RosterDiv showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} 
     handleMouseLeave={handleMouseLeave} newRosterPicks={newRosterPicks} setNewRosterPick={setNewRosterPick} key={c.id} c={c} />)} */}
-
-    </>
-}
