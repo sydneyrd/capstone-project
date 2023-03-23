@@ -15,9 +15,10 @@ const rosterUser = JSON.parse(localUser)
 library.add(faPlus)
 
 const addChoiceToEnd =  (character, rosterId) => {
-    {   let new_choice = {roster: rosterId, character: character.id}
+const new_choice = {roster: rosterId, character: character.id}
+       
         newRosterChoice(new_choice)
-        .then(()=>{getCurrentRoster(rosterId).then((res) => {setEditCharacters(res)})})}
+        .then(()=>{getCurrentRoster(rosterId).then((res) => {setEditCharacters(res)})})
      
     }
 
@@ -34,11 +35,11 @@ const addChoiceToEnd =  (character, rosterId) => {
       
 
     const handleAddClick = () => {  
-        editRosterCharacters.find((playerId) => playerId.characterId === id) ? 
-            alert("already added") :
+        // editRosterCharacters.find((playerId) => playerId.characterId === id) ? 
+        //     alert("already added") :
+    editRosterCharacters.length >= 50 ? alert("Roster is full") :
             addChoiceToEnd(character, rosterIDNUMBER) //adds the character to the database
     }
-
 
 
     return <>

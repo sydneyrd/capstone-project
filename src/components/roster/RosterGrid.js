@@ -39,6 +39,7 @@ export const RosterGrid = ({showText, setShowText, charId, setNewRosterPick, set
         <>
             {nestedEditRosterCharacters.map((group, groupIndex) => (
                 <div key={groupIndex} className="grid__item">
+                    <span className="roster__group">group {groupIndex + 1}</span>
                     {group.map((c) => (
                         <RosterDivForEdit
                         getCurrentRoster={getCurrentRoster} showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} 
