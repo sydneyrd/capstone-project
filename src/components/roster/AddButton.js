@@ -21,14 +21,14 @@ export const AddButton = ({ setEditCharacters, nestedEditRosterCharacters, roste
             .then(() => { getCurrentRoster(rosterId).then((res) => { setEditCharacters(res) }) })
 
     }
-    const findNextAvailableGroup = (nestedArray) => {
-        for (let i = 0; i < nestedArray.length; i++) {
-          if (nestedArray[i].length < 5) {
-            return i + 1;
-          }
-        }
-        return nestedArray.length + 1; // All groups are full
-      };
+    // const findNextAvailableGroup = (nestedArray) => {
+    //     for (let i = 0; i < nestedArray.length; i++) {
+    //       if (nestedArray[i].length < 5) {
+    //         return i + 1;
+    //       }
+    //     }
+    //     return nestedArray.length + 1; // All groups are full
+    //   };
       
       
     const handleStartClick = async () => {
@@ -44,14 +44,43 @@ export const AddButton = ({ setEditCharacters, nestedEditRosterCharacters, roste
     }
 
 
-    const handleAddClick = () => {
-        // editRosterCharacters.find((playerId) => playerId.characterId === id) ? 
-        //     alert("already added") :
-        let nextGroup = findNextAvailableGroup(nestedEditRosterCharacters);
-        editRosterCharacters.length >= 50 ? alert("Roster is full") :
-            addChoiceToEnd(character, rosterIDNUMBER, nextGroup) //adds the character to the database
-    }
-
+    // const handleAddClick = () => {
+    //     let nextGroup = findNextAvailableGroup(nestedEditRosterCharacters);
+    //     editRosterCharacters.length >= 50 ? alert("Roster is full") :
+    //         addChoiceToEnd(character, rosterIDNUMBER, nextGroup) //adds the character to the database
+    // }
+    const findNextAvailableGroup = (charactersArray) => {
+        const groups = {};
+      
+        // Count the number of characters in each group
+        charactersArray.forEach((character) => {
+          if (!groups[character.group]) {
+            groups[character.group] = 1;
+          } else {
+            groups[character.group]++;
+          }
+        });
+      
+        for (let i = 1; i <= 10; i++) {
+          if (!groups[i] || groups[i] < 5) {
+            return i;
+          }
+        }
+      
+        return -1; // All groups are full
+      };
+      
+      const handleAddClick = () => {
+        let nextGroup = findNextAvailableGroup(editRosterCharacters);
+        if (nextGroup === -1) {
+          alert("All groups are full");
+        } else if (editRosterCharacters.length >= 50) {
+          alert("Roster is full");
+        } else {
+          addChoiceToEnd(character, rosterIDNUMBER, nextGroup); //adds the character to the database
+        }
+      };
+      
 
     return <>
         {currentEditRoster > 0 ? <FontAwesomeIcon onClick={() => handleAddClick()} className="plus" icon="fa-solid fa-plus" /> :

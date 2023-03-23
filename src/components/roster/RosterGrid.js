@@ -31,27 +31,37 @@ export const RosterGrid = ({ showText, nestedEditRosterCharacters, setShowText, 
     };
     const handleDrop = (e, groupIndex) => {
         e.preventDefault();
-        console.log(groupIndex)
-        const characterData = e.dataTransfer.getData('character');
+        console.log(groupIndex);
+        const characterData = e.dataTransfer.getData("character");
         const character = JSON.parse(characterData);
-
+      
         if (!editRosterCharacters.find((player) => player.id === character.id)) {
-            if (editRosterCharacters.length < 50) {
-                const new_choice = { roster: rosterIDNUMBER, character: character.id, group: groupIndex + 1 }
-                // I also need to add a group number to the new choice, I want to be able to use the group number displayed on screen so the user can see where the character is going
-
-                newRosterChoice(new_choice)
-                    .then(() => { getCurrentRoster(rosterIDNUMBER).then((res) => { setEditCharacters(res) }) })
-            } else {
-                alert('Roster is full');
+          if (editRosterCharacters.length < 50) {
+            // Check if the group is already full
+            const groupSize = editRosterCharacters.filter((player) => player.group === groupIndex + 1).length;
+            if (groupSize >= 5) {
+              alert("This group is already full. Please choose another group.");
+              return;
             }
+      
+            const new_choice = {
+              roster: rosterIDNUMBER,
+              character: character.id,
+              group: groupIndex + 1,
+            };
+      
+            newRosterChoice(new_choice).then(() => {
+              getCurrentRoster(rosterIDNUMBER).then((res) => {
+                setEditCharacters(res);
+              });
+            });
+          } else {
+            alert("Roster is full");
+          }
         }
-    };
-    // const totalGroups = 10;
-    // const emptyGroups = new Array(totalGroups).fill([]);
-    // const allGroups = emptyGroups.map((emptyGroup, index) => {
-    //     return nestedEditRosterCharacters[index] || emptyGroup;
-    // });
+      };
+      
+
     const totalGroups = 10;
 
     const allGroups = Array.from({ length: totalGroups }, (_, groupIndex) => {
