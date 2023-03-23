@@ -5,9 +5,15 @@ import "./roster.css"
 
 export const CharacterList = ({editRosterCharacters, rosterIDNUMBER, newRosterPicks, setNewRosterPick, charId, setEditCharacters, setCharId, character, servers, weapons, factions, roles, showText, handleMouseEnter, handleMouseLeave }) => {
   
+  const handleDragStart = (e, character) => {
+    e.dataTransfer.setData('character', JSON.stringify(character));
+  };
 
   return (
-    <div className="character__card"
+    <div
+    draggable="true"
+    onDragStart={(e) => handleDragStart(e, character)}
+    className="character__card"
 id={character.id} onMouseOver={setCharId}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave} >
