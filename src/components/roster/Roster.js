@@ -102,29 +102,12 @@ export const Roster = () => {
         }
     }
 
-    // const handleSave = (click, newRosterPicks) => { //onclickingSave
-    //     click.preventDefault()
-    //     const createRosterChoices = (cArr) => {
-    //         let rosterChoiceArr = []
-    //         for (const c of cArr) {  //there might be an easier way idk, this works.   iterating the array of players in roster and uses takes their character id to create a new object
-    //             let right = c.id
-    //             let nC = {
-    //                 roster: rosterIDNUMBER,
-    //                 character: 0
-    //             }
-    //             if (nC.character != right) {
-    //                 nC.character = right
-    //                 rosterChoiceArr.push(nC)
-    //             } else { }
-    //         } return rosterChoiceArr
-    //     }//promise waits for all the promises to come back in an iterable before resolving
-    //     const rosterToPost = createRosterChoices(newRosterPicks) //calls ^ 
-    //     Promise.all(rosterToPost.map((r) => { newRosterChoice(r) })).then((result) => {
-    //         console.log(result)
-    //     })
-    //     alert("Roster successfully saved")
-    // }
+    const createNestedArray = (arr, size) => {
+        return Array.from({ length: Math.ceil(arr.length / size) }, (_, i) => arr.slice(i * size, i * size + size));
+    };
 
+    const nestedEditRosterCharacters = createNestedArray
+    (editRosterCharacters, 5);
     const handleNewRoster = (e) => {
         e.preventDefault()
         setCurrentEditRoster(0)
@@ -174,11 +157,12 @@ export const Roster = () => {
         </div> 
          <section className="body">
             <ListContainer
+            nestedEditRosterCharacters={nestedEditRosterCharacters} 
             rosterIDNUMBER={rosterIDNUMBER} setEditCharacters={setEditCharacters} setSearchTerms={setSearchTerms}editRosterCharacters={editRosterCharacters} showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} setNewRosterPick={setNewRosterPick} newRosterPicks={newRosterPicks} characters={sortedArr} servers={servers} weapons={weapons} factions={factions} roles={roles} />
             
 
             <div className="parent" >
-                <RosterGrid showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave}
+                <RosterGrid nestedEditRosterCharacters={nestedEditRosterCharacters} showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave}
                     setEditCharacters={setEditCharacters} editRosterCharacters={editRosterCharacters} rosterIDNUMBER={rosterIDNUMBER} characters={characters} newRosterPicks={newRosterPicks} setNewRosterPick={setNewRosterPick} /></div>
 
         </section>  </main>

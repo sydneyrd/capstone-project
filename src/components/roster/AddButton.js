@@ -8,25 +8,35 @@ import { getCurrentRoster } from "../managers/RosterManager"
 
 
 
-export const AddButton = ({ setEditCharacters, rosterIDNUMBER, editRosterCharacters, character, id, setNewRosterPick, newRosterPicks }) => {
+export const AddButton = ({ setEditCharacters, nestedEditRosterCharacters, rosterIDNUMBER, editRosterCharacters, character, id, setNewRosterPick, newRosterPicks }) => {
     const { currentEditRoster, setCurrentEditRoster } = useContext(editContext);
     const localUser = localStorage.getItem("roster_user")
     const rosterUser = JSON.parse(localUser)
     library.add(faPlus)
 
-    const addChoiceToEnd = (character, rosterId) => {
-        const new_choice = { roster: rosterId, character: character.id }
+    const addChoiceToEnd = (character, rosterId, nextGroup) => {
+        const new_choice = { roster: rosterId, character: character.id, group: nextGroup}
 
         newRosterChoice(new_choice)
             .then(() => { getCurrentRoster(rosterId).then((res) => { setEditCharacters(res) }) })
 
     }
-
+    const findNextAvailableGroup = (nestedArray) => {
+        for (let i = 0; i < nestedArray.length; i++) {
+          if (nestedArray[i].length < 5) {
+            return i + 1;
+          }
+        }
+        return nestedArray.length + 1; // All groups are full
+      };
+      
+      
     const handleStartClick = async () => {
         let newR = { user: rosterUser.id }  //creates a new roster object with the user id
         newRoster(newR).then((newRosterObj) => { //posts the new roster object to the api
             setCurrentEditRoster(newRosterObj.id);
-            addChoiceToEnd(character, newRosterObj.id);
+            const nextGroup = findNextAvailableGroup(nestedEditRosterCharacters);
+            addChoiceToEnd(character, newRosterObj.id, nextGroup);
             //adds the character to the database 
         });
 
@@ -37,8 +47,9 @@ export const AddButton = ({ setEditCharacters, rosterIDNUMBER, editRosterCharact
     const handleAddClick = () => {
         // editRosterCharacters.find((playerId) => playerId.characterId === id) ? 
         //     alert("already added") :
+        let nextGroup = findNextAvailableGroup(nestedEditRosterCharacters);
         editRosterCharacters.length >= 50 ? alert("Roster is full") :
-            addChoiceToEnd(character, rosterIDNUMBER) //adds the character to the database
+            addChoiceToEnd(character, rosterIDNUMBER, nextGroup) //adds the character to the database
     }
 
 

@@ -10,8 +10,9 @@ import "./rostergrid.css"
 
 //get all the people in the roster render them in the list
 
-export const RosterGrid = ({showText, setShowText, charId, setNewRosterPick, setCharId, handleMouseEnter, handleMouseLeave, setEditCharacters, editRosterCharacters, 
+export const RosterGrid = ({showText, nestedEditRosterCharacters, setShowText, charId, setNewRosterPick, setCharId, handleMouseEnter, handleMouseLeave, setEditCharacters, editRosterCharacters, 
     newRosterPicks, rosterIDNUMBER, characters }) => {
+        
     useEffect(
         () => {
             if (rosterIDNUMBER) {
@@ -22,36 +23,39 @@ export const RosterGrid = ({showText, setShowText, charId, setNewRosterPick, set
         ,
         []
     )
-    const createNestedArray = (arr, size) => {
-        return Array.from({ length: Math.ceil(arr.length / size) }, (_, i) => arr.slice(i * size, i * size + size));
-    };
 
-    const nestedEditRosterCharacters = createNestedArray
-    (editRosterCharacters, 5);
     const handleDragOver = (e) => {
         e.preventDefault();
       };
     const handleDrop = (e, groupIndex) => {
         e.preventDefault();
+        console.log(groupIndex)
         const characterData = e.dataTransfer.getData('character');
         const character = JSON.parse(characterData);
       
         if (!editRosterCharacters.find((player) => player.id === character.id)) {
           if (editRosterCharacters.length < 50) {
-            const new_choice = { roster: rosterIDNUMBER, character: character.id }
+            const new_choice = { roster: rosterIDNUMBER, character: character.id, group: groupIndex + 1}
+            // I also need to add a group number to the new choice, I want to be able to use the group number displayed on screen so the user can see where the character is going
 
-        newRosterChoice(new_choice)
+        newRosterChoice(new_choice) 
             .then(() => { getCurrentRoster(rosterIDNUMBER).then((res) => { setEditCharacters(res) }) })
           } else {
             alert('Roster is full');
           }
         }
       };
-      
+      const totalGroups = 10;
+const emptyGroups = new Array(totalGroups).fill([]);
+const allGroups = emptyGroups.map((emptyGroup, index) => {
+    return nestedEditRosterCharacters[index] || emptyGroup;
+  });
+  
+
 
     return (
         <>
-            {nestedEditRosterCharacters.map((group, groupIndex) => (
+            {allGroups.map((group, groupIndex) => (
                 <div  onDragOver={handleDragOver}
                 onDrop={(e) => handleDrop(e, groupIndex)}
                 key={groupIndex} className="grid__item">
