@@ -1,9 +1,9 @@
-export const getUserByEmail = (email) => {
-    return fetch(`http://localhost:8088/users?email=${email}`)
-        .then(res => res.json())
-}
-export const getUserbyId = (id) => {
-    return fetch(`http://127.0.0.1:8000/rosterusers/${id}`, {
+// export const getUserByEmail = (email) => {
+//     return fetch(`http://localhost:8088/users?email=${email}`)
+//         .then(res => res.json())
+// }
+export const getUserbyId = () => {
+    return fetch(`http://127.0.0.1:8000/rosterusers/id`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("roster_token")}`
         }
@@ -21,8 +21,8 @@ export const postNewUser = (user) => {
     })
         .then(res => res.json())
 }
-export const updateProfile = (profile, id) => {
-    return fetch(`http://127.0.0.1:8000/users/${id}`, {
+export const updateProfile = (profile) => {
+    return fetch(`http://127.0.0.1:8000/users/id`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
