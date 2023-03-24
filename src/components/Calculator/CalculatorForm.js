@@ -32,6 +32,7 @@ export const CalculatorForm = ({ characters, selectedRoster, rosterChoice, calcu
 
 const handleSaveAndAdd = (click) => {
   click.preventDefault()
+  
   const copy = { ...playerStats }
   if (calculatedRoster.find(rosterChoices =>  rosterChoices.character === copy.character))
   { alert("You've already added this character")}
@@ -65,6 +66,15 @@ const handleChange = (e) => {
   copy[e.target.name] = parseInt(e.target.value)
   setPlayerStats(copy)
 }
+const handleChangeExistingRosterPlayer = (e) => {
+  e.preventDefault();
+  let copy = { ...playerStats };
+  const [characterId, group] = e.target.value.split(",");
+  copy[e.target.name] = parseInt(characterId);
+  copy.group = parseInt(group);
+  setPlayerStats(copy);
+};
+
   return <>
     <div className="player__form">
       <form className="War Statistics">
@@ -73,26 +83,30 @@ const handleChange = (e) => {
         
 
     { rosterChoices && !createNewRoster ?
-      <select name='character' onChange={(e)=>{handleChange(e)}}>
+      <select name='character' onChange={(e)=>{handleChangeExistingRosterPlayer(e)}}>
         <option value={0}>select a character</option>
-        {rosterChoices.map((c) => <option key={c.id} id={c.id} value={c?.character?.id}  >{c?.character?.character_name}</option>)}
+        {rosterChoices.map((c) => <option key={c.id} value={`${c?.character?.id},${c.group}`} >{c?.character?.character_name}</option>)}
     </select>   
     : "" }
     { allChoices.length && createNewRoster ?
-    <select name='character' onChange={(e)=>{handleChange(e)}}>
+    <><select name='character' onChange={(e)=>{handleChange(e)}}>
       <option value={0}>select a character</option>
         {allChoices.map((c) => <option key={c.id} id={c.id} value={c?.id}  >{c?.character_name}</option>)}</select>
-        : "" }
-    
-    
-<label></label>
-<select onChange={(event) => {
+        <select onChange={(event) => { 
             handleChange(event)
           }} name="group"> <option value={0}>group</option>
   {Array.from({length: 10}, (_, i) => i + 1).map(num => (
     <option value={num}>{num}</option>
   ))}
-</select>
+</select></>
+        : "" }
+    
+    
+
+
+
+
+
           <input onChange={(event) => {
             handleChange(event)
           }} className="form-controlstat"

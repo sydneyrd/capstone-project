@@ -21,16 +21,7 @@ export const AddButton = ({ setEditCharacters, nestedEditRosterCharacters, roste
             .then(() => { getCurrentRoster(rosterId).then((res) => { setEditCharacters(res) }) })
 
     }
-    // const findNextAvailableGroup = (nestedArray) => {
-    //     for (let i = 0; i < nestedArray.length; i++) {
-    //       if (nestedArray[i].length < 5) {
-    //         return i + 1;
-    //       }
-    //     }
-    //     return nestedArray.length + 1; // All groups are full
-    //   };
-      
-      
+
     const handleStartClick = async () => {
         let newR = { user: rosterUser.id }  //creates a new roster object with the user id
         newRoster(newR).then((newRosterObj) => { //posts the new roster object to the api
@@ -43,12 +34,6 @@ export const AddButton = ({ setEditCharacters, nestedEditRosterCharacters, roste
         alert("Saving New Roster...")
     }
 
-
-    // const handleAddClick = () => {
-    //     let nextGroup = findNextAvailableGroup(nestedEditRosterCharacters);
-    //     editRosterCharacters.length >= 50 ? alert("Roster is full") :
-    //         addChoiceToEnd(character, rosterIDNUMBER, nextGroup) //adds the character to the database
-    // }
     const findNextAvailableGroup = (charactersArray) => {
         const groups = {};
       
@@ -66,7 +51,6 @@ export const AddButton = ({ setEditCharacters, nestedEditRosterCharacters, roste
             return i;
           }
         }
-      
         return -1; // All groups are full
       };
       

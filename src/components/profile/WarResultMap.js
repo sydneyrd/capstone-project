@@ -15,7 +15,7 @@ const { setCurrentCalculateRoster } = useContext(calculateContext);
     click.preventDefault()
     deleteCalculatedRoster(stat.id)
     .then((res) =>  (
-    getUserWarStats(localUser)
+    getUserWarStats()
     )).then(URost => {
     setUserWarStats(URost)})
   }

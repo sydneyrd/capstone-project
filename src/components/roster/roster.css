@@ -133,6 +133,7 @@ background: linear-gradient(rgba(144,238,144,0.2), rgba(144,238,144,0.2));
      width: 40%;
      height: 60%;
      background-color: none;
+     margin-left: 2em;
  }
 
  .details__element {

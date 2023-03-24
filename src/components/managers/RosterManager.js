@@ -1,12 +1,11 @@
 
-export const newRoster = (newRosterObj) => {
+export const newRoster = () => {
     return fetch(`http://127.0.0.1:8000/rosters`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
             "Authorization": `Token ${localStorage.getItem("roster_token")}`
-        },
-        body: JSON.stringify(newRosterObj)
+        }
     })
         .then(res => res.json())
 }
@@ -21,17 +20,6 @@ export const getRosterName = (rosterId) => {
         .then(res => res.json())
 }
 
-// export const newRosterChoice = (newRosterChoiceObj) => {
-//     return fetch(`http://127.0.0.1:8000/rosterchoices`, {
-//         method: "POST",
-//         headers: {
-//             "Content-Type": "application/json",
-//             "Authorization": `Token ${localStorage.getItem("roster_token")}`
-//         },
-//         body: JSON.stringify(newRosterChoiceObj)
-//     })
-//         .then(res => res.json())
-// }
 export const newRosterChoice = (newRosterChoiceObj) => {
     return fetch(`http://127.0.0.1:8000/rosterchoices`, {
         method: "POST",

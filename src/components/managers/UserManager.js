@@ -32,8 +32,8 @@ export const updateProfile = (profile, id) => {
     })
         .then(response => response.json())
 }
-export const getUserWarStats = (user) => {
-    return fetch(`http://127.0.0.1:8000/calculatedrosters?user=${user.id}`, {
+export const getUserWarStats = () => {
+    return fetch(`http://127.0.0.1:8000/calculatedrosters?user_param=user`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("roster_token")}`
         }
@@ -48,8 +48,8 @@ export const getUserCharacters = () => {
     })
         .then(res => res.json())
 }
-export const getUserRosters = (user, setRosters) => {
-    return fetch(`http://127.0.0.1:8000/rosters?user=${user.id}`, {
+export const getUserRosters = (setRosters) => {
+    return fetch(`http://127.0.0.1:8000/rosters?user=user`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("roster_token")}`
         }

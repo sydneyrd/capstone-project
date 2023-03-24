@@ -1,15 +1,14 @@
 import { getAllRoles, getAllFactions, getAllWeapons, getAllServers, } from "../managers/ResourceManager"
 import {getAllCharacters, getFilteredCharacters} from "../managers/CharacterManager"
-import { newRosterChoice, putRosterName, getRosterName   } from "../managers/RosterManager"
+import { putRosterName, getRosterName, newRoster   } from "../managers/RosterManager"
 import { useEffect, useState } from "react"
 import { RosterGrid } from "./RosterGrid"
 import { ListContainer } from "./ListContainer"
 import "./roster.css"
 import { FilterContainer } from "./FilterContainer"
-import { useNavigate } from "react-router-dom"
-
 import { useContext } from "react"
 import { editContext } from "../views/ApplicationViews"
+
 export const Roster = () => {
     const [characters, setCharacters] = useState([])
     const [servers, setServers] = useState([])
@@ -102,15 +101,19 @@ export const Roster = () => {
         }
     }
 
-    const createNestedArray = (arr, size) => {
+const createNestedArray = (arr, size) => {
         return Array.from({ length: Math.ceil(arr.length / size) }, (_, i) => arr.slice(i * size, i * size + size));
     };
 
     const nestedEditRosterCharacters = createNestedArray
     (editRosterCharacters, 5);
-    const handleNewRoster = (e) => {
+const handleNewRoster = (e) => {
         e.preventDefault()
         setCurrentEditRoster(0)
+        // let newR = { user: rosterUser.id }  //creates a new roster object with the user id --- i need to stop sending user id
+        newRoster().then((newRosterObj) => { //posts the new roster object to the api
+            setCurrentEditRoster(newRosterObj.id)})
+        
         setNewRosterPick([])
         setEditCharacters([])
     }
@@ -131,7 +134,6 @@ export const Roster = () => {
         if (secondarySearch !== 0) {
             url += `secondary_weapon=${secondarySearch}&`
         }
-        
         if (searchTerms.length > 0) {
         let search_text = searchTerms.slice()
             let formatted_search_text = search_text.replace(' ', '%20')
@@ -151,7 +153,6 @@ export const Roster = () => {
 
         <div className="save__div">
             <input type="text" className="roster_name" name="name" placeholder="name this roster ?" defaultValue={rosterName.name} onChange={(event) => handleRosterName(event)} />
-            {/* <button className="save__button" onClick={(click) => { handleSave(click, newRosterPicks) }}>Save Roster</button> */}
             <button onClick={(e) => handleNewRoster(e)
             } className="new__button">New Roster</button>
         </div> 

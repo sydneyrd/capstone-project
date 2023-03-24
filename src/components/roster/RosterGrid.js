@@ -2,7 +2,6 @@ import "./rostergrid.css"
 import React from "react";
 import { getRosterCharacter, getCurrentRoster, newRosterChoice } from "../managers/RosterManager";
 import { useEffect, useState } from "react";
-import { RosterDiv } from "./RosterDiv";
 import { getAllCharacters } from "../managers/CharacterManager";
 import { RosterDivForEdit } from "./RosterDivForEdit";
 import "./rostergrid.css"
@@ -34,33 +33,27 @@ export const RosterGrid = ({ showText, nestedEditRosterCharacters, setShowText, 
         console.log(groupIndex);
         const characterData = e.dataTransfer.getData("character");
         const character = JSON.parse(characterData);
-      
         if (!editRosterCharacters.find((player) => player.id === character.id)) {
-          if (editRosterCharacters.length < 50) {
+        if (editRosterCharacters.length < 50) {
             // Check if the group is already full
             const groupSize = editRosterCharacters.filter((player) => player.group === groupIndex + 1).length;
             if (groupSize >= 5) {
-              alert("This group is already full. Please choose another group.");
-              return;
+            alert("This group is already full. Please choose another group.");
+            return;
             }
-      
             const new_choice = {
-              roster: rosterIDNUMBER,
-              character: character.id,
-              group: groupIndex + 1,
+          roster: rosterIDNUMBER,
+          character: character.id,
+            group: groupIndex + 1,
             };
-      
             newRosterChoice(new_choice).then(() => {
               getCurrentRoster(rosterIDNUMBER).then((res) => {
                 setEditCharacters(res);
-              });
             });
-          } else {
+            });
+        } else {
             alert("Roster is full");
-          }
-        }
-      };
-      
+        }}};
 
     const totalGroups = 10;
 
@@ -93,8 +86,3 @@ export const RosterGrid = ({ showText, nestedEditRosterCharacters, setShowText, 
 
 
 }
-
-
-
-{/* {newRosterPicks.map((c) => <RosterDiv showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} 
-    handleMouseLeave={handleMouseLeave} newRosterPicks={newRosterPicks} setNewRosterPick={setNewRosterPick} key={c.id} c={c} />)} */}
