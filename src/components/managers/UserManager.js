@@ -1,7 +1,3 @@
-// export const getUserByEmail = (email) => {
-//     return fetch(`http://localhost:8088/users?email=${email}`)
-//         .then(res => res.json())
-// }
 export const getUserbyId = () => {
     return fetch(`http://127.0.0.1:8000/rosterusers/id`, {
         headers: {

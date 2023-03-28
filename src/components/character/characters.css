@@ -215,7 +215,11 @@ h4.editcharacter__name {
     margin: 25px 25px 25px 25px;
 }
 
-
+.character--details{
+    display:flex;
+    
+    justify-content: center;
+}
 
 
 select {

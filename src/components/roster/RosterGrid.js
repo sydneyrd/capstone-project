@@ -1,7 +1,8 @@
 import "./rostergrid.css"
 import React from "react";
-import { getRosterCharacter, getCurrentRoster, newRosterChoice } from "../managers/RosterManager";
-import { useEffect, useState } from "react";
+import { getRosterCharacter, getCurrentRoster, newRosterChoice, newRoster } from "../managers/RosterManager";
+import { editContext } from "../views/ApplicationViews"
+import { useEffect, useState, useContext } from "react";
 import { getAllCharacters } from "../managers/CharacterManager";
 import { RosterDivForEdit } from "./RosterDivForEdit";
 import "./rostergrid.css"
@@ -11,7 +12,7 @@ import "./rostergrid.css"
 
 export const RosterGrid = ({ showText, nestedEditRosterCharacters, setShowText, charId, setNewRosterPick, setCharId, handleMouseEnter, handleMouseLeave, setEditCharacters, editRosterCharacters,
     newRosterPicks, rosterIDNUMBER, characters }) => {
-
+        const { currentEditRoster, setCurrentEditRoster } = useContext(editContext);
     useEffect(
         () => {
             if (rosterIDNUMBER) {
@@ -24,10 +25,19 @@ export const RosterGrid = ({ showText, nestedEditRosterCharacters, setShowText, 
         ,
         []
     )
+    const handleStartClick = async () => {
+        newRoster().then((newRosterObj) => { //posts 
+            setCurrentEditRoster(newRosterObj.id);
+
+        });
+        alert("Saving New Roster...")
+    }
 
     const handleDragOver = (e) => {
         e.preventDefault();
     };
+    if (rosterIDNUMBER === 0) {handleStartClick()}
+    else{}
     const handleDrop = (e, groupIndex) => {
         e.preventDefault();
         console.log(groupIndex);
@@ -60,8 +70,7 @@ export const RosterGrid = ({ showText, nestedEditRosterCharacters, setShowText, 
     const allGroups = Array.from({ length: totalGroups }, (_, groupIndex) => {
       return editRosterCharacters.filter((c) => c.group === groupIndex + 1);
     });
-
-
+   
     return (
         <>
             {allGroups.map((group, groupIndex) => (

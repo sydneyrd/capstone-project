@@ -118,7 +118,7 @@ updateUserCharacters(charArr))
                     <button className="update__button" onClick={click => handleUpdateClick(updatedCharacter, click)}>Update</button>
                     <button className="delete__button" onClick={click => handleDeleteClick(updatedCharacter.id, click)}>Delete</button>
                 <Link to={`/character/${ownedCharacter.id}`}>
-                            <div  className="details" name="details" value={ownedCharacter.id}>See Details</div>
+                            <div  className="character--details" name="details" value={ownedCharacter.id}>See Details</div>
                         </Link> </fieldset>
                
             </form>

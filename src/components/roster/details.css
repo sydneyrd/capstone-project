@@ -1,116 +1,13 @@
-/* //parent .details__element is the parent article element// */
-
-/* .details__element {
-    position: sticky;
-    left: 20em;
-    /* transform: translate(-50%, -100%); */
-    /* z-index: 1;
-    align-items: center;
-    background-color:#bb2b2b;
-    max-height: 15em;
-    max-width: 15em;
-  }
-  .character__details:hover>.character__details {
-      opacity: 1.0;
-      background-color: transparent;
-  }
-  .details {
-      position: center;
-  }
-  .character__details {
-      opacity: 0.0;
-      
-      -webkit-transition: all 500ms ease-in-out;
-      -moz-transition: all 500ms ease-in-out;
-      -ms-transition: all 500ms ease-in-out;
-      -o-transition: all 500ms ease-in-out;
-      transition: all 500ms ease-in-out;
-  }
-
-
-  
-  .details--popup{
-    position: sticky;
-    top: 10em;
-    left: 20em;
-    /* transform: translate(-50%, -100%); */
-    /* z-index: 1;
-    align-items: center;
-    background-color:#000000;
-  }
-
-
-          .message{
-            background-color: #000000;
-            border: dotted, 3px, goldenrod;
-          } */ 
-/* .h3{} character name header*/ 
-              
-                  
-
-/* this is what the pop up looks like
-<div className="details--popup">
-{showText &&
-    <section className="message" key={rightCharacter?.id}>
-        <article className="details">
-            <h3>{rightCharacter?.character_name}</h3>
-            <>{rightRole?.name}
-                <br></br>
-                {rightPrimary?.name}
-                <br></br>
-                {rightSecondary?.name}
-                <br></br>
-                {rightServer?.name}
-                <br></br>
-                {rightFaction?.name}
-            </>
-        </article>
-    </section>
-}</div> */
-
-.details__element {
-  position: sticky;
-  left: 20em;
-  z-index: 1;
-  align-items: center;
-  background-color: #bb2b2b;
-  max-height: 15em;
-  max-width: 15em;
-}
 
 .character__details:hover > .character__details {
-  opacity: 1.0;
-  background-color: transparent;
+  /* I don't know why this is here to be honest*/
 }
 
 .details {
-  position: center;
-}
-
-.character__details {
-  opacity: 0.0;
-
-  -webkit-transition: all 500ms ease-in-out;
-  -moz-transition: all 500ms ease-in-out;
-  -ms-transition: all 500ms ease-in-out;
-  -o-transition: all 500ms ease-in-out;
-  transition: all 500ms ease-in-out;
-}
-
-.details--popup {
+  /* position: center; */
+  display: flex;
+  flex-direction: column;
+  width: 15em;
+  height: 15em;
   position: sticky;
-  top: 10em;
-  left: 20em;
-  z-index: 1;
-  align-items: center;
-  background-color: #000000;
-  width: 300px; /* Adjust the width as needed */
-  padding: 20px; /* Add padding for more space around content */
-}
-
-.message {
-  background-color: #000000;
-  border: 3px dotted goldenrod;
-  max-width: 100%;
-  word-wrap: break-word;
 }

@@ -16,10 +16,17 @@ export const getSingleCharacter = (characterId, setCharacter) => {
         }
     })
         .then(res => res.json()).then((res) => {setCharacter(res)})
+}
+export const getSingleReadOnlyCharacter = (characterId, setCharacter) => {
+    return fetch(`http://127.0.0.1:8000/characters/${characterId}?view=read_only`, {
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("roster_token")}`
+        }
+    })
+        .then(res => res.json()).then((res) => {setCharacter(res)})
         
     //no set function included in this don't forget .then
 }
-
 export const saveNewCharacter = (newCharacterToAPI) => {
     return fetch(`http://127.0.0.1:8000/characters`, {
         method: "POST",

@@ -23,8 +23,8 @@ export const AddButton = ({ setEditCharacters, nestedEditRosterCharacters, roste
     }
 
     const handleStartClick = async () => {
-        let newR = { user: rosterUser.id }  //creates a new roster object with the user id
-        newRoster(newR).then((newRosterObj) => { //posts the new roster object to the api
+        // let newR = { user: rosterUser.id }  //creates a new roster object with the user id
+        newRoster().then((newRosterObj) => { //posts the new roster object to the api
             setCurrentEditRoster(newRosterObj.id);
             const nextGroup = findNextAvailableGroup(nestedEditRosterCharacters);
             addChoiceToEnd(character, newRosterObj.id, nextGroup);

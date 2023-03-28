@@ -23,7 +23,7 @@
  .body {
      display: flex;
      flex-direction: row;
-     justify-content: space-between;
+     ;
  }
  .search--bar--wrapper {
    display:flex;
@@ -91,7 +91,12 @@ background: linear-gradient(rgba(144,238,144,0.2), rgba(144,238,144,0.2));
     line-height: 16px;
     font-size: 11px;
  }
-
+.grid--name--container{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
  button.new__button {
     font-family: 'Libre Franklin', sans-serif;
     outline: 0;
@@ -103,8 +108,8 @@ background: linear-gradient(rgba(144,238,144,0.2), rgba(144,238,144,0.2));
     border-radius: 3px;
     border: 1px solid transparent;
     transition: all .3s ease;
-    background: #570B08;
-    border-color: #570B08;
+    background: #086c3c;
+    border-color: #0b5d3a;
     font-weight: 600;
     text-transform: uppercase;
     line-height: 16px;
@@ -119,10 +124,17 @@ background: linear-gradient(rgba(144,238,144,0.2), rgba(144,238,144,0.2));
  }
 
  .save__div {
-  display: flex;
-     flex-direction: row;
-     justify-content: flex-end;
-     align-content: space-around;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: center;
+    min-width: 5em;
+    min-height: 5em;
+    margin-top: 6em;
+
+   
+    
      
  }
 .search_div{
@@ -131,7 +143,7 @@ background: linear-gradient(rgba(144,238,144,0.2), rgba(144,238,144,0.2));
 }
  .list__container {
      width: 40%;
-     height: 60%;
+     height: 50%;
      background-color: none;
      margin-left: 2em;
  }
@@ -171,9 +183,15 @@ background: linear-gradient(rgba(144,238,144,0.2), rgba(144,238,144,0.2));
     margin: 0.2em;
  }
 
+ .character__card:hover {
+   cursor: pointer;
+   text-decoration: underline;
+   color:green;
+ }
+ 
  
  section.character__list--roster {
-    height: 39em;
+    height: 35em;
     width: 15em;
     scrollbar-width:0;
     position:relative;
@@ -186,6 +204,7 @@ overflow-y:scroll;
     border: 5px hidden transparent;
     border-radius: 6px 6px 6px 6px;
     margin: 1em;
+    margin-top:5em;
 
 }
 

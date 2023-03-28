@@ -11,10 +11,9 @@ export const DetailWindow = ({ charId, servers, roles, weapons, factions, showTe
     //find all the right details.   charId picked my mouseover and charId usestate, showtext is a boolean for displaying only
 
     return (<>
-        <div className="details--popup">
+        
             {showText &&
-                <section className="message" key={rightCharacter?.id}>
-                    <article className="details">
+                    <article key={rightCharacter?.id} className="details">
                         <h3>{rightCharacter?.character_name}</h3>
                         <>{rightRole?.name}
                             <br></br>
@@ -27,8 +26,8 @@ export const DetailWindow = ({ charId, servers, roles, weapons, factions, showTe
                             {rightFaction?.name}
                         </>
                     </article>
-                </section>
-            }</div>
+                
+            }
     </>
     )
 }

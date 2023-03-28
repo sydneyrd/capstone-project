@@ -151,20 +151,22 @@ const handleNewRoster = (e) => {
             setSortedArr={setSortedArr} characters={characters} servers={servers} weapons={weapons} factions={factions} roles={roles} />
 </div>
 
-        <div className="save__div">
-            <input type="text" className="roster_name" name="name" placeholder="name this roster ?" defaultValue={rosterName.name} onChange={(event) => handleRosterName(event)} />
-            <button onClick={(e) => handleNewRoster(e)
-            } className="new__button">New Roster</button>
-        </div> 
+        
          <section className="body">
             <ListContainer
             nestedEditRosterCharacters={nestedEditRosterCharacters} 
             rosterIDNUMBER={rosterIDNUMBER} setEditCharacters={setEditCharacters} setSearchTerms={setSearchTerms}editRosterCharacters={editRosterCharacters} showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} setNewRosterPick={setNewRosterPick} newRosterPicks={newRosterPicks} characters={sortedArr} servers={servers} weapons={weapons} factions={factions} roles={roles} />
-            
-
+            <div className="grid--name--container">
+<input type="text" className="roster_name" name="name" placeholder="name this roster ?" defaultValue={rosterName.name} onChange={(event) => handleRosterName(event)} />
             <div className="parent" >
                 <RosterGrid nestedEditRosterCharacters={nestedEditRosterCharacters} showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave}
-                    setEditCharacters={setEditCharacters} editRosterCharacters={editRosterCharacters} rosterIDNUMBER={rosterIDNUMBER} characters={characters} newRosterPicks={newRosterPicks} setNewRosterPick={setNewRosterPick} /></div>
+                    setEditCharacters={setEditCharacters} editRosterCharacters={editRosterCharacters} rosterIDNUMBER={rosterIDNUMBER} characters={characters} newRosterPicks={newRosterPicks} setNewRosterPick={setNewRosterPick} /></div></div>
+                    <div className="save__div">
+            create a new roster 
+            <button onClick={(e) => handleNewRoster(e)
+            } className="new__button">New Roster</button>
+            or edit existing roster
+        </div> 
 
         </section>  </main>
 }

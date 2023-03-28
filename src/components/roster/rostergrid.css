@@ -33,6 +33,8 @@
   background-color: #272624;
   position: sticky;
   margin-right: 2em;
+  margin-left:4em;
+  margin-top:2em;
 }
 
 .grid__item {

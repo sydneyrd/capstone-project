@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { SearchFilter } from "./SearchFilter"
 
 export const ListContainer = ({ editRosterCharacters, nestedEditRosterCharacters, setSearchTerms, showText, setShowText, charId, setNewRosterPick, setCharId, handleMouseEnter, handleMouseLeave, newRosterPicks, characters, servers, rosterIDNUMBER, weapons, factions, roles, setEditCharacters}) => {
-  
+    
   
     return <> <>
     
@@ -13,6 +13,7 @@ export const ListContainer = ({ editRosterCharacters, nestedEditRosterCharacters
             <SearchFilter setSearchTerms={setSearchTerms} /></div>
             {characters.map((character) =>
                 <CharacterList
+               
                 nestedEditRosterCharacters={nestedEditRosterCharacters} 
                  rosterIDNUMBER={rosterIDNUMBER}
                  setEditCharacters={setEditCharacters}
@@ -23,11 +24,11 @@ export const ListContainer = ({ editRosterCharacters, nestedEditRosterCharacters
                      setNewRosterPick={setNewRosterPick} newRosterPicks={newRosterPicks}
                    /> )}
             </section></>
-<article className="details__element"> 
-            {showText && charId > 0 ?
+<>
+            {/* {showText && charId > 0 ?
                 <><DetailWindow charId={charId} showText={showText} servers={servers} weapons={weapons} factions={factions} roles={roles} characters={characters} /> </>
-                : <></>}
-        </article></>
+                : <></>} */}
+        </></>
 //only display the detail button if the charId has been set to something other than 0 and showText is true
 }
 
