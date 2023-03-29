@@ -8,6 +8,7 @@ import "./roster.css"
 import { FilterContainer } from "./FilterContainer"
 import { useContext } from "react"
 import { editContext } from "../views/ApplicationViews"
+import { getUserRosters } from "../managers/UserManager"
 
 export const Roster = () => {
     const [characters, setCharacters] = useState([])
@@ -32,6 +33,7 @@ export const Roster = () => {
         name: "",
         roster: currentEditRoster
     });
+    const [userRosters, setUserRosters] = useState([])
     
     //we are capturing the new roster id when we first click add to roster and saving it to start roster  //pass those props ^
     let rosterIDNUMBER = currentEditRoster
@@ -62,6 +64,8 @@ export const Roster = () => {
                         })
                         .then(() => {
                             getAllServers(setServers)
+                        }).then(() => {
+                            getUserRosters(setUserRosters)
                         })
                 })
         },
@@ -110,13 +114,16 @@ const createNestedArray = (arr, size) => {
 const handleNewRoster = (e) => {
         e.preventDefault()
         setCurrentEditRoster(0)
-        // let newR = { user: rosterUser.id }  //creates a new roster object with the user id --- i need to stop sending user id
         newRoster().then((newRosterObj) => { //posts the new roster object to the api
             setCurrentEditRoster(newRosterObj.id)})
-        
         setNewRosterPick([])
         setEditCharacters([])
     }
+    useEffect(() => {
+        if (currentEditRoster > 0) {
+          
+        }
+    }, [currentEditRoster])
     useEffect(()=>{
         let url = ""
         if (roleSearch !== 0) {
@@ -165,7 +172,15 @@ const handleNewRoster = (e) => {
             create a new roster 
             <button onClick={(e) => handleNewRoster(e)
             } className="new__button">New Roster</button>
-            or edit existing roster
+            or edit existing roster{userRosters.length > 0 ? <select className="roster__select" onChange={(e) => setCurrentEditRoster(parseInt(e.target.value))}>
+                <option value="0">Select a roster</option>
+                {userRosters.map((roster) => {
+                    return <option key={roster.id} value={roster.id}>{roster.name ?
+                    `${roster.name}` 
+                : `untitled roster #${roster.id}` 
+                }</option>
+                })}
+            </select> : <></>}
         </div> 
 
         </section>  </main>

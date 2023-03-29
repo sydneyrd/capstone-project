@@ -7,10 +7,8 @@ export const SavedRosters = ({ localUser }) => {
   const [userRosters, setUserRosters] = useState([])
   useEffect(
     () => {
-      getUserRosters(localUser)
-        .then((URost) => {
-          setUserRosters(URost)
-        })
+      getUserRosters(setUserRosters)
+     
     },
     []
   )

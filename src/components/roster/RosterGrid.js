@@ -25,6 +25,14 @@ export const RosterGrid = ({ showText, nestedEditRosterCharacters, setShowText, 
         ,
         []
     )
+    useEffect(() => {
+        if (rosterIDNUMBER > 0){
+            getCurrentRoster(rosterIDNUMBER).then((res)=>{setEditCharacters(res)}
+            )
+        }
+
+    }, [currentEditRoster])
+
     const handleStartClick = async () => {
       await  newRoster().then((newRosterObj) => {
             setCurrentEditRoster(newRosterObj.id);

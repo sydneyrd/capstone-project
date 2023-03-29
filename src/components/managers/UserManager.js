@@ -50,5 +50,5 @@ export const getUserRosters = (setRosters) => {
             "Authorization": `Token ${localStorage.getItem("roster_token")}`
         }
     })
-        .then(res => res.json())
+        .then(res => res.json()).then((res) => {setRosters(res)})
 }
