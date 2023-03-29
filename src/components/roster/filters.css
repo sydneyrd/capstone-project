@@ -100,7 +100,7 @@ form:required,
 /* demo */
 body {
   font-family: "Poppins", sans-serif;
-  display: flex;
+  
   flex-direction: column;
   justify-content: center;
   align-items: center;

@@ -1,31 +1,106 @@
 import "./rostergrid.css"
 import React from "react";
-import { getRosterCharacter, getCurrentRoster  } from "../managers/RosterManager";
-import { useEffect, useState } from "react";
-import { RosterDiv } from "./RosterDiv";
-import { getAllCharacters} from "../managers/CharacterManager";
+import { getRosterCharacter, getCurrentRoster, newRosterChoice, newRoster } from "../managers/RosterManager";
+import { editContext } from "../views/ApplicationViews"
+import { useEffect, useState, useContext } from "react";
+import { getAllCharacters } from "../managers/CharacterManager";
 import { RosterDivForEdit } from "./RosterDivForEdit";
+import "./rostergrid.css"
+
+
 //get all the people in the roster render them in the list
 
-export const RosterGrid = ({showText, setShowText, charId, setNewRosterPick, setCharId, handleMouseEnter, handleMouseLeave, setEditCharacters, editRosterCharacters, 
+export const RosterGrid = ({ showText, nestedEditRosterCharacters, setShowText, charId, setNewRosterPick, setCharId, handleMouseEnter, handleMouseLeave, setEditCharacters, editRosterCharacters,
     newRosterPicks, rosterIDNUMBER, characters }) => {
+        const { currentEditRoster, setCurrentEditRoster } = useContext(editContext);
     useEffect(
         () => {
             if (rosterIDNUMBER) {
-            getCurrentRoster(rosterIDNUMBER)
-                .then((res) => {
-                    setEditCharacters(res)
-                })}}
-                
+                getCurrentRoster(rosterIDNUMBER)
+                    .then((res) => {
+                        setEditCharacters(res)
+                    })
+            }
+        }
         ,
         []
     )
+    useEffect(() => {
+        if (rosterIDNUMBER > 0){
+            getCurrentRoster(rosterIDNUMBER).then((res)=>{setEditCharacters(res)}
+            )
+        }
 
-    return <>{editRosterCharacters.map((c) => <RosterDivForEdit showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} 
-    handleMouseLeave={handleMouseLeave} rosterIDNUMBER={rosterIDNUMBER} setEditCharacters={setEditCharacters} characters={characters} newRosterPicks={editRosterCharacters}
-        setNewRosterPick={setNewRosterPick} key={c.id} c={c} />)}
-        {newRosterPicks.map((c) => <RosterDiv showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} 
-    handleMouseLeave={handleMouseLeave} newRosterPicks={newRosterPicks} setNewRosterPick={setNewRosterPick} key={c.id} c={c} />)}
+    }, [currentEditRoster])
 
-    </>
+    const handleStartClick = async () => {
+      await  newRoster().then((newRosterObj) => {
+            setCurrentEditRoster(newRosterObj.id);
+
+        });
+        alert("Saving New Roster...")
+    }
+
+    const handleDragOver = (e) => {
+        e.preventDefault();
+    };
+    
+    const handleDrop = (e, groupIndex) => {
+        e.preventDefault();
+        if (rosterIDNUMBER === 0) {handleStartClick()}
+    else{}
+        console.log(groupIndex);
+        const characterData = e.dataTransfer.getData("character");
+        const character = JSON.parse(characterData);
+        if (!editRosterCharacters.find((player) => player.id === character.id)) {
+        if (editRosterCharacters.length < 50) {
+            // Check if the group is already full
+            const groupSize = editRosterCharacters.filter((player) => player.group === groupIndex + 1).length;
+            if (groupSize >= 5) {
+            alert("This group is already full. Please choose another group.");
+            return;
+            }
+            const new_choice = {
+          roster: rosterIDNUMBER,
+          character: character.id,
+            group: groupIndex + 1,
+            };
+            newRosterChoice(new_choice).then(() => {
+              getCurrentRoster(rosterIDNUMBER).then((res) => {
+                setEditCharacters(res);
+            });
+            });
+        } else {
+            alert("Roster is full");
+        }}};
+
+    const totalGroups = 10;
+
+    const allGroups = Array.from({ length: totalGroups }, (_, groupIndex) => {
+      return editRosterCharacters.filter((c) => c.group === groupIndex + 1);
+    });
+   
+    return (
+        <>
+            {allGroups.map((group, groupIndex) => (
+                <div onDragOver={handleDragOver}
+                    onDrop={(e) => handleDrop(e, groupIndex)}
+                    key={groupIndex} className="grid__item">
+                    <span className="roster__group">group {groupIndex + 1}</span>
+                    {group.map((c) => (
+                        <RosterDivForEdit
+                            getCurrentRoster={getCurrentRoster} showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter}
+                            handleMouseLeave={handleMouseLeave} rosterIDNUMBER={rosterIDNUMBER} setEditCharacters={setEditCharacters} characters={characters} newRosterPicks={editRosterCharacters}
+                            setNewRosterPick={setNewRosterPick}
+                            key={c.id}
+                            c={c}
+                        />
+                    ))}
+                </div>
+            ))}
+        </>
+    );
+
+
+
 }

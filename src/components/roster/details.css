@@ -1,0 +1,13 @@
+
+.character__details:hover > .character__details {
+  /* I don't know why this is here to be honest*/
+}
+
+.details {
+  /* position: center; */
+  display: flex;
+  flex-direction: column;
+  width: 15em;
+  height: 15em;
+  position: sticky;
+}

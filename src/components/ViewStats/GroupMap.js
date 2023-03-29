@@ -20,6 +20,6 @@ const KDR = () => {
    
    return <div className="group__results">
      
-      <div className="player__name">{player?.character?.character_name}</div>
+      <li className="player__name">{player?.character?.character_name}</li>
       </div>
    }

@@ -1,17 +1,34 @@
-.navbar {
+/* .navbar {
     display: flex;
     
     justify-content: space-evenly;
     align-items: left;
     /* position:sticky; */
-}
+
 
 .navbar__item {
+    display: flex;
     flex-basis: 20%;
     list-style-type: none;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .navbar__logout {
     margin-left: auto;
 }
+.navbar {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: left;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    height: 3em;
+    margin: 0;
+    padding: 0;
+  }
 

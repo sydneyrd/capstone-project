@@ -94,13 +94,13 @@ function handleReset(click){
             <button className='button-84' onClick={(click)=>{sortAssist(click)}}>Assists</button>
             <button className='button-84' onClick={(click)=>{sortKDR(click)}}>KDR</button>
             <button className='button-84' onClick={(click) => {handleReset(click)}}>Reset</button>
-             <Link className='button-84' to={`/resources/edit/${currentCalcRoster.id}`} > Edit Players</Link>
-            <label htmlFor="roles">
-                <select
+             
+            
+                <select className='role--select'
                 onChange={(event) => roleFilter(event)}
                 >{roles.map((role) => <RoleSelect key={`role--${role.id}`}role={role}
                 />)}
-                </select></label>
+                </select>
                 
         </div>
     

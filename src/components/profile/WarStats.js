@@ -5,7 +5,7 @@ import { getUserWarStats } from "../managers/UserManager"
 export const WarStats = ({ localUser, userWarStats, setUserWarStats }) => {
     useEffect(
         () => {
-            getUserWarStats(localUser)
+            getUserWarStats()
                 .then((URost) => {
                     setUserWarStats(URost)
                 })

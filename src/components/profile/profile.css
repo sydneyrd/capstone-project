@@ -1,12 +1,23 @@
 .h1, h1 {
     font-size: 2.5rem;
+    padding-top: 0.3em;
 }
 
 
 .profile--page{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  margin-top: 3em;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow-y: auto;
+  
+  padding: 0;
 }
 
 
@@ -14,9 +25,6 @@ input[type="email"] {
         margin: 0.15em;
         padding: 1em;
         border-radius: 3px;
-}
-fieldset {
-    margin: 2px;
 }
 
 .label--login {
@@ -29,26 +37,52 @@ fieldset {
     padding-bottom: 5px;
     
 }
-
+.left--container--profile{
+  display:flex;
+  flex-direction: row;
+  padding-top: 3em;
+ 
+}
+.right--container--profile{
+    display:flex;
+    flex-direction: row;
+    padding-top: 3em;
+   
+}
 .container--login {
     text-align: center;
 }
-
 .form--update {
     display: flex;
     flex-direction: column;
-    align-content: center;
-    background-position-x: left;
-    z-index: 1;
-    min-height: 20rem;
-    min-width: 20rem;
-    background-color: transparent;
-    background-blend-mode: overlay;
-    background-repeat: no-repeat;
-    margin:4em;
-    align-items: center;
-    justify-items: center;
-}
+    
+    max-width: 25em;
+    padding: 10px;
+    /* border: 1px solid #c9c9c9;
+    border-radius: 7px; */
+    font-family: 'Libre Franklin', sans-serif;
+    
+    margin: 25px 0;
+    height: 60%;
+  }
+  input.form--update{
+    max-width: 5em;
+  }
+  .form--update > * {
+    max-width: 25em;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+  }
+  
+  @media (max-width: 25em) {
+    .form--update {
+      flex-wrap: wrap;
+    }
+  
+    .form--update > *:last-child {
+      margin-bottom: 0;
+    }
+  }
 
 .button--close {
     position: relative;
@@ -74,6 +108,10 @@ fieldset {
     line-height: 16px;
     font-size: 11px;
     
+}
+.form--update fieldset{
+    max-width: 100%;
+    margin: 0;
 }
 .saved--rosters {
     display: flex;
