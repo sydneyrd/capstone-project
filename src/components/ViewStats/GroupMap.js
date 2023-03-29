@@ -1,6 +1,3 @@
-//i need to sort the players by group number and then generate statistics for each group
-//players with no group should be grouped together at the end
-
 
 export const GroupMap = ({player}) => {
 

@@ -66,12 +66,13 @@ setBase(true)
             <span>Total Kills: {currentCalcRoster.total_kills}</span>
             <Link className='button-84' to={`/resources/edit/${currentCalcRoster.id}`} > Edit </Link></div>
         <StatFilters currentCalcRoster={currentCalcRoster} setBase={setBase} setGroup={setGroup} players={players} sortByGroup={sortByGroup} setBaseStats={setBaseStats} sortByArmy={sortByArmy}filteredPlayers={filteredPlayers} setFilteredPlayers={setFilteredPlayers} />
+        <div className="results--body">
         <div className="player__resultsmap">
             
             {!group && !base ? 
                 <div className="labels">
                 <span className="player__name">Player</span>
-                <span className="labels">Group</span>
+                <span className="group">Group</span>
                 <span className="damage">Damage</span>
                 <span className="healing">Healing</span>
                 <span className="kills">Kills</span>
@@ -89,7 +90,7 @@ setBase(true)
                     })
                     
             }  
-        </div>
+        </div></div>
     </>
 }
 

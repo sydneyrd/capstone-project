@@ -103,7 +103,7 @@ function handleReset(click){
                 </select>
                 
         </div>
-    
+        <hr class="custom-line-break" />
     </></>
 
 }

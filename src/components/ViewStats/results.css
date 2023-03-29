@@ -53,28 +53,65 @@ div.labels {
     align-items: center;
     align-content: center;
 }
-
+.results--body{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    margin: 0.25em;
+    padding: 0.25em;
+    border: 1px, solid, grey;
+}
 div.player__resultsmap {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    width: 35em;
+    justify-content: space-between;
+    min-width:fit-content;
     height: fit-content;
     border: solid 1px rgb(115, 109, 107);
     -webkit-box-shadow: 2px 4px 23px 4px #000000;
     box-shadow: 2px 4px 23px 4px #000000;
     border-radius: 6px 6px 6px 6px;
     background-color: transparent;
+    margin-left:33%;
+    margin-top: 2em;
 }
 .group__card{
     display: flex;
     flex-direction: row;
-    
     justify-content: space-around;
     margin: 0.25em;
     padding: 0.25em;
     border: 1px, solid, grey;
+    
 }
+.labels span {
+  border-right: 1px solid #ccc;
+  padding: 0.5em 1em; /* Add some padding around the content */
+  text-align: center;
+  min-width:2.5em;
+  flex:1;
+}
+.labels span:last-child {
+  border-right: none;
+}
+
+.player__results span {
+  justify-content: space-evenly;
+ 
+  padding: 0.5em 1em; /* Add some padding around the content */
+  min-width: 2.5em;
+  text-align: center;
+  flex:1;
+}
+
+.player__results span:nth-child(2n) {
+  background-color: inherit; /* Inherit the background color from the parent element */
+  filter: brightness(120%); /* Make the background color 90% darker */
+}
+
 
 /* CSS */
 .button-84 {
