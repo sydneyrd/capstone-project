@@ -15,15 +15,16 @@ export const ResultsMap = ({ player, currentCalcRoster}) => {
    }
 
 
-   return <div className="player__results"><div className="player__name">{player?.character?.character_name}</div>
-   <div className="player__results">{player?.group}</div>
-   <div className="damage">{player?.damage ? <>{percentage(player?.damage, currentCalcRoster.total_damage)}%</> : "0"}
-   </div>
+   return <div className="player__results"><span className="player__name">{player?.character?.character_name}</span>
+   <span className="player__results">{player?.group}</span>
+   <span className="damage">{player?.damage ? <>{percentage(player?.damage, currentCalcRoster.total_damage)}%</> : "0"}
+   </span>
       
-      <div className="healing">{percentage(player?.healing, currentCalcRoster.total_healing)}%</div>
-      <div className="kills">{percentage(player?.kills, currentCalcRoster.total_kills)}%</div> 
-      <div className='kdr'>{percentage(player?.assists, currentCalcRoster.total_kills)}%</div>
-      <div className="kdr">{KDR()}</div>
+      <span className="healing">{percentage(player?.healing, currentCalcRoster.total_healing)}%</span>
+      <span className="kills">{percentage(player?.kills, currentCalcRoster.total_kills)}%</span> 
+      <span className='kdr'>{percentage(player?.assists, currentCalcRoster.total_kills)}%</span>
+      <span className="kdr">{KDR()}</span>
+      
    </div>
 }
 

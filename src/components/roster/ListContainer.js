@@ -24,11 +24,7 @@ export const ListContainer = ({ editRosterCharacters, nestedEditRosterCharacters
                      setNewRosterPick={setNewRosterPick} newRosterPicks={newRosterPicks}
                    /> )}
             </section></>
-<>
-            {/* {showText && charId > 0 ?
-                <><DetailWindow charId={charId} showText={showText} servers={servers} weapons={weapons} factions={factions} roles={roles} characters={characters} /> </>
-                : <></>} */}
-        </></>
+</>
 //only display the detail button if the charId has been set to something other than 0 and showText is true
 }
 

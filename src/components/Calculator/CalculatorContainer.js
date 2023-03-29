@@ -24,10 +24,9 @@ export const CalculatorContainer = () => {
 
     useEffect(
         () => {
-          getUserRosters(localUser)
-            .then((URost) => {
-              setUserRosters(URost)
-            }).then(() => {getAllCharacters(setCharacters)})
+          getUserRosters(setUserRosters)
+            
+            .then(() => {getAllCharacters(setCharacters)})
         },
         []
       )
@@ -45,17 +44,17 @@ const handleClear = (click) => {
 
 //if no roster is selected, it is showing these options at the top.   when one is selected they are replaced with a go back button and a text input to name the results, when the selectedroster is set to 0 again the menu returns
     return <> <> 
-    {!selectedRoster && createNewRoster == false ? <> <> <h3>Select an existing Roster <select onChange={(event) => handleRosterChange(event)}><option key="select--0" value={0}>select</option>{userRosters.map((roster) => <RosterList key={roster.id} setSelectedRoster={setSelectedRoster} roster={roster} />)} </select> or <button className="Roster__button" onClick={(click)=>{setCreateNewRoster(true)}}>Create New</button></h3> </>
+    {!selectedRoster && createNewRoster == false ? <> <> <div className="select--or--new"> <h3>Select an existing Roster <select onChange={(event) => handleRosterChange(event)}><option key="select--0" value={0}>select</option>{userRosters.map((roster) => <RosterList key={roster.id} setSelectedRoster={setSelectedRoster} roster={roster} />)} </select> or <button className="new__roster__button" onClick={(click)=>{setCreateNewRoster(true)}}>Create New</button></h3> </div></>
     </>
 : ""    
 }
 {/* if selected roster is true it pops up the go back and the form */}
         </>
         {selectedRoster || createNewRoster ? 
-            <>  <button className="clear__button" onClick={(click) => handleClear(click)}>Go Back</button> <input className="roster__name" type="text" onChange={(event) => { setCurrentCalcRostName(event.target.value) }} placeholder="name these results..."></input>
+            <> <div className="back--button"><button className="clear__button" onClick={(click) => handleClear(click)}>Go Back</button> <input className="roster__name" type="text" onChange={(event) => { setCurrentCalcRostName(event.target.value) }} placeholder="name these results..."></input>
                 <CalculateResults currentCalcRostName={currentCalcRostName}
                     calculatedRosterId={calculatedRosterId} newCalculatedRoster={newCalculatedRoster} setCalculatedRosterId={setCalculatedRosterId}
-                    localUser={localUser} selectedRoster={selectedRoster} calculatedRoster={calculatedRoster} />
+                    localUser={localUser} selectedRoster={selectedRoster} calculatedRoster={calculatedRoster} /></div> 
                     <div className="parent__div"> <CalculatorForm createNewRoster={createNewRoster}calculatedRoster={calculatedRoster} selectedRoster={selectedRoster} 
                 setCalculatedRoster={setCalculatedRoster}
                     characters={characters} /></div>

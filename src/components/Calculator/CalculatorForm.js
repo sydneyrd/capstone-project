@@ -31,23 +31,27 @@ export const CalculatorForm = ({ characters, selectedRoster, rosterChoice, calcu
   }, [createNewRoster]) 
 
 const handleSaveAndAdd = (click) => {
-  click.preventDefault()
-  
-  const copy = { ...playerStats }
-  if (calculatedRoster.find(rosterChoices =>  rosterChoices.character === copy.character))
-  { alert("You've already added this character")}
-  else if (copy.character === 0) {window.alert("Please select a character")}
-  else if(copy.kills === 0) {window.alert("Please enter a number of kills")}
-  else if(copy.deaths === 0) {window.alert("Please enter a number of deaths")}
-  else if(copy.assists === 0) {window.alert("Please enter a number of assists")}
-  else if(copy.healing === 0) {window.alert("Please enter a number of healing")}
-  else if(copy.damage === 0) {window.alert("Please enter a number of damage")}
-  else if(copy.character === 0 && copy.group === 0 && copy.kills === 0 && copy.deaths === 0 && copy.assists === 0 && copy.healing === 0 && copy.damage === 0){window.alert("Please select a character and enter stats")}
-  else if (calculatedRoster.find(allChoices =>  allChoices.character.id === copy.character))
-  {alert("You've already added this character")}
-  else
-   {setCalculatedRoster(state => [...state, copy])}
-}
+  click.preventDefault();
+
+  const copy = { ...playerStats };
+  const hasZeroValue =
+    copy.kills === 0 ||
+    copy.deaths === 0 ||
+    copy.assists === 0 ||
+    copy.healing === 0 ||
+    copy.damage === 0;
+
+  if (calculatedRoster.find((rosterChoices) => rosterChoices.character === copy.character)) {
+    alert("You've already added this character");
+  } else if (copy.character === 0) {
+    window.alert("Please select a character");
+  } else if (hasZeroValue && !window.confirm("You have entered zero for one or more stats. Are you sure you want to save?")) {
+    // User did not confirm saving with zero values
+  } else {
+    setCalculatedRoster((state) => [...state, copy]);
+  }
+};
+
 const handleRemove = (click, charId) => {
   click.preventDefault()
   const index = calculatedRoster.findIndex(object => {
@@ -78,9 +82,7 @@ const handleChangeExistingRosterPlayer = (e) => {
   return <>
     <div className="player__form">
       <form className="War Statistics">
-        <></>
         <fieldset>
-        
 
     { rosterChoices && !createNewRoster ?
       <select name='character' onChange={(e)=>{handleChangeExistingRosterPlayer(e)}}>
@@ -100,13 +102,6 @@ const handleChangeExistingRosterPlayer = (e) => {
   ))}
 </select></>
         : "" }
-    
-    
-
-
-
-
-
           <input onChange={(event) => {
             handleChange(event)
           }} className="form-controlstat"
@@ -138,15 +133,23 @@ const handleChangeExistingRosterPlayer = (e) => {
             onChange={(event) => {
               handleChange(event)
             }}></input>
-          <button onClick={(click) => {handleSaveAndAdd(click)}}>Save and Add Another</button>
+          <button className="save--and--add" onClick={(click) => {handleSaveAndAdd(click)}}>Save and Add</button>
           <br></br>
         </fieldset></form>
+        <hr class="custom-line-break" />
         
         { calculatedRoster.length ?
           <><div className="player__list">
-            {calculatedRoster.map((c) => <div key={c.character} className='player--'> {findCharacter(c).character_name} &nbsp;
-            Group: {c.group} 
-            Kills: {c.kills} Deaths: {c.deaths} Assists: {c.assists} Healing: {c.healing} Damage: {c.damage} <button onClick={(click) => {handleRemove(click, c.character)}}>remove</button></div>)}
+            {calculatedRoster.map((c) => <div key={c.character} className='player--stats'>
+               <span>{findCharacter(c).character_name} </span>
+              <span>
+            Group: {c.group} </span>
+            <span>
+            Kills: {c.kills}</span> 
+            <span>Deaths: {c.deaths}</span>
+            <span> Assists: {c.assists}</span>
+            <span> Healing: {c.healing}</span>
+            <span> Damage: {c.damage}</span> <button className="remove--button" onClick={(click) => {handleRemove(click, c.character)}}>remove</button></div>)}
           </div></>
           : ""}
 

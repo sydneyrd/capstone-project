@@ -17,13 +17,19 @@ library.add(faTrashCan)
     setCurrentEditRoster(roster.id)
   }
   const handleDeleteClick = (click, roster) => {
-  alert("successfully deleted")
-    click.preventDefault()
-    deleteRoster(roster.id).then(()=>getUserRosters(localUser) )
-        .then((URost) => {
-          setUserRosters(URost)
-        })
-  }
+    click.preventDefault();
+  
+    const userConfirmed = window.confirm(
+      "Are you sure you want to delete this roster? This action can't be undone."
+    );
+  
+    if (userConfirmed) {
+      deleteRoster(roster.id)
+        .then(() => getUserRosters(setUserRosters));
+      alert("Roster successfully deleted");
+    }
+  };
+  
         
   return <div className="saved--rosters">< Link className="roster__link" onClick={handleClick} to="/roster">{roster.name ? `${roster.name}` : `Roster #${roster.id}`}
   </Link>

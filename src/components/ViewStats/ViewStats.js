@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { getCalculatedRoster, getCalculatedRosterChar } from "../managers/CalculatedRosterManager"
 import {getAllCharacters} from "../managers/CharacterManager"
@@ -57,22 +58,27 @@ setBase(true)
 }
     return <>
         <div className="results">
-            <h2> {currentCalcRoster.name}</h2>
-            <h2>Total Damage: {currentCalcRoster.total_damage}</h2>
-            <h2>Total Healing: {currentCalcRoster.total_healing}</h2>
-            <h2>Kill/Death Ratio: {armyKDR.toFixed(2)}</h2>
-            <h2>Total Deaths: {currentCalcRoster.total_deaths}</h2>
-            <h2>Total Kills: {currentCalcRoster.total_kills}</h2></div>
+            <span> {currentCalcRoster.rosterName}</span>
+            <span>Total Damage: {currentCalcRoster.total_damage}</span>
+            <span>Total Healing: {currentCalcRoster.total_healing}</span>
+            <span>Kill/Death Ratio: {armyKDR.toFixed(2)}</span>
+            <span>Total Deaths: {currentCalcRoster.total_deaths}</span>
+            <span>Total Kills: {currentCalcRoster.total_kills}</span>
+            <Link className='button-84' to={`/resources/edit/${currentCalcRoster.id}`} > Edit </Link></div>
         <StatFilters currentCalcRoster={currentCalcRoster} setBase={setBase} setGroup={setGroup} players={players} sortByGroup={sortByGroup} setBaseStats={setBaseStats} sortByArmy={sortByArmy}filteredPlayers={filteredPlayers} setFilteredPlayers={setFilteredPlayers} />
         <div className="player__resultsmap">
-            <div className="labels">
-                <div className="player__name">Player</div>
-                <div className="labels">Group</div>
-                <div className="damage">Damage</div>
-                <div className="healing">Healing</div>
-                <div className="kills">Kills</div>
-                <div className="Assists">Assist</div>
-                <div className="kdr">KDR</div></div>
+            {!group && !base ? 
+                <div className="labels">
+                <span className="player__name">Player</span>
+                <span className="labels">Group</span>
+                <span className="damage">Damage</span>
+                <span className="healing">Healing</span>
+                <span className="kills">Kills</span>
+                <span className="Assists">Assist</span>
+                <span className="kdr">KDR</span></div>
+                :
+                ""
+                }
             {
                 !group && !base ?
                     filteredPlayers.map((player) => <ResultsMap key={`result--${player.id}`} currentCalcRoster={currentCalcRoster} player={player} />)

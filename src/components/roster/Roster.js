@@ -172,7 +172,7 @@ const handleNewRoster = (e) => {
                     <div className="save__div">
             <button  onClick={(e) => handleNewRoster(e)
             } className="new__button">create a new roster</button><div className="roster__select">
-            <span>choose a roster to edit</span>{userRosters.length > 0 ? <select className="roster__select" onChange={(e) => setCurrentEditRoster(parseInt(e.target.value))}>
+            <span>or pick a roster to edit</span>{userRosters.length > 0 ? <select className="roster__select" onChange={(e) => setCurrentEditRoster(parseInt(e.target.value))}>
                 <option value="0">Select a roster</option>
                 {userRosters.map((roster) => {
                     return <option key={roster.id} value={roster.id}>{roster.name ?
