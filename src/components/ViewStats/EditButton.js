@@ -6,7 +6,7 @@ export const EditButton = ({ triggerText, buttonRef, showModal  }) => {
 
 
 
-    return <><button  className="btn btn-lg btn-danger center modal-button"
+    return <><button  className="edit--player--modal--button"
       ref={buttonRef}
       onClick={showModal} >{triggerText}Edit</button></>
 

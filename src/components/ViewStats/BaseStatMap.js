@@ -15,15 +15,15 @@ export const BaseStatMap = ({ setPlayerStats, calculatedRosterId, getPlayersAgai
     
  }
  
-    return <div className="player__results"><div className="player__name">{player?.character?.character_name}</div>
-    <div className="player__results">{player?.group}</div>
-    <div className="damage">{player?.damage}
-    </div>
-       <div className="healing">{player?.healing}</div>
-       <div className="deaths">{player?.deaths}</div>
-       <div className="kills">{player?.kills}</div> 
-       <div className='assists'>{player?.assists}</div>
+    return <div className="player__results"><span className="player__name">{player?.character?.character_name}</span>
+    <span className="player__results">{player?.group}</span>
+    <span className="damage">{player?.damage}
+    </span>
+       <span className="healing">{player?.healing}</span>
+       <span className="deaths">{player?.deaths}</span>
+       <span className="kills">{player?.kills}</span> 
+       <span className='assists'>{player?.assists}</span>
        <EditContainer player={player} getPlayersAgain={getPlayersAgain} setPlayerStats={setPlayerStats} />
-       <button onClick={(click)=>{handleDelete(click)}}>delete</button>
+       <button className="delete--player--button"onClick={(click)=>{handleDelete(click)}}>delete</button>
 </div>
  }
