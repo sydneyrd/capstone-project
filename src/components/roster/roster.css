@@ -39,6 +39,10 @@ left:0;
 
 .search--container--roster{
    display:flex;
+   margin-top:2em;
+   align-items: space-between;
+   justify-content: flex-start;
+
    
 }
  .main--container--roster{
@@ -65,10 +69,6 @@ left:0;
    box-shadow: 0 0 10px 3px rgba(144,238,144,0.8), 
    0 0 20px 5px rgba(144,238,144,0.8) inset;
 background: linear-gradient(rgba(144,238,144,0.2), rgba(144,238,144,0.2));
-
-   
-
-
  }
 
 
@@ -115,6 +115,7 @@ background: linear-gradient(rgba(144,238,144,0.2), rgba(144,238,144,0.2));
     line-height: 16px;
     font-size: 11px;
     margin-top: 2em;
+    align-self: flex-start;
     }
  .save__button:hover {
     background-color: lightgreen;
@@ -127,15 +128,16 @@ background: linear-gradient(rgba(144,238,144,0.2), rgba(144,238,144,0.2));
     
     display: flex;
     flex-direction: column;
-    justify-content: top;
     align-items: center;
     min-width: 5em;
     min-height: 5em;
     margin-top: 6em;
-
-   
-    
-     
+ }
+ .roster__select{
+    display:flex;
+    margin-top: 4em;
+    flex-direction:column;
+    align-items:center;
  }
 .search_div{
    align-self:flex-start;

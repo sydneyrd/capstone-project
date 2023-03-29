@@ -75,7 +75,7 @@ export const CharacterModal = ({ character, onClose }) => {
           />
         )}
         
-        <button onClick={onClose}>Close</button>
+        <button className="modal--button" onClick={onClose}>Close</button>
       </div>
     </div>
   );

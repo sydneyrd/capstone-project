@@ -168,11 +168,11 @@ const handleNewRoster = (e) => {
             <div className="parent" >
                 <RosterGrid nestedEditRosterCharacters={nestedEditRosterCharacters} showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave}
                     setEditCharacters={setEditCharacters} editRosterCharacters={editRosterCharacters} rosterIDNUMBER={rosterIDNUMBER} characters={characters} newRosterPicks={newRosterPicks} setNewRosterPick={setNewRosterPick} /></div></div>
+
                     <div className="save__div">
-            create a new roster 
-            <button onClick={(e) => handleNewRoster(e)
-            } className="new__button">New Roster</button>
-            or edit existing roster{userRosters.length > 0 ? <select className="roster__select" onChange={(e) => setCurrentEditRoster(parseInt(e.target.value))}>
+            <button  onClick={(e) => handleNewRoster(e)
+            } className="new__button">create a new roster</button><div className="roster__select">
+            <span>choose a roster to edit</span>{userRosters.length > 0 ? <select className="roster__select" onChange={(e) => setCurrentEditRoster(parseInt(e.target.value))}>
                 <option value="0">Select a roster</option>
                 {userRosters.map((roster) => {
                     return <option key={roster.id} value={roster.id}>{roster.name ?
@@ -180,7 +180,7 @@ const handleNewRoster = (e) => {
                 : `untitled roster #${roster.id}` 
                 }</option>
                 })}
-            </select> : <></>}
+            </select> : <></>}</div>
         </div> 
 
         </section>  </main>
