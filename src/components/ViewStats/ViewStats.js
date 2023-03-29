@@ -67,6 +67,7 @@ setBase(true)
             <Link className='button-84' to={`/resources/edit/${currentCalcRoster.id}`} > Edit </Link></div>
         <StatFilters currentCalcRoster={currentCalcRoster} setBase={setBase} setGroup={setGroup} players={players} sortByGroup={sortByGroup} setBaseStats={setBaseStats} sortByArmy={sortByArmy}filteredPlayers={filteredPlayers} setFilteredPlayers={setFilteredPlayers} />
         <div className="player__resultsmap">
+            
             {!group && !base ? 
                 <div className="labels">
                 <span className="player__name">Player</span>

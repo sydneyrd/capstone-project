@@ -39,34 +39,40 @@ div.labels {
     align-items: center;
 }
 
+.right--container--group{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+.left--container--group{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
 
 div.player__resultsmap {
-    display: grid;
-    align-content: space-between;
+    display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     width: 35em;
     height: fit-content;
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(10, 1fr);
-    grid-column-gap: 1px;
-    grid-row-gap: 3px;
     border: solid 1px rgb(115, 109, 107);
     -webkit-box-shadow: 2px 4px 23px 4px #000000;
     box-shadow: 2px 4px 23px 4px #000000;
     border-radius: 6px 6px 6px 6px;
-    background-color: #272624;
-    position: sticky;
+    background-color: transparent;
 }
 .group__card{
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
+    
+    justify-content: space-around;
     margin: 0.25em;
     padding: 0.25em;
-    margin-top:6em;
     border: 1px, solid, grey;
 }
 

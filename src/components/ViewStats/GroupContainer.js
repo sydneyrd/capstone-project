@@ -19,7 +19,7 @@ const totalGroupKills = percentage(group.reduce((acc, value) => acc + value.kill
 const totalGroupKDR = totalGroupKills / totalGroupDeaths
 console.log(totalGroupDamage)
 return (<>
-<div className='group__card'><div className='right--container'>
+<div className='group__card'><div className='right--container--group'>
 { group[0].group ? 
 <h3>Group {group[0].group}</h3>
 : <h3>Group 0</h3>}
@@ -27,7 +27,7 @@ return (<>
  Healing {totalGroupHealing}%</span> <span> Kills {totalGroupKillings}%</span> <span>Assists {totalGroupAssists}% </span><span>Deaths {totalGroupDeaths}
  </span>  </div>
 
-<div className="right--container">
+<div className="right--container--group">
 {group.map(player =>  
 <GroupMap  key={`player--${player.id}`} player={player}/>)}
 
