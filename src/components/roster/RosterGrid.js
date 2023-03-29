@@ -26,7 +26,7 @@ export const RosterGrid = ({ showText, nestedEditRosterCharacters, setShowText, 
         []
     )
     const handleStartClick = async () => {
-        newRoster().then((newRosterObj) => { //posts 
+      await  newRoster().then((newRosterObj) => {
             setCurrentEditRoster(newRosterObj.id);
 
         });
@@ -36,10 +36,11 @@ export const RosterGrid = ({ showText, nestedEditRosterCharacters, setShowText, 
     const handleDragOver = (e) => {
         e.preventDefault();
     };
-    if (rosterIDNUMBER === 0) {handleStartClick()}
-    else{}
+    
     const handleDrop = (e, groupIndex) => {
         e.preventDefault();
+        if (rosterIDNUMBER === 0) {handleStartClick()}
+    else{}
         console.log(groupIndex);
         const characterData = e.dataTransfer.getData("character");
         const character = JSON.parse(characterData);
