@@ -1,4 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom"
+import Modal from "react-modal"
 import { useEffect, useState } from "react"
 import { RoleSelect } from "./Role"
 import { WeaponSelect } from "./WeaponSelect"
@@ -9,6 +10,7 @@ import { getAllFactions, getAllServers, getAllWeapons, getAllRoles } from "../ma
 import { deleteCharLink, newLink, getCharacterLinks, deleteCharacter, putCharacter, getSingleCharacter } from "../managers/CharacterManager"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { library } from '@fortawesome/fontawesome-svg-core'
+import { LinkModal } from "./LinkForm"
 export const CharacterDetails = () => {
     const { characterId } = useParams()
     const localRosterUser = localStorage.getItem("roster_user")
@@ -29,6 +31,7 @@ export const CharacterDetails = () => {
     const [weapons, setWeapons] = useState([])
     const [roles, setRoles] = useState([])
     const [servers, setServers] = useState([])
+    const [modalIsOpen, setModalIsOpen] = useState(false);
     const [link, setLink] = useState({
         link: "",
         character: parseInt(characterId)
@@ -218,6 +221,13 @@ export const CharacterDetails = () => {
             </div></div>
             
             <div className="vod--links"> <h4>VOD Links</h4>
+            <button  className="modal--button" onClick={() => setModalIsOpen(true)}>Add a Vod Link</button>
+            <Modal isOpen={modalIsOpen} className="add--vod--modal"
+      onRequestClose={() => setModalIsOpen(false)}>
+        
+<LinkModal setModalIsOpen={setModalIsOpen}  RosterUserObject={RosterUserObject} character={character} getCharacterLinks={getCharacterLinks} setCharacterLinks={setCharacterLinks} characterId={characterId} />
+
+      </Modal>
                 <div className="link--input"><input type="url" className="form-control" name="link" value={link.link} onChange={handleChange} placeholder="vod links?" />
 
                     <button className="link__button" onClick={click => handleNewLink(click)}>New Link</button></div>

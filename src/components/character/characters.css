@@ -484,7 +484,21 @@ input.form-control{
     margin-top:3em;
     padding: 0 0 0 0;
 }
+.ReactModal__Overlay {
+    background-color:#1D1D1E;}
+.ReactModal__Content {
+    background-color:#1D1D1E;
+}
 
+.ReactModal__Overlay.ReactModal__Overlay--after-open {
+    opacity: 1;
+    transition: opacity 200ms ease-in-out;
+    background-color: #1D1D1E;
+}
+.ReactModalPortal {
+   
+    background-color: #1D1D1E;
+}
 .search_div{
     margin: 25px 25px 25px 25px;
 
@@ -496,13 +510,11 @@ input.form-control{
     position: absolute;
     inset: 40px;
     border: 1px solid rgb(204, 204, 204);
-    background: transparent;
     overflow: auto;
     border-radius: 4px;
     outline: none;
     padding: 20px;
     margin-top: 3em;
-    
 }
 
 
@@ -518,7 +530,7 @@ input.form-control{
     display: flex;
     justify-content: left;
     align-content: baseline;
-    margin-top: 3em;
+    margin-top: 6.5em;
     margin-bottom: 3em;
     padding: 0 20px;
 }
