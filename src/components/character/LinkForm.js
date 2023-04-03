@@ -51,7 +51,10 @@ export const LinkModal = ({ character, characterId,setModalIsOpen, getCharacterL
     <div className="vod--links"> <h4>VOD Links</h4>
     <div className="link--input"><input type="url" className="form-control" name="link" value={link.link} onChange={handleChange} placeholder="vod links?" />
     <span>Assign corresponding war stats?</span>
-    <select>
+    <select
+        name="calculated_roster"
+    onChange={handleChange}
+    >
     <option value={0}>None</option>
     {
         characterCalculatedRoster.map((calculatedRoster) => {
