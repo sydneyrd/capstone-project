@@ -45,7 +45,7 @@ div.labels {
     justify-content: center;
     align-items: center;
     align-content: center;
-    flex-wrap:wrap;
+    
 }
 .left--container--group{
     display: flex;
@@ -77,7 +77,7 @@ div.player__resultsmap {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    justify-content: space-between;
+    
     min-width:fit-content;
     height: fit-content;
     border: solid 1px rgb(115, 109, 107);
@@ -96,6 +96,7 @@ div.group__resultsmap{
 }
 .group__card{
     display: flex;
+    
     flex-direction: row;
     justify-content: space-around;
     margin: 0.25em;
@@ -104,8 +105,8 @@ div.group__resultsmap{
     border:#464d55 1px solid;
     flex-basis:20%;
     flex-wrap:wrap;
-    min-width:20em;
-    font-size:1em;
+    min-width: fit-content;
+    
     text-overflow:ellipsis;
     
     
