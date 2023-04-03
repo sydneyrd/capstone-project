@@ -32,10 +32,6 @@ export const CharacterDetails = () => {
     const [roles, setRoles] = useState([])
     const [servers, setServers] = useState([])
     const [modalIsOpen, setModalIsOpen] = useState(false);
-    const [link, setLink] = useState({
-        link: "",
-        character: parseInt(characterId)
-    }) //this is for new links, I need to add a way for them to be tied to a calculated roster still
     const [characterLinks, setCharacterLinks] = useState([]) //this one is for existing links
     const [notes, setNotes] = useState("")
     const [image, setImage] = useState("")
@@ -99,39 +95,22 @@ export const CharacterDetails = () => {
     }
 
     const handleDeleteClick = (deleteCharacterId, click) => {
-        click.preventDefault()
-        alert("are you sure?  action can't be undone")
-        deleteCharacter(deleteCharacterId).then(() => { navigate("/characters") })
-    }
-    function handleDeleteLink(id, click) {
-        click.preventDefault()
-        deleteCharLink(id).then(() => { getCharacterLinks(characterId, setCharacterLinks) })
-            .then(() => { })
-    }
-    const handleNewLink = (click) => {
         click.preventDefault();
-        try {
-            let linkCopy = { ...link };
-            let urlString = linkCopy.link;
-            if (!urlString.startsWith("http://") && !urlString.startsWith("https://")) {
-                urlString = "http://" + urlString;
-            }
-            linkCopy.link = urlString;
-            const myUrl = new URL(urlString);
-            console.log("Valid URL:", myUrl);
-            newLink(linkCopy).then((res) => { getCharacterLinks(characterId, setCharacterLinks) })
-        } catch (err) {
-            console.error("Invalid URL:", err);
+        if (window.confirm("are you sure? action can't be undone")) {
+            deleteCharacter(deleteCharacterId).then(() => { navigate("/characters"); });
         }
-    };
-
-    const handleChange = (e) => {
-        const linkCopy = { ...link }
-        linkCopy[e.target.name] = e.target.value
-        linkCopy["character"] = character?.id
-        // i need to be able to assign these to specific calculated rosters
-        setLink(linkCopy)
     }
+    
+
+    function handleDeleteLink(id, click) {
+        click.preventDefault();
+        if (window.confirm("are you sure? action can't be undone")) {
+            deleteCharLink(id)
+                .then(() => { getCharacterLinks(characterId, setCharacterLinks) })
+                .then(() => { });
+        }
+    }
+    
     const handleFormChange = (event) => {
         event.preventDefault()
         const copy = { ...character }
@@ -220,7 +199,7 @@ export const CharacterDetails = () => {
                 <button className="save__button" onClick={click => handleUpdateClick(character, click)}>save image</button>
             </div></div>
             
-            <div className="vod--links"> <h4>VOD Links</h4>
+            <div className="vod--links"> 
             <button  className="modal--button" onClick={() => setModalIsOpen(true)}>Add a Vod Link</button>
             <Modal isOpen={modalIsOpen} className="add--vod--modal"
       onRequestClose={() => setModalIsOpen(false)}>
@@ -228,9 +207,6 @@ export const CharacterDetails = () => {
 <LinkModal setModalIsOpen={setModalIsOpen}  RosterUserObject={RosterUserObject} character={character} getCharacterLinks={getCharacterLinks} setCharacterLinks={setCharacterLinks} characterId={characterId} />
 
       </Modal>
-                <div className="link--input"><input type="url" className="form-control" name="link" value={link.link} onChange={handleChange} placeholder="vod links?" />
-
-                    <button className="link__button" onClick={click => handleNewLink(click)}>New Link</button></div>
 
                 <ul name='characterLinks'>
                     {characterLinks ? characterLinks.map(link => <li key={`link--${link.id}`}><a href={`${link.link}`} target="_blank"

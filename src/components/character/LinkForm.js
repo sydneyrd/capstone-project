@@ -32,7 +32,8 @@ export const LinkModal = ({ character, characterId,setModalIsOpen, getCharacterL
             newLink(linkCopy).then((res) => { getCharacterLinks(characterId, setCharacterLinks) })
         } catch (err) {
             console.error("Invalid URL:", err);
-        }
+        };
+        closeModal();
     };
 
     const handleChange = (e) => {
@@ -55,7 +56,7 @@ export const LinkModal = ({ character, characterId,setModalIsOpen, getCharacterL
         name="calculated_roster"
     onChange={handleChange}
     >
-    <option value={0}>None</option>
+    <option value={0}>No Assigned War Stats</option>
     {
         characterCalculatedRoster.map((calculatedRoster) => {
             return (

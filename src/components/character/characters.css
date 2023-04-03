@@ -123,6 +123,7 @@ select {
     align-items: center;
 
 }
+
 .delete__link {
     font-family: 'Libre Franklin', sans-serif;
     display: inline-block;
@@ -132,7 +133,7 @@ select {
     height: 34px;
     padding: 0 13px;
     color: #fff;
-    vertical-align: top;
+    vertical-align: bottom;
     border-radius: 3px;
     border: 1px solid transparent;
     transition: all .3s ease;
@@ -142,10 +143,9 @@ select {
     text-transform: uppercase;
     line-height: 16px;
     font-size: 11px;
-    margin: 0.25em;
-   
-    flex-direction: flex-end;
-    
+    align-self: center;
+    margin-left: 3em; /* Increased left margin */
+    margin-top:1em;
 }
 
 h4.editcharacter__name {
@@ -347,7 +347,7 @@ input[type=textarea] {
     padding: .5em;
     border-radius: 3px;
 }
-.delete__link__button{
+/* .delete__link__button{
     font-family: 'Libre Franklin', sans-serif;
     display: inline-block;
     outline: 0;
@@ -367,7 +367,7 @@ input[type=textarea] {
     line-height: 16px;
     font-size: 11px;
     margin: 10px 5px 5px 5px;
-}
+} */
 .link__button{
     font-family: 'Libre Franklin', sans-serif;
     display: inline-block;
