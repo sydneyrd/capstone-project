@@ -65,9 +65,12 @@ setBase(true)
             <span>Total Deaths: {currentCalcRoster.total_deaths}</span>
             <span>Total Kills: {currentCalcRoster.total_kills}</span>
             <Link className='button-84' to={`/resources/edit/${currentCalcRoster.id}`} > Edit </Link></div>
-        <StatFilters currentCalcRoster={currentCalcRoster} setBase={setBase} setGroup={setGroup} players={players} sortByGroup={sortByGroup} setBaseStats={setBaseStats} sortByArmy={sortByArmy}filteredPlayers={filteredPlayers} setFilteredPlayers={setFilteredPlayers} />
+            <div className="filters">
+        <StatFilters currentCalcRoster={currentCalcRoster} setBase={setBase} setGroup={setGroup} players={players} sortByGroup={sortByGroup} setBaseStats={setBaseStats} sortByArmy={sortByArmy}filteredPlayers={filteredPlayers} setFilteredPlayers={setFilteredPlayers} /></div>
+        <hr></hr>
         <div className="results--body">
-        <div className="player__resultsmap">
+        <div className="player__resultsmap"
+        style={{flexDirection: !group && !base ? "column" : "row"}}>
             
             {!group && !base ? 
                 <div className="labels">
@@ -77,14 +80,15 @@ setBase(true)
                 <span className="healing">Healing</span>
                 <span className="kills">Kills</span>
                 <span className="Assists">Assist</span>
-                <span className="kdr">KDR</span></div>
+                <span className="kdr">KDR</span>
+                <span className="links">Vod Link</span></div>
                 :
                 ""
                 }
             {
                 !group && !base ?
                     filteredPlayers.map((player) => <ResultsMap key={`result--${player.id}`} currentCalcRoster={currentCalcRoster} player={player} />)
-                    :
+                    : 
                     Object.values(groups).map((group) => {
                         return <GroupContainer key={`group--${group[0].group}`} currentCalcRoster={currentCalcRoster} group={group} />
                     })
