@@ -47,7 +47,7 @@ const handleEditClick = (click) => {
     <FontAwesomeIcon className="delete__roster" onClick={click => handleDeleteClick(click, stat)} icon="fa-solid fa-trash-can" />
 
 {
-  stat.is_public ? <FontAwesomeIcon className="publish__roster" onClick={click => handlePublish(click, false, stat.id)} icon="fa-solid fa-rectangle-xmark" /> : <FontAwesomeIcon className="publish__roster" onClick={click => handlePublish(click, true, stat.id)} icon="fa-solid fa-share-from-square" />
+  stat.is_public ? <FontAwesomeIcon className="private__roster" onClick={click => handlePublish(click, false, stat.id)} icon="fa-solid fa-rectangle-xmark" /> : <FontAwesomeIcon className="publish__roster" onClick={click => handlePublish(click, true, stat.id)} icon="fa-solid fa-share-from-square" />
 }
 
 
