@@ -5,15 +5,12 @@ import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
 
-export const PublicStatFilters = ({players,setGroup, setBase, currentCalcRoster, setFilteredPlayers, sortByArmy, sortByGroup}) => {
+export const PublicStatFilters = ({players,setGroup, setBase, setFilteredPlayers, sortByArmy, sortByGroup}) => {
     const [roles, setRoles] = useState([])
 useEffect(() => {
     getAllRoles(setRoles)
 }, []) 
 
-// function compareNumbers(a, b) {
-//     return a.group - b.group;
-//   } unused error
   function compareDamage(a, b) {
     return b.damage - a.damage;
   }
@@ -85,7 +82,6 @@ function handleReset(click){
 
 
     return <>
-    <><Link to="/resources/edit/{}"></Link>
        <div>
             <button className='button-84' onClick={click => sortByGroup(click)}>Group</button>
             <button className='button-84' onClick={click => sortByArmy(click)}>Army</button>
@@ -105,6 +101,6 @@ function handleReset(click){
                 
         </div>
         <hr class="custom-line-break" />
-    </></>
+    </>
 
 }

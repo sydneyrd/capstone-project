@@ -13,14 +13,22 @@ const [warStats, setWarStats] = useState([])
 
     //get all public warboards
     //display them
-    return <div>"hi hello i'm here i'm public boards container 
-        i want to display a list of all of the public war stats, a link to the about page, and a link to login or register"
+
+
+    return <div className="parent">
+        <div className="war--stats--list--container">
+            PUBLIC BOARDS
         {warStats.map((stat) => {
             return <div key={stat.id}>
                 <div className="public--rosters"><Link to={`/public/${stat.id}`}>{
                     stat.rosterName ? `${stat.rosterName}` : "Untitled War Stats"
                 }</Link>
             </div></div>
-        })}
+        })}</div>
+
+        <div className="right--container">
+
+            we could put a little banner for willy on the side :D
+        </div>
     </div>
 }

@@ -5,7 +5,9 @@ import { getCalculatedRoster, getCalculatedRosterChar } from "../managers/Calcul
 import {getAllCharacters} from "../managers/CharacterManager"
 import { getPublicCalculatedRosterChar } from "../managers/PublicManager"
 import { PublicStatFilters } from "./PublicStatFilters"
-
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faRotateLeft } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "./publicresults.css"
 import { PublicResultsMap } from "./PublicResultsMap"
@@ -21,7 +23,7 @@ export const PublicViewStats = () => {
     console.log(calculatedRosterId)
     useEffect(
         () => {
-            getPublicCalculatedRosterChar(calculatedRosterId)
+            getPublicCalculatedRosterChar(calculatedRosterId, setPlayers)
                 .then((res) => {
                     setPlayers(res)
                     setFilteredPlayers(res)
@@ -59,7 +61,12 @@ function setBaseStats(click){
 click.preventDefault()
 setBase(true)
 }
+library.add(faRotateLeft)
     return <>
+      <Link className="return--link" to={`/public`}>
+            
+            <FontAwesomeIcon icon="fa-solid fa-rotate-left"  />
+                Return to all war stats</Link>
         <div className="results">
             <span> {currentCalcRoster.rosterName}</span>
             <span>Total Damage: {currentCalcRoster.total_damage}</span>
