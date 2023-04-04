@@ -78,6 +78,27 @@ library.add(faRotateLeft)
         const copy = { ...editRoster }
         editCalculatedRoster(copy)
     }
+    const handlePublish = (click) => {
+        click.preventDefault();
+        if (currentCalcRoster.is_public) {
+          if (window.confirm("Are you sure you want to make this roster private?")) {
+            publishRoster();
+          }
+        } else {
+          if (window.confirm("Are you sure you want to make this roster public?")) {
+            publishRoster();
+          }
+        }
+      };
+    const publishRoster = () => {
+const payload = {is_public: !currentCalcRoster.is_public,
+        id: currentCalcRoster.id}
+        editCalculatedRoster(payload).then(() => {
+            getCalculatedRoster(calculatedRosterId).then((r) => {
+                setCurrentCalcRoster(r)
+            })
+        })
+    }
 
     return <><div className='edit--container'>
         <Link className="return--link" to={`/resources/${calculatedRosterId}/view`}>
@@ -88,6 +109,9 @@ library.add(faRotateLeft)
         <div className="buttons__container">
         
         <input className="roster__name" type="text" onChange={(event) => { changeName(event) }} placeholder={currentCalcRoster.rosterName}></input><button className="edit--roster--name--button" onClick={(click)=>{saveName(click)}}>update name</button>
+        <button className="public--button" onClick={(click) => handlePublish(click)}>{
+            currentCalcRoster.is_public ? " make private" : " make public"
+            }</button>
         
         <AddContainer getPlayersAgain={getPlayersAgain} players={players} calculatedRosterId={calculatedRosterId} />
         

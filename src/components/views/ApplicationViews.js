@@ -2,7 +2,7 @@ import { getUserbyId } from "../managers/APIManager"
 import { Link, Outlet } from "react-router-dom"
 import { Routes, Route } from "react-router-dom"
 import { Profile } from "../profile/Profile"
-import { Home } from "../Home/HomePage"
+
 import { Character } from "../character/Character"
 import { Roster } from "../roster/Roster"
 import { CalculatorContainer } from "../Calculator/CalculatorContainer"
@@ -27,7 +27,7 @@ export const ApplicationViews = () => {
                         <Outlet />
                     </>
                 }>
-                    <Route path="/home" element={< Home />} />
+                    
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/characters" element={<Character />} />
                     <Route path="/roster" element={<Roster />} />
