@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { getPublicCalculatedRosters } from "../managers/PublicManager"
+import { Link } from "react-router-dom"
 export const PublicBoardsContainer = () => {
 const [warStats, setWarStats] = useState([])
 
@@ -16,8 +17,10 @@ const [warStats, setWarStats] = useState([])
         i want to display a list of all of the public war stats, a link to the about page, and a link to login or register"
         {warStats.map((stat) => {
             return <div key={stat.id}>
-                <div>{stat.rosterName}</div>
-            </div>
+                <div className="public--rosters"><Link to={`/public/${stat.id}`}>{
+                    stat.rosterName ? `${stat.rosterName}` : "Untitled War Stats"
+                }</Link>
+            </div></div>
         })}
     </div>
 }

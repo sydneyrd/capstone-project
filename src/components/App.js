@@ -7,6 +7,7 @@ import { ApplicationViews } from "./views/ApplicationViews"
 import { Register } from "./auth/Register"
 import { Main } from './main/Main';
 import { PublicBoardsContainer } from './public/PublicBoardsContainer';
+import { PublicViewStats } from './public/PublicViewStats';
 
 
 export const App = () => {
@@ -15,6 +16,7 @@ export const App = () => {
 		<Route path="/register" element={<Register />} />
 		<Route path="" element={<Main />}/>
 		<Route path="/public" element={<PublicBoardsContainer />} />
+		<Route path="/public/:calculatedRosterId" element={<PublicViewStats />} />
 		
 
 		<Route path="*" element={
