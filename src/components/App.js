@@ -9,6 +9,7 @@ import { Main } from './main/Main';
 import { PublicBoardsContainer } from './public/PublicBoardsContainer';
 import { PublicViewStats } from './public/PublicViewStats';
 import { Faq } from './faq/Faq';
+import { AddSharedCharacter } from './public/AddSharedCharacter';
 
 export const App = () => {
 	return <Routes>
@@ -18,6 +19,7 @@ export const App = () => {
 		<Route path="/public" element={<PublicBoardsContainer />} />
 		<Route path="/public/:calculatedRosterId" element={<PublicViewStats />} />
 		<Route path="/faq" element={<Faq />} />
+		<Route path="/add_character/:tokenId" element={<AddSharedCharacter />} />
 		
 
 		<Route path="*" element={

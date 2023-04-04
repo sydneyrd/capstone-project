@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { getCalculatedRoster, getCalculatedRosterChar } from "../managers/CalculatedRosterManager"
 import {getAllCharacters} from "../managers/CharacterManager"
-import { getPublicCalculatedRosterChar } from "../managers/PublicManager"
+import { getPublicCalculatedRosterChar, getPublicCalculatedRoster } from "../managers/PublicManager"
 import { PublicStatFilters } from "./PublicStatFilters"
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faRotateLeft } from "@fortawesome/free-solid-svg-icons";
@@ -29,7 +29,7 @@ export const PublicViewStats = () => {
                     setFilteredPlayers(res)
                 })
                 .then(() =>
-                    getCalculatedRoster(calculatedRosterId)
+                    getPublicCalculatedRoster(calculatedRosterId)
                         .then((r) => {
                             setCurrentCalcRoster(r)
                         }))

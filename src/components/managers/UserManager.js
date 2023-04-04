@@ -52,3 +52,11 @@ export const getUserRosters = (setRosters) => {
     })
         .then(res => res.json()).then((res) => {setRosters(res)})
 }
+
+export const generateToken = () => {
+    return fetch(`http://127.0.0.1:8000/generate_shared_character_token`, {
+        headers: {
+            "Authorization": `Token ${localStorage.getItem("roster_token")}`
+        }
+    })      
+}

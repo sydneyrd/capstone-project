@@ -1,6 +1,6 @@
 import "./publicresults.css"
 import { RoleSelect } from "../character/Role"
-import { getAllRoles } from "../managers/ResourceManager"
+import { getPublicRoles } from "../managers/PublicManager"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
@@ -8,7 +8,7 @@ import { Link } from "react-router-dom"
 export const PublicStatFilters = ({players,setGroup, setBase, setFilteredPlayers, sortByArmy, sortByGroup}) => {
     const [roles, setRoles] = useState([])
 useEffect(() => {
-    getAllRoles(setRoles)
+    getPublicRoles(setRoles)
 }, []) 
 
   function compareDamage(a, b) {
