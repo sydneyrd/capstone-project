@@ -1,8 +1,9 @@
 import React from 'react';
 import  './modal.css'
 export const AddButton = ({ triggerText, buttonRef, showModal  }) => {
-    return <><button  className="btn btn-lg btn-danger center modal-button"
+    return <><button  className="add--player--modal"
     ref={buttonRef}
-    onClick={showModal} >{triggerText}Add a Player</button></>
+    onClick={showModal} >{triggerText}
+    Add a Player</button></>
 
 }

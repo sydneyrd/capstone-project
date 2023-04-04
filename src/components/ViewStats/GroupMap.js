@@ -1,25 +1,30 @@
-//i need to sort the players by group number and then generate statistics for each group
-//players with no group should be grouped together at the end
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faVideo } from "@fortawesome/free-solid-svg-icons";
+
+export const GroupMap = ({ player }) => {
 
 
-export const GroupMap = ({player}) => {
-
-const KDR = () => {
-   if (player?.deaths) {
-      const KDRresult = player?.kills / player?.deaths
-      return KDRresult.toFixed(2) }
-      else {
-       return player?.kills
-      }
- }
-   const percentage = (partialValue, totalValue) => {
-         const results = (100 * partialValue) / totalValue;
-         return results.toFixed(2)
-      }
-   
-   
-   return <div className="group__results">
-     
-      <li className="player__name">{player?.character?.character_name}</li>
+  return (
+    <div className="group__results">
+      <div className="player__name">
+        {player.char_links && player.char_links.length > 0 ? (
+          player.char_links.map((link) => (
+            <>
+              <a
+                href={link.link}
+                target="_blank"
+                rel="noreferrer"
+                key={link.id}
+              >
+                {player?.character?.character_name}
+              </a>{" "}
+              <FontAwesomeIcon icon={faVideo} />
+            </>
+          ))
+        ) : (
+          player?.character?.character_name
+        )}
       </div>
-   }
+    </div>
+  );
+};

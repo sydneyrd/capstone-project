@@ -110,3 +110,10 @@ export const getCharactersBySearch = (search) => {
       }
     }).then(res => res.json()).then((res) => {setCharacters(res)})
   }
+export const getCalculatedRostersByCharacter = (characterId, setCalculatedRosters) => {
+    return fetch(`http://127.0.0.1:8000/calculatedrosters?character=${characterId}`, {
+        headers: {
+            'Authorization': `Token ${localStorage.getItem('roster_token')}`
+        }
+    }).then(res => res.json()).then((res) => {setCalculatedRosters(res)})
+}

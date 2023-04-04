@@ -1,0 +1,101 @@
+.ReactModal__Overlay {
+    background-color:#1D1D1E;}
+.ReactModal__Content {
+    background-color:#1D1D1E;
+    position:relative
+}
+
+.ReactModal__Overlay.ReactModal__Overlay--after-open {
+    opacity: 1;
+    transition: opacity 200ms ease-in-out;
+    background-color: #1D1D1E;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.ReactModalPortal {
+   
+    background-color: #1D1D1E;
+    
+}
+
+.add--link--modal{
+    position: absolute;
+    inset: 40px;
+    border: 1px solid rgb(204, 204, 204);
+    overflow: auto;
+    border-radius: 4px;
+    outline: none;
+    padding: 20px;
+    margin-top: 3em;
+}
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.add--link--form {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-self: center;
+    justify-content: center;
+    justify-self: center;
+    margin: 20px 20px 20px 20px
+}
+
+fieldset.add__link__form {
+    display: flex;
+
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
+    
+    padding: 20px;
+    border: 1px solid #c9c9c9;
+    border-radius: 7px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+    padding: 0.25em;
+    justify-items: space-between;
+    width: 20em;
+    
+    
+    border-radius: 7px;
+    font-family: 'Libre Franklin', sans-serif;
+   
+    grid-template-columns: 32% 32% 32%;
+    margin: 35px 35px 35px 35px;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.modal--button {
+    font-family: 'Libre Franklin', sans-serif;
+    margin: 0.15em;
+    text-align: center;
+    cursor: pointer;
+    padding:1em;
+    height: 4em;
+    max-width: 15em;
+    display: block;
+    color: #fff;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    transition: all .3s ease;
+    background: green;
+    border-color: green;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: .6em;
+    align-self: center;
+    justify-self: center;
+    position:sticky;
+}

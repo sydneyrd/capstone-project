@@ -149,3 +149,14 @@ input[type="email"] {
     flex-direction: flex-end;
     
 }
+.private__roster{
+  background: #570B08;
+  padding: 0.25em;
+  margin: 0.25em;
+}
+
+.publish__roster{
+  
+  padding: 0.25em;
+  margin: 0.25em;
+}

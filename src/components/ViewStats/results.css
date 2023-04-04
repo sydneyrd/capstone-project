@@ -45,6 +45,7 @@ div.labels {
     justify-content: center;
     align-items: center;
     align-content: center;
+    
 }
 .left--container--group{
     display: flex;
@@ -53,33 +54,103 @@ div.labels {
     align-items: center;
     align-content: center;
 }
-
+.results--body{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin: 0.25em;
+    padding: 0.25em;
+    border: 1px, solid, grey;
+}
+.filters{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin: 0.25em;
+    padding: 0.25em;
+}
 div.player__resultsmap {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    width: 35em;
+    
+    min-width:fit-content;
     height: fit-content;
     border: solid 1px rgb(115, 109, 107);
     -webkit-box-shadow: 2px 4px 23px 4px #000000;
     box-shadow: 2px 4px 23px 4px #000000;
     border-radius: 6px 6px 6px 6px;
     background-color: transparent;
+    margin-top: 2em;
+}
+div.group__resultsmap{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+ 
+
 }
 .group__card{
     display: flex;
-    flex-direction: row;
     
+    flex-direction: row;
     justify-content: space-around;
     margin: 0.25em;
     padding: 0.25em;
     border: 1px, solid, grey;
+    border:#464d55 1px solid;
+    flex-basis:20%;
+    flex-wrap:wrap;
+    min-width: fit-content;
+    
+    text-overflow:ellipsis;
+    
+    
+}
+.labels span {
+  border-right: 1px solid #ccc;
+  padding: 0.5em 1em; /* Add some padding around the content */
+  text-align: center;
+  min-width:2.5em;
+  flex:1;
+}
+.labels span:last-child {
+  border-right: none;
+}
+
+.player__results span {
+  justify-content: space-evenly;
+ 
+  padding: 0.5em 1em; /* Add some padding around the content */
+  min-width: 2.5em;
+  text-align: center;
+  flex:1;
+}
+.left--container--group span {
+  justify-content: space-evenly;
+ 
+  padding: 0.5em .5em; /* Add some padding around the content */
+  min-width: 2.5em;
+  text-align: center;
+  flex:1;
+}
+.player__results span:nth-child(2n) {
+  background-color: inherit; /* Inherit the background color from the parent element */
+  filter: brightness(120%); /* Make the background color 90% darker */
+}
+.left--container--group span:nth-child(2n) {
+  background-color: inherit; /* Inherit the background color from the parent element */
+  filter: brightness(120%); /* Make the background color 90% darker */
 }
 
 /* CSS */
 .button-84 {
   align-items: center;
-  background-color: initial;
+  background-color: green;
   background-image: linear-gradient(#464d55, #25292e);
   border-radius: 8px;
   border-width: 0;
@@ -126,4 +197,25 @@ div.player__resultsmap {
   .button-84 {
     height: 48px;
   }
+}
+
+.player--links {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+.group--link{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+  justify-self: center;
+}
+.player__name{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+  justify-self: center;
 }

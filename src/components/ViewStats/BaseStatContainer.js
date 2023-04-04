@@ -4,8 +4,12 @@ import { useEffect, useState } from "react"
 import { getCalculatedRosterChar, getCalculatedRoster, editCalculatedRoster } from "../managers/CalculatedRosterManager";
 import { AddContainer } from "./AddContainer"
 import "./results.css"
+import "./edit.css"
 
 import { BaseStatMap } from "./BaseStatMap"
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faRotateLeft } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export function BaseStatContainer() {
     const { calculatedRosterId } = useParams()
@@ -32,8 +36,7 @@ export function BaseStatContainer() {
         id: 0,
         roster: 0
     })
-    // const [playerStats, setPlayerStats] = useState({}) unused error
-
+library.add(faRotateLeft)
     useEffect(
         () => {
             getCalculatedRosterChar(calculatedRosterId)
@@ -75,20 +78,55 @@ export function BaseStatContainer() {
         const copy = { ...editRoster }
         editCalculatedRoster(copy)
     }
+    const handlePublish = (click) => {
+        click.preventDefault();
+        if (currentCalcRoster.is_public) {
+          if (window.confirm("Are you sure you want to make this roster private?")) {
+            publishRoster();
+          }
+        } else {
+          if (window.confirm("Are you sure you want to make this roster public?")) {
+            publishRoster();
+          }
+        }
+      };
+    const publishRoster = () => {
+const payload = {is_public: !currentCalcRoster.is_public,
+        id: currentCalcRoster.id}
+        editCalculatedRoster(payload).then(() => {
+            getCalculatedRoster(calculatedRosterId).then((r) => {
+                setCurrentCalcRoster(r)
+            })
+        })
+    }
 
-    return <>
-        <Link to={`/resources/${calculatedRosterId}/view`}>Return to Results</Link>
+    return <><div className='edit--container'>
+        <Link className="return--link" to={`/resources/${calculatedRosterId}/view`}>
+            
+        <FontAwesomeIcon icon="fa-solid fa-rotate-left"  />
+            Return to Results</Link>
+<div className="player__resultsmap">
+        <div className="buttons__container">
+        
+        <input className="roster__name" type="text" onChange={(event) => { changeName(event) }} placeholder={currentCalcRoster.rosterName}></input><button className="edit--roster--name--button" onClick={(click)=>{saveName(click)}}>update name</button>
+        <button className="public--button" onClick={(click) => handlePublish(click)}>{
+            currentCalcRoster.is_public ? " make private" : " make public"
+            }</button>
+        
         <AddContainer getPlayersAgain={getPlayersAgain} players={players} calculatedRosterId={calculatedRosterId} />
-        <input className="roster__name" type="text" onChange={(event) => { changeName(event) }} placeholder={currentCalcRoster.rosterName}></input><button onClick={(click)=>{saveName(click)}}>update name</button>
+        
+        </div>
 
 
+        
         <div className="labels"> <h4 className="player__results">group #</h4>
-            <h4 className="damage">Damage
-            </h4>
-            <h4 className="healing">Healing</h4>
-            <h4 className="deaths">Deaths</h4>
-            <h4 className="kills">Kills</h4>
-            <h4 className='assists'>assists</h4></div>
+            <span className="damage">Damage
+            </span>
+            <span className="healing">Healing</span>
+            <span className="deaths">Deaths</span>
+            <span className="kills">Kills</span>
+            <span className='assists'>assists</span>
+            <span className="button--spacing"></span></div>
 
-        {filteredPlayers.map(player => <BaseStatMap calculatedRosterId={calculatedRosterId} getPlayersAgain={getPlayersAgain} key={`${player.id}`} player={player} />)}</>
+        {filteredPlayers.map(player => <BaseStatMap calculatedRosterId={calculatedRosterId} getPlayersAgain={getPlayersAgain} key={`${player.id}`} player={player} />)}</div></div></>
 }

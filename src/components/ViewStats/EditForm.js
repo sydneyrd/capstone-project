@@ -34,7 +34,8 @@ export const EditForm = ({ onSubmit, player, getPlayersAgain, closeModal }) => {
 }
 
 
-  return (
+  return (<>
+    <span>{player?.character?.character_name}</span>
     <form onSubmit={onSubmit}>
       <label>Kills {player?.kills}</label>
       <input onChange={(event) => {
@@ -91,6 +92,6 @@ export const EditForm = ({ onSubmit, player, getPlayersAgain, closeModal }) => {
           Submit
         </button>
       </div>
-    </form>
+    </form></>
   );
 }

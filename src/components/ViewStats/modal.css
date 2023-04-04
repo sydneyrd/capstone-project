@@ -16,7 +16,6 @@
     width: 100%;
     height: 100%;
     padding: 2.5em 1.5em 1.5em 1.5em;
-    background-color: #ffffff;
     box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
@@ -40,7 +39,7 @@
     right: 0;
     padding: 0.5em;
     line-height: 1;
-    background: #f6f6f7;
+    background: transparent;
     border: 0;
     box-shadow: 0;
     cursor: pointer;
@@ -50,9 +49,9 @@
     width: 25px;
     height: 25px;
     fill: transparent;
-    stroke: black;
+    stroke: rgb(168, 156, 156);
     stroke-linecap: round;
-    stroke-width: 2;
+    stroke-width: 5;
   }
   
   .modal-body {
