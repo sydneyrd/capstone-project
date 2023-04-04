@@ -23,27 +23,40 @@ flex-direction: column;
     display:flex;
     align-items: center;
     justify-content: center;
-  }
-  
+    margin-top:1em;
+    font-size: 1em;
+    font-weight: 600;
 
-  .right-container--public {
-    
-     width:15em;
-     margin-right:5em;
   }
-  
-  /* Add this style to prevent flex items from shrinking */
+
+.right--heading{
+   
+    text-align: center;
+}
+.sub--heading{
+   font-size: x-small;
+    text-align: center;
+}
+  .right-container--public {
+    align-items: center;
+     width:20em;
+     margin-right:5em;
+     align-content:center;
+     height:100%;
+  }
   .left-container--public,
   .right-container--public {
     flex-shrink: 0;
   }
-  
-  /* Other styles */
-  /* ... */
-  
-  
+  .public-rosters{
+    text-decoration: none;
+    color: #2196f3;
+    font-size: 1.5em;
+    font-weight: 600;
+    
+  }
   .twitch-parent {
-    display: flex;
+    
     flex-direction: column;
     height: 100%;
   }

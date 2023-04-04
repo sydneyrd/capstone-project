@@ -1,7 +1,7 @@
 import React, { useRef } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { registerUser } from "../managers/APIManager"
-import "./Login.css"
+import "./register.css"
 
 export const Register = () => {
     const firstName = useRef()
@@ -45,38 +45,40 @@ export const Register = () => {
                 <button className="button--close" onClick={e => passwordDialog.current.close()}>Close</button>
             </dialog>
 
-            <form className="form--login" onSubmit={handleRegister}>
+            <form className="form--register" onSubmit={handleRegister}>
                 <h1 className="h3 mb-3 font-weight-normal">Register an account</h1>
-                <fieldset>
-                    <label htmlFor="firstName"> First Name </label>
-                    <input ref={firstName} type="text" name="firstName" className="form-control" placeholder="First name" required autoFocus />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="lastName"> Last Name </label>
-                    <input ref={lastName} type="text" name="lastName" className="form-control" placeholder="Last name" required />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="inputUsername">Username</label>
-                    <input ref={username} type="text" name="username" className="form-control" placeholder="Username" required />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="inputPassword"> Password </label>
-                    <input ref={password} type="password" name="password" className="form-control" placeholder="Password" required />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="verifyPassword"> Verify Password </label>
-                    <input ref={verifyPassword} type="password" name="verifyPassword" className="form-control" placeholder="Verify password" required />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="verifyPassword"> Email </label>
-                    <input type="email" ref={email} name="email" className="form-control" placeholder="name@website.com" />
-                </fieldset>
-                <fieldset style={{
-                    textAlign: "center"
-                }}>
-                    <button className="btn btn-1 btn-sep icon-send" type="submit">Register</button>
-                </fieldset>
-            </form>
+                
+    <fieldset className="register">
+        <div>
+            <label className="register--label" htmlFor="firstName"> First Name </label>
+            <input ref={firstName} type="text" name="firstName" className="form-control" placeholder="First name" required autoFocus />
+        </div>
+        <div>
+            <label className="register--label" htmlFor="lastName"> Last Name </label>
+            <input ref={lastName} type="text" name="lastName" className="form-control" placeholder="Last name" required />
+        </div>
+        <div>
+            <label className="register--label" htmlFor="inputUsername">Username</label>
+            <input ref={username} type="text" name="username" className="form-control" placeholder="Username" required />
+        </div>
+        <div>
+            <label className="register--label" htmlFor="inputPassword"> Password </label>
+            <input ref={password} type="password" name="password" className="form-control" placeholder="Password" required />
+        </div>
+        <div>
+            <label className="register--label" htmlFor="verifyPassword"> Verify Password </label>
+            <input ref={verifyPassword} type="password" name="verifyPassword" className="form-control" placeholder="Verify password" required />
+        </div>
+        <div>
+            <label className="register--label" htmlFor="verifyPassword"> Email </label>
+            <input type="email" ref={email} name="email" className="form-control" placeholder="name@website.com" />
+        </div>
+    </fieldset>
+    <fieldset className="register--button--container" style={{ textAlign: "center" }}>
+        <button className="register--button" type="submit">Register</button>
+    </fieldset>
+</form>
+
             <section className="link--register">
                 Already registered? <Link to="/login">Login</Link>
             </section>

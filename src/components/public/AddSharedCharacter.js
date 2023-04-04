@@ -81,7 +81,7 @@ const navigate = useNavigate()
   You will not have authorization to make changes to this character after adding.
   If you want to manage your own character please{' '}
   <Link to="/register">register for an account</Link>.
-  Your character will be available for all users to roster, however only the owner of the account may edit or delete this character.
+  Your character will be available for all users to roster, however only the owner of the account may edit or delete, or link vods for this character.
 </article>
                     <fieldset className="add__form">
                         <label htmlFor="charactername">Character Name:</label>

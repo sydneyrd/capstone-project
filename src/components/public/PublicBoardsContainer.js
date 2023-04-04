@@ -11,18 +11,21 @@ const [warStats, setWarStats] = useState([])
         },
         []
     )
-
+    const sortedWarStats = warStats.sort(
+        (a, b) => new Date(a.created_at) - new Date(b.created_at)
+      );
+    
     return (
         <div className="parent--public--boards">
             <div className="left--container--public">
           
-            PUBLIC BOARDS
-            {warStats.map((stat) => {
+            <h2>PUBLIC BOARDS</h2>
+            {sortedWarStats.map((stat) => {
               return (
                 <div className="list--parent" key={stat.id}>
                   <div className="public-rosters">
                     <Link to={`/public/${stat.id}`}>
-                      {stat.rosterName ? `${stat.rosterName}` : "Untitled War Stats"}
+                      {stat.rosterName ? `${stat.rosterName} ${new Date(stat.created_at).toLocaleDateString()}` : `Untitled War Stats ${new Date(stat.created_at).toLocaleDateString}`}
                     </Link>
                   </div>
                 </div>
@@ -31,6 +34,8 @@ const [warStats, setWarStats] = useState([])
          
       
           <div className="right-container--public">
+            <h2 className="right--heading">live coverage</h2>
+            <p className="sub--heading">willy didn't pay for this</p>
             <div className="twitch-parent">
             <div className="video-parent">
   <iframe

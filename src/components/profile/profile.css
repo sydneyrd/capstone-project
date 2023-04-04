@@ -107,6 +107,7 @@ input[type="email"] {
     text-transform: uppercase;
     line-height: 16px;
     font-size: 11px;
+    margin-top:2em;
     
 }
 .form--update fieldset{
