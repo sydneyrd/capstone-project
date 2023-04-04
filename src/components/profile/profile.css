@@ -35,7 +35,7 @@ input[type="email"] {
 .roster__link {
     margin: 3px;
     padding-bottom: 5px;
-    
+    color:#2196f3;
 }
 .left--container--profile{
   display:flex;

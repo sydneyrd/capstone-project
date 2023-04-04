@@ -1,10 +1,12 @@
 import { getCurrentRoster } from "../managers/RosterManager"
 import { useState, useEffect } from "react"
 
-export const CalculatorForm = ({ characters, selectedRoster, rosterChoice, calculatedRoster, setCalculatedRoster, setCurrentCalcRostName, createNewRoster }) => {
+
+
+export const CalculatorForm = ({ characters, selectedRoster, calculatedRoster, setCalculatedRoster, createNewRoster }) => {
   const [rosterChoices, setRosterChoices] = useState([])
   const [allChoices, setAllChoices] = useState([])
-  // let rightCharacter = characters.find(({ id }) => id === rosterChoice?.character?.character?.id)
+
   const [playerStats, setPlayerStats] = useState({
     character: 0,
     damage: 0,
@@ -65,7 +67,7 @@ const findCharacter = (c) => {
   let character = characters.find(character => character.id === c.character)
 return character}
 const handleChange = (e) => {
-  e.preventDefault()
+  e.preventDefault();
   const copy = {...playerStats}
   copy[e.target.name] = parseInt(e.target.value)
   setPlayerStats(copy)
@@ -80,6 +82,7 @@ const handleChangeExistingRosterPlayer = (e) => {
 };
 
   return <>
+   
     <div className="player__form">
       <form className="War Statistics">
         <fieldset>

@@ -29,54 +29,17 @@
     padding: 20px;
     margin-top: 3em;
 }
-.close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 20px;
-    cursor: pointer;
-}
-.add--link--form {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: center;
-    align-self: center;
-    justify-content: center;
-    justify-self: center;
-    margin: 20px 20px 20px 20px
-}
 
-fieldset.add__link__form {
-    display: flex;
 
-    flex-direction: column;
-    align-self: center;
-    justify-content: center;
-    
-    padding: 20px;
-    border: 1px solid #c9c9c9;
-    border-radius: 7px;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
-    padding: 0.25em;
-    justify-items: space-between;
-    width: 20em;
-    
-    
-    border-radius: 7px;
-    font-family: 'Libre Franklin', sans-serif;
-   
-    grid-template-columns: 32% 32% 32%;
-    margin: 35px 35px 35px 35px;
-}
 
-.close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 20px;
-    cursor: pointer;
+
+
+
+/* Existing styles */
+.ReactModal__Overlay {
+    background-color:#1D1D1E;
 }
+/* ... other styles ... */
 .modal--button {
     font-family: 'Libre Franklin', sans-serif;
     margin: 0.15em;
@@ -98,4 +61,73 @@ fieldset.add__link__form {
     align-self: center;
     justify-self: center;
     position:sticky;
+}
+
+/* Updated and new styles */
+.add--link--form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+fieldset.add__link__form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border: 1px solid #c9c9c9;
+    border-radius: 7px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 400px;
+    font-family: 'Libre Franklin', sans-serif;
+}
+
+.vod--links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.link--input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.link--input input[type="url"] {
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.link__button {
+    background-color: #2196f3;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.link__button:hover {
+    background-color: #1976d2;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #f44336;
+    color: #ffffff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
 }

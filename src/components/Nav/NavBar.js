@@ -7,15 +7,16 @@ export const NavBar = () => {
 
     return (
         <ul className="navbar">
-            <li className="navbar__item active">
-                <Link className="navbar__link" to="/">Home</Link>
-            </li>
+            
             <li className="navbar__item active">
                 <Link className="navbar__link" to="/profile">Profile</Link>
             </li>
-            <li className="navbar__item active"><Link className="navbar__link" to="/characters">Characters</Link></li>
-            <li className="navbar__item active"><Link className="navbar__link"  to="/roster">Roster</Link></li>
-            <li className="navbar__item active"><Link className="navbar__link" to="/resources">Calculate</Link></li>
+            <li className="navbar__item active"><Link className="navbar__link" to="/characters">My Characters</Link></li>
+            <li className="navbar__item active"><Link className="navbar__link"  to="/roster">Create Roster</Link></li>
+            <li className="navbar__item active"><Link className="navbar__link" to="/resources">Create War Board</Link></li>
+            <li className="navbar__item active"><Link className="navbar__link" to="/public">View Public Boards</Link></li><li className="navbar__item active">
+                <Link className="navbar__link" to="/faq">FAQ</Link>
+            </li>
             {
                 localStorage.getItem("roster_user")
                     ? <li className="navbar__item navbar__logout">
