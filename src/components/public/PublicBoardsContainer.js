@@ -11,10 +11,6 @@ const [warStats, setWarStats] = useState([])
         []
     )
 
-    //get all public warboards
-    //display them
-
-
     return <div className="parent">
         <div className="war--stats--list--container">
             PUBLIC BOARDS
