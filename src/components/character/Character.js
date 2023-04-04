@@ -90,7 +90,7 @@ export const Character = () => {
     
         
         
-        <div className='header--bar'>  <button  className="modal--button" onClick={() => setModalIsOpen(true)}>New Character</button>
+        <div className='header--bar'>  <button  className="modal--button--char" onClick={() => setModalIsOpen(true)}>New Character</button>
         
 
     <button className="generate--link--button" onClick={generateCharacterUrl}>Generate Add Character Link</button>

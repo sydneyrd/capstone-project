@@ -21,7 +21,14 @@
     padding: 0;
     overflow-y: auto;
 }
-
+.search--container--char{
+    margin-left:2em;
+    min-width:25em;
+}
+.search--container--char .input__text{
+    min-width: 15em;;
+    font-size:1.2em;
+}
 .main--characterdetails{
     
         display: flex;
@@ -532,14 +539,13 @@ input.form-control{
     align-content: baseline;
     margin-top: 6.5em;
     margin-bottom: 3em;
-    padding: 0 20px;
+    margin-left:2em;
 }
-.modal--button {
+.modal--button--char {
     font-family: 'Libre Franklin', sans-serif;
     margin: 0.15em;
     text-align: center;
     cursor: pointer;
-    padding:1em;
     height: 4em;
     max-width: 15em;
     display: block;
@@ -551,7 +557,6 @@ input.form-control{
     border-color: green;
     font-weight: 600;
     text-transform: uppercase;
-    font-size: .6em;
 }
 
 .generate--link--button{
@@ -559,7 +564,6 @@ input.form-control{
     margin: 0.15em;
     text-align: center;
     cursor: pointer;
-    padding:1em;
     height: 4em;
     max-width: 15em;
     display: block;
@@ -571,5 +575,5 @@ input.form-control{
     border-color: green;
     font-weight: 600;
     text-transform: uppercase;
-    font-size: .6em; 
+    
 }
