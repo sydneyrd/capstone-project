@@ -94,7 +94,7 @@ export const deleteCharacter = (deleteCharacterId) => {
     }
     )
 }
-///this needs to only get the user characters for search functionality on the users character page
+
 export const getCharactersBySearch = (search) => {
     return fetch(`http://127.0.0.1:8000/characters?search_text=${search}`, {
       headers: {

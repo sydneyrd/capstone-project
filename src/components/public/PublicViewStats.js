@@ -20,7 +20,6 @@ export const PublicViewStats = () => {
     const [currentCalcRoster, setCurrentCalcRoster] = useState({})
     const [group, setGroup] = useState(false)
     const [base, setBase] = useState(false)
-    console.log(calculatedRosterId)
     useEffect(
         () => {
             getPublicCalculatedRosterChar(calculatedRosterId, setPlayers)
@@ -68,12 +67,12 @@ library.add(faRotateLeft)
             <FontAwesomeIcon icon="fa-solid fa-rotate-left"  />
                 Return to all war stats</Link>
         <div className="results">
-            <span> {currentCalcRoster.rosterName}</span>
-            <span>Total Damage: {currentCalcRoster.total_damage}</span>
-            <span>Total Healing: {currentCalcRoster.total_healing}</span>
-            <span>Kill/Death Ratio: {armyKDR.toFixed(2)}</span>
-            <span>Total Deaths: {currentCalcRoster.total_deaths}</span>
-            <span>Total Kills: {currentCalcRoster.total_kills}</span>
+            <span className="header--name"> {currentCalcRoster.rosterName}</span>
+            <span className="header--damage">Total Damage: {currentCalcRoster.total_damage}</span>
+            <span className="header--healing">Total Healing: {currentCalcRoster.total_healing}</span>
+            <span className="header--kdr">Kill/Death Ratio: {armyKDR.toFixed(2)}</span>
+            <span className="header--deaths">Total Deaths: {currentCalcRoster.total_deaths}</span>
+            <span className="header--kills">Total Kills: {currentCalcRoster.total_kills}</span>
         </div>
             <div className="filters">
         <PublicStatFilters currentCalcRoster={currentCalcRoster} setBase={setBase} setGroup={setGroup} players={players} sortByGroup={sortByGroup} setBaseStats={setBaseStats} sortByArmy={sortByArmy}filteredPlayers={filteredPlayers} setFilteredPlayers={setFilteredPlayers} /></div>

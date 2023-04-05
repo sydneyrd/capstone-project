@@ -5,8 +5,8 @@ export const PublicGroupMap = ({ player }) => {
 
 
   return (
-    <div className="group__results">
-      <div className="player__name">
+    <div className="group__results" key={`group--container${player.id}`}>
+      <div className="player__name" key={`group--player--${player.id}`}>
         {player.char_links && player.char_links.length > 0 ? (
           player.char_links.map((link) => (
             <>
@@ -14,7 +14,7 @@ export const PublicGroupMap = ({ player }) => {
                 href={link.link}
                 target="_blank"
                 rel="noreferrer"
-                key={link.id}
+                key={`player--links--${player.id}`}
               >
                 {player?.character?.character_name}
               </a>{" "}

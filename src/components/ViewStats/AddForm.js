@@ -17,14 +17,12 @@ export const AddForm = ({ calculatedRosterId, players, getPlayersAgain, onSubmit
     damage: 0,
     group: 0
   })
-  console.log(players)
   useEffect(() => {
     let copy = { ...player }
     copy['character'] = selectedPlayer.id
     setPlayer(copy)
   },
     [selectedPlayer])
-
   const handleAdd = (event) => {
     event.preventDefault()
     if (players.find(p => p?.character?.id === selectedPlayer.id)) {
@@ -44,15 +42,10 @@ export const AddForm = ({ calculatedRosterId, players, getPlayersAgain, onSubmit
     copy[event.target.name] = parseInt(event.target.value)
     setPlayer(copy)
   }
-
-
   return (
-
-
-
     <form onSubmit={onSubmit}>
 
-      <DropDownSelect selectedPlayer={selectedPlayer} setSelectedPlayer={setSelectedPlayer} />
+      <DropDownSelect key='drop--down' selectedPlayer={selectedPlayer} setSelectedPlayer={setSelectedPlayer} />
       <label>Kills</label>
       <input name="kills" onChange={(event) => {
         handleChange(event)

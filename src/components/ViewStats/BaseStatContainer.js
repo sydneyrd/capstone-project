@@ -108,9 +108,9 @@ const payload = {is_public: !currentCalcRoster.is_public,
 <div className="player__resultsmap">
         <div className="buttons__container">
         
-        <input className="roster__name" type="text" onChange={(event) => { changeName(event) }} placeholder={currentCalcRoster.rosterName}></input><button className="edit--roster--name--button" onClick={(click)=>{saveName(click)}}>update name</button>
+        <input className="roster__name" type="text" onChange={(event) => { changeName(event) }} placeholder={currentCalcRoster.rosterName}></input><button className="edit--roster--name--button" onClick={(click)=>{saveName(click)}}>Update Name</button>
         <button className="public--button" onClick={(click) => handlePublish(click)}>{
-            currentCalcRoster.is_public ? " make private" : " make public"
+            currentCalcRoster.is_public ? "Make Private" : "Make Public"
             }</button>
         
         <AddContainer getPlayersAgain={getPlayersAgain} players={players} calculatedRosterId={calculatedRosterId} />

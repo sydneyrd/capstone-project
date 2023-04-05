@@ -28,8 +28,6 @@ export class EditContainer extends Component {
     document.querySelector('html').classList.toggle('scroll-lock');
   };
 
-
-
   render() {
     return (
       <React.Fragment>
@@ -40,6 +38,7 @@ export class EditContainer extends Component {
         />
         {this.state.isShown ? (
           <Modal
+          calculatedRosterId={this.props.calculatedRosterId}
             onSubmit={this.props.onSubmit}
             modalRef={(n) => (this.modal = n)}
             buttonRef={(n) => (this.closeButton = n)}

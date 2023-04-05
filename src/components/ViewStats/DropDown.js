@@ -56,7 +56,8 @@ const [searchText, setSearchText] = useState('');
           />
           {characters.map((character) => (
             <div
-              key={character.id}
+            key={`player--select${character.id}`}
+              
               className={`dropdown-select__option ${
                 character.id === selectedPlayer.id ? 'selected' : ''
               }`}
