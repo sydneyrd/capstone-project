@@ -10,7 +10,6 @@ import { PublicBoardsContainer } from './public/PublicBoardsContainer';
 import { PublicViewStats } from './public/PublicViewStats';
 import { Faq } from './faq/Faq';
 import { AddSharedCharacter } from './public/AddSharedCharacter';
-import { PublicNavBar } from './Nav/PublicNavBar';
 import { ConditionalNavBar } from './Nav/ConditionalNavBar';
 
 export const App = () => {
