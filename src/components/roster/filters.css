@@ -58,28 +58,22 @@
  
 }
  .reset__button {
-  margin: .5em;
-  margin-top: 30px;
   font-family: 'Libre Franklin', sans-serif;
-  
   outline: 0;
   text-align: center;
   cursor: pointer;
-  height: 34px;
-  padding: 0 13px;
-  color: #fff;
-  vertical-align: top;
+  padding: .7em;
+  margin:.7em;
+  
   border-radius: 3px;
   border: 1px solid transparent;
   transition: all .3s ease;
-  background: transparent;
-  border-color: #570B08;
-  font-weight: 600;
+  
+  border-color: #0b5d3a;
+  font-weight: 300;
   text-transform: uppercase;
-  line-height: 16px;
-  font-size: 11px;
-  flex-direction: flex-end;
-  border-radius: 3px;
+  font-size: large;
+  align-self: center;
  }
 
  .reset__button:hover{
@@ -116,7 +110,10 @@ fieldset {
   /* display: flex; */
   align-items: row;
   padding: 0.5em;
-  margin-top:4em;
+  margin-top:3em;
+  box-shadow: 2px 4px 23px 4px #000000;
+    border: 5px hidden transparent;
+    border-radius: 6px 6px 6px 6px;
 }
 
 label {

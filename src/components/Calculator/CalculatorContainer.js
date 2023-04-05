@@ -44,7 +44,12 @@ const handleClear = (click) => {
 //if no roster is selected, it is showing these options at the top.   when one is selected they are replaced with a go back button and a text input to name the results, when the selectedroster is set to 0 again the menu returns
     return <> <> 
     
-    {!selectedRoster && createNewRoster == false ? <> <> <div className="select--or--new"> <h3>Select an existing Roster <select onChange={(event) => handleRosterChange(event)}><option key="select--0" value={0}>select</option>{userRosters.map((roster) => <RosterList key={roster.id} setSelectedRoster={setSelectedRoster} roster={roster} />)} </select> or <button className="new__roster__button" onClick={(click)=>{setCreateNewRoster(true)}}>Create New</button></h3> </div></>
+    {!selectedRoster && createNewRoster == false ? <> <> <div className="select--or--new">
+        <div className="left--header--select">
+             <h3>Choose an existing roster</h3> <h4>characters and groups will be pre-assigned</h4>  <select className="roster__select" onChange={(event) => handleRosterChange(event)}><option key="select--0" value={0}>Saved Rosters</option>{userRosters.map((roster) => <RosterList key={roster.id} setSelectedRoster={setSelectedRoster} roster={roster} />)} </select></div>
+<span className="middle--or--lol">or</span>
+    <div className="right--header--new"><h3>Choose from all characters</h3><h4>optionally assign groups</h4>
+      <button className="new__roster__button" onClick={(click)=>{setCreateNewRoster(true)}}>Create New</button></div></div></>
     </>
 : ""    
 }

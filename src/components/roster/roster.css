@@ -105,7 +105,8 @@ background: linear-gradient(rgba(144,238,144,0.2), rgba(144,238,144,0.2));
     outline: 0;
     text-align: center;
     cursor: pointer;
-    padding:1em;
+    padding: .7em;
+    margin:.7em;
     color: #fff;
     border-radius: 3px;
     border: 1px solid transparent;
@@ -138,13 +139,15 @@ background: linear-gradient(rgba(144,238,144,0.2), rgba(144,238,144,0.2));
 
 }
  .save__div {
-    
     display: flex;
     flex-direction: column;
     align-items: center;
     min-width: 5em;
     min-height: 5em;
     margin-top: 6em;
+    box-shadow: 2px 4px 23px 4px #000000;
+    border: 5px hidden transparent;
+    border-radius: 6px 6px 6px 6px;
  }
  .roster__select{
     display:flex;
