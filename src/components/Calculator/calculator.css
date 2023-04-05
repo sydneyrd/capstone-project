@@ -43,8 +43,11 @@
   align-items: space-evenly;
   margin: .25em;
   margin-top:6em;
-  padding: .25em;
+  padding: 1em;
   font-size:large;
+  box-shadow: 2px 4px 23px 4px #000000;
+    border: 5px hidden transparent;
+    border-radius: 6px 6px 6px 6px;
 }
 .left--header--select{
   display: flex;
@@ -53,8 +56,12 @@
   align-items: space-evenly;
   margin: .25em;
   margin-top:6em;
-  padding: .25em;
+  padding: 1em;
   font-size:large;
+  box-shadow: 2px 4px 23px 4px #000000;
+    border: 5px hidden transparent;
+    border-radius: 6px 6px 6px 6px;
+  
 }
 .player--stats{
   padding: .5em;
@@ -189,4 +196,7 @@ margin-top:2em;
   border: 1px solid transparent;
   transition: all .3s ease;
   text-transform: uppercase;
+}
+.War--Statistics{
+
 }
