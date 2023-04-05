@@ -30,7 +30,7 @@
    display:flex;
    position: sticky;
    z-index: 1; /* set a higher z-index to keep the search bar on top of the character elements */
-    width: 15em;
+    width: 20em;
     justify-content:flex-start;
     box-shadow: 0 4px 4px -4px rgba(0, 0, 0, 0.2); /* add a box-shadow to the bottom */
     top:0;
@@ -44,7 +44,7 @@ left:0;
    margin-top:2em;
    align-items: space-between;
    justify-content: flex-start;
-   margin:1em;
+   margin:2em;
 
    
 }
@@ -144,6 +144,8 @@ background: linear-gradient(rgba(144,238,144,0.2), rgba(144,238,144,0.2));
  }
 .search_div{
    align-self:flex-start;
+   width:20em;
+   font-size: x-large;
 
 }
  .list__container {

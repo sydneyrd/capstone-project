@@ -18,7 +18,10 @@
   transition: border-color 0.2s;
   border-radius: 3px;
 }
-
+.input__text{
+  width:12em;
+  font-size:large;
+}
 .input__text::placeholder {
   color: #B3B8BC;
 }
