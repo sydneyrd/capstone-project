@@ -5,6 +5,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import {faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import { useContext } from "react"
 import { editContext } from "../views/ApplicationViews"
+import { HoverableElement } from "./HoverableElement"
 
 
 export const SavedRosterList = ({roster, getUserRosters, setUserRosters, localUser}) => {
@@ -29,7 +30,10 @@ library.add(faTrashCan)
   };
   return <div className="saved--rosters">< Link className="roster__link" onClick={handleClick} to="/roster">{roster.name ? `${roster.name}` : `Roster #${roster.id}`}
   </Link>
-    <FontAwesomeIcon className="delete__roster" onClick={click => handleDeleteClick(click, roster)}icon="fa-solid fa-trash-can"/></div>
+  <HoverableElement tooltipText={"delete"}>
+    <FontAwesomeIcon className="delete__roster" onClick={click => handleDeleteClick(click, roster)}icon="fa-solid fa-trash-can"/>
+    </HoverableElement>
+    </div>
     
 }
 

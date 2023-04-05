@@ -1,8 +1,4 @@
-.results__headers {
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-}
+
 
 div.player__results {
     display: flex;
@@ -24,6 +20,16 @@ div.player__results {
     padding: 0.25em;
     margin-top:6em;
     border: 1px, solid, grey;
+}
+.results span {
+  font-size: 1.7em; /* Adjust the font size */
+  font-weight: bold; /* Make the text bold */
+  margin: 0.4em; /* Add some margin for better spacing */
+}
+.player__results span{
+  font-size: 1.2em; /* Adjust the font size */
+ 
+  margin: 0.4em; /* Add some margin for better spacing */
 }
 .role--select{
 font-weight: bold;

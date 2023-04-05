@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { editCalculatedRosterChoices } from '../managers/CalculatedRosterManager';
 import  './modal.css'
 
-export const EditForm = ({ onSubmit, player, getPlayersAgain, closeModal }) => {
+export const EditForm = ({ onSubmit, player, calculatedRosterId, getPlayersAgain, closeModal }) => {
   let copy = { ...player }
   const [playerCopy, setPlayerCopy] = useState({
     kills: copy.kills,
@@ -24,15 +24,14 @@ export const EditForm = ({ onSubmit, player, getPlayersAgain, closeModal }) => {
   const handleUpdate = (event) => {
     event.preventDefault()
     let copy = { ...playerCopy }
-    console.log(copy)
     editCalculatedRosterChoices(copy)
         .then(() => {
-            getPlayersAgain(player.calculated_roster.id)
+            getPlayersAgain(calculatedRosterId)
             
         })
         closeModal()
 }
-
+console.log(calculatedRosterId)
 
   return (<>
     <span>{player?.character?.character_name}</span>

@@ -15,20 +15,20 @@ export const PublicResultsMap = ({ player, currentCalcRoster}) => {
     }
  
  
-    return <div className="player__results"><span className="player--name">{player?.character?.character_name}</span>
-    <span className="player--group">{player?.group}</span>
-    <span className="player--damage">{player?.damage ? <>{percentage(player?.damage, currentCalcRoster.total_damage)}%</> : "0"}
+    return <div key={`player--${player.id}`} className="player__results"><span className="player--name">{player?.character?.character_name}</span>
+    <span key={`player--group${player.id}`} className="player--group">{player?.group}</span>
+    <span key={`player--damage${player.id}`} className="player--damage">{player?.damage ? <>{percentage(player?.damage, currentCalcRoster.total_damage)}%</> : "0"}
     </span>
        
-       <span className="player--healing">{percentage(player?.healing, currentCalcRoster.total_healing)}%</span>
-       <span className="player--kills">{percentage(player?.kills, currentCalcRoster.total_kills)}%</span> 
-       <span className='player--assists'>{percentage(player?.assists, currentCalcRoster.total_kills)}%</span>
-       <span className="player--kdr">{KDR()}</span>
-       <span className="player--links">
+       <span key={`player--healing${player.id}`} className="player--healing">{percentage(player?.healing, currentCalcRoster.total_healing)}%</span>
+       <span key={`player--kills${player.id}`} className="player--kills">{percentage(player?.kills, currentCalcRoster.total_kills)}%</span> 
+       <span key={`player--assists${player.id}`} className='player--assists'>{percentage(player?.assists, currentCalcRoster.total_kills)}%</span>
+       <span key={`player--kdr${player.id}`} className="player--kdr">{KDR()}</span>
+       <span key={`player--links${player.id}`} className="player--links">
    {player.char_links && player.char_links.length > 0 ? (
      player.char_links.map((link) => (
        <>
-       <a href={link.link} target="_blank" rel="noreferrer" key={link.id}>
+       <a href={link.link} target="_blank" rel="noreferrer" key={`links--${link.id}`} >
          {link.link}
        </a><hr></hr></>
      ))

@@ -84,7 +84,7 @@ const handleChangeExistingRosterPlayer = (e) => {
   return <>
    
     <div className="player__form">
-      <form className="War Statistics">
+      <form className="War--Statistics">
         <fieldset>
 
     { rosterChoices && !createNewRoster ?

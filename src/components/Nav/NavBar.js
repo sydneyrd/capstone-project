@@ -20,9 +20,9 @@ export const NavBar = () => {
             {
                 localStorage.getItem("roster_token")
                     ? <li className="navbar__item navbar__logout">
-                        <Link className="navbar__link" to="" onClick={() => {
+                        <Link className="navbar__link" to="/" onClick={() => {
                         localStorage.removeItem("roster_token") 
-                            navigate("/", {replace: true})
+                            navigate("/login", {replace: true})
                         }}>Logout</Link>
                     </li>
                     : ""
