@@ -2,7 +2,7 @@ import { CharacterForm } from "./CharacterForm"
 import { ManageCharacters } from "./ManageCharacters"
 import { SearchCharacters } from "./SearchCharacters"
 import { getAllFactions, getAllRoles, getAllWeapons, getAllServers } from "../managers/ResourceManager"
-import { getCharactersBySearch } from "../managers/CharacterManager"
+import { getUserCharactersBySearch } from "../managers/CharacterManager"
 import {generateToken, getUserCharacters} from "../managers/UserManager"
 import { useState, useEffect } from "react"
 import Modal from 'react-modal';
@@ -47,7 +47,7 @@ export const Character = () => {
     useEffect(
         () => {
             !searchWords ? setSortedCharacters(userCharacters) :
-            getCharactersBySearch(searchWords).then(res => (setSortedCharacters(res))) //searching ALL characters, not just user characters rip
+            getUserCharactersBySearch(searchWords).then(res => (setSortedCharacters(res))) //searching ALL characters, not just user characters rip---search user characters instead 
         },
         [searchWords]
 
@@ -101,14 +101,8 @@ export const Character = () => {
         <button onClick={() => setIsShareModalVisible(false)}>Close</button>
       </div>
     )}
-
-    {/* Your other component JSX */}
-
-
         <Modal isOpen={modalIsOpen} className="add--character--modal"
       onRequestClose={() => setModalIsOpen(false)}>
-        
-        
 <CharacterForm setModalIsOpen={setModalIsOpen} factions={factions} setFactions={setFactions}  getUserCharacters={getUserCharacters} updateUserCharacters={updateUserCharacters} weapons={weapons} setWeapons={setWeapons} servers={servers} roles={roles} feedback={feedback} setFeedback={setFeedback} />
 
       </Modal></div><SearchCharacters setSearch={setSearch} searchWords={searchWords} /> 
