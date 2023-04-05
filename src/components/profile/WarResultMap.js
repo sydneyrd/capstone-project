@@ -54,8 +54,13 @@ const handleEditClick = (click) => {
 }
 
   return <div className="saved--rosters"><Link onClick={click => setCurrentCalculateRoster(stat.id)}to={`/resources/${stat.id}/view`}><div className="roster__link" to="/roster">{stat.rosterName ? `${stat.rosterName}` : "War Stats"}</div></Link>
+  <FontAwesomeIcon className="edit__roster"
+    
+    //navigate to edit page
+    onClick={handleEditClick}
+    icon="fa-solid fa-pen-to-square" /> 
     <FontAwesomeIcon className="delete__roster" onClick={click => handleDeleteClick(click, stat)} icon="fa-solid fa-trash-can" />
-
+{stat.is_public ?  "public" : "private"}
 {
   stat.is_public ? <FontAwesomeIcon className="publish__roster" onClick={click => handlePublish(click, false, stat.id)} icon="fa-solid fa-rectangle-xmark" /> : <FontAwesomeIcon className="publish__roster" onClick={click => handlePublish(click, true, stat.id)} icon="fa-solid fa-share-from-square" />
 }
@@ -63,11 +68,7 @@ const handleEditClick = (click) => {
 
     
 
-    <FontAwesomeIcon className="edit__roster"
     
-    //navigate to edit page
-    onClick={handleEditClick}
-    icon="fa-solid fa-pen-to-square" /> 
 
 
 

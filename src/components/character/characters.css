@@ -524,7 +524,14 @@ input.form-control{
     margin-top: 3em;
 }
 
-
+.modal--share{
+    margin-left:2em;
+    display: flex;
+    flex-direction: column;
+    max-width: 15em;
+    align-items: center;
+    text-align: center;
+}
 
 .close-button {
     position: absolute;

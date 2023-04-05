@@ -28,7 +28,7 @@ export const LinkModal = ({ character, characterId,setModalIsOpen, getCharacterL
             }
             linkCopy.link = urlString;
             const myUrl = new URL(urlString);
-            console.log("Valid URL:", myUrl);
+            
             newLink(linkCopy).then((res) => { getCharacterLinks(characterId, setCharacterLinks) })
         } catch (err) {
             console.error("Invalid URL:", err);
