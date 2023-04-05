@@ -75,7 +75,7 @@ function handleReset(click){
 }
     return <>
     <Link to="/resources/edit/{}"></Link>
-       <div>
+    <div>
             <button className='button-84' onClick={click => sortByGroup(click)}>Group</button>
             <button className='button-84' onClick={click => sortByArmy(click)}>Army</button>
             <button className='button-84' onClick={(click)=> {sortDamage(click)}}>Damage</button>
@@ -84,8 +84,6 @@ function handleReset(click){
             <button className='button-84' onClick={(click)=>{sortAssist(click)}}>Assists</button>
             <button className='button-84' onClick={(click)=>{sortKDR(click)}}>KDR</button>
             <button className='button-84' onClick={(click) => {handleReset(click)}}>Reset</button>
-             
-            
                 <select className='role--select'
                 onChange={(event) => roleFilter(event)}
                 >{roles.map((role) => <RoleSelect key={`role--${role.id}`}role={role}
