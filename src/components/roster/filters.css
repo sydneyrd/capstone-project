@@ -110,7 +110,7 @@ form:required,
 }
 
 fieldset {
-  display: flex;
+  /* display: flex; */
   align-items: row;
   padding: 0.5em;
 }

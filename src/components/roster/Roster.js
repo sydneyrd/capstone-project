@@ -11,19 +11,19 @@ import { editContext } from "../views/ApplicationViews"
 import { getUserRosters } from "../managers/UserManager"
 
 export const Roster = () => {
-    const [characters, setCharacters] = useState([])
-    const [servers, setServers] = useState([])
-    const [weapons, setWeapons] = useState([])
-    const [factions, setFactions] = useState([])
-    const [roles, setRoles] = useState([])
-    const [sortedArr, setSortedArr] = useState([])
-    const [searchTerms, setSearchTerms] = useState("")
-    const [filterButton, setFilterButton] = useState(false)
-    const [factionSearch, setFactionSearch] = useState(0)
-    const [roleSearch, setRoleSearch] = useState(0)
-    const [serverSearch, setServerSearch] = useState(0)
-    const [primarySearch, setPrimarySearch] = useState(0)
-    const [secondarySearch, setSecondarySearch] = useState(0)
+    const [characters, setCharacters] = useState([]);
+    const [servers, setServers] = useState([]);
+    const [weapons, setWeapons] = useState([]);
+    const [factions, setFactions] = useState([]);
+    const [roles, setRoles] = useState([]);
+    const [sortedArr, setSortedArr] = useState([]);
+    const [searchTerms, setSearchTerms] = useState("");
+    const [filterButton, setFilterButton] = useState(false);
+    const [factionSearch, setFactionSearch] = useState(0);
+    const [roleSearch, setRoleSearch] = useState(0);
+    const [serverSearch, setServerSearch] = useState(0);
+    const [primarySearch, setPrimarySearch] = useState(0);
+    const [secondarySearch, setSecondarySearch] = useState(0);
     const [newRosterPicks, setNewRosterPick] = useState([]);
     const [editRosterCharacters, setEditCharacters] = useState([]);
     const { currentEditRoster, setCurrentEditRoster} = useContext(editContext);
@@ -33,7 +33,7 @@ export const Roster = () => {
         name: "",
         roster: currentEditRoster
     });
-    const [userRosters, setUserRosters] = useState([])
+    const [userRosters, setUserRosters] = useState([]);
     
     //we are capturing the new roster id when we first click add to roster and saving it to start roster  //pass those props ^
     let rosterIDNUMBER = currentEditRoster
@@ -150,7 +150,7 @@ const handleNewRoster = (e) => {
     
     }, [roleSearch, primarySearch, serverSearch, secondarySearch, factionSearch, searchTerms])
     
-    return <main className="main--container--roster">
+    return <main className="main--container--roster"><section className="body">
         <div className="search--container--roster">
         <FilterContainer setFactionSearch={setFactionSearch} filterButton={filterButton} setFilterButton={setFilterButton} searchTerms={searchTerms} setSearchTerms={setSearchTerms}
             setRoleSearch={setRoleSearch} setPrimarySearch={setPrimarySearch} setServerSearch={setServerSearch} setSecondarySearch={setSecondarySearch}
@@ -159,7 +159,7 @@ const handleNewRoster = (e) => {
 </div>
 
         
-         <section className="body">
+         
             <ListContainer
             nestedEditRosterCharacters={nestedEditRosterCharacters} 
             rosterIDNUMBER={rosterIDNUMBER} setEditCharacters={setEditCharacters} setSearchTerms={setSearchTerms}editRosterCharacters={editRosterCharacters} showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} setNewRosterPick={setNewRosterPick} newRosterPicks={newRosterPicks} characters={sortedArr} servers={servers} weapons={weapons} factions={factions} roles={roles} />

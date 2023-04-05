@@ -8,11 +8,9 @@ export const HoverableElement = ({ children, tooltipText, onElementClick }) => {
 
   const handleMouseEnter = () => {
     setShowTooltip(true);
-    console.log("hi")
   };
 
   const handleMouseLeave = () => {
-    console.log('bye')
     setShowTooltip(false);
   };
 
