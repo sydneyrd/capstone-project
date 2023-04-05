@@ -473,7 +473,7 @@ input.form-control{
 .vod--links{
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
 }
 .right--container{
     display: flex;

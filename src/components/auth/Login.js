@@ -33,14 +33,13 @@ export const Login = () => {
 
     return (
         <main className="container--login">
+            <img src="./logo-no-background.png" alt="Your Logo" className="logo" />
             <dialog className="dialog dialog--auth" ref={invalidDialog}>
                 <div>Username or password was not valid.</div>
                 <button className="button--close" onClick={e => invalidDialog.current.close()}>Close</button>
             </dialog>
             <section>
                 <form className="form--login" onSubmit={handleLogin}>
-                    <h1>DGR</h1>
-                    <h2>Please sign in</h2>
                     <fieldset className="login">
                         <label className="login--label" htmlFor="inputUsername"> Username</label>
                         <input ref={username} type="username" id="username" className="form-control" placeholder="Username" required autoFocus />

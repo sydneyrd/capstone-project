@@ -35,7 +35,9 @@ export const UpdateUser = () => {
         email: user.email,
         username: user.username }
         updateProfile(updatedUser, user.id)
-            .then(() => {})}
+            .then(() => {
+                alert("Email updated")
+            })}
     return <>
         <main className="profile--page" style={{ textAlign: "center" }}>
             <div className="left--container">

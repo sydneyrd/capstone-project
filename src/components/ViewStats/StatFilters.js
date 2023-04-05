@@ -4,15 +4,11 @@ import { getAllRoles } from "../managers/ResourceManager"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
-export const StatFilters = ({players,setGroup, setBase, currentCalcRoster, setFilteredPlayers, sortByArmy, sortByGroup}) => {
+export const StatFilters = ({players,setGroup, setBase, setFilteredPlayers, sortByArmy, sortByGroup}) => {
     const [roles, setRoles] = useState([])
 useEffect(() => {
     getAllRoles(setRoles)
 }, []) 
-
-// function compareNumbers(a, b) {
-//     return a.group - b.group;
-//   } unused error
   function compareDamage(a, b) {
     return b.damage - a.damage;
   }
@@ -65,8 +61,6 @@ function sortKDR(click){
     copy.sort(compareKDR)
     setFilteredPlayers(copy)
 }
-
-
 function roleFilter(event){
     event.preventDefault()
     const copy = [...players]
@@ -79,12 +73,8 @@ function handleReset(click){
     setFilteredPlayers(copy)
     setGroup(false)
 }
-
-
-
-
     return <>
-    <><Link to="/resources/edit/{}"></Link>
+    <Link to="/resources/edit/{}"></Link>
        <div>
             <button className='button-84' onClick={click => sortByGroup(click)}>Group</button>
             <button className='button-84' onClick={click => sortByArmy(click)}>Army</button>
@@ -103,7 +93,7 @@ function handleReset(click){
                 </select>
                 
         </div>
-        <hr class="custom-line-break" />
-    </></>
+        <hr className="custom-line-break" />
+    </>
 
 }

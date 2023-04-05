@@ -33,13 +33,43 @@ export const RosterGrid = ({ showText, nestedEditRosterCharacters, setShowText, 
 
     }, [currentEditRoster])
 
-    const handleStartClick = async () => {
-      await  newRoster().then((newRosterObj) => {
-            setCurrentEditRoster(newRosterObj.id);
+    const addChoiceToEnd = (character, rosterId, nextGroup) => {
+        const new_choice = { roster: rosterId, character: character.id, group: nextGroup}
 
+        newRosterChoice(new_choice)
+            .then(() => { getCurrentRoster(rosterId).then((res) => { setEditCharacters(res) }) })
+
+    }
+
+    const handleStartClick1 = async (character) => {
+        newRoster().then((newRosterObj) => { 
+            setCurrentEditRoster(newRosterObj.id);
+            const nextGroup = findNextAvailableGroup(nestedEditRosterCharacters);
+            addChoiceToEnd(character, newRosterObj.id, nextGroup);
+            //adds the character to the database 
         });
+
         alert("Saving New Roster...")
     }
+
+    const findNextAvailableGroup = (charactersArray) => {
+        const groups = {};
+      
+        // Count the number of characters in each group
+        charactersArray.forEach((character) => {
+        if (!groups[character.group]) {
+            groups[character.group] = 1;
+        } else {
+            groups[character.group]++;
+        }
+        });
+        for (let i = 1; i <= 10; i++) {
+          if (!groups[i] || groups[i] < 5) {
+            return i;
+          }
+        }
+        return -1; // All groups are full
+      };
 
     const handleDragOver = (e) => {
         e.preventDefault();
@@ -47,11 +77,10 @@ export const RosterGrid = ({ showText, nestedEditRosterCharacters, setShowText, 
     
     const handleDrop = (e, groupIndex) => {
         e.preventDefault();
-        if (rosterIDNUMBER === 0) {handleStartClick()}
-    else{}
-        console.log(groupIndex);
         const characterData = e.dataTransfer.getData("character");
         const character = JSON.parse(characterData);
+        if (rosterIDNUMBER === 0) {handleStartClick1(character)}
+    else{}
         if (!editRosterCharacters.find((player) => player.id === character.id)) {
         if (editRosterCharacters.length < 50) {
             // Check if the group is already full

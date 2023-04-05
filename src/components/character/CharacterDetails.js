@@ -24,8 +24,7 @@ export const CharacterDetails = () => {
         server: 0,
         notes: "",
         image: "",
-        id: parseInt(characterId),
-        user: parseInt(RosterUserObject.id)
+        id: parseInt(characterId)
     })
     const [factions, setFactions] = useState([])
     const [weapons, setWeapons] = useState([])
@@ -123,7 +122,7 @@ export const CharacterDetails = () => {
 
     return (<main className="main--characterdetails">
         <div className="left--container--details">
-            <h4 className="editcharacter__name">{character?.character_name}</h4>
+            <h1 className="editcharacter__name">{character?.character_name}</h1>
             <form className="edit--character-form">
 
                 <fieldset className="edit__form">
@@ -188,18 +187,8 @@ export const CharacterDetails = () => {
 
             </form> <div className="note--input"><textarea className="character--notes" rows="4" cols="50" value={notes} onChange={
                 (event) => { setNotes(event.target.value) }} />
-                <button className='save__note__button' onClick={click => { handleUpdateClick(character, click) }}>Save Notes</button></div>
-        </div>
-        <div className="right--container--details">
-            <div className="image--detail">
-           
-            {character.image ? <img src={`http://localhost:8000${character?.image}`} alt={`${character.character_name} picture`}></img> : <></>}<div> 
-                <input type="file" id="image" onChange={createCharacterImageString} />
-                <input type="hidden" name="character_id" value={character.id} />
-                <button className="save__button" onClick={click => handleUpdateClick(character, click)}>save image</button>
-            </div></div>
-            
-            <div className="vod--links"> 
+                <button className='save__note__button' onClick={click => { handleUpdateClick(character, click) }}>Save Notes</button></div></div>
+                <div className="vod--links"> 
             <button  className="modal--button" onClick={() => setModalIsOpen(true)}>Add a Vod Link</button>
             <Modal isOpen={modalIsOpen} className="add--vod--modal"
       onRequestClose={() => setModalIsOpen(false)}>
@@ -214,7 +203,18 @@ export const CharacterDetails = () => {
                         <FontAwesomeIcon className="delete__link" onClick={click => handleDeleteLink(link.id, click)}icon="fa-solid fa-trash-can"/>
                         </li>
                     ) : <></>}
-                </ul> </div>
+                </ul> 
+        </div>
+        <div className="right--container--details">
+            <div className="image--detail">
+           
+            {character.image ? <img src={`http://localhost:8000${character?.image}`} alt={`${character.character_name} picture`}></img> : <></>}<div> 
+                <input type="file" id="image" onChange={createCharacterImageString} />
+                <input type="hidden" name="character_id" value={character.id} />
+                <button className="save__button" onClick={click => handleUpdateClick(character, click)}>save image</button>
+            </div></div>
+            
+            
         </div>
     </main>
     )

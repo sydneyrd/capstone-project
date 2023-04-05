@@ -17,7 +17,11 @@
     font-size: 18px;
     margin-bottom: 30px;
 }
-
+.logo {
+    display: block;
+    width: 15em; /* Adjust the width as needed */
+    margin: 0 auto 1em; /* Center the logo and add some margin at the bottom */
+  }
 .main-links {
     display: flex;
     flex-direction: column;

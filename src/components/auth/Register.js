@@ -4,8 +4,6 @@ import { registerUser } from "../managers/APIManager"
 import "./register.css"
 
 export const Register = () => {
-    const firstName = useRef()
-    const lastName = useRef()
     const username = useRef()
     const email = useRef()
     const password = useRef()
@@ -19,8 +17,6 @@ export const Register = () => {
         if (password.current.value === verifyPassword.current.value) {
             const newUser = {
                 "username": username.current.value,
-                "first_name": firstName.current.value,
-                "last_name": lastName.current.value,
                 "email": email.current.value,
                 "password": password.current.value
             }
@@ -39,7 +35,7 @@ export const Register = () => {
 
     return (
         <main style={{ textAlign: "center" }}>
-
+<img src="./logo-no-background.png" alt="Your Logo" className="logo" />
             <dialog className="dialog dialog--password" ref={passwordDialog}>
                 <div>Passwords do not match</div>
                 <button className="button--close" onClick={e => passwordDialog.current.close()}>Close</button>
@@ -49,14 +45,6 @@ export const Register = () => {
                 <h1 className="h3 mb-3 font-weight-normal">Register an account</h1>
                 
     <fieldset className="register">
-        <div>
-            <label className="register--label" htmlFor="firstName"> First Name </label>
-            <input ref={firstName} type="text" name="firstName" className="form-control" placeholder="First name" required autoFocus />
-        </div>
-        <div>
-            <label className="register--label" htmlFor="lastName"> Last Name </label>
-            <input ref={lastName} type="text" name="lastName" className="form-control" placeholder="Last name" required />
-        </div>
         <div>
             <label className="register--label" htmlFor="inputUsername">Username</label>
             <input ref={username} type="text" name="username" className="form-control" placeholder="Username" required />

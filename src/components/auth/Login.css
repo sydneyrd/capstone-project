@@ -13,7 +13,11 @@ fieldset {
     border: 0;
     align-content: center;
 }
-
+.logo {
+    display: block;
+    width: 15em; /* Adjust the width as needed */
+    margin: 0 auto 1em; /* Center the logo and add some margin at the bottom */
+  }
 .form--login {
     display: inline-block;
     margin: 0 auto;

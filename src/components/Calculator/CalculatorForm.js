@@ -139,7 +139,7 @@ const handleChangeExistingRosterPlayer = (e) => {
           <button className="save--and--add" onClick={(click) => {handleSaveAndAdd(click)}}>Save and Add</button>
           <br></br>
         </fieldset></form>
-        <hr class="custom-line-break" />
+        <hr className="custom-line-break" />
         
         { calculatedRoster.length ?
           <><div className="player__list">

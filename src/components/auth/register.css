@@ -24,7 +24,11 @@
     font-size: large;
     margin: 1.5em;
 }
-
+.logo {
+    display: block;
+    width: 15em; /* Adjust the width as needed */
+    margin: 0 auto 1em; /* Center the logo and add some margin at the bottom */
+  }
 fieldset.register {
     display: flex;
     align-items: center;

@@ -35,10 +35,10 @@ export const newRosterChoice = (newRosterChoiceObj) => {
             }
             return res.json();
         })
-        .catch(error => {
-            console.error('Error:', error);
-            alert("This player has already been added.");
-        });
+        // .catch(error => {
+        //     console.error('Error:', error);
+        //     alert("This player has already been added.");
+        // });
 };
 
 

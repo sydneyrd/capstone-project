@@ -4,8 +4,7 @@ import "./main.css"
 export const Main = () => {
     return (
         <div className="main-container">
-            <h1 className="main-title">Dead Game Roster</h1>
-            <p className="main-tagline">Track player performance in war</p>
+            <img src="./logo-no-background.png" alt="Your Logo" className="logo" />
             <div className="main-links">
                 <Link className="main-button" to="/public">View Public Boards</Link>
                 <Link className="main-button" to="/faq">FAQ</Link>
