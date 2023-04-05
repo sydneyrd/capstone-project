@@ -17,13 +17,23 @@ const { setCurrentCalculateRoster } = useContext(calculateContext);
  let navigate = useNavigate()
 
   const handleDeleteClick = (click, stat) => {
-    click.preventDefault()
+    click.preventDefault();
+ const userConfirmed = window.confirm(
+      "Are you sure you want to delete this roster? This action can't be undone."
+    );
+   if (userConfirmed) {
     deleteCalculatedRoster(stat.id)
     .then((res) =>  (
     getUserWarStats()
     )).then(URost => {
     setUserWarStats(URost)})
+ alert("Roster successfully deleted");
+    }
   }
+
+  
+
+
   const handlePublish = (click, public_status, id) => {
     click.preventDefault();
     if (stat.is_public) {
@@ -47,7 +57,7 @@ const handleEditClick = (click) => {
     <FontAwesomeIcon className="delete__roster" onClick={click => handleDeleteClick(click, stat)} icon="fa-solid fa-trash-can" />
 
 {
-  stat.is_public ? <FontAwesomeIcon className="private__roster" onClick={click => handlePublish(click, false, stat.id)} icon="fa-solid fa-rectangle-xmark" /> : <FontAwesomeIcon className="publish__roster" onClick={click => handlePublish(click, true, stat.id)} icon="fa-solid fa-share-from-square" />
+  stat.is_public ? <FontAwesomeIcon className="publish__roster" onClick={click => handlePublish(click, false, stat.id)} icon="fa-solid fa-rectangle-xmark" /> : <FontAwesomeIcon className="publish__roster" onClick={click => handlePublish(click, true, stat.id)} icon="fa-solid fa-share-from-square" />
 }
 
 

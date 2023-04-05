@@ -41,11 +41,11 @@ export const Login = () => {
             <section>
                 <form className="form--login" onSubmit={handleLogin}>
                     <fieldset className="login">
-                        <label className="login--label" htmlFor="inputUsername"> Username</label>
+                        
                         <input ref={username} type="username" id="username" className="form-control" placeholder="Username" required autoFocus />
                     </fieldset>
                     <fieldset className="login">
-                        <label className="login--label" htmlFor="inputPassword"> Password </label>
+                        
                         <input ref={password} type="password" id="password" className="form-control" placeholder="Password" required />
                     </fieldset>
                     <fieldset className="login" style={{
