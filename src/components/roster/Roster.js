@@ -161,7 +161,7 @@ const handleNewRoster = (e) => {
             <button  onClick={(e) => handleNewRoster(e)
             } className="new__button">create a new roster</button><div className="roster__select">
             <span>OR</span>{userRosters.length > 0 ? <select className="roster__select" onChange={(e) => setCurrentEditRoster(parseInt(e.target.value))}>
-                <option value="0">Select a roster</option>
+                <option value="0">Edit Saved Roster</option>
                 {userRosters.map((roster) => {
                     return <option key={roster.id} value={roster.id}>{roster.name ?
                     `${roster.name}` 
@@ -175,8 +175,11 @@ const handleNewRoster = (e) => {
             <ListContainer
             nestedEditRosterCharacters={nestedEditRosterCharacters} 
             rosterIDNUMBER={rosterIDNUMBER} setEditCharacters={setEditCharacters} setSearchTerms={setSearchTerms}editRosterCharacters={editRosterCharacters} showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} setNewRosterPick={setNewRosterPick} newRosterPicks={newRosterPicks} characters={sortedArr} servers={servers} weapons={weapons} factions={factions} roles={roles} />
-            <div className="grid--name--container"> name this roster:
-<input type="text" className="roster_name" name="name" placeholder="give me a good name ?" defaultValue={rosterName.name} onChange={(event) => handleRosterName(event)} />
+            
+            <div className="grid--name--container"> <div className="name--div">
+<input type="text" className="roster_name" name="name" placeholder="give this roster a cool name ?" defaultValue={rosterName.name} onChange={(event) => handleRosterName(event)} />
+            </div>
+            
             <div className="parent" >
                 <RosterGrid nestedEditRosterCharacters={nestedEditRosterCharacters} showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave}
                     setEditCharacters={setEditCharacters} editRosterCharacters={editRosterCharacters} rosterIDNUMBER={rosterIDNUMBER} characters={characters} newRosterPicks={newRosterPicks} setNewRosterPick={setNewRosterPick} /></div></div>

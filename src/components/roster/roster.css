@@ -105,8 +105,7 @@ background: linear-gradient(rgba(144,238,144,0.2), rgba(144,238,144,0.2));
     outline: 0;
     text-align: center;
     cursor: pointer;
-    height: 34px;
-    padding: 0 13px;
+    padding:1em;
     color: #fff;
     border-radius: 3px;
     border: 1px solid transparent;
@@ -115,9 +114,7 @@ background: linear-gradient(rgba(144,238,144,0.2), rgba(144,238,144,0.2));
     border-color: #0b5d3a;
     font-weight: 600;
     text-transform: uppercase;
-    line-height: 16px;
-    font-size: 11px;
-    margin-top: 2em;
+    font-size: large;
     align-self: center;
     }
  .save__button:hover {
@@ -126,7 +123,20 @@ background: linear-gradient(rgba(144,238,144,0.2), rgba(144,238,144,0.2));
  .new__button:hover {
     background-color: darkgreen;
  }
+.name--div{
+   font-size:x-large;
+   display:flex;
+   flex-direction:row;
+   align-items: center;
+   justify-content: center;
 
+}
+.roster_name{
+   width:20em;
+   color:#fff!important;
+   font-size: x-large;
+
+}
  .save__div {
     
     display: flex;

@@ -39,11 +39,27 @@ input[type=text] {
   padding: 5px 10px;
   transition: box-shadow 100ms ease-in, border 100ms ease-in, background-color  100ms ease-in;
   border: 2px solid #dee1e2;
-  color: rgb(108, 108, 115);
+  color: white;
   background:transparent;
   display: block;
   height: 2em; 
   
+}
+input::-webkit-input-placeholder { /* Chrome, Safari, Opera, and Edge */
+  color: lightgrey;
+}
+
+input::-moz-placeholder { /* Firefox 19+ */
+  color: lightgrey;
+  opacity: 1; /* Firefox sets the default opacity to 0.54, so you might want to set it to 1 for consistency */
+}
+
+input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: lightgrey;
+}
+
+input::placeholder { /* Modern browsers */
+  color: lightgrey;
 }
 
 
