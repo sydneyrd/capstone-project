@@ -53,7 +53,7 @@ left:0;
    flex-direction: column;
    height: 100%;
    width: 100%;
-   margin-top: 3em;
+   margin-top: 6em;
    position: fixed;
    top: 0;
    left: 0;
@@ -198,6 +198,7 @@ background: linear-gradient(rgba(144,238,144,0.2), rgba(144,238,144,0.2));
     align-items:flex-start;
     margin: 0.2em;
     font-size:x-large;
+    margin-left:.5em;
  }
 
  .character__card:hover {
