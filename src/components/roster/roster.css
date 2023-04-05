@@ -151,6 +151,9 @@ background: linear-gradient(rgba(144,238,144,0.2), rgba(144,238,144,0.2));
     margin-top: 1em;
     flex-direction:column;
     align-items:center;
+    color:rgb(87, 164, 87);
+    font-weight:600;
+      font-size: large;
  }
 .search_div{
    align-self:flex-start;
