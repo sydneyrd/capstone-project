@@ -156,8 +156,20 @@ const handleNewRoster = (e) => {
             setRoleSearch={setRoleSearch} setPrimarySearch={setPrimarySearch} setServerSearch={setServerSearch} setSecondarySearch={setSecondarySearch}
             roleSearch={roleSearch} serverSearch={serverSearch} factionSearch={factionSearch} primarySearch={primarySearch} secondarySearch={secondarySearch}
             setSortedArr={setSortedArr} characters={characters} servers={servers} weapons={weapons} factions={factions} roles={roles} />
-</div>
 
+   <div className="save__div">
+            <button  onClick={(e) => handleNewRoster(e)
+            } className="new__button">create a new roster</button><div className="roster__select">
+            <span>OR</span>{userRosters.length > 0 ? <select className="roster__select" onChange={(e) => setCurrentEditRoster(parseInt(e.target.value))}>
+                <option value="0">Select a roster</option>
+                {userRosters.map((roster) => {
+                    return <option key={roster.id} value={roster.id}>{roster.name ?
+                    `${roster.name}` 
+                : `untitled roster #${roster.id}` 
+                }</option>
+                })}
+            </select> : <></>}</div>
+        </div> </div>
         
          
             <ListContainer
@@ -169,19 +181,7 @@ const handleNewRoster = (e) => {
                 <RosterGrid nestedEditRosterCharacters={nestedEditRosterCharacters} showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave}
                     setEditCharacters={setEditCharacters} editRosterCharacters={editRosterCharacters} rosterIDNUMBER={rosterIDNUMBER} characters={characters} newRosterPicks={newRosterPicks} setNewRosterPick={setNewRosterPick} /></div></div>
 
-                    <div className="save__div">
-            <button  onClick={(e) => handleNewRoster(e)
-            } className="new__button">create a new roster</button><div className="roster__select">
-            <span>or pick a roster to edit</span>{userRosters.length > 0 ? <select className="roster__select" onChange={(e) => setCurrentEditRoster(parseInt(e.target.value))}>
-                <option value="0">Select a roster</option>
-                {userRosters.map((roster) => {
-                    return <option key={roster.id} value={roster.id}>{roster.name ?
-                    `${roster.name}` 
-                : `untitled roster #${roster.id}` 
-                }</option>
-                })}
-            </select> : <></>}</div>
-        </div> 
+                 
 
         </section>  </main>
 }

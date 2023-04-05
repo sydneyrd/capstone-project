@@ -24,7 +24,7 @@
      display: flex;
      flex-direction: row;
      ;
-     justify-content:space-evenly;
+     /* justify-content:space-evenly; */
  }
  .search--bar--wrapper {
    display:flex;
@@ -40,9 +40,11 @@ left:0;
 
 .search--container--roster{
    display:flex;
+   flex-direction:column;
    margin-top:2em;
    align-items: space-between;
    justify-content: flex-start;
+   margin:1em;
 
    
 }
@@ -116,7 +118,7 @@ background: linear-gradient(rgba(144,238,144,0.2), rgba(144,238,144,0.2));
     line-height: 16px;
     font-size: 11px;
     margin-top: 2em;
-    align-self: flex-start;
+    align-self: center;
     }
  .save__button:hover {
     background-color: lightgreen;
@@ -136,7 +138,7 @@ background: linear-gradient(rgba(144,238,144,0.2), rgba(144,238,144,0.2));
  }
  .roster__select{
     display:flex;
-    margin-top: 4em;
+    margin-top: 1em;
     flex-direction:column;
     align-items:center;
  }
@@ -179,11 +181,11 @@ background: linear-gradient(rgba(144,238,144,0.2), rgba(144,238,144,0.2));
 
  .character__card {
     display: flex;
-    flex-wrap: no-wrap;
-    width: 14em;
+    flex-wrap: nowrap;
     justify-content:space-between;
     align-items:flex-start;
     margin: 0.2em;
+    font-size:x-large;
  }
 
  .character__card:hover {
@@ -194,8 +196,8 @@ background: linear-gradient(rgba(144,238,144,0.2), rgba(144,238,144,0.2));
  
  
  section.character__list--roster {
-    height: 35em;
-    width: 15em;
+    height: 53em;
+    width: 20em;
     scrollbar-width:0;
     position:relative;
     overflow: hidden;
