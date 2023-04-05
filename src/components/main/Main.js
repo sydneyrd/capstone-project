@@ -1,11 +1,19 @@
 import { Link } from "react-router-dom"
+import "./main.css"
 
 export const Main = () => {
-    return <div>"hi hello i'm here i'm main 
-
-        i want to display a list of all of the public war stats, a link to the about page, and a link to login or register"
-        <div>
-            <Link to="/public">Public Boards</Link>
+    return (
+        <div className="main-container">
+            <img src="./logo-no-background.png" alt="Your Logo" className="logo" />
+            <div className="main-links">
+                <Link className="main-button" to="/public">View Public Boards</Link>
+                <Link className="main-button" to="/faq">FAQ</Link>
+                <div className="login-register">
+                    <Link className="main-button" to="/login">Login</Link>
+                    <span>or</span>
+                    <Link className="main-button" to="/register">Register</Link>
+                </div>
+            </div>
         </div>
-    </div>
+    )
 }

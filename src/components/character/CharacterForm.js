@@ -32,7 +32,6 @@ export const CharacterForm = ({ setModalIsOpen, updateUserCharacters, RosterUser
             secondary_weapon: parseInt(newCharacter.secondaryId),
             server: parseInt(newCharacter.serverId),
             faction: parseInt(newCharacter.factionId),
-            user: RosterUserObject.id,
             image:image
         }
         saveNewCharacter(newCharacterToAPI).then(() => {

@@ -1,0 +1,66 @@
+/* Registration Form CSS */
+.container--register {
+    text-align: center;
+    padding: 2rem;
+    flex-direction: column;
+}
+
+.form--register {
+    display: flex;
+    margin: 0 auto;
+    text-align: left;
+    width: 100%;
+    max-width: 350px;
+    flex-direction: column;
+}
+
+.form--register > fieldset > input[type="text"],
+.form--register > fieldset > input[type="password"],
+.form--register > fieldset > input[type="email"] {
+    width: 100%;
+}
+
+.register--label {
+    font-size: large;
+    margin: 1.5em;
+}
+.logo {
+    display: block;
+    width: 15em; /* Adjust the width as needed */
+    margin: 0 auto 1em; /* Center the logo and add some margin at the bottom */
+  }
+fieldset.register {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 350px;
+    flex-direction: column;
+}
+
+.register--button {
+    display:inline-block;
+    padding: 10px 20px;
+    background-color: #2196f3;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+    align-self: center;
+    align-content: center;
+}
+.register--label {
+    font-size: large;
+    margin: 1.5em;
+    margin-right: 1em; /* Add some space between the label and input */
+   
+}
+.register--button--container{
+    
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+    align-self: center;
+    align-content: center;
+}

@@ -39,11 +39,12 @@ updateUserCharacters(charArr))
     }
 
     const handleDeleteClick = (deleteCharacterId, click) => {
-        click.preventDefault()
+        click.preventDefault();
+        if (window.confirm("Are you sure you want to delete this character?")) {
             deleteCharacter(deleteCharacterId)
             .then(() => getUserCharacters(RosterUserObject))
                 .then((charArr) =>
-                    updateUserCharacters(charArr))
+                    updateUserCharacters(charArr))}
     }
     const handleChange = (event) => {
         event.preventDefault()

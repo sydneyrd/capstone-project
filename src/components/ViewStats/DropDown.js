@@ -8,14 +8,13 @@ function DropDownSelect({calculatedRosterId, selectedPlayer, setSelectedPlayer})
   const [isOpen, setIsOpen] = useState(false);
 const [characters, setCharacters] = useState([]);
 const [searchText, setSearchText] = useState('');
-//   const [filteredOptions, setFilteredOptions] = useState(options);
   const searchInputRef = useRef();
 
   const handleInputClick = () => {
     setIsOpen(!isOpen);
   };
   useEffect(() => {
-    searchText ?
+    !searchText ?
     getAllCharacters(setCharacters)
   
     : handleSearchChange(searchText)
@@ -32,7 +31,7 @@ const [searchText, setSearchText] = useState('');
     getCharactersBySearch(searchText)
     //   .then((response) => response.json())
       .then((data) => setCharacters(data));
-  }, 500);
+  });
 
   const handleInputChange = (event) => {
     const newSearchText = event.target.value;

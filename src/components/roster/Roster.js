@@ -163,8 +163,8 @@ const handleNewRoster = (e) => {
             <ListContainer
             nestedEditRosterCharacters={nestedEditRosterCharacters} 
             rosterIDNUMBER={rosterIDNUMBER} setEditCharacters={setEditCharacters} setSearchTerms={setSearchTerms}editRosterCharacters={editRosterCharacters} showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} setNewRosterPick={setNewRosterPick} newRosterPicks={newRosterPicks} characters={sortedArr} servers={servers} weapons={weapons} factions={factions} roles={roles} />
-            <div className="grid--name--container">
-<input type="text" className="roster_name" name="name" placeholder="name this roster ?" defaultValue={rosterName.name} onChange={(event) => handleRosterName(event)} />
+            <div className="grid--name--container"> name this roster:
+<input type="text" className="roster_name" name="name" placeholder="give me a good name ?" defaultValue={rosterName.name} onChange={(event) => handleRosterName(event)} />
             <div className="parent" >
                 <RosterGrid nestedEditRosterCharacters={nestedEditRosterCharacters} showText={showText} setShowText={setShowText} charId={charId} setCharId={setCharId} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave}
                     setEditCharacters={setEditCharacters} editRosterCharacters={editRosterCharacters} rosterIDNUMBER={rosterIDNUMBER} characters={characters} newRosterPicks={newRosterPicks} setNewRosterPick={setNewRosterPick} /></div></div>

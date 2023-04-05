@@ -1,14 +1,16 @@
-import "./results.css"
+import "./publicresults.css"
 import { RoleSelect } from "../character/Role"
-import { getAllRoles } from "../managers/ResourceManager"
+import { getPublicRoles } from "../managers/PublicManager"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
-export const StatFilters = ({players,setGroup, setBase, setFilteredPlayers, sortByArmy, sortByGroup}) => {
+
+export const PublicStatFilters = ({players,setGroup, setBase, setFilteredPlayers, sortByArmy, sortByGroup}) => {
     const [roles, setRoles] = useState([])
 useEffect(() => {
-    getAllRoles(setRoles)
+    getPublicRoles(setRoles)
 }, []) 
+
   function compareDamage(a, b) {
     return b.damage - a.damage;
   }
@@ -61,6 +63,8 @@ function sortKDR(click){
     copy.sort(compareKDR)
     setFilteredPlayers(copy)
 }
+
+
 function roleFilter(event){
     event.preventDefault()
     const copy = [...players]
@@ -73,9 +77,12 @@ function handleReset(click){
     setFilteredPlayers(copy)
     setGroup(false)
 }
+
+
+
+
     return <>
-    <Link to="/resources/edit/{}"></Link>
-    <div>
+       <div>
             <button className='button-84' onClick={click => sortByGroup(click)}>Group</button>
             <button className='button-84' onClick={click => sortByArmy(click)}>Army</button>
             <button className='button-84' onClick={(click)=> {sortDamage(click)}}>Damage</button>
@@ -84,6 +91,8 @@ function handleReset(click){
             <button className='button-84' onClick={(click)=>{sortAssist(click)}}>Assists</button>
             <button className='button-84' onClick={(click)=>{sortKDR(click)}}>KDR</button>
             <button className='button-84' onClick={(click) => {handleReset(click)}}>Reset</button>
+             
+            
                 <select className='role--select'
                 onChange={(event) => roleFilter(event)}
                 >{roles.map((role) => <RoleSelect key={`role--${role.id}`}role={role}
@@ -91,7 +100,7 @@ function handleReset(click){
                 </select>
                 
         </div>
-        <hr className="custom-line-break" />
+        <hr class="custom-line-break" />
     </>
 
 }

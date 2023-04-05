@@ -23,10 +23,6 @@ export const Login = () => {
             .then(res => {
                 if ("valid" in res && res.valid && "token" in res) {
                     localStorage.setItem("roster_token", res.token)
-                    localStorage.setItem("roster_user", JSON.stringify({
-                                                    id: res.userId
-                                                     })   // **email: res.email  I don't remember why I had this here, but I don't think I need it**//
-                    )
                     navigate("/profile")
                 }
                 else {
@@ -37,26 +33,25 @@ export const Login = () => {
 
     return (
         <main className="container--login">
+            <img src="./logo-no-background.png" alt="Your Logo" className="logo" />
             <dialog className="dialog dialog--auth" ref={invalidDialog}>
                 <div>Username or password was not valid.</div>
                 <button className="button--close" onClick={e => invalidDialog.current.close()}>Close</button>
             </dialog>
             <section>
                 <form className="form--login" onSubmit={handleLogin}>
-                    <h1>Level Up</h1>
-                    <h2>Please sign in</h2>
-                    <fieldset>
-                        <label htmlFor="inputUsername"> Username address </label>
-                        <input ref={username} type="username" id="username" className="form-control" placeholder="Username address" required autoFocus />
+                    <fieldset className="login">
+                        <label className="login--label" htmlFor="inputUsername"> Username</label>
+                        <input ref={username} type="username" id="username" className="form-control" placeholder="Username" required autoFocus />
                     </fieldset>
-                    <fieldset>
-                        <label htmlFor="inputPassword"> Password </label>
+                    <fieldset className="login">
+                        <label className="login--label" htmlFor="inputPassword"> Password </label>
                         <input ref={password} type="password" id="password" className="form-control" placeholder="Password" required />
                     </fieldset>
-                    <fieldset style={{
+                    <fieldset className="login" style={{
                         textAlign: "center"
                     }}>
-                        <button className="btn btn-1 btn-sep icon-send" type="submit">Sign In</button>
+                        <button className="login--button" type="submit">Sign In</button>
                     </fieldset>
                 </form>
             </section>

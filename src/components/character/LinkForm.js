@@ -49,7 +49,7 @@ export const LinkModal = ({ character, characterId,setModalIsOpen, getCharacterL
     <button className="close-button" onClick={closeModal}>X</button>
     <form className="add--link--form">
         <fieldset className="add__link__form">
-    <div className="vod--links"> <h4>VOD Links</h4>
+    <div className="vod--links"> <h4>add a vod link</h4>
     <div className="link--input"><input type="url" className="form-control" name="link" value={link.link} onChange={handleChange} placeholder="vod links?" />
     <span>Assign corresponding war stats?</span>
     <select

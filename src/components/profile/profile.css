@@ -35,7 +35,7 @@ input[type="email"] {
 .roster__link {
     margin: 3px;
     padding-bottom: 5px;
-    
+    color:#2196f3;
 }
 .left--container--profile{
   display:flex;
@@ -107,6 +107,7 @@ input[type="email"] {
     text-transform: uppercase;
     line-height: 16px;
     font-size: 11px;
+    margin-top:2em;
     
 }
 .form--update fieldset{

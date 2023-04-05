@@ -98,7 +98,7 @@ form:required,
 }
 
 /* demo */
-body {
+.body--filters {
   font-family: "Poppins", sans-serif;
   
   flex-direction: column;

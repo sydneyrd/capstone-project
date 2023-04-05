@@ -35,23 +35,21 @@ export const UpdateUser = () => {
         email: user.email,
         username: user.username }
         updateProfile(updatedUser, user.id)
-            .then(() => {})}
+            .then(() => {
+                alert("Email updated")
+            })}
     return <>
         <main className="profile--page" style={{ textAlign: "center" }}>
             <div className="left--container">
             <form className="form--update" >
-                <h1 className="h3 mb-3 font-weight-normal">Update Profile</h1>
+                <h1 className="h3 mb-3 font-weight-normal">Update Email</h1>
                 <fieldset className="form--update">
                     <label htmlFor="email"></label>
                     <input onChange={(evt) => userUpdate(evt)}
                         type="email" name="email" className="form-control--update"
                         value={user.email || ""}
                         placeholder="Email address" required />
-                    <label htmlFor="username"></label>
-                        <input onChange={(evt) => userUpdate(evt)}
-                        type="text" name="username" className="form-control--update"
-                        value={user.username || ""}
-                        placeholder="" required />
+                    
                         <button className="email__button" type="submit" onClick={handleSaveButtonClick}> Update </button>
                 </fieldset>
                     

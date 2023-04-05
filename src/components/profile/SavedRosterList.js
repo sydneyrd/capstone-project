@@ -10,8 +10,6 @@ import { editContext } from "../views/ApplicationViews"
 export const SavedRosterList = ({roster, getUserRosters, setUserRosters, localUser}) => {
     // Use the useContext hook to access the current value and update function of the first context
     const { currentEditRoster, setCurrentEditRoster } = useContext(editContext);
-
-console.log(currentEditRoster)
 library.add(faTrashCan)
   const handleClick = () => {
     setCurrentEditRoster(roster.id)
@@ -29,8 +27,6 @@ library.add(faTrashCan)
       alert("Roster successfully deleted");
     }
   };
-  
-        
   return <div className="saved--rosters">< Link className="roster__link" onClick={handleClick} to="/roster">{roster.name ? `${roster.name}` : `Roster #${roster.id}`}
   </Link>
     <FontAwesomeIcon className="delete__roster" onClick={click => handleDeleteClick(click, roster)}icon="fa-solid fa-trash-can"/></div>
