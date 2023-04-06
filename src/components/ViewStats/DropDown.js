@@ -41,7 +41,7 @@ const [searchText, setSearchText] = useState('');
 
 
   return (
-    <div className="dropdown-select">
+    <div key="dropdownselect" className="dropdown-select">
       <div className="dropdown-select__input" onClick={handleInputClick}>
         {selectedPlayer?.character_name || 'Select an option...'}
       </div>
