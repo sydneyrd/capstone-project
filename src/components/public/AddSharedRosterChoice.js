@@ -50,7 +50,7 @@ else {
 
   return <>
    
-    <div className="player__form">
+    <div className="player__stuff">
       <div><h3>Add your Character information to an existing war board</h3><h4>You can assign a vod link on your character page after your stats have been entered.</h4></div>
       <form className="War--Statistics">
         <fieldset className="calculator--fieldset">

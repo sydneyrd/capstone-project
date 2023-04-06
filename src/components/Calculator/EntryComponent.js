@@ -47,7 +47,7 @@ export const EntryComponent = ({handleRosterChange, setSelectedRoster, userRoste
     return  <> <div className="select--or--new">
     <div className="left--header--select">
          <h3>Choose an existing roster</h3> <h4>characters and groups will be pre-assigned</h4>  <select className="roster__select" onChange={(event) => handleRosterChange(event)}><option key="select--0" value={0}>Saved Rosters</option>{userRosters.map((roster) => <RosterList key={roster.id} setSelectedRoster={setSelectedRoster} roster={roster} />)} </select></div>
-<span className="middle--or--lol">or</span>
+
 <div className="right--header--new"><h3>Choose from all characters</h3><h4>optionally assign groups</h4>
   <button className="new__roster__button" onClick={(click)=>{setCreateNewRoster(true)}}>Create New</button></div>
   <div className="generate--link--roster">

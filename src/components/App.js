@@ -11,7 +11,7 @@ import { PublicViewStats } from './public/PublicViewStats';
 import { Faq } from './faq/Faq';
 import { AddSharedCharacter } from './public/AddSharedCharacter';
 import { ConditionalNavBar } from './Nav/ConditionalNavBar';
-
+import { NotAuthorized } from './auth/NotAuthorized';
 export const App = () => {
 	return (
 	  <Routes>
@@ -62,7 +62,9 @@ export const App = () => {
     </>
   }
 />
-
+<Route 
+path="/nope"
+element={<NotAuthorized />} />
   
 		<Route
 		  path="*"
