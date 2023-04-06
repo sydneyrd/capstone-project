@@ -76,10 +76,6 @@ function DropDownSelect({ calculatedRosterId, selectedPlayer, setSelectedPlayer 
     }
   }, [characters, highlightedIndex]);
   
-  
-  
-  
-
   const handleSearchChange = useCallback(
     debounce((searchText) => {
       getCharactersBySearch(searchText).then((data) => setCharacters(data));
@@ -93,8 +89,6 @@ function DropDownSelect({ calculatedRosterId, selectedPlayer, setSelectedPlayer 
     handleSearchChange.cancel(); // Cancel any previous debounce timers
     handleSearchChange(newSearchText);
   };
-  
-
   return (
     <div key="dropdownselect" className="dropdown-select">
       <div className="dropdown-select__input" onClick={handleInputClick}>

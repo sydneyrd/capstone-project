@@ -57,8 +57,8 @@ copy.sort(compareAssist)
 setFilteredPlayers(copy)
 }
 function sortKDR(click){
-    click.preventDefault()
-    setGroup(false)
+    click.preventDefault();
+    setGroup(false);
     const copy = [...players]
     copy.sort(compareKDR)
     setFilteredPlayers(copy)
@@ -66,16 +66,17 @@ function sortKDR(click){
 
 
 function roleFilter(event){
-    event.preventDefault()
+    event.preventDefault();
+    setGroup(false);
     const copy = [...players]
     const rolePlayers = copy.filter(e => e?.character?.role === parseInt(event.target.value))
     setFilteredPlayers(rolePlayers)
 }
 function handleReset(click){
-    click.preventDefault()
+    click.preventDefault();
    const copy = [...players]
-    setFilteredPlayers(copy)
-    setGroup(false)
+    setFilteredPlayers(copy);
+    setGroup(false);
 }
 
 
