@@ -162,7 +162,8 @@ input[type=number]:focus {
   background: black;
 }
 input.roster__name {
-  margin-top: 2em;
+  margin-top: .5em;
+  font-size:large;
   
 }
 .calculate__click {

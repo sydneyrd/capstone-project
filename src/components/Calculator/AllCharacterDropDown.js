@@ -8,8 +8,6 @@ function DropDownSelect({ handleChangeAllCharacters, playerStats }) {
   const [searchText, setSearchText] = useState('');
   const searchInputRef = useRef();
   const [highlightedIndex, setHighlightedIndex] = useState(-1);
-
-
   const handleInputClick = () => {
     setIsOpen(!isOpen);
   };
@@ -25,18 +23,13 @@ function DropDownSelect({ handleChangeAllCharacters, playerStats }) {
       setIsOpen(false);
     }
   };
-  
-
   useEffect(() => {
     if (isOpen) {
       document.addEventListener('mousedown', handleClickOutside);
-     
       searchInputRef.current.focus();
     } else {
       document.removeEventListener('mousedown', handleClickOutside);
-     
     }
-  
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
      

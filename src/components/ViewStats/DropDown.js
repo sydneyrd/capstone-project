@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { getAllCharacters, getCharactersBySearch } from '../managers/CharacterManager';
 import { debounce } from 'lodash';
 import './modal.css';
@@ -15,9 +15,15 @@ function DropDownSelect({ calculatedRosterId, selectedPlayer, setSelectedPlayer 
   };
 
   useEffect(() => {
-    !searchText ? getAllCharacters(setCharacters) : handleSearchChange(searchText);
+    if (!searchText) {
+      getAllCharacters(setCharacters);
+    }
   }, [searchText]);
-
+  
+  useEffect(() => {
+    setHighlightedIndex(-1);
+  }, [characters]);
+  
   const handleClickOutside = (event) => {
     if (searchInputRef.current && !searchInputRef.current.parentNode.contains(event.target)) {
       setIsOpen(false);
@@ -27,48 +33,67 @@ function DropDownSelect({ calculatedRosterId, selectedPlayer, setSelectedPlayer 
   useEffect(() => {
     if (isOpen) {
       document.addEventListener('mousedown', handleClickOutside);
-      document.addEventListener('keydown', handleKeyDown);
       searchInputRef.current.focus();
     } else {
       document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('keydown', handleKeyDown);
     }
-
+  
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('keydown', handleKeyDown);
     };
   }, [isOpen]);
 
-  const handleKeyDown = (event) => {
-    if (event.key === 'ArrowDown') {
-      event.preventDefault();
-      setHighlightedIndex((prevIndex) => Math.min(prevIndex + 1, characters.length - 1));
-    } else if (event.key === 'ArrowUp') {
-      event.preventDefault();
-      setHighlightedIndex((prevIndex) => Math.max(prevIndex - 1, 0));
-    } else if (event.key === 'Enter') {
-      event.preventDefault();
-      if (highlightedIndex > -1) {
-        handleOptionClick(characters[highlightedIndex]);
-      }
-    }
-  };
-
-  const handleOptionClick = (option) => {
-    setSelectedPlayer(option);
+  const selectCharacter = (event, character) => {
+    event.preventDefault();
+    setSelectedPlayer(character);
     setIsOpen(false);
   };
+  
+  const handleOptionClick = (event, option) => {
+    selectCharacter(event, option);
+  };
+  
+  const handleKeyDown = useCallback((event) => {
+    if (event.target === searchInputRef.current) {
+      if (event.key === 'ArrowDown') {
+        event.preventDefault();
+        setHighlightedIndex((prevIndex) => {
+          const newIndex = Math.min(prevIndex + 1, characters.length - 1);
+          return newIndex;
+        });
+      } else if (event.key === 'ArrowUp') {
+        event.preventDefault();
+        setHighlightedIndex((prevIndex) => {
+          const newIndex = Math.max(prevIndex - 1, 0);
+          return newIndex;
+        });
+      } else if (event.key === 'Enter') {
+        event.preventDefault();
+        if (highlightedIndex > -1) {
+          handleOptionClick(event, characters[highlightedIndex])
+        }
+      }
+    }
+  }, [characters, highlightedIndex]);
+  
+  
+  
+  
 
-  const handleSearchChange = debounce((searchText) => {
-    getCharactersBySearch(searchText).then((data) => setCharacters(data));
-  });
+  const handleSearchChange = useCallback(
+    debounce((searchText) => {
+      getCharactersBySearch(searchText).then((data) => setCharacters(data));
+    }, 300),
+    []
+  );
 
   const handleInputChange = (event) => {
     const newSearchText = event.target.value;
     setSearchText(newSearchText);
+    handleSearchChange.cancel(); // Cancel any previous debounce timers
     handleSearchChange(newSearchText);
   };
+  
 
   return (
     <div key="dropdownselect" className="dropdown-select">
@@ -91,7 +116,7 @@ function DropDownSelect({ calculatedRosterId, selectedPlayer, setSelectedPlayer 
               className={`dropdown-select__option ${
                 character.id === selectedPlayer.id ? 'selected' : ''
               } ${highlightedIndex === index ? 'highlighted' : ''}`}
-              onClick={() => handleOptionClick(character)}
+              onClick={(event) => handleOptionClick(event, character)}
             >
               {character.character_name}
             </div>
