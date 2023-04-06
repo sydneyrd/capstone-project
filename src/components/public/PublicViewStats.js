@@ -1,8 +1,6 @@
 import { useParams } from "react-router-dom"
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
-import { getCalculatedRoster, getCalculatedRosterChar } from "../managers/CalculatedRosterManager"
-import {getAllCharacters} from "../managers/CharacterManager"
 import { getPublicCalculatedRosterChar, getPublicCalculatedRoster } from "../managers/PublicManager"
 import { PublicStatFilters } from "./PublicStatFilters"
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -33,7 +31,7 @@ export const PublicViewStats = () => {
                             setCurrentCalcRoster(r)
                         }))
         },
-        []
+        [calculatedRosterId]
     )
     const armyKDR = currentCalcRoster.total_kills / currentCalcRoster.total_deaths
     const splitArray = (arr, prop) =>

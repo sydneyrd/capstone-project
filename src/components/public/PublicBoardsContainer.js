@@ -42,7 +42,7 @@ const [warStats, setWarStats] = useState([])
     className="video-iframe"
     src="https://player.twitch.tv/?channel=yaboiwiilly&parent=localhost"
     scrolling="no"
-    allowFullScreen="true"
+    allowFullScreen={true}
   ></iframe>
 </div>
 <div className="chat-parent">
