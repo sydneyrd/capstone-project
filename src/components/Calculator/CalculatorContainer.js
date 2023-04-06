@@ -11,6 +11,7 @@ import { newCalculatedRoster } from "../managers/CalculatedRosterManager"
 import "./calculator.css"
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faRotateLeft } from "@fortawesome/free-solid-svg-icons";
+import { EntryComponent } from "./EntryComponent"
 
 
 export const CalculatorContainer = () => {
@@ -48,13 +49,8 @@ const handleClear = (click) => {
 //if no roster is selected, it is showing these options at the top.   when one is selected they are replaced with a go back button and a text input to name the results, when the selectedroster is set to 0 again the menu returns
     return <> <> 
     
-    {!selectedRoster && createNewRoster == false ? <> <> <div className="select--or--new">
-        <div className="left--header--select">
-             <h3>Choose an existing roster</h3> <h4>characters and groups will be pre-assigned</h4>  <select className="roster__select" onChange={(event) => handleRosterChange(event)}><option key="select--0" value={0}>Saved Rosters</option>{userRosters.map((roster) => <RosterList key={roster.id} setSelectedRoster={setSelectedRoster} roster={roster} />)} </select></div>
-<span className="middle--or--lol">or</span>
-    <div className="right--header--new"><h3>Choose from all characters</h3><h4>optionally assign groups</h4>
-      <button className="new__roster__button" onClick={(click)=>{setCreateNewRoster(true)}}>Create New</button></div></div></>
-    </>
+    {!selectedRoster && createNewRoster == false ? <>  <EntryComponent setSelectedRoster={setSelectedRoster} handleRosterChange={handleRosterChange} userRosters={userRosters} setCreateNewRoster={setCreateNewRoster}/></>
+    
 : ""    
 }
 {/* if selected roster is true it pops up the go back and the form */}

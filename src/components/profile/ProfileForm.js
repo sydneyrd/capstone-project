@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { updateProfile, getUserbyId } from "../managers/UserManager"
+import { updateProfile} from "../managers/UserManager"
 import { SavedRosters } from "./SavedRosters"
 import { WarStats } from "./WarStats"
 
@@ -14,16 +14,16 @@ export const UpdateUser = () => {
         username: "",
         email: ""
     })
-    useEffect(
-        () => {
-        getUserbyId(localUser.id)
-            .then((data) => {
-            data.username = data.user.username
-            data.email = data.user.email
-            setUser(data)
-            {}})
-        },
-        [])
+    // useEffect(
+    //     () => {
+    //     getUserbyId(localUser.id)
+    //         .then((data) => {
+    //         data.username = data.user.username
+    //         data.email = data.user.email
+    //         setUser(data)
+    //         {}})
+    //     },
+    //     [])
     const userUpdate = (evt) => {
         const copy = { ...user }
         copy[evt.target.name] = evt.target.value

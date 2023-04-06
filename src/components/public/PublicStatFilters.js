@@ -2,8 +2,6 @@ import "./publicresults.css"
 import { RoleSelect } from "../character/Role"
 import { getPublicRoles } from "../managers/PublicManager"
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
-
 
 export const PublicStatFilters = ({players,setGroup, setBase, setFilteredPlayers, sortByArmy, sortByGroup}) => {
     const [roles, setRoles] = useState([])
@@ -63,7 +61,6 @@ function sortKDR(click){
     copy.sort(compareKDR)
     setFilteredPlayers(copy)
 }
-
 
 function roleFilter(event){
     event.preventDefault();

@@ -66,6 +66,21 @@
     border-radius: 6px 6px 6px 6px;
     max-width: 20em;
 }
+.generate--link--roster{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: space-evenly;
+  margin: .25em;
+  margin-top:6em;
+  padding: 1em;
+  font-size:large;
+  box-shadow: 2px 4px 23px 4px #000000;
+    border: 5px hidden transparent;
+    border-radius: 6px 6px 6px 6px;
+    max-width: 20em;
+    text-align:center;
+}
 .dropdown-select__input{
   font-size:x-large;
 }
@@ -284,4 +299,27 @@ width: 100%;
 }
 .calculator--fieldset select {
   font-size:x-large;
+}
+
+.new__roster__link__button{
+  font-family: 'Libre Franklin', sans-serif;
+  outline: 0;
+  text-align: center;
+  cursor: pointer;
+  padding: 0.7em;
+  margin: 0.7em;
+  color: #fff;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  transition: all .3s ease;
+  background: #086c3c;
+  border-color: #0b5d3a;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: large;
+  align-self: center;
+}
+.link--roster--name{
+  align-self: center;
+    width: 20em;
 }

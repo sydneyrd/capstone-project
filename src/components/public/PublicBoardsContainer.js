@@ -12,7 +12,7 @@ const [warStats, setWarStats] = useState([])
         []
     )
     const sortedWarStats = warStats.sort(
-        (a, b) => new Date(a.created_at) - new Date(b.created_at)
+        (a, b) => new Date(b.created_at) - new Date(a.created_at)
       );
     
     return (
@@ -31,8 +31,6 @@ const [warStats, setWarStats] = useState([])
                 </div>
               );
             })}</div>
-         
-      
           <div className="right-container--public">
             <h2 className="right--heading">live coverage</h2>
             <p className="sub--heading">willy didn't pay for this</p>
@@ -55,7 +53,6 @@ const [warStats, setWarStats] = useState([])
     src="https://www.twitch.tv/embed/yaboiwiilly/chat?parent=localhost"
   ></iframe>
 </div>
-
             </div>
           </div>
         </div> 
