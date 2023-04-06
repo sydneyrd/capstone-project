@@ -52,7 +52,7 @@ const handleEditClick = (click) => {
 
   return <div className="saved--rosters"><Link onClick={click => setCurrentCalculateRoster(stat.id)}to={`/resources/${stat.id}/view`}><div className="roster__link" to="/roster">{stat.rosterName ? `${stat.rosterName}` : "War Stats"}</div></Link>
   
-
+<div className="war--icons--container">
 <HoverableElement
   tooltipText="edit"
   onElementClick={handleEditClick}
@@ -73,7 +73,7 @@ const handleEditClick = (click) => {
 <HoverableElement tooltipText={"public or private"}>
 {
   stat.is_public ? <FontAwesomeIcon className="publish__roster" onClick={click => handlePublish(click, false, stat.id)} icon="fa-solid fa-rectangle-xmark" /> : <FontAwesomeIcon className="publish__roster" onClick={click => handlePublish(click, true, stat.id)} icon="fa-solid fa-share-from-square" />
-}</HoverableElement>
+}</HoverableElement></div>
 </div>
 }
 

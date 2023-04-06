@@ -1,5 +1,5 @@
 .hoverable-element {
-    display: inline-block;
+    display: inline-flex;
     position: relative;
   }
   

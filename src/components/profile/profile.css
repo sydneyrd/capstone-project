@@ -146,7 +146,7 @@ input[type="email"] {
     font-size: 11px;
     margin: 0.25em;
 }
-.publish__roster{
+.publish__roster{ 
   padding: 0.25em;
   margin: 0.25em;
   font-family: 'Libre Franklin', sans-serif;
@@ -190,4 +190,15 @@ input[type="email"] {
   line-height: 16px;
   font-size: 11px;
   margin: 0.25em;
+}
+.war--icons--container {
+  display: flex;
+  align-items: center; /* Vertically align the icons */
+  justify-content: center; /* Horizontally align the icons */
+  gap: 4px; /* Add some spacing between the icons */
+}
+
+.hoverable-element {
+  display: inline-flex; /* Use inline-flex to make the hoverable elements behave like inline elements */
+  position: relative;
 }
