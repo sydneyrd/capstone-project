@@ -85,7 +85,7 @@ const handleChangeExistingRosterPlayer = (e) => {
    
     <div className="player__form">
       <form className="War--Statistics">
-        <fieldset>
+        <fieldset className="calculator--fieldset">
 
     { rosterChoices && !createNewRoster ?
       <select name='character' onChange={(e)=>{handleChangeExistingRosterPlayer(e)}}>

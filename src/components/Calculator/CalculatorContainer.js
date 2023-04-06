@@ -1,12 +1,16 @@
 import { CalculatorForm } from "./CalculatorForm"
 import { useEffect, useState } from "react"
 import Prompt from "react-router-dom"
+import { Link } from "react-router-dom"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { getAllCharacters} from "../managers/CharacterManager"
 import {getUserRosters} from  "../managers/UserManager"
 import { RosterList } from "./RosterList"
 import { CalculateResults } from "./CalculateResults"
 import { newCalculatedRoster } from "../managers/CalculatedRosterManager"
 import "./calculator.css"
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faRotateLeft } from "@fortawesome/free-solid-svg-icons";
 
 
 export const CalculatorContainer = () => {
@@ -29,7 +33,7 @@ export const CalculatorContainer = () => {
         },
         []
       )
-
+      library.add(faRotateLeft)
 const handleClear = (click) => {
         click.preventDefault()
         setSelectedRoster(0)
@@ -56,11 +60,21 @@ const handleClear = (click) => {
 {/* if selected roster is true it pops up the go back and the form */}
         </>
         {selectedRoster || createNewRoster ? 
-            <> <div className="back--button"><button className="clear__button" onClick={(click) => handleClear(click)}>Go Back</button> <input className="roster__name" type="text" onChange={(event) => { setCurrentCalcRostName(event.target.value) }} placeholder="name these results..."></input>
-                <CalculateResults currentCalcRostName={currentCalcRostName}
+            <> 
+                    <div className="parent__div"><div className="back--button">
+                      
+                        <Link className="return--link" to={`/resources`}
+                        onClick={click => handleClear(click)}>
+            
+        <FontAwesomeIcon icon="fa-solid fa-rotate-left"  />
+            Return to Results</Link>
+            <div className="name--save--div">
+                        <input className="roster__name" type="text" onChange={(event) => { setCurrentCalcRostName(event.target.value) }} placeholder="name these results..."></input>
+                <CalculateResults 
+                
+                currentCalcRostName={currentCalcRostName}
                     calculatedRosterId={calculatedRosterId} newCalculatedRoster={newCalculatedRoster} setCalculatedRosterId={setCalculatedRosterId}
-                    localUser={localUser} selectedRoster={selectedRoster} calculatedRoster={calculatedRoster} /></div> 
-                    <div className="parent__div"> <CalculatorForm createNewRoster={createNewRoster}calculatedRoster={calculatedRoster} selectedRoster={selectedRoster} 
+                    localUser={localUser} selectedRoster={selectedRoster} calculatedRoster={calculatedRoster} /></div></div>  <CalculatorForm createNewRoster={createNewRoster}calculatedRoster={calculatedRoster} selectedRoster={selectedRoster} 
                 setCalculatedRoster={setCalculatedRoster}
                     characters={characters} /></div>
 
