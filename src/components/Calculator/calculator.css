@@ -66,6 +66,12 @@
     border-radius: 6px 6px 6px 6px;
     max-width: 20em;
 }
+.dropdown-select__option.highlighted {
+  background-color: #f0f0f0; /* Change this to a color that suits your design */
+}
+.dropdown-select__dropdown{
+  font-size:large;
+}
 .left--header--select{
   display: flex;
   flex-direction: column;

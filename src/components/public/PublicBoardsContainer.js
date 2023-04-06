@@ -39,6 +39,7 @@ const [warStats, setWarStats] = useState([])
             <div className="twitch-parent">
             <div className="video-parent">
   <iframe
+  title="twitch"
     className="video-iframe"
     src="https://player.twitch.tv/?channel=yaboiwiilly&parent=localhost"
     scrolling="no"
@@ -47,6 +48,7 @@ const [warStats, setWarStats] = useState([])
 </div>
 <div className="chat-parent">
   <iframe
+  title="twitch--chat"
     className="chat-iframe"
     scrolling="no"
     id="chat_embed"
