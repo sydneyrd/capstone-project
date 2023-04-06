@@ -22,8 +22,8 @@ export const BaseStatMap = ({ setPlayerStats, calculatedRosterId, getPlayersAgai
        <span className="healing">{player?.healing}</span>
        <span className="deaths">{player?.deaths}</span>
        <span className="kills">{player?.kills}</span> 
-       <span className='assists'>{player?.assists}</span>
+       <span className='assists'>{player?.assists}</span><span className="buttons--span--edit">
        <EditContainer calculatedRosterId={calculatedRosterId} player={player} getPlayersAgain={getPlayersAgain} setPlayerStats={setPlayerStats} />
-       <button className="delete--player--button"onClick={(click)=>{handleDelete(click)}}>Delete</button>
+       <button className="delete--player--button"onClick={(click)=>{handleDelete(click)}}>Delete</button></span>
 </div>
  }

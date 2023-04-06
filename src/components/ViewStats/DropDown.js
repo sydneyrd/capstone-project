@@ -1,36 +1,67 @@
-import React, { useState, useRef } from 'react';
-import {getAllCharacters, getCharactersBySearch} from '../managers/CharacterManager';
+import React, { useState, useRef, useEffect } from 'react';
+import { getAllCharacters, getCharactersBySearch } from '../managers/CharacterManager';
 import { debounce } from 'lodash';
-import { useEffect } from 'react';
-import "./modal.css";
+import './modal.css';
 
-function DropDownSelect({calculatedRosterId, selectedPlayer, setSelectedPlayer}) {
+function DropDownSelect({ calculatedRosterId, selectedPlayer, setSelectedPlayer }) {
   const [isOpen, setIsOpen] = useState(false);
-const [characters, setCharacters] = useState([]);
-const [searchText, setSearchText] = useState('');
+  const [characters, setCharacters] = useState([]);
+  const [searchText, setSearchText] = useState('');
+  const [highlightedIndex, setHighlightedIndex] = useState(-1);
   const searchInputRef = useRef();
 
   const handleInputClick = () => {
     setIsOpen(!isOpen);
   };
+
   useEffect(() => {
-    !searchText ?
-    getAllCharacters(setCharacters)
-  
-    : handleSearchChange(searchText)
+    !searchText ? getAllCharacters(setCharacters) : handleSearchChange(searchText);
   }, [searchText]);
 
+  const handleClickOutside = (event) => {
+    if (searchInputRef.current && !searchInputRef.current.parentNode.contains(event.target)) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('keydown', handleKeyDown);
+      searchInputRef.current.focus();
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyDown);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isOpen]);
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'ArrowDown') {
+      event.preventDefault();
+      setHighlightedIndex((prevIndex) => Math.min(prevIndex + 1, characters.length - 1));
+    } else if (event.key === 'ArrowUp') {
+      event.preventDefault();
+      setHighlightedIndex((prevIndex) => Math.max(prevIndex - 1, 0));
+    } else if (event.key === 'Enter') {
+      event.preventDefault();
+      if (highlightedIndex > -1) {
+        handleOptionClick(characters[highlightedIndex]);
+      }
+    }
+  };
 
   const handleOptionClick = (option) => {
     setSelectedPlayer(option);
     setIsOpen(false);
   };
 
-
-    const handleSearchChange = debounce((searchText) => {
-    getCharactersBySearch(searchText)
-    //   .then((response) => response.json())
-      .then((data) => setCharacters(data));
+  const handleSearchChange = debounce((searchText) => {
+    getCharactersBySearch(searchText).then((data) => setCharacters(data));
   });
 
   const handleInputChange = (event) => {
@@ -38,7 +69,6 @@ const [searchText, setSearchText] = useState('');
     setSearchText(newSearchText);
     handleSearchChange(newSearchText);
   };
-
 
   return (
     <div key="dropdownselect" className="dropdown-select">
@@ -48,19 +78,19 @@ const [searchText, setSearchText] = useState('');
       {isOpen && (
         <div className="dropdown-select__dropdown">
           <input
+            onKeyDown={handleKeyDown}
             type="text"
             className="dropdown-select__search-input"
             placeholder="Search options..."
             ref={searchInputRef}
             onChange={handleInputChange}
           />
-          {characters.map((character) => (
+          {characters.map((character, index) => (
             <div
-            key={`player--select${character.id}`}
-              
+              key={`player--select${character.id}`}
               className={`dropdown-select__option ${
                 character.id === selectedPlayer.id ? 'selected' : ''
-              }`}
+              } ${highlightedIndex === index ? 'highlighted' : ''}`}
               onClick={() => handleOptionClick(character)}
             >
               {character.character_name}
@@ -71,4 +101,5 @@ const [searchText, setSearchText] = useState('');
     </div>
   );
 }
+
 export default DropDownSelect;

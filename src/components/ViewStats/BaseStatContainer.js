@@ -108,7 +108,8 @@ const payload = {is_public: !currentCalcRoster.is_public,
 <div className="player__resultsmap">
         <div className="buttons__container">
         
-        <input className="roster__name" type="text" onChange={(event) => { changeName(event) }} placeholder={currentCalcRoster.rosterName}></input><button className="edit--roster--name--button" onClick={(click)=>{saveName(click)}}>Update Name</button>
+        <input className="roster__name" type="text" onChange={(event) => { changeName(event) }} placeholder={currentCalcRoster.rosterName ?
+        currentCalcRoster.rosterName : "give me a cool name please :( "}></input><button className="edit--roster--name--button" onClick={(click)=>{saveName(click)}}>Update Name</button>
         <button className="public--button" onClick={(click) => handlePublish(click)}>{
             currentCalcRoster.is_public ? "Make Private" : "Make Public"
             }</button>
@@ -119,14 +120,16 @@ const payload = {is_public: !currentCalcRoster.is_public,
 
 
         
-        <div className="labels"> <h4 className="player__results">group #</h4>
+        <div className="labels"> <span></span>
+        <span className="player__results">group #</span>
             <span className="damage">Damage
             </span>
             <span className="healing">Healing</span>
             <span className="deaths">Deaths</span>
             <span className="kills">Kills</span>
             <span className='assists'>assists</span>
-            <span className="button--spacing"></span></div>
+            <span className="button--spacing"></span>
+            </div>
 
         {filteredPlayers.map(player => <BaseStatMap calculatedRosterId={calculatedRosterId} getPlayersAgain={getPlayersAgain} key={`${player.id}`} player={player} />)}</div></div></>
 }
