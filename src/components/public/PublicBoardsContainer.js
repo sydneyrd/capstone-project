@@ -1,26 +1,64 @@
 import { useEffect, useState } from "react"
 import { getPublicCalculatedRosters } from "../managers/PublicManager"
+import { getPublicServers } from "../managers/PublicManager"
 import { Link } from "react-router-dom"
 import "./public.css"
+import { ServerSelect } from "../character/ServerSelect"
 export const PublicBoardsContainer = () => {
-const [warStats, setWarStats] = useState([])
+const [warStats, setWarStats] = useState([]);
+const [sortedWars, setSortedWars] = useState([]);
+const [servers, setServers] = useState([]);
+const [selectedServerId, setSelectedServerId] = useState(0);
+const handleServerChange  = (event) => {  
+    setSelectedServerId(parseInt(event.target.value))
+}
 
     useEffect(
         () => {
-            getPublicCalculatedRosters(setWarStats)
+            getPublicCalculatedRosters(setWarStats).then(() => {
+                getPublicServers(setServers)
+            })
         },
         []
     )
-    const sortedWarStats = warStats.sort(
-        (a, b) => new Date(b.created_at) - new Date(a.created_at)
-      );
+
+    useEffect(() => {
+      if (selectedServerId === 0 || selectedServerId === undefined) {
+        let sortedWarStats = warStats.sort(
+            (a, b) => new Date(b.created_at) - new Date(a.created_at)
+          );
+        setSortedWars(sortedWarStats)
+        }
+          else {
+let sortedWarStats = warStats.filter((stat) => stat.server === parseInt(selectedServerId));
+let sortedByDate = sortedWarStats.sort(
+    (a, b) => new Date(b.created_at) - new Date(a.created_at)
+  );
+setSortedWars(sortedByDate);
+          }
+      
+    },[selectedServerId])
     
+    // const sortedWarStats = warStats.sort(
+    //     (a, b) => new Date(b.created_at) - new Date(a.created_at)
+    //   );
+    //   const filteredWarStats = selectedServerId
+    //   ? sortedWarStats.filter((stat) => stat.server.id === parseInt(selectedServerId))
+    //   : sortedWarStats;
+     
     return (
         <div className="parent--public--boards">
             <div className="left--container--public">
           
             <h2>PUBLIC BOARDS</h2>
-            {sortedWarStats.map((stat) => {
+            <select onChange={handleServerChange}>
+              <option value="0">Select a Server</option>{
+              servers.map(
+                (server) => {
+                  return <ServerSelect key={server.id} server={server} />
+                }
+              )}</select>
+            {sortedWars.map((stat) => {
               return (
                 <div className="list--parent" key={stat.id}>
                   <div className="public-rosters">
