@@ -12,11 +12,13 @@ import { Faq } from './faq/Faq';
 import { AddSharedCharacter } from './public/AddSharedCharacter';
 import { ConditionalNavBar } from './Nav/ConditionalNavBar';
 import { NotAuthorized } from './auth/NotAuthorized';
+import { PasswordResetRequest } from './auth/PasswordResetRequest';
 export const App = () => {
 	return (
 	  <Routes>
 		<Route path="/login" element={<Login />} />
 		<Route path="/register" element={<Register />} />
+    <Route path="/password-reset" element={<PasswordResetRequest />} />
 		<Route
 		  path=""
 		  element={

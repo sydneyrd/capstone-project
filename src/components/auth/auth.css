@@ -9,3 +9,59 @@
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
+
+.reset--container{
+    width:100%;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    display: flex;
+    margin-top:6em;
+}
+ .reset--password{
+    display: flex;
+    flex-direction:column;
+    width: 50em;
+    padding: .75rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #aaafb4;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    -webkit-transition: border;
+    align-content: center;
+    justify-self: center;
+    align-self: center;
+}
+
+
+.reset--password--button  {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #2196f3;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+    align-self: center;
+    align-content: center;
+    margin-top:1em;
+}
+
+.reset--password--form {
+    display: flex;
+    flex-direction:column;
+    margin: 0 auto;
+    text-align: left;
+    width: 100%;
+    max-width: 350px;
+    display: flex;
+    
+    align-items: center;
+ align-items: center;
+   
+    width: 100%;
+    max-width: 350px;
+}

@@ -56,7 +56,8 @@ export const Login = () => {
             </section>
             <section className="link--register">
                 <Link to="/register">Not a member yet?</Link>
-            </section>
+               
+            </section> <Link to="/password-reset">Forgot your password?</Link>
         </main>
     )
 }
