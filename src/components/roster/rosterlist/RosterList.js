@@ -1,7 +1,7 @@
   import { useContext } from "react"
 import { editContext } from "../views/ApplicationViews"
 
-export const SavedRosters = ({ localUser }) => {
+export const SavedRosters = ({}) => {
 
 
     const { currentEditRoster, setCurrentEditRoster } = useContext(editContext);
@@ -13,7 +13,7 @@ library.add(faTrashCan)
   const handleDeleteClick = (click, roster) => {
   alert("successfully deleted")
     click.preventDefault()
-    deleteRoster(roster.id).then(()=>getUserRosters(localUser) )
+    deleteRoster(roster.id).then(()=>getUserRosters() )
         .then((URost) => {
           setUserRosters(URost)
         })

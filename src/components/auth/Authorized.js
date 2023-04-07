@@ -13,5 +13,3 @@ export const Authorized = ({ children }) => {
             state={{ location }} />
     }
 }
-
-//returns the children elements when rendering via routes if there is a roster user item locally

@@ -13,8 +13,6 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { LinkModal } from "./LinkForm"
 export const CharacterDetails = () => {
     const { characterId } = useParams()
-    const localRosterUser = localStorage.getItem("roster_user")
-    const RosterUserObject = JSON.parse(localRosterUser)
     const [character, setCharacter] = useState({
         character_name: "",
         role: 0,
@@ -62,7 +60,7 @@ export const CharacterDetails = () => {
         setNotes(character.notes)
     }, [character])
 
-    const handleUpdateClick = (UC, click) => {//userId
+    const handleUpdateClick = (UC, click) => {
         click.preventDefault()
         const letcToAPI = {
             character_name: UC.character_name,
@@ -192,7 +190,7 @@ export const CharacterDetails = () => {
             <Modal isOpen={modalIsOpen} className="add--vod--modal"
       onRequestClose={() => setModalIsOpen(false)}>
         
-<LinkModal setModalIsOpen={setModalIsOpen}  RosterUserObject={RosterUserObject} character={character} getCharacterLinks={getCharacterLinks} setCharacterLinks={setCharacterLinks} characterId={characterId} />
+<LinkModal setModalIsOpen={setModalIsOpen}   character={character} getCharacterLinks={getCharacterLinks} setCharacterLinks={setCharacterLinks} characterId={characterId} />
 
       </Modal>
 
