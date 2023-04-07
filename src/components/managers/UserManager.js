@@ -1,11 +1,11 @@
-export const getUserbyId = () => {
-    return fetch(`http://127.0.0.1:8000/rosterusers/id`, {
-        headers: {
-            "Authorization": `Token ${localStorage.getItem("roster_token")}`
-        }
-    })
-        .then(res => res.json())
-}
+// export const getUserbyId = () => {
+//     return fetch(`http://127.0.0.1:8000/rosterusers/id`, {
+//         headers: {
+//             "Authorization": `Token ${localStorage.getItem("roster_token")}`
+//         }
+//     })
+//         .then(res => res.json())
+// }
 export const postNewUser = (user) => {
     return fetch("http://localhost:8088/users", {
         method: "POST",
