@@ -5,19 +5,33 @@ import { newCalculatedRoster } from '../managers/CalculatedRosterManager';
 import { useState, useEffect } from "react"
 import Modal from 'react-modal';
 import { RosterList } from './RosterList';
+import { getAllServers } from '../managers/ResourceManager';
 
-
+//in this component I am going to add a select drop down for servers and assign a server id before posting
 
 export const EntryComponent = ({handleRosterChange, setSelectedRoster, userRosters, setCreateNewRoster}) => {
     const [isShareModalVisible, setIsShareModalVisible] = useState(false);
     const [generatedUrl, setGeneratedUrl] = useState(null);
     const [newLinkRoster, setNewLinkRoster] = useState({
-        rosterName:""
-    })
+        rosterName:"",
+        server:0
+    });
+    const [servers, setServers] = useState([]);
+    useEffect(
+        () => {
+            getAllServers(setServers)
+        },
+        [])
     const handleChange = (e) => {
         e.preventDefault();
         const copy = {...newLinkRoster}
         copy[e.target.name] = e.target.value
+        setNewLinkRoster(copy)
+      }
+      const handleServerChange = (e) => {
+        e.preventDefault();
+        const copy = {...newLinkRoster}
+        copy.server = parseInt(e.target.value)
         setNewLinkRoster(copy)
       }
     async function generateRosterChoiceUrl() {
@@ -46,13 +60,19 @@ export const EntryComponent = ({handleRosterChange, setSelectedRoster, userRoste
 
     return  <> <div className="select--or--new">
     <div className="left--header--select">
-         <h3>Choose an existing roster</h3> <h4>characters and groups will be pre-assigned</h4>  <select className="roster__select" onChange={(event) => handleRosterChange(event)}><option key="select--0" value={0}>Saved Rosters</option>{userRosters.map((roster) => <RosterList key={roster.id} setSelectedRoster={setSelectedRoster} roster={roster} />)} </select></div>
+        <h3>Choose an existing roster</h3> <h4>characters and groups will be pre-assigned</h4>  <select className="roster__select" onChange={(event) => handleRosterChange(event)}><option key="select--0" value={0}>Saved Rosters</option>{userRosters.map((roster) => <RosterList key={roster.id} setSelectedRoster={setSelectedRoster} roster={roster} />)} </select></div>
 
 <div className="right--header--new"><h3>Choose from all characters</h3><h4>optionally assign groups</h4>
   <button className="new__roster__button" onClick={(click)=>{setCreateNewRoster(true)}}>Create New</button></div>
   <div className="generate--link--roster">
 <h3>Generate a Link</h3>
 <h4>This will create an empty war board. Anyone with an account can access the link and add their own character information.  You can edit this roster any time.</h4>
+<select
+onChange={handleServerChange}
+>
+  <option value="0">Select a Server</option>{
+  servers.map((server) => <option key={server.id} value={server.id}>{server.name}</option>)
+  }</select>
 <input placeholder="give this roster a name before sharing" onChange={handleChange} name="rosterName"
 
 className="link--roster--name" type="text">

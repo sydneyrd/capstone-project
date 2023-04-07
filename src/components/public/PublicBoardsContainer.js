@@ -38,14 +38,7 @@ setSortedWars(sortedByDate);
           }
       
     },[selectedServerId])
-    
-    // const sortedWarStats = warStats.sort(
-    //     (a, b) => new Date(b.created_at) - new Date(a.created_at)
-    //   );
-    //   const filteredWarStats = selectedServerId
-    //   ? sortedWarStats.filter((stat) => stat.server.id === parseInt(selectedServerId))
-    //   : sortedWarStats;
-     
+
     return (
         <div className="parent--public--boards">
             <div className="left--container--public">
