@@ -3,20 +3,49 @@ import { deleteCalculatedRoster } from "../managers/CalculatedRosterManager"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faTrashCan} from '@fortawesome/free-solid-svg-icons'
+import {faLink} from '@fortawesome/free-solid-svg-icons'
 import { faShareFromSquare } from "@fortawesome/free-solid-svg-icons"
 import { faRectangleXmark } from "@fortawesome/free-solid-svg-icons"
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"
 import { useNavigate } from "react-router-dom"
 import { useContext } from "react"
 import { calculateContext } from "../views/ApplicationViews"
+import { generateShareRosterToken } from "../managers/UserManager"
+import { useState } from "react"
 import {HoverableElement }from "./HoverableElement"
+import { click } from "@testing-library/user-event/dist/click"
 export const WarResultMap = ({ stat, getUserWarStats, setUserWarStats, publishRoster }) => {
       // Use the useContext hook to access the current value and update function of the second context
 const { setCurrentCalculateRoster } = useContext(calculateContext);
-
-  library.add(faTrashCan, faShareFromSquare, faRectangleXmark, faPenToSquare)
+const [isShareModalVisible, setIsShareModalVisible] = useState(false);
+    const [generatedUrl, setGeneratedUrl] = useState(null);
+    const [newLinkRoster, setNewLinkRoster] = useState({
+        rosterName:""
+    })
+  library.add(faTrashCan, faShareFromSquare, faRectangleXmark, faPenToSquare, faLink)
  let navigate = useNavigate()
-
+ async function generateRosterChoiceUrl(click, roster) { 
+  click.preventDefault(); 
+  const tokenBody = {
+      roster: roster.id}
+  const response = await generateShareRosterToken(tokenBody)
+  const data = await response.json();
+  const token = data.token;
+  // Generate the URL
+  const url = `${window.location.origin}/shared/roster/${token}`;
+  // Set the generated URL
+  setGeneratedUrl(url);
+  // Show the modal
+  setIsShareModalVisible(true);
+}
+async function copyToClipboard() {
+  try {
+    await navigator.clipboard.writeText(generatedUrl);
+    alert('URL copied to clipboard');
+  } catch (err) {
+    alert('Failed to copy the URL');
+  }
+}
   const handleDeleteClick = (click, stat) => {
     click.preventDefault();
  const userConfirmed = window.confirm(
@@ -74,6 +103,22 @@ const handleEditClick = (click) => {
 {
   stat.is_public ? <FontAwesomeIcon className="publish__roster" onClick={click => handlePublish(click, false, stat.id)} icon="fa-solid fa-rectangle-xmark" /> : <FontAwesomeIcon className="publish__roster" onClick={click => handlePublish(click, true, stat.id)} icon="fa-solid fa-share-from-square" />
 }</HoverableElement></div>
+
+<HoverableElement tooltipText={"generate a link for other users to add characters"}>
+  
+<FontAwesomeIcon onClick={(click) => generateRosterChoiceUrl(click, stat)}className="link__generate__roster" icon="fa-solid fa-link" /></HoverableElement>
+{isShareModalVisible && (
+      <div className="modal--share">
+        <h3>be careful cutie anyone with access to this link can add their character to your war board.  You can still edit the board later. </h3>
+        <input
+          type="text"
+          readOnly
+          value={generatedUrl}
+          onClick={() => copyToClipboard()}
+        />
+        <button onClick={() => setIsShareModalVisible(false)}>Close</button>
+      </div>
+    )}
 </div>
 }
 

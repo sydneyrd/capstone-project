@@ -52,7 +52,7 @@ export const EntryComponent = ({handleRosterChange, setSelectedRoster, userRoste
   <button className="new__roster__button" onClick={(click)=>{setCreateNewRoster(true)}}>Create New</button></div>
   <div className="generate--link--roster">
 <h3>Generate a Link</h3>
-<h4>This will create an empty war board. Anyone with an account can access the link and add their own character information.</h4>
+<h4>This will create an empty war board. Anyone with an account can access the link and add their own character information.  You can edit this roster any time.</h4>
 <input placeholder="give this roster a name before sharing" onChange={handleChange} name="rosterName"
 
 className="link--roster--name" type="text">
