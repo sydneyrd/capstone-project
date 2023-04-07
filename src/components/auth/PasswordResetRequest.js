@@ -10,10 +10,8 @@ export const PasswordResetRequest = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
     try {
       const csrfToken = await fetchCsrfToken();
-      console.log(csrfToken)
       const response = await fetch('http://127.0.0.1:8000/password-reset-request', {
         method: 'POST',
         headers: {

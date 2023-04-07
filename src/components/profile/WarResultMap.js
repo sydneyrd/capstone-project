@@ -99,10 +99,12 @@ const handleEditClick = (click) => {
      className="delete__roster" onClick={click => handleDeleteClick(click, stat)}
       icon="fa-solid fa-trash-can" />
       </HoverableElement>
-<HoverableElement tooltipText={"public or private"}>
+
+      
+<HoverableElement tooltipText={`${stat.is_public ? "make private" : "make public"}`}>
 {
   stat.is_public ? <FontAwesomeIcon className="publish__roster" onClick={click => handlePublish(click, false, stat.id)} icon="fa-solid fa-rectangle-xmark" /> : <FontAwesomeIcon className="publish__roster" onClick={click => handlePublish(click, true, stat.id)} icon="fa-solid fa-share-from-square" />
-}</HoverableElement></div>
+}</HoverableElement>
 
 <HoverableElement tooltipText={"generate a link for other users to add characters"}>
   
@@ -119,6 +121,6 @@ const handleEditClick = (click) => {
         <button onClick={() => setIsShareModalVisible(false)}>Close</button>
       </div>
     )}
-</div>
+</div></div>
 }
 
