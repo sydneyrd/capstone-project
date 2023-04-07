@@ -100,10 +100,6 @@ const handleChangeExistingRosterPlayer = (e) => {
     </select>   
     : "" }
     { allChoices.length && createNewRoster ?
-    // <><select name='character' onChange={(e)=>{handleChange(e)}}>
-    //   <option value={0}>select a character</option>
-    //     {allChoices.map((c) => <option key={c.id} id={c.id} value={c?.id}  >{c?.character_name}</option>)}</select>
-    
 <>
 <><AllCharacterDropDown handleChangeAllCharacters={handleChangeAllCharacters} playerStats={playerStats}/></>
         <select onChange={(event) => { 

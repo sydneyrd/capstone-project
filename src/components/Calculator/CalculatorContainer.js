@@ -12,28 +12,24 @@ import "./calculator.css"
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faRotateLeft } from "@fortawesome/free-solid-svg-icons";
 import { EntryComponent } from "./EntryComponent"
-
+import { getAllServers } from "../managers/ResourceManager"
 
 export const CalculatorContainer = () => {
-    const [characters, setCharacters] = useState([])
-    const [userRosters, setUserRosters] = useState([])
-   
-    const [selectedRoster, setSelectedRoster] = useState(0)
-    const [createNewRoster, setCreateNewRoster] = useState(false)
-    const [calculatedRoster, setCalculatedRoster] = useState([])
-    const [calculatedRosterId, setCalculatedRosterId] = useState(0)
-    const [currentCalcRostName, setCurrentCalcRostName] = useState("")
-    const localRosterUser = localStorage.getItem("roster_user")
-    const rosterUserObject = JSON.parse(localRosterUser)
-    const localUser = { ...rosterUserObject }
-
+    const [characters, setCharacters] = useState([]);
+    const [userRosters, setUserRosters] = useState([]);
+   const [servers, setServers] = useState([]);
+   const [selectedServer, setSelectedServer] = useState([]);
+    const [selectedRoster, setSelectedRoster] = useState(0);
+    const [createNewRoster, setCreateNewRoster] = useState(false);
+    const [calculatedRoster, setCalculatedRoster] = useState([]);
+    const [calculatedRosterId, setCalculatedRosterId] = useState(0);
+    const [currentCalcRostName, setCurrentCalcRostName] = useState("");
     useEffect(
         () => {
           getUserRosters(setUserRosters)
-            .then(() => {getAllCharacters(setCharacters)})
-        },
-        []
-      )
+            .then(() => {getAllCharacters(setCharacters)}).then(
+                () => {getAllServers(setServers)}
+            )},[])
       library.add(faRotateLeft)
 const handleClear = (click) => {
         click.preventDefault()
@@ -45,6 +41,11 @@ const handleClear = (click) => {
         event.preventDefault()
         setSelectedRoster(event.target.value)
 }
+const handleServerChange = (e) => {
+    e.preventDefault();
+   setSelectedServer(parseInt(e.target.value));
+
+  }
 
 //if no roster is selected, it is showing these options at the top.   when one is selected they are replaced with a go back button and a text input to name the results, when the selectedroster is set to 0 again the menu returns
     return <> <> 
@@ -65,12 +66,20 @@ const handleClear = (click) => {
         <FontAwesomeIcon icon="fa-solid fa-rotate-left"  />
             Return to Results</Link>
             <div className="name--save--div">
+            <select
+onChange={handleServerChange}
+>
+  <option value="0">Select a Server</option>{
+  servers.map((server) => <option key={server.id} value={server.id}>{server.name}</option>)
+  }</select>
                         <input className="roster__name" type="text" onChange={(event) => { setCurrentCalcRostName(event.target.value) }} placeholder="name these results..."></input>
                 <CalculateResults 
-                
+                selectedServer={selectedServer}
                 currentCalcRostName={currentCalcRostName}
                     calculatedRosterId={calculatedRosterId} newCalculatedRoster={newCalculatedRoster} setCalculatedRosterId={setCalculatedRosterId}
-                    localUser={localUser} selectedRoster={selectedRoster} calculatedRoster={calculatedRoster} /></div></div>  <CalculatorForm createNewRoster={createNewRoster}calculatedRoster={calculatedRoster} selectedRoster={selectedRoster} 
+                   selectedRoster={selectedRoster} calculatedRoster={calculatedRoster} /></div></div>  <CalculatorForm 
+                   selectedServer={selectedServer}
+                   createNewRoster={createNewRoster}calculatedRoster={calculatedRoster} selectedRoster={selectedRoster} 
                 setCalculatedRoster={setCalculatedRoster}
                     characters={characters} /></div>
 
