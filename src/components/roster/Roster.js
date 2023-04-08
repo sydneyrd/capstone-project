@@ -73,13 +73,13 @@ export const Roster = () => {
     )
 
 //if i don't use this initial use effect the character details don't appear on screen?   um ok i'll look at it later
-    useEffect(
-        () => {
-            let alphaCharacters = characters.sort((a, b) => a.character_name.localeCompare(b.character_name))
-            setSortedArr(characters) 
-        },
-        [characters]
-    )
+    // useEffect(
+    //     () => {
+    //         let alphaCharacters = characters.sort((a, b) => a.character_name.localeCompare(b.character_name))
+    //         setSortedArr(characters) 
+    //     },
+    //     [characters]
+    // )
     useEffect(
         () => {
             if (rosterIDNUMBER > 0) {

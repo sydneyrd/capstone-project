@@ -9,7 +9,7 @@ import { ViewStats } from "../ViewStats/ViewStats"
 import { useState, createContext } from "react"
 import { CharacterDetails } from "../character/CharacterDetails"
 import { BaseStatContainer } from "../ViewStats/BaseStatContainer"
-
+import {AddSharedRosterChoice} from "../public/AddSharedRosterChoice"
 export const editContext = createContext();
 export const calculateContext = createContext();
 
@@ -34,6 +34,7 @@ export const ApplicationViews = () => {
                     <Route path="resources/:calculatedRosterId/view" element={<ViewStats />} />
                     <Route path='resources/edit/:calculatedRosterId' element={<BaseStatContainer />} />
                     <Route path="character/:characterId" element={<CharacterDetails />} />
+                    <Route path="shared/roster/:rosterTokenId" element={<AddSharedRosterChoice />} />
                 </Route>
             </Routes>  </calculateContext.Provider>
         </editContext.Provider>

@@ -8,7 +8,7 @@ import { editContext } from "../views/ApplicationViews"
 import { HoverableElement } from "./HoverableElement"
 
 
-export const SavedRosterList = ({roster, getUserRosters, setUserRosters, localUser}) => {
+export const SavedRosterList = ({roster, getUserRosters, setUserRosters}) => {
     // Use the useContext hook to access the current value and update function of the first context
     const { currentEditRoster, setCurrentEditRoster } = useContext(editContext);
 library.add(faTrashCan)

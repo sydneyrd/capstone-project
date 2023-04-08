@@ -194,24 +194,11 @@ h4.editcharacter__name {
     padding: 0 0 0 0;
 }
 .edit__form {
-
+display:flex;
     flex-direction: column;
     /*yes don't touch*/
     justify-items: space-between;
-    width: 320px;
-    padding: 10px;
-    border: 1px solid #c9c9c9;
-    border-radius: 7px;
-    font-family: 'Libre Franklin', sans-serif;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
-    grid-template-columns: 32% 32% 32%;
-    margin: 25px 25px 25px 25px;
-}
-.edit__form {
-
-    flex-direction: column;
-    /*yes don't touch*/
-    justify-items: space-between;
+    justify-content: center;
     width: 320px;
     padding: 10px;
     border: 1px solid #c9c9c9;

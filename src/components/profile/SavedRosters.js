@@ -3,7 +3,7 @@ import { getUserRosters } from "../managers/UserManager"
 import { SavedRosterList } from "./SavedRosterList"
 
 
-export const SavedRosters = ({ localUser }) => {
+export const SavedRosters = ({ }) => {
   const [userRosters, setUserRosters] = useState([])
   useEffect(
     () => {
@@ -12,7 +12,7 @@ export const SavedRosters = ({ localUser }) => {
     },
     []
   )
-  return <div className="savedroster--container">{userRosters.map((roster) => <SavedRosterList localUser={localUser} getUserRosters={getUserRosters} setUserRosters={setUserRosters} key={roster.id} roster={roster} />)}</div>
+  return <div className="savedroster--container">{userRosters.map((roster) => <SavedRosterList  getUserRosters={getUserRosters} setUserRosters={setUserRosters} key={roster.id} roster={roster} />)}</div>
 }
 
 

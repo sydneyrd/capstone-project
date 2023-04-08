@@ -67,7 +67,6 @@ const navigate = useNavigate()
         }
         const createCharacterImageString = (event) => {
             getBase64(event.target.files[0], (base64ImageString) => {
-                console.log("Base64 of file is", base64ImageString);
                 setImage(base64ImageString)
             });
         }
@@ -76,12 +75,12 @@ const navigate = useNavigate()
            
                 
                 <form className="addcharacter_form">
-                <h2 className="characterForm__title--public">Add Character to Existing Account</h2>
+                <h2 className="characterForm__title--public">Add Character to a Friend's Account</h2>
 <article className="add--info"><p>
-  You will not have authorization to make changes to this character after adding.
+  You will not be able to make changes to this character after adding.
   If you want to manage your own character please{' '}
   <Link to="/register">register for an account</Link>.
-  Your character will be available for all users to roster, however only the owner of the account may edit or delete, or link vods for this character.</p>
+  Your character will still be available for your friend to roster, however only the owner of the account may edit, delete, upload gear images, or link vods for this character.</p>
 </article>
                     <fieldset className="add__form">
                         <label htmlFor="charactername">Character Name:</label>

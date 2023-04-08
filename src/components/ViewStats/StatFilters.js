@@ -25,53 +25,54 @@ useEffect(() => {
  return b.kills / b.deaths - a.kills / a.deaths; 
   }
 function sortDamage(click){
-    click.preventDefault()
-    setBase(false)
-    setGroup(false)
+    click.preventDefault();
+    setBase(false);
+    setGroup(false);
     const copy = [...players]
-copy.sort(compareDamage)
-setFilteredPlayers(copy)
+copy.sort(compareDamage);
+setFilteredPlayers(copy);
 
 }
 function sortHeal(click){
-    click.preventDefault()
-    setGroup(false)
+    click.preventDefault();
+    setGroup(false);
     const copy = [...players]
 copy.sort(compareHeal)
-setFilteredPlayers(copy)
+setFilteredPlayers(copy);
 }
 function sortKill(click){
-    click.preventDefault()
-    setGroup(false)
+    click.preventDefault();
+    setGroup(false);
     const copy = [...players]
 copy.sort(compareKill)
-setFilteredPlayers(copy)
+setFilteredPlayers(copy);
 }
 function sortAssist(click){
-    click.preventDefault()
-    setGroup(false)
+    click.preventDefault();
+    setGroup(false);
     const copy = [...players]
 copy.sort(compareAssist)
 setFilteredPlayers(copy)
 }
 function sortKDR(click){
-    click.preventDefault()
-    setGroup(false)
+    click.preventDefault();
+    setGroup(false);
     const copy = [...players]
     copy.sort(compareKDR)
     setFilteredPlayers(copy)
 }
 function roleFilter(event){
-    event.preventDefault()
+    event.preventDefault();
+    setGroup(false);
     const copy = [...players]
-    const rolePlayers = copy.filter(e => e?.character?.role === parseInt(event.target.value))
-    setFilteredPlayers(rolePlayers)
+    const rolePlayers = copy.filter(e => e?.character?.role === parseInt(event.target.value));
+    setFilteredPlayers(rolePlayers);
 }
 function handleReset(click){
-    click.preventDefault()
+    click.preventDefault();
    const copy = [...players]
-    setFilteredPlayers(copy)
-    setGroup(false)
+    setFilteredPlayers(copy);
+    setGroup(false);
 }
     return <>
     <Link to="/resources/edit/{}"></Link>

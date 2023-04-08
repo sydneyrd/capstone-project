@@ -10,8 +10,6 @@ import { getCurrentRoster } from "../managers/RosterManager"
 
 export const AddButton = ({ setEditCharacters, nestedEditRosterCharacters, rosterIDNUMBER, editRosterCharacters, character, id, setNewRosterPick, newRosterPicks }) => {
     const { currentEditRoster, setCurrentEditRoster } = useContext(editContext);
-    const localUser = localStorage.getItem("roster_user")
-    const rosterUser = JSON.parse(localUser)
     library.add(faPlus)
 
     const addChoiceToEnd = (character, rosterId, nextGroup) => {

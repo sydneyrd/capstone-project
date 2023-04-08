@@ -68,3 +68,13 @@ export const addSharedCharacter = (newCharacter, token) => {
 })
     .then(res => res.json())
 }
+// export async function fetchCsrfToken() {
+//     try {
+//       const response = await fetch("http://127.0.0.1:8000/api/get-csrf-token/");
+//       const data = await response.json();
+//       return data.csrf_token;
+//     } catch (error) {
+//       console.error("Error:", error);
+//     }
+//   }
+  

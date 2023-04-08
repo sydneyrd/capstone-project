@@ -18,7 +18,6 @@ const totalGroupAssists = percentage(group.reduce((acc, value) => acc + value.as
 const totalGroupDeaths = percentage(group.reduce((acc, value) => acc + value.deaths, 0), currentCalcRoster.total_deaths);
 const totalGroupKills = percentage(group.reduce((acc, value) => acc + value.kills, 0), currentCalcRoster.total_kills);
 const totalGroupKDR = totalGroupKills / totalGroupDeaths
-console.log(totalGroupDamage)
 return (<>
 <div className='group__card'><div className='left--container--group'>
 { group[0].group ? 

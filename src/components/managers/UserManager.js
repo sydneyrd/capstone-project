@@ -36,3 +36,24 @@ export const generateToken = () => {
         }
     })      
 }
+
+export const generateShareRosterToken = (body) => {
+    return fetch(`REACT_APP_API/generate_shared_calculated_roster_token`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Token ${localStorage.getItem("roster_token")}`
+        },
+        body: JSON.stringify(body)
+    })
+}
+export const createSharedCalculatedRosterChoice = (body, token) => {
+    return fetch(`REACT_APP_API/shared_calculated_roster_choice_create/${token}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Token ${localStorage.getItem("roster_token")}`
+        },
+        body: JSON.stringify(body)
+    })
+}

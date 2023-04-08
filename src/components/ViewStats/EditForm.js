@@ -31,8 +31,6 @@ export const EditForm = ({ onSubmit, player, calculatedRosterId, getPlayersAgain
         })
         closeModal()
 }
-console.log(calculatedRosterId)
-
   return (<>
     <span>{player?.character?.character_name}</span>
     <form onSubmit={onSubmit}>

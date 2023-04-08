@@ -2,6 +2,7 @@ import React, { useRef } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { registerUser } from "../managers/APIManager"
 import "./register.css"
+import { useState } from "react";
 
 export const Register = () => {
     const username = useRef()
@@ -10,28 +11,32 @@ export const Register = () => {
     const verifyPassword = useRef()
     const passwordDialog = useRef()
     const navigate = useNavigate()
-
+    const [errorMessage, setErrorMessage] = useState('');
     const handleRegister = (e) => {
-        e.preventDefault()
-
+        e.preventDefault();
+    
         if (password.current.value === verifyPassword.current.value) {
-            const newUser = {
-                "username": username.current.value,
-                "email": email.current.value,
-                "password": password.current.value
-            }
-
-            registerUser(newUser)
-                .then(res => {
-                    if ("token" in res) {
-                        localStorage.setItem("roster_token", res.token)
-                        navigate("/profile")
-                    }
-                })
+          const newUser = {
+            'username': username.current.value,
+            'email': email.current.value,
+            'password': password.current.value,
+          };
+    
+          registerUser(newUser)
+            .then((res) => {
+              if ('token' in res) {
+                localStorage.setItem('roster_token', res.token);
+                navigate('/profile');
+              } else {
+                if ('error' in res) {
+                  setErrorMessage(res.error);
+                }
+              }
+            });
         } else {
-            passwordDialog.current.showModal()
+          passwordDialog.current.showModal();
         }
-    }
+      };
 
     return (
         <main style={{ textAlign: "center" }}>
@@ -62,6 +67,7 @@ export const Register = () => {
             <input type="email" ref={email} name="email" className="form-control" placeholder="name@website.com" />
         </div>
     </fieldset>
+    {errorMessage && <div className="error-message">{errorMessage}</div>}
     <fieldset className="register--button--container" style={{ textAlign: "center" }}>
         <button className="register--button" type="submit">Register</button>
     </fieldset>
