@@ -8,7 +8,7 @@ export const getUserbyId = () => {
         .then(res => res.json())
 }
 export const postNewUser = (user) => {
-    return fetch("http://localhost:8088/users", {
+    return fetch(`REACT_APP_API/users`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
