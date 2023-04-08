@@ -34,7 +34,8 @@ export const CharacterModal = ({ character, onClose }) => {
           </style>
         </head>
         <body>
-          <img src="http://localhost:8000${imageUrl}" alt="Full-size image" />
+          <img src="REACT_APP_SERVER_URL__IMAGE
+${imageUrl}" alt="Full-size image" />
         </body>
       </html>
     `;
@@ -68,7 +69,8 @@ export const CharacterModal = ({ character, onClose }) => {
 
         {detailCharacter.image && (
           <img
-            src={`http://localhost:8000${detailCharacter.image}`}
+            src={`REACT_APP_SERVER_URL__IMAGE
+${detailCharacter.image}`}
             alt={`${detailCharacter.character_name}`}
             className="character-image"
             onClick={() => openImageInNewTab(detailCharacter.image)}
