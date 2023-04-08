@@ -69,7 +69,7 @@ ${imageUrl}" alt="Full-size image" />
 
         {detailCharacter.image && (
           <img
-            src={`REACT_APP_SERVER_URL__IMAGE
+            src={`${apiKey}
 ${detailCharacter.image}`}
             alt={`${detailCharacter.character_name}`}
             className="character-image"
