@@ -21,7 +21,7 @@ export const UpdateUser = () => {
                         <button className="email__button" type="submit"> leaving for styling reasons sue me </button> */}
                 </fieldset>
                     
-            </form> */}
+            </form> 
             
             
             </div>
