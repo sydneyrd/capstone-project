@@ -8,10 +8,8 @@ export const Authorized = ({ children }) => {
     }
     else {
         return <Navigate
-            to={`/login/${location.search}`}
+            to={`/nope/${location.search}`}
             replace
             state={{ location }} />
     }
 }
-
-//returns the children elements when rendering via routes if there is a roster user item locally

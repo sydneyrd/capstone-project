@@ -2,8 +2,6 @@ import "./publicresults.css"
 import { RoleSelect } from "../character/Role"
 import { getPublicRoles } from "../managers/PublicManager"
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
-
 
 export const PublicStatFilters = ({players,setGroup, setBase, setFilteredPlayers, sortByArmy, sortByGroup}) => {
     const [roles, setRoles] = useState([])
@@ -57,25 +55,25 @@ copy.sort(compareAssist)
 setFilteredPlayers(copy)
 }
 function sortKDR(click){
-    click.preventDefault()
-    setGroup(false)
+    click.preventDefault();
+    setGroup(false);
     const copy = [...players]
     copy.sort(compareKDR)
     setFilteredPlayers(copy)
 }
 
-
 function roleFilter(event){
-    event.preventDefault()
+    event.preventDefault();
+    setGroup(false);
     const copy = [...players]
     const rolePlayers = copy.filter(e => e?.character?.role === parseInt(event.target.value))
     setFilteredPlayers(rolePlayers)
 }
 function handleReset(click){
-    click.preventDefault()
+    click.preventDefault();
    const copy = [...players]
-    setFilteredPlayers(copy)
-    setGroup(false)
+    setFilteredPlayers(copy);
+    setGroup(false);
 }
 
 

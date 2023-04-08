@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react"
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
-// import { getUserByEmail } from "../managers/UserManager"
 import {loginUser} from "../managers/APIManager"
 import "./Login.css"
 
@@ -12,24 +11,27 @@ export const Login = () => {
     const password = useRef()
     const invalidDialog = useRef()
     const navigate = useNavigate()
+    const [errorMessage, setErrorMessage] = useState('');
 
     const handleLogin = (e) => {
-        e.preventDefault()
-        const user = {
-            username: username.current.value,
-            password: password.current.value
+      e.preventDefault();
+      const user = {
+        username: username.current.value,
+        password: password.current.value,
+      };
+      loginUser(user).then((res) => {
+        if ('valid' in res && res.valid && 'token' in res) {
+          localStorage.setItem('roster_token', res.token);
+          navigate('/profile');
+        } else {
+          if ('error' in res) {
+            setErrorMessage(res.error);
+          } else {
+            invalidDialog.current.showModal();
+          }
         }
-        loginUser(user)
-            .then(res => {
-                if ("valid" in res && res.valid && "token" in res) {
-                    localStorage.setItem("roster_token", res.token)
-                    navigate("/profile")
-                }
-                else {
-                    invalidDialog.current.showModal()
-                }
-            })
-    }
+      });
+    };
 
     return (
         <main className="container--login">
@@ -48,6 +50,7 @@ export const Login = () => {
                         
                         <input ref={password} type="password" id="password" className="form-control" placeholder="Password" required />
                     </fieldset>
+                    {errorMessage && <div className="error-message">{errorMessage}</div>}
                     <fieldset className="login" style={{
                         textAlign: "center"
                     }}>
@@ -57,7 +60,8 @@ export const Login = () => {
             </section>
             <section className="link--register">
                 <Link to="/register">Not a member yet?</Link>
-            </section>
+               
+            </section> <Link to="/password-reset">Forgot your password?</Link>
         </main>
     )
 }

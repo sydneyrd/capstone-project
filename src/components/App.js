@@ -11,12 +11,16 @@ import { PublicViewStats } from './public/PublicViewStats';
 import { Faq } from './faq/Faq';
 import { AddSharedCharacter } from './public/AddSharedCharacter';
 import { ConditionalNavBar } from './Nav/ConditionalNavBar';
-
+import { NotAuthorized } from './auth/NotAuthorized';
+import { PasswordResetRequest } from './auth/PasswordResetRequest';
+import { ResetPasswordForm } from './auth/ResetPasswordForm';
 export const App = () => {
 	return (
 	  <Routes>
 		<Route path="/login" element={<Login />} />
 		<Route path="/register" element={<Register />} />
+    <Route path="/password-reset" element={<PasswordResetRequest />} />
+    <Route path="/reset-password/:pass_token" element={<ResetPasswordForm />} />
 		<Route
 		  path=""
 		  element={
@@ -62,7 +66,9 @@ export const App = () => {
     </>
   }
 />
-
+<Route 
+path="/nope"
+element={<NotAuthorized />} />
   
 		<Route
 		  path="*"

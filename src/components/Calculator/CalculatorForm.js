@@ -1,6 +1,7 @@
 import { getCurrentRoster } from "../managers/RosterManager"
 import { useState, useEffect } from "react"
 
+import AllCharacterDropDown from "./AllCharacterDropDown"
 
 
 export const CalculatorForm = ({ characters, selectedRoster, calculatedRoster, setCalculatedRoster, createNewRoster }) => {
@@ -72,6 +73,11 @@ const handleChange = (e) => {
   copy[e.target.name] = parseInt(e.target.value)
   setPlayerStats(copy)
 }
+const handleChangeAllCharacters = (option) => {
+  const copy = {...playerStats}
+  copy['character'] = parseInt(option.id)
+  setPlayerStats(copy)
+}
 const handleChangeExistingRosterPlayer = (e) => {
   e.preventDefault();
   let copy = { ...playerStats };
@@ -85,7 +91,7 @@ const handleChangeExistingRosterPlayer = (e) => {
    
     <div className="player__form">
       <form className="War--Statistics">
-        <fieldset>
+        <fieldset className="calculator--fieldset">
 
     { rosterChoices && !createNewRoster ?
       <select name='character' onChange={(e)=>{handleChangeExistingRosterPlayer(e)}}>
@@ -94,9 +100,8 @@ const handleChangeExistingRosterPlayer = (e) => {
     </select>   
     : "" }
     { allChoices.length && createNewRoster ?
-    <><select name='character' onChange={(e)=>{handleChange(e)}}>
-      <option value={0}>select a character</option>
-        {allChoices.map((c) => <option key={c.id} id={c.id} value={c?.id}  >{c?.character_name}</option>)}</select>
+<>
+<><AllCharacterDropDown handleChangeAllCharacters={handleChangeAllCharacters} playerStats={playerStats}/></>
         <select onChange={(event) => { 
             handleChange(event)
           }} name="group"> <option value={0}>group</option>

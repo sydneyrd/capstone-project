@@ -3,7 +3,7 @@ import { WarResultMap } from "./WarResultMap"
 import { getUserWarStats } from "../managers/UserManager"
 import { editCalculatedRoster } from "../managers/CalculatedRosterManager"
 
-export const WarStats = ({ localUser, userWarStats, setUserWarStats }) => {
+export const WarStats = ({ userWarStats, setUserWarStats }) => {
     useEffect(
         () => {
             getUserWarStats()
@@ -26,7 +26,7 @@ export const WarStats = ({ localUser, userWarStats, setUserWarStats }) => {
             }
     return <>
     
-    { userWarStats ? <div className="savedroster--container">{userWarStats.map((stat) => <WarResultMap localUser={localUser} setUserWarStats={setUserWarStats} getUserWarStats={getUserWarStats} key={stat.id} stat={stat} publishRoster={publishRoster}/>)}</div>
+    { userWarStats ? <div className="savedroster--container">{userWarStats.map((stat) => <WarResultMap  setUserWarStats={setUserWarStats} getUserWarStats={getUserWarStats} key={stat.id} stat={stat} publishRoster={publishRoster}/>)}</div>
     : ""
     
     }</>

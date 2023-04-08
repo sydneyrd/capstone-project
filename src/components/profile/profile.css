@@ -55,16 +55,18 @@ input[type="email"] {
 .form--update {
     display: flex;
     flex-direction: column;
-    
+    box-shadow:none;
     max-width: 25em;
     padding: 10px;
     /* border: 1px solid #c9c9c9;
     border-radius: 7px; */
     font-family: 'Libre Franklin', sans-serif;
-    
+    border: none;
     margin: 25px 0;
     height: 60%;
   }
+
+
   input.form--update{
     max-width: 5em;
   }
@@ -72,6 +74,8 @@ input[type="email"] {
     max-width: 25em;
     box-sizing: border-box;
     margin-bottom: 10px;
+    
+
   }
   
   @media (max-width: 25em) {
@@ -146,7 +150,7 @@ input[type="email"] {
     font-size: 11px;
     margin: 0.25em;
 }
-.publish__roster{
+.publish__roster{ 
   padding: 0.25em;
   margin: 0.25em;
   font-family: 'Libre Franklin', sans-serif;
@@ -167,7 +171,26 @@ input[type="email"] {
   font-size: 11px;
   margin: 0.25em;
 }
-
+.link__generate__roster{
+    padding: 0.25em;
+    margin: 0.25em;
+    font-family: 'Libre Franklin', sans-serif;
+    display: inline-block;
+    outline: 0;
+    text-align: center;
+    cursor: pointer;
+    height: 34px;
+    padding: 0 13px;
+    color: #fff;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    transition: all .3s ease;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 16px;
+    font-size: 11px;
+    margin: 0.25em;
+}
 .edit__roster{
   
   padding: 0.25em;
@@ -190,4 +213,15 @@ input[type="email"] {
   line-height: 16px;
   font-size: 11px;
   margin: 0.25em;
+}
+.war--icons--container {
+  display: flex;
+  align-items: center; /* Vertically align the icons */
+  justify-content: center; /* Horizontally align the icons */
+  gap: 4px; /* Add some spacing between the icons */
+}
+
+.hoverable-element {
+  display: inline-flex; /* Use inline-flex to make the hoverable elements behave like inline elements */
+  position: relative;
 }

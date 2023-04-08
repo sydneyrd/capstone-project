@@ -114,6 +114,7 @@ fieldset {
   box-shadow: 2px 4px 23px 4px #000000;
     border: 5px hidden transparent;
     border-radius: 6px 6px 6px 6px;
+    text-align:center;
 }
 
 label {

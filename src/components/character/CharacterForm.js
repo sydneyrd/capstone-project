@@ -10,7 +10,6 @@ import "./characters.css"
 
 export const CharacterForm = ({ setModalIsOpen, updateUserCharacters, RosterUserObject, getUserCharacters, roles, weapons, servers, factions, feedback, setFeedback }) => {
     const [newCharacter, setNewCharacter] = useState({
-        userId: 0,
         character: "",
         roleId: 0,
         primaryId: 0,
@@ -57,7 +56,6 @@ export const CharacterForm = ({ setModalIsOpen, updateUserCharacters, RosterUser
     }
     const createCharacterImageString = (event) => {
         getBase64(event.target.files[0], (base64ImageString) => {
-            console.log("Base64 of file is", base64ImageString);
             setImage(base64ImageString)
         });
     }

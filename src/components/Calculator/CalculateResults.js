@@ -2,7 +2,9 @@ import { useNavigate } from "react-router-dom"
 import { newCalculatedRosterChoices } from "../managers/CalculatedRosterManager"
 
 export const CalculateResults = ({ calculatedRoster, currentCalcRostName,
-    newCalculatedRoster, selectedRoster, localUser, setCalculatedRosterId }) => {
+    newCalculatedRoster, selectedRoster, 
+    selectedServer,
+     setCalculatedRosterId }) => {
     let navigate = useNavigate()
 
     let thisName = currentCalcRostName
@@ -10,8 +12,8 @@ export const CalculateResults = ({ calculatedRoster, currentCalcRostName,
         click.preventDefault()
         let newcalcR = {
             roster: selectedRoster,
-            user: localUser.id,
-            rosterName: `${thisName}`
+            rosterName: `${thisName}`,
+            server: selectedServer
         }
         newCalculatedRoster(newcalcR).then((newRosterObj) => {
             const newIdObj = { ...newRosterObj }

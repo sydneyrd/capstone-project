@@ -84,7 +84,7 @@ div.player__resultsmap {
     flex-direction: column;
     flex-wrap: wrap;
     
-    min-width:fit-content;
+    min-width:85em;
     height: fit-content;
     border: solid 1px rgb(115, 109, 107);
     -webkit-box-shadow: 2px 4px 23px 4px #000000;
