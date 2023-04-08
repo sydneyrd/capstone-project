@@ -1,5 +1,6 @@
 export const getAllWeapons = (setWeapons) => {
-    return fetch(`http://127.0.0.1:8000/weapons`, {
+    return fetch(`REACT_APP_API
+/weapons`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("roster_token")}`
         }
@@ -11,7 +12,8 @@ export const getAllWeapons = (setWeapons) => {
 }
 
 export const getAllRoles = (setRoles) => {
-    return fetch(`http://127.0.0.1:8000/roles`, {
+    return fetch(`REACT_APP_API
+/roles`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("roster_token")}`
         }
@@ -22,7 +24,8 @@ export const getAllRoles = (setRoles) => {
         })
 }
 export const getAllServers = (setServers) => {
-    return fetch(`http://127.0.0.1:8000/servers`, {
+    return fetch(`REACT_APP_API
+/servers`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("roster_token")}`
         }
@@ -34,7 +37,8 @@ export const getAllServers = (setServers) => {
 }
 
 export const getAllFactions = (setFactions) => {
-    return fetch(`http://127.0.0.1:8000/factions`,
+    return fetch(`REACT_APP_API
+/factions`,
         {
             headers: {
                 "Authorization": `Token ${localStorage.getItem("roster_token")}`

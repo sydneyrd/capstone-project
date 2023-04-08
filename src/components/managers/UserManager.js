@@ -1,5 +1,6 @@
 export const getUserbyId = () => {
-    return fetch(`http://127.0.0.1:8000/rosterusers/id`, {
+    return fetch(`REACT_APP_API
+/rosterusers/id`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("roster_token")}`
         }
@@ -18,7 +19,8 @@ export const postNewUser = (user) => {
         .then(res => res.json())
 }
 export const updateProfile = (profile) => {
-    return fetch(`http://127.0.0.1:8000/users/id`, {
+    return fetch(`REACT_APP_API
+/users/id`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -29,7 +31,8 @@ export const updateProfile = (profile) => {
         .then(response => response.json())
 }
 export const getUserWarStats = () => {
-    return fetch(`http://127.0.0.1:8000/calculatedrosters?user_param=user`, {
+    return fetch(`REACT_APP_API
+/calculatedrosters?user_param=user`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("roster_token")}`
         }
@@ -37,7 +40,8 @@ export const getUserWarStats = () => {
         .then(res => res.json())
 }
 export const getUserCharacters = () => {
-    return fetch(`http://127.0.0.1:8000/characters?user=user`, {
+    return fetch(`REACT_APP_API
+/characters?user=user`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("roster_token")}`
         }
@@ -45,7 +49,8 @@ export const getUserCharacters = () => {
         .then(res => res.json())
 }
 export const getUserRosters = (setRosters) => {
-    return fetch(`http://127.0.0.1:8000/rosters?user=user`, {
+    return fetch(`REACT_APP_API
+/rosters?user=user`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("roster_token")}`
         }
@@ -54,7 +59,8 @@ export const getUserRosters = (setRosters) => {
 }
 
 export const generateToken = () => {
-    return fetch(`http://127.0.0.1:8000/generate_shared_character_token`, {
+    return fetch(`REACT_APP_API
+/generate_shared_character_token`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("roster_token")}`
         }

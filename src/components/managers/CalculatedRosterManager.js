@@ -1,6 +1,7 @@
 
 export const getCalculatedRoster = (calculatedrosterId) => {
-    return fetch(`http://127.0.0.1:8000/calculatedrosters/${calculatedrosterId}`,
+    return fetch(`REACT_APP_API
+/calculatedrosters/${calculatedrosterId}`,
         {
             headers: {
                 "Authorization": `Token ${localStorage.getItem("roster_token")}`
@@ -9,7 +10,8 @@ export const getCalculatedRoster = (calculatedrosterId) => {
         .then(res => res.json())
 }
 export const getCalculatedRosterChar = (calculatedRosterId) => {
-    return fetch(`http://127.0.0.1:8000/calculatedrosterchoices?calculatedroster=${calculatedRosterId}`, {
+    return fetch(`REACT_APP_API
+/calculatedrosterchoices?calculatedroster=${calculatedRosterId}`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("roster_token")}`
         }
@@ -17,7 +19,8 @@ export const getCalculatedRosterChar = (calculatedRosterId) => {
         .then(res => res.json())
 }
 export const newCalculatedRosterChoices = (newRosterChoiceObj) => {
-    return fetch(`http://127.0.0.1:8000/calculatedrosterchoices`, {
+    return fetch(`REACT_APP_API
+/calculatedrosterchoices`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -28,7 +31,8 @@ export const newCalculatedRosterChoices = (newRosterChoiceObj) => {
         .then(res => res.json())
 }
 export const newCalculatedRoster = (newRosterObj) => {
-    return fetch(`http://127.0.0.1:8000/calculatedrosters`, {
+    return fetch(`REACT_APP_API
+/calculatedrosters`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -39,7 +43,8 @@ export const newCalculatedRoster = (newRosterObj) => {
         .then(res => res.json())
 }
 export const editCalculatedRosterChoices = (post_body) => {
-    return fetch(`http://127.0.0.1:8000/calculatedrosterchoices/${post_body.id}`, {
+    return fetch(`REACT_APP_API
+/calculatedrosterchoices/${post_body.id}`, {
         method: "PUT",
         headers: {
             'Content-type': 'application/json',
@@ -48,7 +53,8 @@ export const editCalculatedRosterChoices = (post_body) => {
         body: JSON.stringify(post_body)})
 }
 export const deleteCalculatedRoster = (calculatedRosterId) => {
-    return fetch(`http://127.0.0.1:8000/calculatedrosters/${calculatedRosterId}`, {
+    return fetch(`REACT_APP_API
+/calculatedrosters/${calculatedRosterId}`, {
         method: "DELETE",
         headers: {
             'Content-type': 'application/json',
@@ -59,7 +65,8 @@ export const deleteCalculatedRoster = (calculatedRosterId) => {
     )
 }
 export const deleteCalculatedRosterChoice = (calculatedRosterChoiceId) => {
-    return fetch(`http://127.0.0.1:8000/calculatedrosterchoices/${calculatedRosterChoiceId}`, {
+    return fetch(`REACT_APP_API
+/calculatedrosterchoices/${calculatedRosterChoiceId}`, {
         method: "DELETE",
         headers: {
             'Content-type': 'application/json',
@@ -70,7 +77,8 @@ export const deleteCalculatedRosterChoice = (calculatedRosterChoiceId) => {
     )
 }
 export const editCalculatedRoster = (post_body) => {
-    return fetch(`http://127.0.0.1:8000/calculatedrosters/${post_body.id}`, {
+    return fetch(`REACT_APP_API
+/calculatedrosters/${post_body.id}`, {
         method: "PUT",
         headers: {
             'Content-type': 'application/json',
