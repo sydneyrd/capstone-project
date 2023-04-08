@@ -1,5 +1,11 @@
+const apiKey = process.env.REACT_APP_API;
+
+
+
+
 export const loginUser = (user) => {
-    return fetch("http://127.0.0.1:8000/login", {
+    return fetch(`${apiKey}
+/login`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -10,7 +16,8 @@ export const loginUser = (user) => {
         .then(res => res.json())
 }
 export const registerUser = (user) => {
-    return fetch("http://127.0.0.1:8000/register", {
+    return fetch(`${apiKey}
+/register`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

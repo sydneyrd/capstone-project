@@ -1,5 +1,7 @@
+const apiKey = process.env.REACT_APP_API;
 export const getAllWeapons = (setWeapons) => {
-    return fetch(`http://127.0.0.1:8000/weapons`, {
+    return fetch(`${apiKey}
+/weapons`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("roster_token")}`
         }
@@ -11,7 +13,8 @@ export const getAllWeapons = (setWeapons) => {
 }
 
 export const getAllRoles = (setRoles) => {
-    return fetch(`http://127.0.0.1:8000/roles`, {
+    return fetch(`${apiKey}
+/roles`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("roster_token")}`
         }
@@ -22,7 +25,8 @@ export const getAllRoles = (setRoles) => {
         })
 }
 export const getAllServers = (setServers) => {
-    return fetch(`http://127.0.0.1:8000/servers`, {
+    return fetch(`${apiKey}
+/servers`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("roster_token")}`
         }
@@ -34,7 +38,8 @@ export const getAllServers = (setServers) => {
 }
 
 export const getAllFactions = (setFactions) => {
-    return fetch(`http://127.0.0.1:8000/factions`,
+    return fetch(`${apiKey}
+/factions`,
         {
             headers: {
                 "Authorization": `Token ${localStorage.getItem("roster_token")}`

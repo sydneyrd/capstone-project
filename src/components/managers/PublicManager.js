@@ -1,12 +1,15 @@
+const apiKey = process.env.REACT_APP_API;
 export const getPublicCalculatedRosters = (setRosters) => {
-    return fetch(`http://127.0.0.1:8000/public-rosters`, {
+    return fetch(`${apiKey}
+/public-rosters`, {
         method: "GET",
     })
         .then(res => res.json())
         .then((res) => {setRosters(res)})
 }
 export const getPublicCalculatedRoster = (calculatedRosterId, setRosters) => {
-    return fetch(`http://127.0.0.1:8000/public-rosters/${calculatedRosterId}`, {
+    return fetch(`${apiKey}
+/public-rosters/${calculatedRosterId}`, {
         method: "GET",
     })
         .then(res => res.json())
@@ -15,13 +18,15 @@ export const getPublicCalculatedRoster = (calculatedRosterId, setRosters) => {
 
 
 export const getPublicCalculatedRosterChar = (calculatedRosterId, setRosters) => {
-    return fetch(`http://127.0.0.1:8000/public-roster-choices?calculatedroster=${calculatedRosterId}`, {
+    return fetch(`${apiKey}
+/public-roster-choices?calculatedroster=${calculatedRosterId}`, {
     })
         .then(res => res.json())
 }
 
 export const getPublicServers = (setServers) => {
-    return fetch(`http://127.0.0.1:8000/public/servers`, {
+    return fetch(`${apiKey}
+/public/servers`, {
         method: "GET",
     })
         .then(res => res.json())
@@ -29,28 +34,32 @@ export const getPublicServers = (setServers) => {
 }
 
 export const getPublicWeapons = (setWeapons) => {
-    return fetch(`http://127.0.0.1:8000/public/weapons`, {
+    return fetch(`${apiKey}
+/public/weapons`, {
         method: "GET",
     })
         .then(res => res.json())
         .then((res) => {setWeapons(res)})
 }
 export const getPublicRoles = (setRoles) => {
-    return fetch(`http://127.0.0.1:8000/public/roles`, {
+    return fetch(`${apiKey}
+/public/roles`, {
         method: "GET",
     })
         .then(res => res.json())
         .then((res) => {setRoles(res)})
 }
 export const getPublicFactions = (setFactions) => {
-    return fetch(`http://127.0.0.1:8000/public/factions`, {
+    return fetch(`${apiKey}
+/public/factions`, {
         method: "GET",
     })
         .then(res => res.json())
         .then((res) => {setFactions(res)})
 }
 export const addSharedCharacter = (newCharacter, token) => {
-    return fetch(`http://127.0.0.1:8000/shared_character_create/${token}`, {
+    return fetch(`${apiKey}
+/shared_character_create/${token}`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

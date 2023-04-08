@@ -1,9 +1,8 @@
 import "./rostergrid.css"
 import React from "react";
-import { getRosterCharacter, getCurrentRoster, newRosterChoice, newRoster } from "../managers/RosterManager";
+import {  getCurrentRoster, newRosterChoice, newRoster } from "../managers/RosterManager";
 import { editContext } from "../views/ApplicationViews"
-import { useEffect, useState, useContext } from "react";
-import { getAllCharacters } from "../managers/CharacterManager";
+import { useEffect, useContext } from "react";
 import { RosterDivForEdit } from "./RosterDivForEdit";
 import "./rostergrid.css"
 

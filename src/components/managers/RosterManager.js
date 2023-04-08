@@ -1,6 +1,7 @@
-
+const apiKey = process.env.REACT_APP_API;
 export const newRoster = () => {
-    return fetch(`http://127.0.0.1:8000/rosters`, {
+    return fetch(`${apiKey}
+/rosters`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -11,7 +12,8 @@ export const newRoster = () => {
 }
 
 export const getRosterName = (rosterId) => {
-    return fetch(`http://127.0.0.1:8000/rosters/${rosterId}`,
+    return fetch(`${apiKey}
+/rosters/${rosterId}`,
         {
             headers: {
                 "Authorization": `Token ${localStorage.getItem("roster_token")}`
@@ -21,7 +23,8 @@ export const getRosterName = (rosterId) => {
 }
 
 export const newRosterChoice = (newRosterChoiceObj) => {
-    return fetch(`http://127.0.0.1:8000/rosterchoices`, {
+    return fetch(`${apiKey}
+/rosterchoices`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -35,15 +38,12 @@ export const newRosterChoice = (newRosterChoiceObj) => {
             }
             return res.json();
         })
-        // .catch(error => {
-        //     console.error('Error:', error);
-        //     alert("This player has already been added.");
-        // });
 };
 
 
 export const deleteRoster = (rosterId) => {
-    return fetch(`http://127.0.0.1:8000/rosters/${rosterId}`, {
+    return fetch(`${apiKey}
+/rosters/${rosterId}`, {
         method: "DELETE",
         headers: {
             'Content-type': 'application/json',
@@ -54,7 +54,8 @@ export const deleteRoster = (rosterId) => {
 }
 
 export const putRosterName = (id, rosterName) => {
-    return fetch(`http://127.0.0.1:8000/rosters/${id}`, {
+    return fetch(`${apiKey}
+/rosters/${id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -64,7 +65,8 @@ export const putRosterName = (id, rosterName) => {
     })
 }
 export const getRosterCharacter = (rosterNum) => {
-    return fetch(`http://127.0.0.1:8000/rosterchoices?roster=${rosterNum}`,
+    return fetch(`${apiKey}
+/rosterchoices?roster=${rosterNum}`,
         {
             headers: {
                 "Authorization": `Token ${localStorage.getItem("roster_token")}`
@@ -73,7 +75,8 @@ export const getRosterCharacter = (rosterNum) => {
         .then(res => res.json())
 }
 export const deleteRosterChoice = (rosterChoiceId) => {
-    return fetch(`http://127.0.0.1:8000/rosterchoices/${rosterChoiceId}`, {
+    return fetch(`${apiKey}
+/rosterchoices/${rosterChoiceId}`, {
         method: "DELETE",
         headers: {
             'Content-type': 'application/json',
@@ -82,7 +85,8 @@ export const deleteRosterChoice = (rosterChoiceId) => {
     })
 }
 export const getCurrentRoster = (rosterId) => {
-    return fetch(`http://127.0.0.1:8000/rosterchoices?roster=${rosterId}`, {
+    return fetch(`${apiKey}
+/rosterchoices?roster=${rosterId}`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("roster_token")}`
         }
