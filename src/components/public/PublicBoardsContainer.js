@@ -74,7 +74,7 @@ export const PublicBoardsContainer = () => {
             <iframe
               title="twitch"
               className="video-iframe"
-              src="https://player.twitch.tv/?channel=yaboiwiilly&parent=localhost"
+              src="https://player.twitch.tv/?channel=yaboiwiilly&parent=deadgameroster.com"
               scrolling="no"
               allowFullScreen={true}
             ></iframe>
@@ -85,7 +85,7 @@ export const PublicBoardsContainer = () => {
               className="chat-iframe"
               scrolling="no"
               id="chat_embed"
-              src="https://www.twitch.tv/embed/yaboiwiilly/chat?parent=localhost"
+              src="https://www.twitch.tv/embed/yaboiwiilly/chat?parent=deadgameroster.com"
             ></iframe>
           </div>
         </div>
