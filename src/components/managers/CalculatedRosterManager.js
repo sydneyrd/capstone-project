@@ -1,6 +1,7 @@
+const apiKey = process.env.REACT_APP_API;
 
 export const getCalculatedRoster = (calculatedrosterId) => {
-    return fetch(`REACT_APP_API
+    return fetch(`${apiKey}
 /calculatedrosters/${calculatedrosterId}`,
         {
             headers: {
@@ -10,7 +11,7 @@ export const getCalculatedRoster = (calculatedrosterId) => {
         .then(res => res.json())
 }
 export const getCalculatedRosterChar = (calculatedRosterId) => {
-    return fetch(`REACT_APP_API
+    return fetch(`${apiKey}
 /calculatedrosterchoices?calculatedroster=${calculatedRosterId}`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("roster_token")}`
@@ -19,7 +20,7 @@ export const getCalculatedRosterChar = (calculatedRosterId) => {
         .then(res => res.json())
 }
 export const newCalculatedRosterChoices = (newRosterChoiceObj) => {
-    return fetch(`REACT_APP_API
+    return fetch(`${apiKey}
 /calculatedrosterchoices`, {
         method: "POST",
         headers: {
@@ -31,7 +32,7 @@ export const newCalculatedRosterChoices = (newRosterChoiceObj) => {
         .then(res => res.json())
 }
 export const newCalculatedRoster = (newRosterObj) => {
-    return fetch(`REACT_APP_API
+    return fetch(`${apiKey}
 /calculatedrosters`, {
         method: "POST",
         headers: {
@@ -43,7 +44,7 @@ export const newCalculatedRoster = (newRosterObj) => {
         .then(res => res.json())
 }
 export const editCalculatedRosterChoices = (post_body) => {
-    return fetch(`REACT_APP_API
+    return fetch(`${apiKey}
 /calculatedrosterchoices/${post_body.id}`, {
         method: "PUT",
         headers: {
@@ -53,7 +54,7 @@ export const editCalculatedRosterChoices = (post_body) => {
         body: JSON.stringify(post_body)})
 }
 export const deleteCalculatedRoster = (calculatedRosterId) => {
-    return fetch(`REACT_APP_API
+    return fetch(`${apiKey}
 /calculatedrosters/${calculatedRosterId}`, {
         method: "DELETE",
         headers: {
@@ -65,7 +66,7 @@ export const deleteCalculatedRoster = (calculatedRosterId) => {
     )
 }
 export const deleteCalculatedRosterChoice = (calculatedRosterChoiceId) => {
-    return fetch(`REACT_APP_API
+    return fetch(`${apiKey}
 /calculatedrosterchoices/${calculatedRosterChoiceId}`, {
         method: "DELETE",
         headers: {
@@ -77,7 +78,7 @@ export const deleteCalculatedRosterChoice = (calculatedRosterChoiceId) => {
     )
 }
 export const editCalculatedRoster = (post_body) => {
-    return fetch(`REACT_APP_API
+    return fetch(`${apiKey}
 /calculatedrosters/${post_body.id}`, {
         method: "PUT",
         headers: {

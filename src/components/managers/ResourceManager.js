@@ -1,5 +1,6 @@
+const apiKey = process.env.REACT_APP_API;
 export const getAllWeapons = (setWeapons) => {
-    return fetch(`REACT_APP_API
+    return fetch(`${apiKey}
 /weapons`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("roster_token")}`
@@ -12,7 +13,7 @@ export const getAllWeapons = (setWeapons) => {
 }
 
 export const getAllRoles = (setRoles) => {
-    return fetch(`REACT_APP_API
+    return fetch(`${apiKey}
 /roles`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("roster_token")}`
@@ -24,7 +25,7 @@ export const getAllRoles = (setRoles) => {
         })
 }
 export const getAllServers = (setServers) => {
-    return fetch(`REACT_APP_API
+    return fetch(`${apiKey}
 /servers`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("roster_token")}`
@@ -37,7 +38,7 @@ export const getAllServers = (setServers) => {
 }
 
 export const getAllFactions = (setFactions) => {
-    return fetch(`REACT_APP_API
+    return fetch(`${apiKey}
 /factions`,
         {
             headers: {

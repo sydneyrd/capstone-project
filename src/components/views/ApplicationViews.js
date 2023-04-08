@@ -1,5 +1,4 @@
-import { getUserbyId } from "../managers/APIManager"
-import { Link, Outlet } from "react-router-dom"
+import { Outlet } from "react-router-dom"
 import { Routes, Route } from "react-router-dom"
 import { Profile } from "../profile/Profile"
 

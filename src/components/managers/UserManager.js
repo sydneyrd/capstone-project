@@ -1,37 +1,7 @@
-export const getUserbyId = () => {
-    return fetch(`REACT_APP_API
-/rosterusers/id`, {
-        headers: {
-            "Authorization": `Token ${localStorage.getItem("roster_token")}`
-        }
-    })
-        .then(res => res.json())
-}
-export const postNewUser = (user) => {
-    return fetch(`REACT_APP_API/users`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Token ${localStorage.getItem("roster_token")}`
-        },
-        body: JSON.stringify(user)
-    })
-        .then(res => res.json())
-}
-export const updateProfile = (profile) => {
-    return fetch(`REACT_APP_API
-/users/id`, {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Token ${localStorage.getItem("roster_token")}`
-        },
-        body: JSON.stringify(profile)
-    })
-        .then(response => response.json())
-}
+const apiKey = process.env.REACT_APP_API;
+
 export const getUserWarStats = () => {
-    return fetch(`REACT_APP_API
+    return fetch(`${apiKey}
 /calculatedrosters?user_param=user`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("roster_token")}`
@@ -40,7 +10,7 @@ export const getUserWarStats = () => {
         .then(res => res.json())
 }
 export const getUserCharacters = () => {
-    return fetch(`REACT_APP_API
+    return fetch(`${apiKey}
 /characters?user=user`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("roster_token")}`
@@ -49,7 +19,7 @@ export const getUserCharacters = () => {
         .then(res => res.json())
 }
 export const getUserRosters = (setRosters) => {
-    return fetch(`REACT_APP_API
+    return fetch(`${apiKey}
 /rosters?user=user`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("roster_token")}`
@@ -59,7 +29,7 @@ export const getUserRosters = (setRosters) => {
 }
 
 export const generateToken = () => {
-    return fetch(`REACT_APP_API
+    return fetch(`${apiKey}
 /generate_shared_character_token`, {
         headers: {
             "Authorization": `Token ${localStorage.getItem("roster_token")}`

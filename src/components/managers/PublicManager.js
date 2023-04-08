@@ -1,5 +1,6 @@
+const apiKey = process.env.REACT_APP_API;
 export const getPublicCalculatedRosters = (setRosters) => {
-    return fetch(`REACT_APP_API
+    return fetch(`${apiKey}
 /public-rosters`, {
         method: "GET",
     })
@@ -7,7 +8,7 @@ export const getPublicCalculatedRosters = (setRosters) => {
         .then((res) => {setRosters(res)})
 }
 export const getPublicCalculatedRoster = (calculatedRosterId, setRosters) => {
-    return fetch(`REACT_APP_API
+    return fetch(`${apiKey}
 /public-rosters/${calculatedRosterId}`, {
         method: "GET",
     })
@@ -17,14 +18,14 @@ export const getPublicCalculatedRoster = (calculatedRosterId, setRosters) => {
 
 
 export const getPublicCalculatedRosterChar = (calculatedRosterId, setRosters) => {
-    return fetch(`REACT_APP_API
+    return fetch(`${apiKey}
 /public-roster-choices?calculatedroster=${calculatedRosterId}`, {
     })
         .then(res => res.json())
 }
 
 export const getPublicServers = (setServers) => {
-    return fetch(`REACT_APP_API
+    return fetch(`${apiKey}
 /public/servers`, {
         method: "GET",
     })
@@ -33,7 +34,7 @@ export const getPublicServers = (setServers) => {
 }
 
 export const getPublicWeapons = (setWeapons) => {
-    return fetch(`REACT_APP_API
+    return fetch(`${apiKey}
 /public/weapons`, {
         method: "GET",
     })
@@ -41,7 +42,7 @@ export const getPublicWeapons = (setWeapons) => {
         .then((res) => {setWeapons(res)})
 }
 export const getPublicRoles = (setRoles) => {
-    return fetch(`REACT_APP_API
+    return fetch(`${apiKey}
 /public/roles`, {
         method: "GET",
     })
@@ -49,7 +50,7 @@ export const getPublicRoles = (setRoles) => {
         .then((res) => {setRoles(res)})
 }
 export const getPublicFactions = (setFactions) => {
-    return fetch(`REACT_APP_API
+    return fetch(`${apiKey}
 /public/factions`, {
         method: "GET",
     })
@@ -57,7 +58,7 @@ export const getPublicFactions = (setFactions) => {
         .then((res) => {setFactions(res)})
 }
 export const addSharedCharacter = (newCharacter, token) => {
-    return fetch(`REACT_APP_API
+    return fetch(`${apiKey}
 /shared_character_create/${token}`, {
         method: "POST",
         headers: {

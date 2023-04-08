@@ -1,5 +1,10 @@
+const apiKey = process.env.REACT_APP_API;
+
+
+
+
 export const loginUser = (user) => {
-    return fetch(`REACT_APP_API
+    return fetch(`${apiKey}
 /login`, {
         method: "POST",
         headers: {
@@ -11,7 +16,7 @@ export const loginUser = (user) => {
         .then(res => res.json())
 }
 export const registerUser = (user) => {
-    return fetch(`REACT_APP_API
+    return fetch(`${apiKey}
 /register`, {
         method: "POST",
         headers: {
