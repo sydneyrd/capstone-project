@@ -34,7 +34,7 @@ export const CharacterModal = ({ character, onClose }) => {
           </style>
         </head>
         <body>
-          <img src="REACT_APP_SERVER_URL__IMAGE
+          <img src="${REACT_APP_SERVER_URL__IMAGE}
 ${imageUrl}" alt="Full-size image" />
         </body>
       </html>

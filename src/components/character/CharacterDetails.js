@@ -205,7 +205,7 @@ export const CharacterDetails = () => {
         <div className="right--container--details">
             <div className="image--detail">
            
-            {character.image ? <img src={`REACT_APP_SERVER_URL__IMAGE
+            {character.image ? <img src={`${REACT_APP_SERVER_URL__IMAGE}
 ${character?.image}`} alt={`${character.character_name} picture`}></img> : <></>}<div> 
                 <input type="file" id="image" onChange={createCharacterImageString} />
                 <input type="hidden" name="character_id" value={character.id} />
