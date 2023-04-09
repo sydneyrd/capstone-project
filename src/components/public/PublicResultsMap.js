@@ -1,5 +1,12 @@
-export const PublicResultsMap = ({ player, currentCalcRoster}) => {
+import {PublicCharacterModal} from "./PublicCharacterModal";
+import { useState } from "react";
 
+export const PublicResultsMap = ({ player, currentCalcRoster}) => {
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const toggleModal = () => {
+    setModalVisible(!modalVisible);
+  }
     const KDR = () => {
       if (player?.deaths) {
          const KDRresult = player?.kills / player?.deaths
@@ -15,7 +22,7 @@ export const PublicResultsMap = ({ player, currentCalcRoster}) => {
     }
  
  
-    return <div key={`player--${player.id}`} className="player__results"><span className="player--name">{player?.character?.character_name}</span>
+    return <div key={`player--${player.id}`} className="player__results"><span style={{color: "blue", cursor: "pointer"}} onClick={toggleModal} className="player--name">{player?.character?.character_name}</span>
     <span key={`player--group${player.id}`} className="player--group">{player?.group}</span>
     <span key={`player--damage${player.id}`} className="player--damage">{player?.damage ? <>{percentage(player?.damage, currentCalcRoster.total_damage)}%</> : "0"}
     </span>
@@ -38,6 +45,8 @@ export const PublicResultsMap = ({ player, currentCalcRoster}) => {
  </span>
  
        
-    </div>
+    {modalVisible && ( // Conditionally render the modal based on the state
+        <PublicCharacterModal detailCharacter={player.character} onClose={toggleModal} />
+      )}</div>
  }
  
