@@ -157,7 +157,8 @@ background: linear-gradient(rgba(144,238,144,0.2), rgba(144,238,144,0.2));
     color:rgb(87, 164, 87);
     font-weight:600;
       font-size: large;
-      max-width:19em;
+      width:15em;
+      text-overflow:ellipsis;
  }
 .search_div{
    align-self:flex-start;
@@ -213,11 +214,13 @@ background: linear-gradient(rgba(144,238,144,0.2), rgba(144,238,144,0.2));
    text-decoration: underline;
    color:green;
  }
- 
+ select.roster__select{
+   text-overflow: ellipsis;
+ }
  
  section.character__list--roster {
     height: 53em;
-    width: 20em;
+    min-width: 20em;
     scrollbar-width:0;
     position:relative;
     overflow: hidden;
