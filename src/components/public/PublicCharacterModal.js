@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { getSinglePublicCharacter } from '../managers/PublicManager';
 import './publicmodal.css';
 
-export const PublicCharacterModal = ({ detailCharacter, onClose }) => {
-
+export const PublicCharacterModal = ({ character, onClose }) => {
+  const [detailCharacter, setDetailCharacter] = useState({});
+  useEffect(() => {
+    getSinglePublicCharacter(character.id, setDetailCharacter);
+   }, [character]);
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === 'Escape') {

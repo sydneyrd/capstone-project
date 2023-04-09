@@ -15,6 +15,14 @@ export const getPublicCalculatedRoster = (calculatedRosterId, setRosters) => {
         .then(res => res.json())
 }
 
+export const getSinglePublicCharacter = (characterId, setCharacter) => {
+    return fetch(`${apiKey}
+/public/characters/${characterId}`, {
+        method: "GET",
+    })
+        .then(res => res.json())
+        .then((res) => {setCharacter(res)})
+}
 
 
 export const getPublicCalculatedRosterChar = (calculatedRosterId, setRosters) => {

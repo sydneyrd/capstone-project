@@ -46,7 +46,7 @@ export const PublicResultsMap = ({ player, currentCalcRoster}) => {
  
        
     {modalVisible && ( // Conditionally render the modal based on the state
-        <PublicCharacterModal detailCharacter={player.character} onClose={toggleModal} />
+        <PublicCharacterModal character={player.character} onClose={toggleModal} />
       )}</div>
  }
  

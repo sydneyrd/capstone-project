@@ -19,8 +19,8 @@ export const CharacterModal = ({ character, onClose }) => {
     };
   }, [onClose]);
 
-  useEffect(() => {
-    getSingleReadOnlyCharacter(character.id, setDetailCharacter);
+   useEffect(() => {
+   getSingleReadOnlyCharacter(character.id, setDetailCharacter);
   }, [character]);
   const apiKey = process.env.REACT_APP_API;
   const openImageInNewTab = (imageUrl) => {
