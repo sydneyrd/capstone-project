@@ -72,14 +72,6 @@ export const Roster = () => {
         [] 
     )
 
-//if i don't use this initial use effect the character details don't appear on screen?   um ok i'll look at it later
-    // useEffect(
-    //     () => {
-    //         let alphaCharacters = characters.sort((a, b) => a.character_name.localeCompare(b.character_name))
-    //         setSortedArr(characters) 
-    //     },
-    //     [characters]
-    // )
     useEffect(
         () => {
             if (rosterIDNUMBER > 0) {
@@ -160,7 +152,11 @@ const handleNewRoster = (e) => {
    <div className="save__div">
             <button  onClick={(e) => handleNewRoster(e)
             } className="new__button">create a new roster</button><div className="roster__select">
-            <span>OR</span>{userRosters.length > 0 ? <select className="roster__select" onChange={(e) => setCurrentEditRoster(parseInt(e.target.value))}>
+            
+            
+            
+            
+            {userRosters.length > 0 ? <><span>OR</span> <select className="roster__select" onChange={(e) => setCurrentEditRoster(parseInt(e.target.value))}>
                 <option value="0">Edit Saved Roster</option>
                 {userRosters.map((roster) => {
                     return <option key={roster.id} value={roster.id}>{roster.name ?
@@ -168,7 +164,9 @@ const handleNewRoster = (e) => {
                 : `untitled roster #${roster.id}` 
                 }</option>
                 })}
-            </select> : <></>}</div>
+            </select></> : <></>}
+            
+            </div>
         </div> </div>
         
          
