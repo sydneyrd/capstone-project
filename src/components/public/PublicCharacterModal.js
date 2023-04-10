@@ -66,8 +66,7 @@ export const PublicCharacterModal = ({ character, onClose }) => {
 
         {detailCharacter.image && (
           <img
-            src={`${apiKey}
-${detailCharacter.image}`}
+            src={`${detailCharacter.image}`}
             alt={`${detailCharacter.character_name}`}
             className="character-image"
             onClick={() => openImageInNewTab(detailCharacter.image)}
