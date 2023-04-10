@@ -22,7 +22,7 @@ export const CharacterModal = ({ character, onClose }) => {
    useEffect(() => {
    getSingleReadOnlyCharacter(character.id, setDetailCharacter);
   }, [character]);
-  const apiKey = process.env.REACT_APP_IMAGE;
+
   const openImageInNewTab = (imageUrl) => {
     const imageHTML = `
       <!DOCTYPE html>
@@ -34,7 +34,7 @@ export const CharacterModal = ({ character, onClose }) => {
           </style>
         </head>
         <body>
-          <img src="${apiKey}
+          <img src="
 ${imageUrl}" alt="Full-size image" />
         </body>
       </html>
