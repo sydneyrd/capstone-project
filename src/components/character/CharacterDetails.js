@@ -59,7 +59,6 @@ export const CharacterDetails = () => {
     useEffect(() => {
         setNotes(character.notes)
     }, [character])
-    const apiKey = process.env.REACT_APP_IMAGE;
     const handleUpdateClick = (UC, click) => {
         click.preventDefault()
         const letcToAPI = {
@@ -207,8 +206,7 @@ export const CharacterDetails = () => {
            
             {character.image ? <img 
             className="character-image"
-            src={`${apiKey}
-${character?.image}`} alt={`${character.character_name} picture`}></img> : <></>}<div> 
+            src={`${character?.image}`} alt={`${character.character_name} picture`}></img> : <></>}<div> 
                 <input type="file" id="image" onChange={createCharacterImageString} />
                 <input type="hidden" name="character_id" value={character.id} />
                 <button className="save__button" onClick={click => handleUpdateClick(character, click)}>save image</button>
