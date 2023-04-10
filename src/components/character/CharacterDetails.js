@@ -59,7 +59,7 @@ export const CharacterDetails = () => {
     useEffect(() => {
         setNotes(character.notes)
     }, [character])
-    const apiKey = process.env.REACT_APP_API;
+    const apiKey = process.env.REACT_APP_IMAGE;
     const handleUpdateClick = (UC, click) => {
         click.preventDefault()
         const letcToAPI = {
