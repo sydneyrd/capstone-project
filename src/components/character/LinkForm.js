@@ -37,6 +37,7 @@ export const LinkModal = ({ character, characterId,setModalIsOpen, getCharacterL
     };
 
     const handleChange = (e) => {
+        e.preventDefault();
         const linkCopy = { ...link }
         linkCopy[e.target.name] = e.target.value
         linkCopy["character"] = character?.id

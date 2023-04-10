@@ -11,6 +11,7 @@ import { deleteCharLink, newLink, getCharacterLinks, deleteCharacter, putCharact
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { LinkModal } from "./LinkForm"
+import "./linkform.css" 
 export const CharacterDetails = () => {
     const { characterId } = useParams()
     const [character, setCharacter] = useState({
@@ -185,7 +186,7 @@ export const CharacterDetails = () => {
                 (event) => { setNotes(event.target.value) }} />
                 <button className='save__note__button' onClick={click => { handleUpdateClick(character, click) }}>Save Notes</button></div></div>
                 <div className="vod--links"> 
-            <button  className="modal--button" onClick={() => setModalIsOpen(true)}>Add a Vod Link</button>
+            <button  className="modal--button--char" onClick={() => setModalIsOpen(true)}>Add a Vod Link</button>
             <Modal isOpen={modalIsOpen} className="add--vod--modal"
       onRequestClose={() => setModalIsOpen(false)}>
         
