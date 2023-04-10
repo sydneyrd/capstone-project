@@ -22,7 +22,7 @@ export const CharacterModal = ({ character, onClose }) => {
    useEffect(() => {
    getSingleReadOnlyCharacter(character.id, setDetailCharacter);
   }, [character]);
-  const apiKey = process.env.REACT_APP_API;
+  const apiKey = process.env.REACT_APP_IMAGE;
   const openImageInNewTab = (imageUrl) => {
     const imageHTML = `
       <!DOCTYPE html>

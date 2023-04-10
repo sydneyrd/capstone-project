@@ -21,7 +21,7 @@ export const PublicCharacterModal = ({ character, onClose }) => {
     };
   }, [onClose]);
 
-  const apiKey = process.env.REACT_APP_API;
+  const apiKey = process.env.REACT_APP_IMAGE;
   const openImageInNewTab = (imageUrl) => {
     const imageHTML = `
       <!DOCTYPE html>
