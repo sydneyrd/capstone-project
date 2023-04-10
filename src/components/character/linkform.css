@@ -40,7 +40,7 @@
     background-color:#1D1D1E;
 }
 /* ... other styles ... */
-.modal--button {
+.modal--button--char {
     font-family: 'Libre Franklin', sans-serif;
     margin: 0.15em;
     text-align: center;
@@ -60,7 +60,7 @@
     font-size: .6em;
     align-self: center;
     justify-self: center;
-    position:sticky;
+    position:relative;
 }
 
 /* Updated and new styles */
